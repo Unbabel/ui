@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --coverage",
     "lint": "eslint src test",
-    "fix-lint": "eslint --fix src test"
+    "fix-lint": "eslint --fix src test",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "repository": {
     "type": "git",
@@ -40,8 +41,17 @@
   },
   "homepage": "https://gitlab.com/Unbabel/ui#README",
   "devDependencies": {
+    "babel-core": "^6.26.0",
     "eslint": "^4.17.0",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0"
+    "eslint-plugin-import": "^2.8.0",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "vue-loader": "^14.1.1",
+    "vue-template-compiler": "^2.5.13"
+  },
+  "dependencies": {
+    "@storybook/vue": "^3.3.12",
+    "vue": "^2.5.13"
   }
 }
