@@ -26,15 +26,9 @@ So you can use it in your templates:
 - Card (example component that imports another component)
 
 ## Development
-To develop or add new components, install the dependencies using the standard way `npm install` and launch the Storybooks to preview your components.
+To develop or add new components, install the dependencies and launch the [Storybooks](https://storybook.js.org/basics/guide-vue/) server to preview your components:
 
-### Storybooks
-[Storybooks](https://storybook.js.org/basics/guide-vue/) lets you easily see the rendered components, its variations, and change its properties.
-
-Start the [Storybooks](https://storybook.js.org/basics/guide-vue/) server using:
 ```
-npm run storybooks
+$ npm install
+$ npm run storybooks
 ```
-
-### Testing
-_Coming soon..._
