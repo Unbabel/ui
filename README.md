@@ -23,6 +23,7 @@ So you can use it in your templates:
 
 ## Components
 - CoolButton (example component)
+- Card (example component that imports another component)
 
 ## Development
 To develop or add new components, install the dependencies using the standard way `npm install` and launch the Storybooks to preview your components.
