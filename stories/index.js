@@ -1,6 +1,8 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text } from '@storybook/addon-knobs/vue';
+import { withNotes } from '@storybook/addon-notes';
+
 import CoolButton from '../src/components/CoolButton.vue';
 
 storiesOf('CoolButton', module)
@@ -34,4 +36,10 @@ storiesOf('CoolButton', module)
 			components: { CoolButton },
 			template: `<cool-button>${content}</cool-button>`,
 		};
-	});
+	})
+	.add('Button with Notes', withNotes('This is a note')(() => {
+		return {
+			components: { CoolButton },
+			template: '<cool-button>Hello</cool-button>',
+		};
+	}));

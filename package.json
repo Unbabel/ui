@@ -53,6 +53,7 @@
   "dependencies": {
     "@storybook/addon-actions": "^3.3.12",
     "@storybook/addon-knobs": "^3.3.12",
+    "@storybook/addon-notes": "^3.3.12",
     "@storybook/vue": "^3.3.12",
     "vue": "^2.5.13"
   }
