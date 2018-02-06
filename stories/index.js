@@ -6,40 +6,44 @@ import { withNotes } from '@storybook/addon-notes';
 import CoolButton from '../src/components/CoolButton.vue';
 
 storiesOf('CoolButton', module)
-	.add('Base', () => {
+	.addDecorator(withKnobs)
+	.add('Default', () => {
 		return {
 			render: (h) => {
 				return h(CoolButton);
 			},
 		};
 	})
-	.add('Secondary', () => {
-		return {
-			components: { CoolButton },
-			template: '<cool-button>Secondary</cool-button>',
-		};
-	})
-	.add('Log actions', () => {
-		return {
-			components: { CoolButton },
-			template: '<cool-button :click-handler="log">Secondary</cool-button>',
-			methods: {
-				log: action('log1'),
-			},
-		};
-	})
-	.addDecorator(withKnobs)
-	.add('Button with Knobs', () => {
-		const content = text('Button text', 'default text');
+	.add('Primary', () => {
+		const content = text('Button text', 'Primary action');
 
 		return {
 			components: { CoolButton },
-			template: `<cool-button>${content}</cool-button>`,
+			template: `<cool-button :role="'primary'" :click-handler="log">${content}</cool-button>`,
+			methods: {
+				log: action('clicked the primary button'),
+			},
 		};
 	})
-	.add('Button with Notes', withNotes('This is a note')(() => {
+	.add('Secondary', () => {
+		const content = text('Button text', 'Secondary action');
+
 		return {
 			components: { CoolButton },
-			template: '<cool-button>Hello</cool-button>',
+			template: `<cool-button :role="'secondary'" :click-handler="log">${content}</cool-button>`,
+			methods: {
+				log: action('clicked the secondary button'),
+			},
+		};
+	})
+	.add('Terceary', withNotes('This needs work')(() => {
+		const content = text('Button text', 'Terceary action');
+
+		return {
+			components: { CoolButton },
+			template: `<cool-button :role="'terceary'" :click-handler="log">${content}</cool-button>`,
+			methods: {
+				log: action('clicked the terceary button'),
+			},
 		};
 	}));
