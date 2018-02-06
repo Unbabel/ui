@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
+import { withKnobs, text } from '@storybook/addon-knobs/vue';
 import CoolButton from '../src/components/CoolButton.vue';
 
 storiesOf('CoolButton', module)
@@ -23,5 +24,14 @@ storiesOf('CoolButton', module)
 			methods: {
 				log: action('log1'),
 			},
+		};
+	})
+	.addDecorator(withKnobs)
+	.add('Button with Knobs', () => {
+		const content = text('Button text', 'default text');
+
+		return {
+			components: { CoolButton },
+			template: `<cool-button>${content}</cool-button>`,
 		};
 	});
