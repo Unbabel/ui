@@ -4,6 +4,7 @@ import { withKnobs, text } from '@storybook/addon-knobs/vue';
 import { withNotes } from '@storybook/addon-notes';
 
 import CoolButton from '../src/components/CoolButton.vue';
+import Card from '../src/components/Card.vue';
 
 storiesOf('CoolButton', module)
 	.addDecorator(withKnobs)
@@ -47,3 +48,13 @@ storiesOf('CoolButton', module)
 			},
 		};
 	}));
+
+storiesOf('Card', module)
+	.addDecorator(withKnobs)
+	.add('Default', () => {
+		return {
+			render: (h) => {
+				return h(Card);
+			},
+		};
+	});
