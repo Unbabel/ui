@@ -1,5 +1,5 @@
 <template>
-	<button class="c-CoolButton" v-bind:class="'c-CoolButton--' + role" @click="clickHandler">
+	<button class="c-CoolButton" v-bind:class="cssClasses" @click="clickHandler">
 		<slot>Click me</slot>
 	</button>
 </template>
@@ -14,6 +14,21 @@
 			clickHandler: {
 				default: () => () => null
 			},
+			disabled: {
+				type: Boolean,
+				default: false,
+			},
+		},
+		computed: {
+			cssClasses() {
+				let result = 'c-CoolButton--' + this.role;
+
+				if (this.disabled) {
+					result += ' is-disabled';
+				}
+
+				return result;
+			}
 		}
 	}
 </script>
@@ -43,8 +58,8 @@
 			text-shadow: 0px 1px 0 rgba(0,0,0,0.4);
 
 			&:hover {
-				background-color: $un-green-dark;
-				border-color: $un-green-dark;
+				background-color: darken($un-green, 5%);
+				border-color: darken($un-green, 5%);
 			}
 
 			&.is-disabled, &[disabled] {
@@ -72,10 +87,11 @@
 		}
 
 		&--terciary {
+			background-color: transparent;
+			border: none;
 			font-weight: normal;
 
 			&:hover {
-				border-color: $un-purple;
 				color: $un-purple;
 			}
 
