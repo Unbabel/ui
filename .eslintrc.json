@@ -1,0 +1,30 @@
+{
+    "extends": "airbnb-base",
+    "rules": {
+      "indent": ["error", "tab"],
+      "no-tabs": ["off"],
+      "brace-style": ["error", "stroustrup"],
+      "arrow-body-style": ["error", "always"]
+    },
+    "globals": {
+      "document": true,
+      "jest": true,
+      "expect": true,
+      "mockFn": true,
+      "config": true,
+      "afterEach": true,
+      "beforeEach": true,
+      "beforeAll": true,
+      "afterAll": true,
+      "describe": true,
+      "it": true,
+      "runs": true,
+      "waitsFor": true,
+      "pit": true,
+      "require": true,
+      "xdescribe": true,
+      "xit": true,
+      "test": true,
+      "window": true
+    }
+}

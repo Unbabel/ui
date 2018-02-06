@@ -1,0 +1,47 @@
+{
+  "name": "@unbabel/ui",
+  "version": "1.0.0",
+  "description": "The component library for Unbabel User Interfaces",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "lint": "eslint src test",
+    "fix-lint": "eslint --fix src test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/Unbabel/ui.git"
+  },
+  "keywords": [
+    "component",
+    "library",
+    "ui",
+    "vuejs",
+    "frontend",
+    "unbabel"
+  ],
+  "author": {
+    "name": "Unbabel",
+    "url": "https://unbabel.com"
+  },
+  "contributors": [
+    {
+      "name": "Sofia Rocha",
+      "email": "sofia.rocha@unbabel.com"
+    },
+    {
+      "name": "João Sardinha",
+      "email": "joao.sardinha@unbabel.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/Unbabel/ui/issues"
+  },
+  "homepage": "https://gitlab.com/Unbabel/ui#README",
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}
