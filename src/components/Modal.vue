@@ -3,27 +3,40 @@
 		<div class="c-Modal__overlay"></div>
 		<div class="c-Modal__main">
 			<div class="c-Modal__top">
+				<btn v-show="closeIcon" class="c-Modal__closeIcon" role="secondary" :click-handler="clickedOnClose">
+					<svg width="192px" height="192px" viewBox="0 0 192 192" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+						<g id="Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							<g id="close-icon" fill-rule="nonzero">
+								<polygon id="Shape" points="180.2 0 95.8 84.3 11.8 0.4 0 12.2 84 96 0 179.9 11.8 191.6 95.8 107.8 180.2 192 192 180.3 107.6 96 192 11.8"></polygon>
+							</g>
+						</g>
+					</svg>
+				</btn>
 				<!-- You can pass the title as a slot or as a prop -->
 				<slot name="title">
 					<h1 class="c-Modal__title">{{ title }}</h1>
 				</slot>
 			</div>
 			<div class="c-Modal__middle">
+				<!-- You can pass the content as a slot or as a prop -->
 				<slot name="content">
 					<p class="c-Modal__text">{{ content }}</p>
 				</slot>
 			</div>
-			<div class="c-Modal__bottom">
-				<slot name="footer">
-					<button>Default</button>
-				</slot>
+			<div v-show="hasFooter" class="c-Modal__bottom">
+				<slot name="footer"></slot>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+	import Button from './Button.vue';
+
 	export default {
+		components: {
+			btn: Button,
+		},
 		props: {
 			active: {
 				type: Boolean,
@@ -32,12 +45,23 @@
 			},
 			content: {
 				type: String,
-				default: '',
+				required: false,
+				default: 'Default Modal content',
 			},
 			title: {
 				type: String,
-				required: true,
+				required: false,
 				default: 'Default Modal Title',
+			},
+			closeIcon: {
+				type: Boolean,
+				required: false,
+				default: false,
+			},
+		},
+		methods: {
+			clickedOnClose() {
+				this.$emit('closed', this);
 			},
 		},
 		computed: {
@@ -49,8 +73,16 @@
 				}
 
 				return result;
-			}
-		}
+			},
+			// Hide the footer if nothing is passed to the slot
+			hasFooter() {
+				if (this.$slots.footer) {
+					return true;
+				}
+
+				return false;
+			},
+		},
 	}
 </script>
 
@@ -62,8 +94,6 @@
 		justify-content: center;
 		align-items: flex-start;
 		padding: 10vh 4rem;
-		// font-family: inherit;
-		// font-size: inherit;
 		font-family: 'Open Sans', sans-serif;
 		font-size: 16px;
 		color: $un-gray3;
@@ -90,6 +120,7 @@
 		}
 
 		&__main {
+			position: relative;
 			display: flex;
 			flex-direction: column;
 			min-width: 400px;
@@ -114,7 +145,6 @@
 			border-bottom-right-radius: 2px;
 		}
 
-		// Padding for the sections
 		&__top,
 		&__middle,
 		&__bottom {
@@ -124,6 +154,28 @@
 		&__top {
 			padding-top: 1.8rem;
 			padding-bottom: 0.7rem;
+
+			.c-Modal__closeIcon {
+				position: absolute;
+				top: 0.4rem;
+				right: 0.4rem;
+				padding: 0.5rem;
+				line-height: 14px;
+
+				svg {
+					width: 0.9rem;
+					height: 0.9rem;
+
+					g {
+						fill: $un-gray2;
+						transition: fill 0.25s ease-in-out;
+					}
+				}
+
+				&:hover svg g {
+					fill: $un-gray2-dark;
+				}
+			}
 		}
 
 		&__middle {

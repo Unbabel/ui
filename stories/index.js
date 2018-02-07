@@ -8,6 +8,7 @@ import Card from '../src/components/Card.vue';
 import ModalExample from './examples/ModalExample.vue';
 import ModalWithForm from './examples/ModalWithForm.vue';
 import ModalWithLongText from './examples/ModalWithLongText.vue';
+import ModalWithInfo from './examples/ModalWithInfo.vue';
 
 storiesOf('Button', module)
 	.addDecorator(withKnobs)
@@ -112,6 +113,21 @@ storiesOf('Modal', module)
 				ModalWithLongText,
 			},
 			template: `<modal-with-long-text :title="'${title}'"></modal-with-long-text>`,
+			/*
+			methods: {
+				log: action('clicked the secondary button'),
+			},
+			*/
+		};
+	})
+	.add('Info Modal', () => {
+		const title = text('Modal title', 'Some info below');
+
+		return {
+			components: {
+				ModalWithInfo,
+			},
+			template: `<modal-with-info :title="'${title}'"></modal-with-info>`,
 			/*
 			methods: {
 				log: action('clicked the secondary button'),
