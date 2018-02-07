@@ -15,12 +15,12 @@ storiesOf('Button', module)
 	.add('Default', () => {
 		const content = text('Button text', 'Click me');
 		const link = text('Button link', '');
-		const role = select('Role', { primary: 'Primary', cta: 'Call to Action', secondary: 'secondary' }, 'Primary');
+		const kind = select('Kind', { primary: 'Primary', cta: 'Call to Action', secondary: 'secondary' }, 'Primary');
 		const isDisabled = boolean('Disabled', false);
 
 		return {
 			components: { btn: Button },
-			template: `<btn :role="'${role}'" :click-handler="log" :disabled="${isDisabled}" :link="'${link}'">${content}</btn>`,
+			template: `<btn :kind="'${kind}'" :click-handler="log" :disabled="${isDisabled}" :link="'${link}'">${content}</btn>`,
 			methods: {
 				log: action('clicked the default button'),
 			},
@@ -32,7 +32,7 @@ storiesOf('Button', module)
 
 		return {
 			components: { btn: Button },
-			template: `<btn :role="'primary'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
+			template: `<btn :kind="'primary'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the primary button'),
 			},
@@ -44,7 +44,7 @@ storiesOf('Button', module)
 
 		return {
 			components: { btn: Button },
-			template: `<btn :role="'secondary'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
+			template: `<btn :kind="'secondary'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the secondary button'),
 			},
@@ -56,7 +56,7 @@ storiesOf('Button', module)
 
 		return {
 			components: { btn: Button },
-			template: `<btn :role="'cta'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
+			template: `<btn :kind="'cta'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the CTA button'),
 			},

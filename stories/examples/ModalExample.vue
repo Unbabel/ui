@@ -5,8 +5,8 @@
 		<modal :active="modalIsActive" :title="title">
 			<p slot="content">This is the <strong>main</strong> text.</p>
 			<div slot="footer">
-				<btn role="secondary" :click-handler="closeModal">Close</btn>
-				<btn role="primary">Send</btn>
+				<btn kind="secondary" :click-handler="closeModal">Close</btn>
+				<btn kind="primary">Send</btn>
 			</div>
 		</modal>
 	</div>

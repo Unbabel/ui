@@ -26,8 +26,8 @@
 				</div>
 			</form>
 			<div slot="footer">
-				<btn role="secondary" :click-handler="closeModal">Close</btn>
-				<btn role="primary" :click-handler="submitForm">Send</btn>
+				<btn kind="secondary" :click-handler="closeModal">Close</btn>
+				<btn kind="primary" :click-handler="submitForm">Send</btn>
 			</div>
 		</modal>
 	</div>

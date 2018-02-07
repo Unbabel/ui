@@ -7,7 +7,7 @@
 <script>
 	export default {
 		props: {
-			role: {
+			kind: {
 				type: String,
 				required: false,
 				default: 'secondary',
@@ -45,7 +45,7 @@
 		},
 		computed: {
 			cssClasses() {
-				let result = 'c-Button--' + this.role;
+				let result = 'c-Button--' + this.kind;
 
 				if (this.disabled) {
 					result += ' is-disabled';
