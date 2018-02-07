@@ -1,5 +1,5 @@
 <template>
-	<button class="c-Button" v-bind:class="cssClasses" @click="openLink">
+	<button class="c-Button" :class="classObject" @click="openLink">
 		<slot>Click me</slot>
 	</button>
 </template>
@@ -39,14 +39,16 @@
 			},
 		},
 		computed: {
-			cssClasses() {
-				let result = 'c-Button--' + this.kind;
-
-				if (this.disabled) {
-					result += ' is-disabled';
-				}
-
-				return result;
+			classObject() {
+				const {
+					disabled,
+					kind,
+				} = this;
+				const output = {
+					'is-disabled': disabled,
+				};
+				output[`c-Button--${kind}`] = true;
+				return output;
 			},
 		}
 	}
