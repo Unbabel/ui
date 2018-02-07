@@ -77,12 +77,14 @@
 		text-align: center;
 		text-transform: uppercase;
 		border-radius: 3px;
+		border: 1px solid;
 
 		transition: all 0.25s ease-in-out;
 
-		&, &--primary {
+		&,
+		&--primary {
 			background-color: transparent;
-			border: 1px solid $un-gray2-light;
+			border-color: $un-gray2-light;
 			color: $un-gray2-dark;
 			font-weight: 600;
 
@@ -91,7 +93,8 @@
 				color: $un-purple;
 			}
 
-			&.is-disabled, &[disabled] {
+			&.is-disabled,
+			&[disabled] {
 				border-color: $un-gray1-dark;
 				color: $un-gray1-dark;
 			}
@@ -110,7 +113,8 @@
 				color: white;
 			}
 
-			&.is-disabled, &[disabled] {
+			&.is-disabled,
+			&[disabled] {
 				background-color: $un-gray1;
 				text-shadow: none;
 				border-color: $un-gray1-dark;
@@ -119,14 +123,20 @@
 
 		&--secondary {
 			background-color: transparent;
-			border: none;
 			font-weight: normal;
 
+			&,
+			&:hover,
+			&.is-disabled,
+			&[disabled] {
+				border-color: transparent;
+			}
 			&:hover {
 				color: $un-purple;
 			}
 
-			&.is-disabled, &[disabled] {
+			&.is-disabled,
+			&[disabled] {
 				color: $un-gray1-dark;
 			}
 		}
