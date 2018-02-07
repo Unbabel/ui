@@ -76,13 +76,12 @@ storiesOf('Modal', module)
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		const title = text('Modal title', 'This is the title!');
-		const topValue = number('Margin-top', 30);
 
 		return {
 			components: {
 				ModalExample,
 			},
-			template: `<modal-example :title="'${title}'" :top="${topValue}"></modal-example>`,
+			template: `<modal-example :title="'${title}'"></modal-example>`,
 			/*
 			methods: {
 				log: action('clicked the secondary button'),
@@ -92,13 +91,12 @@ storiesOf('Modal', module)
 	})
 	.add('With Form', () => {
 		const title = text('Modal title', 'This is the title!');
-		const topValue = number('Margin-top', 30);
 
 		return {
 			components: {
 				ModalWithForm,
 			},
-			template: `<modal-with-form :title="'${title}'" :top="${topValue}"></modal-with-form>`,
+			template: `<modal-with-form :title="'${title}'"></modal-with-form>`,
 			/*
 			methods: {
 				log: action('clicked the secondary button'),
@@ -108,13 +106,12 @@ storiesOf('Modal', module)
 	})
 	.add('Long text', () => {
 		const title = text('Modal title', 'This is a lot of text');
-		const topValue = number('Margin-top', 30);
 
 		return {
 			components: {
 				ModalWithLongText,
 			},
-			template: `<modal-with-long-text :title="'${title}'" :top="${topValue}"></modal-with-long-text>`,
+			template: `<modal-with-long-text :title="'${title}'"></modal-with-long-text>`,
 			/*
 			methods: {
 				log: action('clicked the secondary button'),

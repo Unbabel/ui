@@ -1,7 +1,7 @@
 <template>
 	<div class="c-Modal" v-bind:class="cssClasses">
 		<div class="c-Modal__overlay"></div>
-		<div class="c-Modal__main" :style="'margin-top:' + top + 'px'">
+		<div class="c-Modal__main">
 			<div class="c-Modal__top">
 				<!-- You can pass the title as a slot or as a prop -->
 				<slot name="title">
@@ -29,11 +29,6 @@
 				type: Boolean,
 				required: false,
 				default: false,
-			},
-			top: {
-				type: Number,
-				required: false,
-				default: null,
 			},
 			content: {
 				type: String,

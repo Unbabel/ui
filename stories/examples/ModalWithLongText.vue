@@ -13,8 +13,8 @@
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam cupiditate natus nostrum? Esse error dolor suscipit. Animi, eveniet, inventore magnam ratione molestiae vitae quam omnis rem nulla dicta veniam similique.
 			</p>
 			<div slot="footer">
-				<btn :role="'secondary'" :click-handler="closeModal">Close</btn>
-				<btn :role="'primary'" :background="'white'">Send</btn>
+				<btn role="secondary" :click-handler="closeModal">Close</btn>
+				<btn role="primary">Send</btn>
 			</div>
 		</modal>
 	</div>

@@ -2,7 +2,7 @@
 	<div>
 		<a v-on:click="modalIsActive = !modalIsActive">Open Modal with a form</a>
 
-		<modal :active="modalIsActive" :title="title" :top="top">
+		<modal :active="modalIsActive" :title="title">
 			<form slot="content" class="example-form">
 				<p class="example-form-feedback" v-show="feedback.length">{{ feedback }}</p>
 
@@ -26,8 +26,8 @@
 				</div>
 			</form>
 			<div slot="footer">
-				<btn :role="'secondary'" :click-handler="closeModal">Close</btn>
-				<btn :role="'primary'" :click-handler="submitForm" :background="'white'">Send</btn>
+				<btn role="secondary" :click-handler="closeModal">Close</btn>
+				<btn role="primary" :click-handler="submitForm">Send</btn>
 			</div>
 		</modal>
 	</div>

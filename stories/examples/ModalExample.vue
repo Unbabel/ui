@@ -2,11 +2,11 @@
 	<div>
 		<a v-on:click="modalIsActive = !modalIsActive">Open Modal</a>
 
-		<modal :active="modalIsActive" :title="title" :top="top">
+		<modal :active="modalIsActive" :title="title">
 			<p slot="content">This is the <strong>main</strong> text.</p>
 			<div slot="footer">
-				<btn :role="'secondary'" :click-handler="closeModal">Close</btn>
-				<btn :role="'primary'" :background="'white'">Send</btn>
+				<btn role="secondary" :click-handler="closeModal">Close</btn>
+				<btn role="primary">Send</btn>
 			</div>
 		</modal>
 	</div>
