@@ -1,5 +1,5 @@
 <template>
-	<button class="c-Button" v-bind:class="cssClasses" @click="openLink">
+	<button class="c-Button" v-bind:class="cssClasses" @click="openLink" v-bind:style="inlineStyles">
 		<slot>Click me</slot>
 	</button>
 </template>
@@ -9,6 +9,7 @@
 		props: {
 			role: {
 				type: String,
+				required: false,
 				default: 'secondary',
 			},
 			link: {
@@ -17,11 +18,18 @@
 				default: '',
 			},
 			clickHandler: {
+				required: false,
 				default: () => () => null
 			},
 			disabled: {
 				type: Boolean,
+				required: false,
 				default: false,
+			},
+			background: {
+				type: String,
+				required: false,
+				default: '',
 			},
 		},
 		methods: {
@@ -41,6 +49,15 @@
 
 				if (this.disabled) {
 					result += ' is-disabled';
+				}
+
+				return result;
+			},
+			inlineStyles() {
+				let result = '';
+
+				if (this.background) {
+					result += 'background-color: ' + this.background + ';';
 				}
 
 				return result;
