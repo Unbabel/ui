@@ -1,6 +1,6 @@
 <template>
 	<div class="c-Modal" v-bind:class="cssClasses">
-		<div class="c-Modal__overlay"></div>
+		<div class="c-Modal__overlay" @click="clickedOnOutside"></div>
 		<div class="c-Modal__main">
 			<div class="c-Modal__top">
 				<btn v-show="closeIcon" class="c-Modal__closeIcon" role="secondary" :click-handler="clickedOnClose">
@@ -58,11 +58,21 @@
 				required: false,
 				default: false,
 			},
+			closeOnOutsideClick: {
+				type: Boolean,
+				required: false,
+				default: false,
+			},
 		},
 		methods: {
 			clickedOnClose() {
 				this.$emit('closed', this);
 			},
+			clickedOnOutside() {
+				if (this.closeOnOutsideClick) {
+					this.$emit('closed', this);
+				}
+			}
 		},
 		computed: {
 			cssClasses() {
