@@ -1,5 +1,5 @@
 <template>
-	<button class="c-Button" v-bind:class="cssClasses" @click="openLink" v-bind:style="inlineStyles">
+	<button class="c-Button" v-bind:class="cssClasses" @click="openLink">
 		<slot>Click me</slot>
 	</button>
 </template>
@@ -26,11 +26,6 @@
 				required: false,
 				default: false,
 			},
-			background: {
-				type: String,
-				required: false,
-				default: '',
-			},
 		},
 		methods: {
 			openLink(event) {
@@ -53,15 +48,6 @@
 
 				return result;
 			},
-			inlineStyles() {
-				let result = '';
-
-				if (this.background) {
-					result += 'background-color: ' + this.background + ';';
-				}
-
-				return result;
-			}
 		}
 	}
 </script>
