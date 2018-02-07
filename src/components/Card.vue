@@ -1,16 +1,16 @@
 <template>
 	<div class="c-Card">
 		I'm the coolest card you've ever seen
-		<cool-button :role="'primary'"></cool-button>
+		<btn :role="'primary'"></btn>
 	</div>
 </template>
 
 <script>
-	import CoolButton from './CoolButton.vue';
+	import Button from './Button.vue';
 
 	export default {
 		components: {
-			coolButton: CoolButton,
+			btn: Button,
 		},
 		props: {}
 	}

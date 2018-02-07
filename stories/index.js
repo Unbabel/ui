@@ -1,20 +1,20 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs/vue';
+import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/vue';
 import { withNotes } from '@storybook/addon-notes';
 
-import CoolButton from '../src/components/CoolButton.vue';
+import Button from '../src/components/Button.vue';
 import Card from '../src/components/Card.vue';
 
-storiesOf('CoolButton', module)
+storiesOf('Button', module)
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		const role = text('Role', 'secondary');
 		const isDisabled = boolean('Disabled', false);
 
 		return {
-			components: { CoolButton },
-			template: `<cool-button :role="'${role}'" :disabled="${isDisabled}">Click</cool-button>`,
+			components: { btn: Button },
+			template: `<btn :role="'${role}'" :disabled="${isDisabled}">Click</btn>`,
 			methods: {
 				log: action('clicked the default button'),
 			},
@@ -25,8 +25,8 @@ storiesOf('CoolButton', module)
 		const isDisabled = boolean('Disabled', false);
 
 		return {
-			components: { CoolButton },
-			template: `<cool-button :role="'primary'" :click-handler="log" :disabled="${isDisabled}">${content}</cool-button>`,
+			components: { btn: Button },
+			template: `<btn :role="'primary'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the primary button'),
 			},
@@ -37,8 +37,8 @@ storiesOf('CoolButton', module)
 		const isDisabled = boolean('Disabled', false);
 
 		return {
-			components: { CoolButton },
-			template: `<cool-button :role="'secondary'" :click-handler="log" :disabled="${isDisabled}">${content}</cool-button>`,
+			components: { btn: Button },
+			template: `<btn :role="'secondary'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the secondary button'),
 			},
@@ -49,8 +49,8 @@ storiesOf('CoolButton', module)
 		const isDisabled = boolean('Disabled', false);
 
 		return {
-			components: { CoolButton },
-			template: `<cool-button :role="'terciary'" :click-handler="log" :disabled="${isDisabled}">${content}</cool-button>`,
+			components: { btn: Button },
+			template: `<btn :role="'terciary'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the terciary button'),
 			},

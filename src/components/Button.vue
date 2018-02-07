@@ -1,5 +1,5 @@
 <template>
-	<button class="c-CoolButton" v-bind:class="cssClasses" @click="clickHandler">
+	<button class="c-Button" v-bind:class="cssClasses" @click="clickHandler">
 		<slot>Click me</slot>
 	</button>
 </template>
@@ -21,7 +21,7 @@
 		},
 		computed: {
 			cssClasses() {
-				let result = 'c-CoolButton--' + this.role;
+				let result = 'c-Button--' + this.role;
 
 				if (this.disabled) {
 					result += ' is-disabled';
@@ -36,7 +36,7 @@
 <style lang="scss" scoped>
 	@import '../colors';
 
-	.c-CoolButton {
+	.c-Button {
 		font-size: 1rem;
 		padding: 0.3rem 1.2rem;
 		display: inline-block;
@@ -46,6 +46,7 @@
 		color: $un-gray2-dark;
 		font-weight: bold;
 		text-align: center;
+		font-family: 'Open Sans', sans-serif;
 
 		transition: all 0.25s ease-in-out;
 
