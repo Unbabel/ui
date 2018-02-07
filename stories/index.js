@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/vue';
+import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs/vue';
 import { withNotes } from '@storybook/addon-notes';
 
 import Button from '../src/components/Button.vue';
@@ -9,12 +9,13 @@ import Card from '../src/components/Card.vue';
 storiesOf('Button', module)
 	.addDecorator(withKnobs)
 	.add('Default', () => {
-		const role = text('Role', 'secondary');
+		const content = text('Button text', 'Click me');
+		const role = select('Role', { primary: 'Primary', cta: 'Call to Action', secondary: 'secondary' }, 'Primary');
 		const isDisabled = boolean('Disabled', false);
 
 		return {
 			components: { btn: Button },
-			template: `<btn :role="'${role}'" :disabled="${isDisabled}">Click</btn>`,
+			template: `<btn :role="'${role}'" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the default button'),
 			},
@@ -44,18 +45,18 @@ storiesOf('Button', module)
 			},
 		};
 	})
-	.add('Terciary', withNotes('This needs work')(() => {
-		const content = text('Button text', 'Terciary action');
+	.add('Call to action', () => {
+		const content = text('Button text', 'Call to action');
 		const isDisabled = boolean('Disabled', false);
 
 		return {
 			components: { btn: Button },
-			template: `<btn :role="'terciary'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
+			template: `<btn :role="'cta'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
-				log: action('clicked the terciary button'),
+				log: action('clicked the CTA button'),
 			},
 		};
-	}));
+	});
 
 storiesOf('Card', module)
 	.addDecorator(withKnobs)

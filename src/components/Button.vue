@@ -37,30 +37,44 @@
 	@import '../colors';
 
 	.c-Button {
-		font-size: 1rem;
-		padding: 0.3rem 1.2rem;
 		display: inline-block;
-		text-decoration: none;
+		padding: 0.3rem 1.4rem;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 1rem;
+		text-align: center;
 		text-transform: uppercase;
 		border-radius: 3px;
-		color: $un-gray2-dark;
-		font-weight: bold;
-		text-align: center;
-		font-family: 'Open Sans', sans-serif;
 
 		transition: all 0.25s ease-in-out;
 
-		&--primary {
-			background-color: $un-green;
-			border: 1px solid $un-green;
-			color: white;
+		&, &--primary {
+			background-color: transparent;
+			border: 1px solid $un-gray2-light;
+			color: $un-gray2-dark;
+			font-weight: 600;
 
+			&:hover {
+				border-color: $un-purple;
+				color: $un-purple;
+			}
+
+			&.is-disabled, &[disabled] {
+				border-color: $un-gray1-dark;
+				color: $un-gray1-dark;
+			}
+		}
+
+		&--cta {
+			background-color: $un-green;
+			color: white;
 			letter-spacing: 1px;
-			text-shadow: 0px 1px 0 rgba(0,0,0,0.4);
+			text-shadow: 0px 1px 0 rgba(0,0,0,0.2);
+			border: 1px solid $un-green;
 
 			&:hover {
 				background-color: darken($un-green, 5%);
 				border-color: darken($un-green, 5%);
+				color: white;
 			}
 
 			&.is-disabled, &[disabled] {
@@ -71,23 +85,6 @@
 		}
 
 		&--secondary {
-			padding: 0.3rem 1.4rem;
-			border: 1px solid $un-gray2-light;
-			background-color: transparent;
-
-			&:hover {
-				border-color: $un-purple;
-				color: $un-purple;
-			}
-
-			&.is-disabled, &[disabled] {
-				font-weight: normal;
-				border-color: $un-gray1-dark;
-				color: $un-gray1-dark;
-			}
-		}
-
-		&--terciary {
 			background-color: transparent;
 			border: none;
 			font-weight: normal;
