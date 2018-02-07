@@ -63,6 +63,11 @@
 				required: false,
 				default: false,
 			},
+			closeOnEscapePress: {
+				type: Boolean,
+				required: false,
+				default: false,
+			},
 		},
 		methods: {
 			clickedOnClose() {
@@ -72,7 +77,12 @@
 				if (this.closeOnOutsideClick) {
 					this.$emit('closed', this);
 				}
-			}
+			},
+			pressedKey(event) {
+				if (event.keyCode === 27 && this.closeOnEscapePress) {
+					this.$emit('closed', this);
+				}
+			},
 		},
 		computed: {
 			cssClasses() {
@@ -92,6 +102,17 @@
 
 				return false;
 			},
+		},
+		watch: {
+			// this function can't be an arrow function
+			active: function () {
+				if (this.active) {
+					document.addEventListener('keydown', this.pressedKey);
+				}
+				else {
+					document.removeEventListener('keydown', this.pressedKey);
+				}
+			}
 		},
 	}
 </script>
