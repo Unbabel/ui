@@ -10,12 +10,13 @@ storiesOf('Button', module)
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		const content = text('Button text', 'Click me');
+		const link = text('Button link', '');
 		const role = select('Role', { primary: 'Primary', cta: 'Call to Action', secondary: 'secondary' }, 'Primary');
 		const isDisabled = boolean('Disabled', false);
 
 		return {
 			components: { btn: Button },
-			template: `<btn :role="'${role}'" :disabled="${isDisabled}">${content}</btn>`,
+			template: `<btn :role="'${role}'" :click-handler="log" :disabled="${isDisabled}" :link="'${link}'">${content}</btn>`,
 			methods: {
 				log: action('clicked the default button'),
 			},

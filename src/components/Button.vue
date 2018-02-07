@@ -1,5 +1,5 @@
 <template>
-	<button class="c-Button" v-bind:class="cssClasses" @click="clickHandler">
+	<button class="c-Button" v-bind:class="cssClasses" @click="openLink">
 		<slot>Click me</slot>
 	</button>
 </template>
@@ -11,12 +11,28 @@
 				type: String,
 				default: 'secondary',
 			},
+			link: {
+				type: String,
+				required: false,
+				default: '',
+			},
 			clickHandler: {
 				default: () => () => null
 			},
 			disabled: {
 				type: Boolean,
 				default: false,
+			},
+		},
+		methods: {
+			openLink(event) {
+				if (this.clickHandler) {
+					this.clickHandler(event);
+				}
+
+				if (this.link.length) {
+					window.open(this.link, '_blank');
+				}
 			},
 		},
 		computed: {
