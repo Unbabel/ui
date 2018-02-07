@@ -7,6 +7,7 @@ import Button from '../src/components/Button.vue';
 import Card from '../src/components/Card.vue';
 import ModalExample from './examples/ModalExample.vue';
 import ModalWithForm from './examples/ModalWithForm.vue';
+import ModalWithLongText from './examples/ModalWithLongText.vue';
 
 storiesOf('Button', module)
 	.addDecorator(withKnobs)
@@ -98,6 +99,22 @@ storiesOf('Modal', module)
 				ModalWithForm,
 			},
 			template: `<modal-with-form :title="'${title}'" :top="${topValue}"></modal-with-form>`,
+			/*
+			methods: {
+				log: action('clicked the secondary button'),
+			},
+			*/
+		};
+	})
+	.add('Long text', () => {
+		const title = text('Modal title', 'This is a lot of text');
+		const topValue = number('Margin-top', 30);
+
+		return {
+			components: {
+				ModalWithLongText,
+			},
+			template: `<modal-with-long-text :title="'${title}'" :top="${topValue}"></modal-with-long-text>`,
 			/*
 			methods: {
 				log: action('clicked the secondary button'),

@@ -66,6 +66,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: flex-start;
+		padding: 10vh 4rem;
 		// font-family: inherit;
 		// font-size: inherit;
 		font-family: 'Open Sans', sans-serif;
@@ -94,7 +95,11 @@
 		}
 
 		&__main {
-			width: 510px;
+			display: flex;
+			flex-direction: column;
+			min-width: 400px;
+			max-width: 520px;
+			max-height: 80vh;
 			box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.35);
 			z-index: 6;
 
@@ -125,9 +130,18 @@
 			padding-top: 1.8rem;
 			padding-bottom: 0.7rem;
 		}
+
 		&__middle {
-			padding-top: 0.7rem;
-			padding-bottom: 2.3rem;
+			padding-top: 0;
+			padding-bottom: 0;
+			overflow-y: auto;
+
+			:first-child {
+				padding-top: 0.7rem;
+			}
+			:last-child {
+				padding-bottom: 2.3rem;
+			}
 		}
 
 		// Align the buttons to the right
@@ -155,6 +169,7 @@
 			color: $un-purple;
 			font-size: 1.5rem;
 			font-family: 'Montserrat', serif;
+			text-align: center;
 		}
 
 		&.is-active {
