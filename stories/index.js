@@ -5,7 +5,8 @@ import { withNotes } from '@storybook/addon-notes';
 
 import Button from '../src/components/Button.vue';
 import Card from '../src/components/Card.vue';
-import ModalExample from './ModalExample.vue';
+import ModalExample from './examples/ModalExample.vue';
+import ModalWithForm from './examples/ModalWithForm.vue';
 
 storiesOf('Button', module)
 	.addDecorator(withKnobs)
@@ -81,6 +82,22 @@ storiesOf('Modal', module)
 				ModalExample,
 			},
 			template: `<modal-example :title="'${title}'" :top="${topValue}"></modal-example>`,
+			/*
+			methods: {
+				log: action('clicked the secondary button'),
+			},
+			*/
+		};
+	})
+	.add('With Form', () => {
+		const title = text('Modal title', 'This is the title!');
+		const topValue = number('Margin-top', 30);
+
+		return {
+			components: {
+				ModalWithForm,
+			},
+			template: `<modal-with-form :title="'${title}'" :top="${topValue}"></modal-with-form>`,
 			/*
 			methods: {
 				log: action('clicked the secondary button'),

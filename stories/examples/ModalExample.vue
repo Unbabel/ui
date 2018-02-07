@@ -13,8 +13,8 @@
 </template>
 
 <script>
-	import Modal from '../src/components/Modal.vue';
-	import Button from '../src/components/Button.vue';
+	import Modal from '../../src/components/Modal.vue';
+	import Button from '../../src/components/Button.vue';
 
 	export default {
 		data() {
