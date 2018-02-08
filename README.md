@@ -21,6 +21,11 @@ So you can use it in your templates:
 <cool-button>Click me!</cool-button>
 ```
 
+**Or** if you only need the colours for your styles, you can import the .scss file using:
+```
+@import '~@unbabel/ui/src/colors';
+```
+
 ## Components
 - CoolButton (example component)
 - Card (example component that imports another component)
