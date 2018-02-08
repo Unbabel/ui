@@ -40,14 +40,10 @@ export default {
 	},
 	computed: {
 		classObject() {
-			const {
-				disabled,
-				kind,
-			} = this;
 			const output = {
-				'is-disabled': disabled,
+				'is-disabled': this.disabled,
+				[`c-Button--${this.kind}`]: true,
 			};
-			output[`c-Button--${kind}`] = true;
 			return output;
 		},
 	}
