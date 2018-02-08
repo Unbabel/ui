@@ -34,90 +34,90 @@
 </template>
 
 <script>
-	import Modal from '../../src/components/Modal.vue';
-	import Button from '../../src/components/Button.vue';
+import Modal from '../../src/components/Modal.vue';
+import Button from '../../src/components/Button.vue';
 
-	export default {
-		data() {
-			return {
-				modalIsActive: false,
-				otherIsSelected: false,
-				selectedReason: '',
-				comment: '',
-				feedback: '',
-			}
+export default {
+	data() {
+		return {
+			modalIsActive: false,
+			otherIsSelected: false,
+			selectedReason: '',
+			comment: '',
+			feedback: '',
+		}
+	},
+	components: {
+		modal: Modal,
+		btn: Button,
+	},
+	props: {
+		title: {
+			type: String,
+			required: true,
+			default: 'Default title',
 		},
-		components: {
-			modal: Modal,
-			btn: Button,
+		top: {
+			type: Number,
+			required: false,
+			default: 40,
 		},
-		props: {
-			title: {
-				type: String,
-				required: true,
-				default: 'Default title',
-			},
-			top: {
-				type: Number,
-				required: false,
-				default: 40,
-			},
+	},
+	methods: {
+		closeModal() {
+			this.modalIsActive = false;
 		},
-		methods: {
-			closeModal() {
-				this.modalIsActive = false;
-			},
-			submitForm() {
-				if (this.selectedReason.length) {
-					if (this.selectedReason === 'other') {
-						if (this.comment.length) {
-							this.closeModal();
-
-							setTimeout(() => {
-								this.feedback = '';
-							}, 250);
-						}
-						else {
-							this.feedback = 'Write a comment';
-						}
-					}
-					else {
+		submitForm() {
+			if (this.selectedReason.length) {
+				if (this.selectedReason === 'other') {
+					if (this.comment.length) {
 						this.closeModal();
 
 						setTimeout(() => {
 							this.feedback = '';
 						}, 250);
 					}
+					else {
+						this.feedback = 'Write a comment';
+					}
 				}
 				else {
-					this.feedback = 'Select a reason';
+					this.closeModal();
+
+					setTimeout(() => {
+						this.feedback = '';
+					}, 250);
 				}
+			}
+			else {
+				this.feedback = 'Select a reason';
 			}
 		}
 	}
+}
 </script>
 
 <style lang="scss" scoped>
-	a {
-		cursor: pointer;
-	}
+a {
+	cursor: pointer;
+}
 
-	.example {
-		&-form {
-			display: flex;
-			flex-direction: column;
+.example {
+	&-form {
+		display: flex;
+		flex-direction: column;
 
-			div:not(:last-child) {
-				margin-bottom: 0.5rem;
-			}
+		div:not(:last-child) {
+			margin-bottom: 0.5rem;
+		}
 
-			textarea {
-				width: 100%;
-			}
+		textarea {
+			width: 100%;
+		}
 
-			&-feedback {
-				color: red;
-			}
+		&-feedback {
+			color: red;
 		}
 	}
+}
 </style>
