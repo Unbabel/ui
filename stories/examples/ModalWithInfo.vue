@@ -10,35 +10,35 @@
 </template>
 
 <script>
-	import Modal from '../../src/components/Modal.vue';
+import Modal from '../../src/components/Modal.vue';
 
-	export default {
-		data() {
-			return {
-				modalIsActive: false
-			};
+export default {
+	data() {
+		return {
+			modalIsActive: false
+		};
+	},
+	components: {
+		modal: Modal,
+	},
+	props: {
+		title: {
+			type: String,
+			required: true,
+			default: 'Default title',
 		},
-		components: {
-			modal: Modal,
+		top: {
+			type: Number,
+			required: false,
+			default: 40,
 		},
-		props: {
-			title: {
-				type: String,
-				required: true,
-				default: 'Default title',
-			},
-			top: {
-				type: Number,
-				required: false,
-				default: 40,
-			},
-		},
-		methods: {
-			closeModal() {
-				this.modalIsActive = false;
-			}
+	},
+	methods: {
+		closeModal() {
+			this.modalIsActive = false;
 		}
 	}
+}
 </script>
 
 <style lang="scss" scoped>
