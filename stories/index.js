@@ -77,17 +77,13 @@ storiesOf('Modal', module)
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		const title = text('Modal title', 'This is the title!');
+		const overlay = boolean('Dark overlay', true);
 
 		return {
 			components: {
 				ModalExample,
 			},
-			template: `<modal-example :title="'${title}'"></modal-example>`,
-			/*
-			methods: {
-				log: action('clicked the secondary button'),
-			},
-			*/
+			template: `<modal-example :title="'${title}'" :show-overlay="${overlay}"></modal-example>`,
 		};
 	})
 	.add('With Form', () => {

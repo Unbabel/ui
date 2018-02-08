@@ -1,6 +1,6 @@
 <template>
 	<div class="c-Modal" v-bind:class="cssClasses">
-		<div class="c-Modal__overlay" @click="clickedOnOutside"></div>
+		<div class="c-Modal__overlay" v-bind:class="{'is-transparent': !showOverlay}" @click="clickedOnOutside"></div>
 		<div class="c-Modal__main" v-bind:role="modalRole" v-bind:aria-label="title">
 			<div class="c-Modal__top">
 				<btn v-show="closeIcon" id="js-modal-close" class="c-Modal__closeIcon" role="secondary" :click-handler="clickedOnClose" aria-label="Close">
@@ -68,6 +68,11 @@ export default {
 			type: Boolean,
 			required: false,
 			default: false,
+		},
+		showOverlay: {
+			type: Boolean,
+			required: false,
+			default: true,
 		},
 	},
 	methods: {
@@ -170,6 +175,10 @@ export default {
 
 		opacity: 0;
 		transition: opacity 0.25s ease-out;
+
+		&.is-transparent {
+			background-color: transparent;
+		}
 	}
 
 	&__main {

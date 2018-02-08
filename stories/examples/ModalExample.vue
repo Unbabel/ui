@@ -2,7 +2,7 @@
 	<div>
 		<a v-on:click="modalIsActive = !modalIsActive">Open Modal</a>
 
-		<modal :active="modalIsActive" :title="title">
+		<modal :active="modalIsActive" :title="title" :show-overlay="showOverlay">
 			<p slot="content">This is the <strong>main</strong> text.</p>
 			<div slot="footer">
 				<btn kind="secondary" :click-handler="closeModal">Close</btn>
@@ -32,11 +32,11 @@ export default {
 			required: true,
 			default: 'Default title',
 		},
-		top: {
-			type: Number,
+		showOverlay: {
+			type: Boolean,
 			required: false,
-			default: 40,
-		},
+			default: true,
+		}
 	},
 	methods: {
 		closeModal() {
