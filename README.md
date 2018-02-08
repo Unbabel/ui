@@ -1,6 +1,12 @@
 # Unbabel UI
 This is the Unbabel UI (Vue.js) component library.
 
+## Install
+Install it using npm
+```
+npm i --save git+ssh://git@gitlab.com:Unbabel/ui.git
+```
+
 ## Usage
 Import the components into your app using:
 
