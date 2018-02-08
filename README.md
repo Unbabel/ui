@@ -27,8 +27,9 @@ So you can use it in your templates:
 ```
 
 ## Components
-- CoolButton (example component)
+- Button
 - Card (example component that imports another component)
+- Modal
 
 ## Development
 To develop or add new components, install the dependencies and launch the [Storybooks](https://storybook.js.org/basics/guide-vue/) server to preview your components:
