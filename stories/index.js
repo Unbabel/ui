@@ -83,7 +83,7 @@ storiesOf('Modal', module)
 			components: {
 				ModalExample,
 			},
-			template: `<modal-example :title="'${title}'" :show-overlay="${overlay}"></modal-example>`,
+			template: `<modal-example title="${title}" :show-overlay="${overlay}"></modal-example>`,
 		};
 	})
 	.add('With Form', () => {
@@ -93,7 +93,7 @@ storiesOf('Modal', module)
 			components: {
 				ModalWithForm,
 			},
-			template: `<modal-with-form :title="'${title}'"></modal-with-form>`,
+			template: `<modal-with-form title="${title}"></modal-with-form>`,
 			/*
 			methods: {
 				log: action('clicked the secondary button'),
@@ -108,7 +108,7 @@ storiesOf('Modal', module)
 			components: {
 				ModalWithLongText,
 			},
-			template: `<modal-with-long-text :title="'${title}'"></modal-with-long-text>`,
+			template: `<modal-with-long-text title="${title}"></modal-with-long-text>`,
 			/*
 			methods: {
 				log: action('clicked the secondary button'),
@@ -123,7 +123,7 @@ storiesOf('Modal', module)
 			components: {
 				ModalWithInfo,
 			},
-			template: `<modal-with-info :title="'${title}'"></modal-with-info>`,
+			template: `<modal-with-info title="${title}"></modal-with-info>`,
 			/*
 			methods: {
 				log: action('clicked the secondary button'),
