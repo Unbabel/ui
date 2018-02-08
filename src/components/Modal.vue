@@ -31,255 +31,255 @@
 </template>
 
 <script>
-	import Button from './Button.vue';
+import Button from './Button.vue';
 
-	export default {
-		components: {
-			btn: Button,
+export default {
+	components: {
+		btn: Button,
+	},
+	props: {
+		active: {
+			type: Boolean,
+			required: false,
+			default: false,
 		},
-		props: {
-			active: {
-				type: Boolean,
-				required: false,
-				default: false,
-			},
-			content: {
-				type: String,
-				required: false,
-				default: 'Default Modal content',
-			},
-			title: {
-				type: String,
-				// title is required for the aria-label
-				required: true,
-				default: 'Default Modal Title',
-			},
-			closeIcon: {
-				type: Boolean,
-				required: false,
-				default: false,
-			},
-			closeOnOutsideClick: {
-				type: Boolean,
-				required: false,
-				default: false,
-			},
-			closeOnEscapePress: {
-				type: Boolean,
-				required: false,
-				default: false,
-			},
+		content: {
+			type: String,
+			required: false,
+			default: 'Default Modal content',
 		},
-		methods: {
-			clickedOnClose() {
+		title: {
+			type: String,
+			// title is required for the aria-label
+			required: true,
+			default: 'Default Modal Title',
+		},
+		closeIcon: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
+		closeOnOutsideClick: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
+		closeOnEscapePress: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
+	},
+	methods: {
+		clickedOnClose() {
+			this.$emit('closed', this);
+		},
+		clickedOnOutside() {
+			if (this.closeOnOutsideClick) {
 				this.$emit('closed', this);
-			},
-			clickedOnOutside() {
-				if (this.closeOnOutsideClick) {
-					this.$emit('closed', this);
-				}
-			},
-			pressedKey(event) {
-				if (event.keyCode === 27 && this.closeOnEscapePress) {
-					this.$emit('closed', this);
-				}
-			},
+			}
 		},
-		computed: {
-			cssClasses() {
-				let result = '';
+		pressedKey(event) {
+			if (event.keyCode === 27 && this.closeOnEscapePress) {
+				this.$emit('closed', this);
+			}
+		},
+	},
+	computed: {
+		cssClasses() {
+			let result = '';
 
-				if (this.active) {
-					result += ' is-active';
-				}
+			if (this.active) {
+				result += ' is-active';
+			}
 
-				return result;
-			},
-			// Hide the footer if nothing is passed to the slot
-			hasFooter() {
-				if (this.$slots.footer) {
-					return true;
-				}
+			return result;
+		},
+		// Hide the footer if nothing is passed to the slot
+		hasFooter() {
+			if (this.$slots.footer) {
+				return true;
+			}
 
-				return false;
-			},
-			modalRole() {
+			return false;
+		},
+		modalRole() {
+			if (this.hasFooter) {
+				return 'alertdialog';
+			}
+
+			return 'dialog';
+		},
+	},
+	watch: {
+		// this function can't be an arrow function
+		active: function () {
+			if (this.active) {
+				// Listen to keypresses
+				document.addEventListener('keydown', this.pressedKey);
+
+				// Focus on the first button or the close button
 				if (this.hasFooter) {
-					return 'alertdialog';
-				}
+					const buttons = document.getElementById('js-modal-footer').getElementsByClassName('c-Button');
 
-				return 'dialog';
-			},
-		},
-		watch: {
-			// this function can't be an arrow function
-			active: function () {
-				if (this.active) {
-					// Listen to keypresses
-					document.addEventListener('keydown', this.pressedKey);
-
-					// Focus on the first button or the close button
-					if (this.hasFooter) {
-						const buttons = document.getElementById('js-modal-footer').getElementsByClassName('c-Button');
-
-						if (buttons.length) {
-							buttons[0].focus();
-						}
-					}
-					else {
-						document.getElementById('js-modal-close').focus();
+					if (buttons.length) {
+						buttons[0].focus();
 					}
 				}
 				else {
-					// Stop listening to keypresses
-					document.removeEventListener('keydown', this.pressedKey);
+					document.getElementById('js-modal-close').focus();
 				}
 			}
-		},
-	}
+			else {
+				// Stop listening to keypresses
+				document.removeEventListener('keydown', this.pressedKey);
+			}
+		}
+	},
+}
 </script>
 
 <style lang="scss" scoped>
-	@import '../colors';
+@import '../colors';
 
-	.c-Modal {
+.c-Modal {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 10vh 4rem;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	color: $un-gray3;
+
+	h1, p {
+		margin: 0;
+	}
+
+	&, &__overlay {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		pointer-events: none;
+	}
+
+	&__overlay {
+		background: rgba(0, 0, 0, 0.5);
+		z-index: 5;
+
+		opacity: 0;
+		transition: opacity 0.25s ease-out;
+	}
+
+	&__main {
+		position: relative;
 		display: flex;
-		justify-content: center;
-		align-items: flex-start;
-		padding: 10vh 4rem;
-		font-family: 'Open Sans', sans-serif;
-		font-size: 16px;
-		color: $un-gray3;
+		flex-direction: column;
+		min-width: 400px;
+		max-width: 520px;
+		max-height: 80vh;
+		box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.35);
+		z-index: 6;
 
-		h1, p {
-			margin: 0;
-		}
+		opacity: 0;
+		transform: translateY(2rem);
 
-		&, &__overlay {
-			position: fixed;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			pointer-events: none;
-		}
+		transition: all 0.25s ease-out;
+	}
 
-		&__overlay {
-			background: rgba(0, 0, 0, 0.5);
-			z-index: 5;
+	// Round the corners
+	&__top {
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+	}
+	&__bottom {
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+	}
 
-			opacity: 0;
-			transition: opacity 0.25s ease-out;
-		}
+	&__top,
+	&__middle,
+	&__bottom {
+		background-color: white;
+		padding: 1.4rem 2.5rem;
+	}
+	&__top {
+		padding-top: 1.8rem;
+		padding-bottom: 0.7rem;
 
-		&__main {
-			position: relative;
-			display: flex;
-			flex-direction: column;
-			min-width: 400px;
-			max-width: 520px;
-			max-height: 80vh;
-			box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.35);
-			z-index: 6;
+		.c-Modal__closeIcon {
+			position: absolute;
+			top: 0.4rem;
+			right: 0.4rem;
+			padding: 0.5rem;
+			line-height: 14px;
 
-			opacity: 0;
-			transform: translateY(2rem);
+			svg {
+				width: 0.9rem;
+				height: 0.9rem;
 
-			transition: all 0.25s ease-out;
-		}
-
-		// Round the corners
-		&__top {
-			border-top-left-radius: 2px;
-			border-top-right-radius: 2px;
-		}
-		&__bottom {
-			border-bottom-left-radius: 2px;
-			border-bottom-right-radius: 2px;
-		}
-
-		&__top,
-		&__middle,
-		&__bottom {
-			background-color: white;
-			padding: 1.4rem 2.5rem;
-		}
-		&__top {
-			padding-top: 1.8rem;
-			padding-bottom: 0.7rem;
-
-			.c-Modal__closeIcon {
-				position: absolute;
-				top: 0.4rem;
-				right: 0.4rem;
-				padding: 0.5rem;
-				line-height: 14px;
-
-				svg {
-					width: 0.9rem;
-					height: 0.9rem;
-
-					g {
-						fill: $un-gray2;
-						transition: fill 0.25s ease-in-out;
-					}
-				}
-
-				&:hover svg g {
-					fill: $un-gray2-dark;
+				g {
+					fill: $un-gray2;
+					transition: fill 0.25s ease-in-out;
 				}
 			}
-		}
 
-		&__middle {
-			padding-top: 0;
-			padding-bottom: 0;
-			overflow-y: auto;
-
-			:first-child {
-				padding-top: 0.7rem;
-			}
-			:last-child {
-				padding-bottom: 2.3rem;
-			}
-		}
-
-		// Align the buttons to the right
-		&__bottom {
-			background-color: $un-gray1-light;
-
-			.c-CoolButton--secondary {
-				background-color: white;
-			}
-
-			> div {
-				display: flex;
-				justify-content: flex-end;
-
-				* {
-					margin-left: 1rem;
-				}
-			}
-		}
-
-		// Title
-		&__top,
-		&__title {
-			margin: 0;
-			color: $un-purple;
-			font-size: 1.5rem;
-			font-family: 'Montserrat', serif;
-			text-align: center;
-		}
-
-		&.is-active {
-			&,
-			.c-Modal__overlay,
-			.c-Modal__main {
-				pointer-events: all;
-				opacity: 1;
-				transform: none;
+			&:hover svg g {
+				fill: $un-gray2-dark;
 			}
 		}
 	}
+
+	&__middle {
+		padding-top: 0;
+		padding-bottom: 0;
+		overflow-y: auto;
+
+		:first-child {
+			padding-top: 0.7rem;
+		}
+		:last-child {
+			padding-bottom: 2.3rem;
+		}
+	}
+
+	// Align the buttons to the right
+	&__bottom {
+		background-color: $un-gray1-light;
+
+		.c-CoolButton--secondary {
+			background-color: white;
+		}
+
+		> div {
+			display: flex;
+			justify-content: flex-end;
+
+			* {
+				margin-left: 1rem;
+			}
+		}
+	}
+
+	// Title
+	&__top,
+	&__title {
+		margin: 0;
+		color: $un-purple;
+		font-size: 1.5rem;
+		font-family: 'Montserrat', serif;
+		text-align: center;
+	}
+
+	&.is-active {
+		&,
+		.c-Modal__overlay,
+		.c-Modal__main {
+			pointer-events: all;
+			opacity: 1;
+			transform: none;
+		}
+	}
+}
 </style>

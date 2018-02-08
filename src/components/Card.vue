@@ -6,20 +6,20 @@
 </template>
 
 <script>
-	import Button from './Button.vue';
+import Button from './Button.vue';
 
-	export default {
-		components: {
-			btn: Button,
-		},
-		props: {}
-	}
+export default {
+	components: {
+		btn: Button,
+	},
+	props: {}
+}
 </script>
 
 <style lang="scss" scoped>
-	.c-Card {
-		padding: 1rem;
-		background-color: lightgray;
-		border: 1px solid gray;
-	}
+.c-Card {
+	padding: 1rem;
+	background-color: lightgray;
+	border: 1px solid gray;
+}
 </style>
