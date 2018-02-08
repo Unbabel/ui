@@ -1,5 +1,5 @@
 <template>
-	<button class="c-Button" v-bind:class="cssClasses" @click="openLink" v-bind:style="inlineStyles">
+	<button class="c-Button" :class="classObject" @click="openLink">
 		<slot>Click me</slot>
 	</button>
 </template>
@@ -26,11 +26,6 @@ export default {
 			required: false,
 			default: false,
 		},
-		background: {
-			type: String,
-			required: false,
-			default: '',
-		},
 	},
 	methods: {
 		openLink(event) {
@@ -44,24 +39,12 @@ export default {
 		},
 	},
 	computed: {
-		cssClasses() {
-			let result = 'c-Button--' + this.kind;
-
-			if (this.disabled) {
-				result += ' is-disabled';
-			}
-
-			return result;
+		classObject() {
+			return {
+				'is-disabled': this.disabled,
+				[`c-Button--${this.kind}`]: true,
+			};
 		},
-		inlineStyles() {
-			let result = '';
-
-			if (this.background) {
-				result += 'background-color: ' + this.background + ';';
-			}
-
-			return result;
-		}
 	}
 }
 </script>
@@ -77,12 +60,14 @@ export default {
 	text-align: center;
 	text-transform: uppercase;
 	border-radius: 3px;
+	border: 1px solid;
 
 	transition: all 0.25s ease-in-out;
 
-	&, &--primary {
+	&,
+	&--primary {
 		background-color: transparent;
-		border: 1px solid $un-gray2-light;
+		border-color: $un-gray2-light;
 		color: $un-gray2-dark;
 		font-weight: 600;
 
@@ -91,7 +76,8 @@ export default {
 			color: $un-purple;
 		}
 
-		&.is-disabled, &[disabled] {
+		&.is-disabled,
+		&[disabled] {
 			border-color: $un-gray1-dark;
 			color: $un-gray1-dark;
 		}
@@ -110,7 +96,8 @@ export default {
 			color: white;
 		}
 
-		&.is-disabled, &[disabled] {
+		&.is-disabled,
+		&[disabled] {
 			background-color: $un-gray1;
 			text-shadow: none;
 			border-color: $un-gray1-dark;
@@ -119,14 +106,20 @@ export default {
 
 	&--secondary {
 		background-color: transparent;
-		border: none;
 		font-weight: normal;
 
+		&,
+		&:hover,
+		&.is-disabled,
+		&[disabled] {
+			border-color: transparent;
+		}
 		&:hover {
 			color: $un-purple;
 		}
 
-		&.is-disabled, &[disabled] {
+		&.is-disabled,
+		&[disabled] {
 			color: $un-gray1-dark;
 		}
 	}
