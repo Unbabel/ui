@@ -1,14 +1,15 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs/vue';
-import { withNotes } from '@storybook/addon-notes';
+// import { withNotes } from '@storybook/addon-notes';
 
 import Button from '../src/components/Button.vue';
-import Card from '../src/components/Card.vue';
+import TopBar from '../src/components/TopBar.vue';
 import ModalExample from './examples/ModalExample.vue';
 import ModalWithForm from './examples/ModalWithForm.vue';
 import ModalWithLongText from './examples/ModalWithLongText.vue';
 import ModalWithInfo from './examples/ModalWithInfo.vue';
+import TopBarWithStuff from './examples/TopBarWithStuff.vue';
 
 storiesOf('Button', module)
 	.addDecorator(withKnobs)
@@ -59,16 +60,6 @@ storiesOf('Button', module)
 			template: `<btn :kind="'cta'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the CTA button'),
-			},
-		};
-	});
-
-storiesOf('Card', module)
-	.addDecorator(withKnobs)
-	.add('Default', () => {
-		return {
-			render: (h) => {
-				return h(Card);
 			},
 		};
 	});
@@ -129,5 +120,26 @@ storiesOf('Modal', module)
 				log: action('clicked the secondary button'),
 			},
 			*/
+		};
+	});
+
+storiesOf('TopBar', module)
+	.addDecorator(withKnobs)
+	.add('Default', () => {
+		const container = number('Container width', null);
+
+		return {
+			components: {
+				TopBar,
+			},
+			template: `<top-bar container-width="${container}"></top-bar>`,
+		};
+	})
+	.add('With stuff', () => {
+		return {
+			components: {
+				TopBarWithStuff,
+			},
+			template: '<top-bar-with-stuff></top-bar-with-stuff>',
 		};
 	});
