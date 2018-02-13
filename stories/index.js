@@ -1,10 +1,9 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs/vue';
-import { withNotes } from '@storybook/addon-notes';
+// import { withNotes } from '@storybook/addon-notes';
 
 import Button from '../src/components/Button.vue';
-import Card from '../src/components/Card.vue';
 import TopBar from '../src/components/TopBar.vue';
 import ModalExample from './examples/ModalExample.vue';
 import ModalWithForm from './examples/ModalWithForm.vue';
@@ -61,16 +60,6 @@ storiesOf('Button', module)
 			template: `<btn :kind="'cta'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the CTA button'),
-			},
-		};
-	});
-
-storiesOf('Card', module)
-	.addDecorator(withKnobs)
-	.add('Default', () => {
-		return {
-			render: (h) => {
-				return h(Card);
 			},
 		};
 	});

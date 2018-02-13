@@ -34,7 +34,6 @@ So you can use it in your templates:
 
 ## Components
 - Button
-- Card (example component that imports another component)
 - Modal
 - TopBar
 
