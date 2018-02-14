@@ -20,13 +20,6 @@ export default {
 				return [];
 			},
 		},
-		slotNames: {
-			type: Array,
-			required: true,
-			default: () => {
-				return [];
-			},
-		},
 		activeTab: {
 			type: Number,
 			required: false,
