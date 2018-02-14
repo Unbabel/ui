@@ -10,6 +10,7 @@ import ModalWithForm from './examples/ModalWithForm.vue';
 import ModalWithLongText from './examples/ModalWithLongText.vue';
 import ModalWithInfo from './examples/ModalWithInfo.vue';
 import TopBarWithStuff from './examples/TopBarWithStuff.vue';
+import SidebarWithTabs from './examples/SidebarWithTabs.vue';
 
 storiesOf('Button', module)
 	.addDecorator(withKnobs)
@@ -141,5 +142,18 @@ storiesOf('TopBar', module)
 				TopBarWithStuff,
 			},
 			template: '<top-bar-with-stuff></top-bar-with-stuff>',
+		};
+	});
+
+storiesOf('Sidebar', module)
+	.addDecorator(withKnobs)
+	.add('Default', () => {
+		// const container = number('Container width', null);
+
+		return {
+			components: {
+				SidebarWithTabs,
+			},
+			template: '<sidebar-with-tabs></sidebar-with-tabs>',
 		};
 	});
