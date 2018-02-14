@@ -5,7 +5,7 @@
 				<span class="c-Sidebar__tab__icon" v-show="activeTab === index">-</span><span class="c-Sidebar__tab__icon" v-show="activeTab !== index">+</span> {{ tab }}
 			</div>
 			<div class="c-Sidebar__panel">
-				<slot :name="slotNames[index]"></slot>
+				<slot :name="tab"></slot>
 			</div>
 		</div>
 	</div>

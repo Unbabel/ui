@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<sidebar :tabs="tabs" :slotNames="slotNames" :active-tab="activeTab" @clicked-on-tab="changeActiveTab">
-			<p slot="beep">this is the content for the info</p>
-			<p slot="double">this is the content for the annotations</p>
+			<p slot="info">this is the content for the info</p>
+			<p slot="annotations">this is the content for the annotations</p>
 		</sidebar>
 	</div>
 </template>
@@ -24,12 +24,6 @@ export default {
 			type: Array,
 			default: () => {
 				return ['info', 'annotations'];
-			},
-		},
-		slotNames: {
-			type: Array,
-			default: () => {
-				return ['beep', 'double'];
 			},
 		},
 	},
