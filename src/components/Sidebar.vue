@@ -128,7 +128,7 @@ export default {
 <style lang="scss">
 @import '../colors';
 
-.c-Sidebebar {
+.c-Sidebar {
 	// Basic styles for the inside of the Panel
 	&__block {
 		padding: 1.2rem 0.9rem;
