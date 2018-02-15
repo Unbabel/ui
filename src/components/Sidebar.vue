@@ -109,6 +109,24 @@ export default {
 		}
 	}
 
+	&:last-child {
+		border-right: none;
+		border-left: 1px solid $un-gray1;
+	}
+
+	// show borders on wide-screens
+	@media screen and (min-width: 1280px) {
+		border-left: 1px solid $un-gray1;
+
+		&:last-child {
+			border-right: 1px solid $un-gray1;
+		}
+	}
+}
+</style>
+
+<style lang="scss">
+.c-Sidebebar {
 	// Basic styles for the inside of the Panel
 	&__block {
 		padding: 1.2rem 0.9rem;
@@ -134,20 +152,6 @@ export default {
 	&__text {
 		+ .c-Sidebar__subtitle {
 			margin-top: 2rem;
-		}
-	}
-
-	&:last-child {
-		border-right: none;
-		border-left: 1px solid $un-gray1;
-	}
-
-	// show borders on wide-screens
-	@media screen and (min-width: 1280px) {
-		border-left: 1px solid $un-gray1;
-
-		&:last-child {
-			border-right: 1px solid $un-gray1;
 		}
 	}
 }
