@@ -1,7 +1,10 @@
 <template>
 	<div>
 		<sidebar :tabs="tabs" :slotNames="slotNames" :active-tab="activeTab" @clicked-on-tab="changeActiveTab">
-			<p slot="info">this is the content for the info</p>
+			<div slot="info" class="c-Sidebar__block c-Sidebar__block--bottomBorder">
+				<p class="c-Sidebar__subtitle">Subtitle</p>
+				<p class="c-Sidebar__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis vitae dicta alias perspiciatis totam quae natus tenetur recusandae, debitis error optio inventore eum quibusdam. Ab quo necessitatibus quaerat deserunt rerum.</p>
+			</div>
 			<p slot="annotations">this is the content for the annotations</p>
 		</sidebar>
 	</div>
@@ -38,9 +41,5 @@ export default {
 <style lang="scss" scoped>
 .c-Sidebar {
 	min-height: 100vh;
-
-	p {
-		margin-left: 1rem;
-	}
 }
 </style>

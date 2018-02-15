@@ -109,6 +109,34 @@ export default {
 		}
 	}
 
+	// Basic styles for the inside of the Panel
+	&__block {
+		padding: 1.2rem 0.9rem;
+		font-size: 0.9rem;
+		color: $un-gray4-light;
+
+		&--bottomBorder {
+			border-bottom: 1px solid $un-gray1;
+		}
+	}
+
+	&__subtitle,
+	&__text {
+		margin: 0;
+	}
+
+	&__subtitle {
+		margin-bottom: 0.8rem;
+		font-family: 'Montserrat', sans-serif;
+		font-weight: bold;
+	}
+
+	&__text {
+		+ .c-Sidebar__subtitle {
+			margin-top: 2rem;
+		}
+	}
+
 	&:last-child {
 		border-right: none;
 		border-left: 1px solid $un-gray1;
