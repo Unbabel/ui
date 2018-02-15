@@ -126,6 +126,8 @@ export default {
 </style>
 
 <style lang="scss">
+@import '../colors';
+
 .c-Sidebebar {
 	// Basic styles for the inside of the Panel
 	&__block {
