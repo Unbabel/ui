@@ -37,6 +37,7 @@ So you can use it in your templates:
 - Modal
 - TopBar
 - Sidebar
+- StarGroup
 
 ## Development
 To develop or add new components, install the dependencies and launch the [Storybooks](https://storybook.js.org/basics/guide-vue/) server to preview your components:

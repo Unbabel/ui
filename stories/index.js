@@ -5,6 +5,7 @@ import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs
 
 import Button from '../src/components/Button.vue';
 import TopBar from '../src/components/TopBar.vue';
+import StarGroupWithStuff from './examples/StarGroupWithStuff.vue';
 import ModalExample from './examples/ModalExample.vue';
 import ModalWithForm from './examples/ModalWithForm.vue';
 import ModalWithLongText from './examples/ModalWithLongText.vue';
@@ -157,3 +158,15 @@ storiesOf('Sidebar', module)
 			template: '<sidebar-with-tabs></sidebar-with-tabs>',
 		};
 	});
+
+storiesOf('Star Group', module)
+	.addDecorator(withKnobs)
+	.add('Default', () => {
+		return {
+			components: {
+				StarGroupWithStuff,
+			},
+			template: '<star-group-with-stuff></star-group-with-stuff>',
+		};
+	});
+
