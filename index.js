@@ -9,4 +9,5 @@ export {
 	Modal,
 	TopBar,
 	Sidebar,
+	StarGroup,
 };
