@@ -5,6 +5,7 @@ import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs
 
 import Button from '../src/components/Button.vue';
 import TopBar from '../src/components/TopBar.vue';
+import LoadingScreen from '../src/components/LoadingScreen.vue';
 import StarGroupWithStuff from './examples/StarGroupWithStuff.vue';
 import ModalExample from './examples/ModalExample.vue';
 import ModalWithForm from './examples/ModalWithForm.vue';
@@ -167,6 +168,25 @@ storiesOf('Star Group', module)
 				StarGroupWithStuff,
 			},
 			template: '<star-group-with-stuff></star-group-with-stuff>',
+		};
+	});
+
+storiesOf('Loading Screen', module)
+	.addDecorator(withKnobs)
+	.add('Default', () => {
+		return {
+			components: {
+				LoadingScreen,
+			},
+			template: '<loading-screen :active="true" message="Loading"></loading-screen>',
+		};
+	})
+	.add('Long message', () => {
+		return {
+			components: {
+				LoadingScreen,
+			},
+			template: '<loading-screen :active="true" message="This is a longer message, that might cause a line break"></loading-screen>',
 		};
 	});
 

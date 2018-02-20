@@ -38,6 +38,7 @@ So you can use it in your templates:
 - TopBar
 - Sidebar
 - StarGroup
+- Loading Screen (Overlay)
 
 ## Development
 To develop or add new components, install the dependencies and launch the [Storybooks](https://storybook.js.org/basics/guide-vue/) server to preview your components:
