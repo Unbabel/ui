@@ -91,15 +91,6 @@ export default {
 		},
 	},
 	computed: {
-		cssClasses() {
-			let result = '';
-
-			if (this.active) {
-				result += ' is-active';
-			}
-
-			return result;
-		},
 		// Hide the footer if nothing is passed to the slot
 		hasFooter() {
 			if (this.$slots.footer) {
@@ -114,6 +105,18 @@ export default {
 			}
 
 			return 'dialog';
+		},
+		cssClasses() {
+			let result = '';
+
+			if (this.active) {
+				result += ' is-active';
+			}
+			if (!this.hasFooter) {
+				result += ' is-footerless';
+			}
+
+			return result;
 		},
 	},
 	watch: {
@@ -288,6 +291,13 @@ export default {
 			pointer-events: all;
 			opacity: 1;
 			transform: none;
+		}
+	}
+
+	&.is-footerless {
+		.c-Modal__middle {
+			border-bottom-left-radius: 2px;
+			border-bottom-right-radius: 2px;
 		}
 	}
 }
