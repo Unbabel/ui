@@ -6,6 +6,7 @@ import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs
 import Button from '../src/components/Button.vue';
 import TopBar from '../src/components/TopBar.vue';
 import LoadingScreen from '../src/components/LoadingScreen.vue';
+import ToggleGroup from '../src/components/ToggleGroup.vue';
 import StarGroupWithStuff from './examples/StarGroupWithStuff.vue';
 import ModalExample from './examples/ModalExample.vue';
 import ModalWithForm from './examples/ModalWithForm.vue';
@@ -187,6 +188,55 @@ storiesOf('Loading Screen', module)
 				LoadingScreen,
 			},
 			template: '<loading-screen :active="true" message="This is a longer message, that might cause a line break"></loading-screen>',
+		};
+	});
+
+storiesOf('Toggle Group', module)
+	.addDecorator(withKnobs)
+	.add('Default', () => {
+		return {
+			components: {
+				ToggleGroup,
+			},
+			data: () => {
+				return {
+					toggles: [
+						{
+							id: 'beep',
+							label: 'BB',
+							isActive: true,
+							isHidden: false,
+						},
+						{
+							id: 'gah',
+							label: 'GG',
+							isActive: false,
+							isHidden: false,
+						},
+					],
+				};
+			},
+			methods: {
+				toggleItem(clickedItem) {
+					this.toggles.map((item) => {
+						if (item.id === clickedItem.id) {
+							Object.assign(item, {
+								isActive: !item.isActive,
+							});
+						}
+						return true;
+					});
+				},
+				toggleAll(state) {
+					this.toggles.map((item) => {
+						Object.assign(item, {
+							isActive: state,
+						});
+						return true;
+					});
+				},
+			},
+			template: '<toggle-group :toggles="toggles" :has-toggle-all="true" @clicked-on-item="toggleItem" @clicked-on-all="toggleAll" style="max-width: 2.5rem;"></toggle-group>',
 		};
 	});
 
