@@ -5,6 +5,7 @@ import Sidebar from './src/components/Sidebar.vue';
 import StarGroup from './src/components/StarGroup.vue';
 import LoadingScreen from './src/components/LoadingScreen.vue';
 import ToggleGroup from './src/components/ToggleGroup.vue';
+import Timer from './src/components/Timer.vue';
 
 export {
 	Button,
@@ -14,4 +15,5 @@ export {
 	StarGroup,
 	LoadingScreen,
 	ToggleGroup,
+	Timer,
 };
