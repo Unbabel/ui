@@ -1,5 +1,5 @@
 <template>
-	<div class="c-Timer">
+	<div v-show="!invisible" class="c-Timer">
 		{{ formatedTime }}
 	</div>
 </template>
@@ -10,31 +10,15 @@ export default {
 	data() {
 		return {
 			elapsedTime: 0,
-			// the timer will increase the elapsedTime every ${tick} miliseconds
-			tick: 1000,
-			/*
-			idleTime: 0,
-			currentInterval: null,
-			idleInterval: null,
-			config: {
-				alwaysShowHours: false,
-				startCallback: null,
-				pauseCallback: null,
-				continueCallback: null,
-				trackIdle: true,
-				idleLimit: null,
-				idleCallback: null,
-			},
-			limits: [
-				// {
-				// 	callback: null,
-				// 	value: 5000,
-				// },
-			],
-			*/
 		};
 	},
 	props: {
+		// The timer will increase the elapsedTime every ${tick} miliseconds
+		tick: {
+			type: Number,
+			required: false,
+			default: 1000,
+		},
 		autoStart: {
 			type: Boolean,
 			required: false,
@@ -45,12 +29,34 @@ export default {
 			required: false,
 			default: 0,
 		},
+		// This limit should be in seconds
+		limit: {
+			type: Number,
+			required: false,
+			default: null,
+		},
+		alwaysShowHours: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
+		invisible: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
 	},
 	methods: {
 		// Start the Timer
 		start() {
 			this.interval = window.setInterval(() => {
 				this.elapsedTime += 1;
+
+				if (this.limit) {
+					if (this.limit === this.elapsedTime) {
+						this.warnPassingOfLimit();
+					}
+				}
 			}, this.tick);
 		},
 		// Pause the Timer
@@ -71,76 +77,9 @@ export default {
 		setElapsedTime(time) {
 			this.elapsedTime = time;
 		},
-		/*
-		startTimer(startingTime) {
-			if (startingTime) {
-				this.elapsedTime = startingTime;
-			}
-
-			this.currentInterval = window.setInterval(() => {
-				this.elapsedTime += 1;
-
-				for (let i = 0; i < this.limits.length; i += 1) {
-					if (this.limits[i].value === this.elapsedTime * 1000) {
-						this.limits[i].callback();
-					}
-				}
-			}, 1000);
-
-			if (this.config.trackIdle) {
-				this.startIdleCounter();
-			}
-
-			if (this.config.startCallback) {
-				this.config.startCallback();
-			}
+		warnPassingOfLimit() {
+			this.$emit('passed-limit', this.limit);
 		},
-		pauseTimer() {
-			window.clearInterval(this.currentInterval);
-
-			if (this.config.pauseCallback) {
-				this.config.pauseCallback();
-			}
-		},
-		continueTimer() {
-			this.startTimer(this.elapsedTime);
-
-			if (this.config.continueCallback) {
-				this.config.continueCallback();
-			}
-		},
-		startIdleCounter(startingTime) {
-			if (startingTime) {
-				this.idleTime = startingTime;
-			}
-
-			this.idleInterval = window.setInterval(() => {
-				this.idleTime += 1;
-
-				if (this.config.idleLimit && this.config.idleLimit === this.idleTime * 1000) {
-					if (this.config.idleCallback) {
-						this.config.idleCallback();
-					}
-				}
-			}, 1000);
-		},
-		pauseIdleCounter() {
-			if (this.idleInterval) {
-				window.clearInterval(this.idleInterval);
-			}
-		},
-		continueIdleCounter() {
-			this.startIdleCounter(this.idleTime);
-		},
-		resetIdleCounter() {
-			if (this.idleInterval) {
-				window.clearInterval(this.idleInterval);
-			}
-
-			this.idleTime = 0;
-			this.startIdleCounter();
-		},
-		*/
 	},
 	computed: {
 		formatedTime() {
@@ -158,12 +97,10 @@ export default {
 				seconds = `0${seconds}`;
 			}
 
-			// only show the hours if it's needed
-			/*
-			if (!this.config.alwaysShowHours && hours === '00') {
+			// Only show the hours when you have to
+			if (!this.alwaysShowHours && hours === '00') {
 				return `${minutes}:${seconds}`;
 			}
-			*/
 
 			return `${hours}:${minutes}:${seconds}`;
 		},
@@ -176,26 +113,6 @@ export default {
 		if (this.autoStart) {
 			this.start();
 		}
-		/*
-		if (this.options && this.options.alwaysShowHours) {
-			this.config.alwaysShowHours = true;
-		}
-		if (this.options && this.options.startCallback) {
-			this.config.startCallback = this.options.startCallback;
-		}
-		if (this.options && this.options.pauseCallback) {
-			this.config.pauseCallback = this.options.pauseCallback;
-		}
-		if (this.options && this.options.continueCallback) {
-			this.config.continueCallback = this.options.continueCallback;
-		}
-		if (this.options && this.options.idleLimit) {
-			this.config.idleLimit = this.options.idleLimit;
-		}
-		if (this.options && this.options.idleCallback) {
-			this.config.idleCallback = this.options.idleCallback;
-		}
-		*/
 	},
 };
 </script>
