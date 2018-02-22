@@ -10,6 +10,7 @@ export default {
 	data() {
 		return {
 			elapsedTime: 0,
+			interval: undefined,
 		};
 	},
 	props: {
