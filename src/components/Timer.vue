@@ -14,37 +14,41 @@ export default {
 		};
 	},
 	props: {
-		// The timer will increase the elapsedTime every ${tick} miliseconds
 		tick: {
 			type: Number,
 			required: false,
 			default: 1000,
+			description: 'Number of miliseconds the Timer will wait before incrementing the elapsedTime',
 		},
 		autoStart: {
 			type: Boolean,
 			required: false,
 			default: false,
+			description: 'If the Timer starts counting as soon as it\'s mounted',
 		},
 		startingTime: {
 			type: Number,
 			required: false,
 			default: 0,
+			description: 'Time that the Timer starts counting from',
 		},
-		// This limit should be in seconds
 		limit: {
 			type: Number,
 			required: false,
 			default: null,
+			description: 'Number of seconds the Timer will wait before emitting an event',
 		},
 		alwaysShowHours: {
 			type: Boolean,
 			required: false,
 			default: false,
+			description: 'If the hours should always be shown in the Timer',
 		},
 		invisible: {
 			type: Boolean,
 			required: false,
 			default: false,
+			description: 'If the Timer should not be shown',
 		},
 	},
 	methods: {
