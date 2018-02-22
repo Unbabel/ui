@@ -5,6 +5,36 @@
 </template>
 
 <script type="text/javascript">
+/**
+ * Timer Component
+ *
+ * Options:
+ *
+ * - tick
+ * 		- type: Boolean
+ * 		- default: 1000
+ * 		- description: Number of miliseconds the Timer will wait before incrementing the elapsedTime
+ * - autoStart
+ * 		- type: Boolean
+ * 		- default: false
+ * 		- description: If the Timer starts counting as soon as it's mounted
+ * - startingTime
+ * 		- type: Number
+ * 		- default: 0
+ * 		- description: Time that the Timer starts counting from
+ * - limit
+ * 		- type: Number
+ * 		- default: null
+ * 		- description: Number of seconds the Timer will wait before emitting an event
+ * - alwaysShowHours
+ * 		- type: Boolean
+ * 		- default: false
+ * 		- description: If the hours should always be shown in the Timer
+ * - invisible
+ * 		- type: Boolean
+ * 		- default: false
+ * 		- description: If the Timer should not be shown
+ */
 export default {
 	name: 'Timer',
 	data() {
@@ -18,37 +48,31 @@ export default {
 			type: Number,
 			required: false,
 			default: 1000,
-			description: 'Number of miliseconds the Timer will wait before incrementing the elapsedTime',
 		},
 		autoStart: {
 			type: Boolean,
 			required: false,
 			default: false,
-			description: 'If the Timer starts counting as soon as it\'s mounted',
 		},
 		startingTime: {
 			type: Number,
 			required: false,
 			default: 0,
-			description: 'Time that the Timer starts counting from',
 		},
 		limit: {
 			type: Number,
 			required: false,
 			default: null,
-			description: 'Number of seconds the Timer will wait before emitting an event',
 		},
 		alwaysShowHours: {
 			type: Boolean,
 			required: false,
 			default: false,
-			description: 'If the hours should always be shown in the Timer',
 		},
 		invisible: {
 			type: Boolean,
 			required: false,
 			default: false,
-			description: 'If the Timer should not be shown',
 		},
 	},
 	methods: {
