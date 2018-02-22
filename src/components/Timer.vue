@@ -120,6 +120,5 @@ export default {
 <style lang="scss" scoped>
 .c-Timer {
 	display: inline;
-	font-family: 'Open Sans', sans-serif;
 }
 </style>
