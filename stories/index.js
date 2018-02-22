@@ -263,27 +263,31 @@ storiesOf('Timer', module)
 				resetTimer() {
 					this.$refs.timer.reset();
 				},
-				/*
-				toggleItem(clickedItem) {
-					this.toggles.map((item) => {
-						if (item.id === clickedItem.id) {
-							Object.assign(item, {
-								isActive: !item.isActive,
-							});
-						}
-						return true;
-					});
-				},
-				toggleAll(state) {
-					this.toggles.map((item) => {
-						Object.assign(item, {
-							isActive: state,
-						});
-						return true;
-					});
-				},
-				*/
 			},
 			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :options="timerOptions"></timer></div>',
+		};
+	})
+	.add('Auto start', () => {
+		return {
+			components: {
+				Timer,
+			},
+			data: () => {
+				return {
+					timerOptions: {},
+				};
+			},
+			methods: {
+				startTimer() {
+					this.$refs.timer.start();
+				},
+				pauseTimer() {
+					this.$refs.timer.pause();
+				},
+				resetTimer() {
+					this.$refs.timer.reset();
+				},
+			},
+			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :options="timerOptions" :auto-start="true"></timer></div>',
 		};
 	});

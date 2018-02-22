@@ -35,15 +35,15 @@ export default {
 		};
 	},
 	props: {
-		options: {
-			type: Object,
-			required: false,
-			default: null,
-		},
 		autoStart: {
 			type: Boolean,
 			required: false,
 			default: false,
+		},
+		startingTime: {
+			type: Number,
+			required: false,
+			default: 0,
 		},
 	},
 	methods: {
@@ -66,6 +66,10 @@ export default {
 		stop() {
 			this.pause();
 			this.elapsedTime = 0;
+		},
+		// (Just so you don't have to go change the data directly)
+		setElapsedTime(time) {
+			this.elapsedTime = time;
 		},
 		/*
 		startTimer(startingTime) {
@@ -165,6 +169,13 @@ export default {
 		},
 	},
 	mounted() {
+		if (this.startingTime) {
+			this.elapsedTime = this.startingTime;
+		}
+
+		if (this.autoStart) {
+			this.start();
+		}
 		/*
 		if (this.options && this.options.alwaysShowHours) {
 			this.config.alwaysShowHours = true;
