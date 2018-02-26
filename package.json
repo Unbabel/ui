@@ -1,6 +1,6 @@
 {
   "name": "@unbabel/ui",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "The component library for Unbabel User Interfaces",
   "main": "index.js",
   "scripts": {
@@ -55,6 +55,7 @@
     "@storybook/addon-knobs": "^3.3.12",
     "@storybook/addon-notes": "^3.3.12",
     "@storybook/vue": "^3.3.12",
+    "@vuedoc/md": "^1.1.1",
     "vue": "^2.5.13"
   }
 }

@@ -40,6 +40,7 @@ So you can use it in your templates:
 - Star Group
 - Loading Screen (Overlay)
 - Toggle Group
+- Timer
 
 ## Development
 To develop or add new components, install the dependencies and launch the [Storybooks](https://storybook.js.org/basics/guide-vue/) server to preview your components:

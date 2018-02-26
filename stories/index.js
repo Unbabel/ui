@@ -7,6 +7,7 @@ import Button from '../src/components/Button.vue';
 import TopBar from '../src/components/TopBar.vue';
 import LoadingScreen from '../src/components/LoadingScreen.vue';
 import ToggleGroup from '../src/components/ToggleGroup.vue';
+import Timer from '../src/components/Timer.vue';
 import StarGroupWithStuff from './examples/StarGroupWithStuff.vue';
 import ModalExample from './examples/ModalExample.vue';
 import ModalWithForm from './examples/ModalWithForm.vue';
@@ -240,3 +241,103 @@ storiesOf('Toggle Group', module)
 		};
 	});
 
+storiesOf('Timer', module)
+	.addDecorator(withKnobs)
+	.add('Default', () => {
+		return {
+			components: {
+				Timer,
+			},
+			data: () => {
+				return {
+					timerOptions: {},
+				};
+			},
+			methods: {
+				startTimer() {
+					this.$refs.timer.start();
+				},
+				pauseTimer() {
+					this.$refs.timer.pause();
+				},
+				resetTimer() {
+					this.$refs.timer.reset();
+				},
+			},
+			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :options="timerOptions"></timer></div>',
+		};
+	})
+	.add('Auto start', () => {
+		return {
+			components: {
+				Timer,
+			},
+			data: () => {
+				return {
+					timerOptions: {},
+				};
+			},
+			methods: {
+				startTimer() {
+					this.$refs.timer.start();
+				},
+				pauseTimer() {
+					this.$refs.timer.pause();
+				},
+				resetTimer() {
+					this.$refs.timer.reset();
+				},
+			},
+			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :options="timerOptions" :auto-start="true"></timer></div>',
+		};
+	})
+	.add('With a limit', () => {
+		return {
+			components: {
+				Timer,
+			},
+			data: () => {
+				return {
+					timerOptions: {},
+					limit: 3,
+					passedLimit: false,
+				};
+			},
+			methods: {
+				startTimer() {
+					this.$refs.timer.start();
+				},
+				pauseTimer() {
+					this.$refs.timer.pause();
+				},
+				resetTimer() {
+					this.$refs.timer.reset();
+				},
+			},
+			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :auto-start="true" :limit="limit" @passed-limit="passedLimit = true"></timer><p v-show="passedLimit">You passed the {{ limit }} second limit!</p></div>',
+		};
+	})
+	.add('Always show the hours', () => {
+		return {
+			components: {
+				Timer,
+			},
+			data: () => {
+				return {
+					timerOptions: {},
+				};
+			},
+			methods: {
+				startTimer() {
+					this.$refs.timer.start();
+				},
+				pauseTimer() {
+					this.$refs.timer.pause();
+				},
+				resetTimer() {
+					this.$refs.timer.reset();
+				},
+			},
+			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :auto-start="true" :always-show-hours="true"></timer></div>',
+		};
+	});
