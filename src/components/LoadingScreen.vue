@@ -1,6 +1,8 @@
 <template>
 	<div class="c-LoadingScreen__overlay" v-bind:class="{'is-active': active}">
 		<div class="c-LoadingScreen">
+			<p class="c-LoadingScreen__message" v-show="message.length">{{ message }}</p>
+
 			<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 				<g id="Instructions-Open-Copy-4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-666.000000, -367.000000)">
 					<g id="Group-2" transform="translate(668.000000, 369.000000)" stroke-width="4">
@@ -9,7 +11,6 @@
 					</g>
 				</g>
 			</svg>
-			<p class="c-LoadingScreen__message" v-show="message.length">{{ message }}</p>
 		</div>
 	</div>
 </template>
@@ -20,6 +21,7 @@ export default {
 		message: {
 			type: String,
 			required: false,
+			default: 'Please wait',
 		},
 		active: {
 			type: Boolean,
@@ -34,25 +36,29 @@ export default {
 @import '../colors';
 
 .c-LoadingScreen {
+	width: 100%;
+	max-width: 350px;
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 1rem;
-	border-radius: 4px;
+	padding: 2.15rem 4rem;
+	border-radius: 2px;
 	text-align: center;
 	opacity: 0;
 	pointer-events: none;
 	background-color: white;
 	transition: opacity 0.5s ease-in-out;
-	max-width: 120px;
+
+	box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.35);
 
 	svg {
-		width: 3rem;
-		height: 3rem;
+		width: 2.1rem;
+		height: 2.1rem;
 
-		-webkit-animation: spin 1.5s linear infinite;
-		-moz-animation: spin 1.5s linear infinite;
-		animation: spin 1.5s linear infinite;
+		-webkit-animation: spin 1.5s ease infinite;
+		-moz-animation: spin 1.5s ease infinite;
+		animation: spin 1.5s ease infinite;
 	}
 
 	&__overlay {
@@ -82,10 +88,12 @@ export default {
 
 	&__message {
 		margin: 0;
-		margin-top: 0.85rem;
-		font-family: 'Open Sans', sans-serif;
+		margin-bottom: 1.6rem;
+		font-family: inherit;
 		color: $un-gray2;
-		font-size: 0.75rem;
+		font-size: 1.9rem;
+		color: $un-purple;
+		font-weight: 600;
 	}
 }
 
