@@ -180,7 +180,7 @@ storiesOf('Loading Screen', module)
 			components: {
 				LoadingScreen,
 			},
-			template: '<loading-screen :active="true" message="Loading"></loading-screen>',
+			template: '<loading-screen :active="true" :overlay="true"></loading-screen>',
 		};
 	})
 	.add('Long message', () => {

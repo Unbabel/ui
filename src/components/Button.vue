@@ -64,6 +64,15 @@ export default {
 
 	transition: all 0.25s ease-in-out;
 
+	&:hover {
+		cursor: pointer;
+		box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.10);
+	}
+
+	&.is-disabled, &[disabled] {
+		cursor: not-allowed;
+	}
+
 	&,
 	&--primary {
 		background-color: transparent;
@@ -83,27 +92,6 @@ export default {
 		}
 	}
 
-	&--cta {
-		background-color: $un-green;
-		color: white;
-		letter-spacing: 1px;
-		text-shadow: 0px 1px 0 rgba(0,0,0,0.2);
-		border: 1px solid $un-green;
-
-		&:hover {
-			background-color: darken($un-green, 5%);
-			border-color: darken($un-green, 5%);
-			color: white;
-		}
-
-		&.is-disabled,
-		&[disabled] {
-			background-color: $un-gray1;
-			text-shadow: none;
-			border-color: $un-gray1-dark;
-		}
-	}
-
 	&--secondary {
 		background-color: transparent;
 		font-weight: normal;
@@ -116,6 +104,7 @@ export default {
 		}
 		&:hover {
 			color: $un-purple;
+			border-color: $un-purple;
 		}
 
 		&.is-disabled,
@@ -124,12 +113,25 @@ export default {
 		}
 	}
 
-	&:hover {
-		cursor: pointer;
-	}
+	&--cta {
+		background-color: $un-green-matte;
+		color: white;
+		letter-spacing: 1px;
+		text-shadow: 0px 1px 0 rgba(0,0,0,0.2);
+		border: 1px solid $un-green-matte;
 
-	&.is-disabled, &[disabled] {
-		cursor: not-allowed;
+		&:hover {
+			background-color: darken($un-green-matte, 5%);
+			border-color: darken($un-green-matte, 5%);
+			color: white;
+		}
+
+		&.is-disabled,
+		&[disabled] {
+			background-color: $un-gray1;
+			text-shadow: none;
+			border-color: $un-gray1-dark;
+		}
 	}
 }
 </style>
