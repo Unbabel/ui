@@ -1,6 +1,6 @@
 {
   "name": "@unbabel/ui",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "The component library for Unbabel User Interfaces",
   "main": "index.js",
   "scripts": {
