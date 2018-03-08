@@ -237,7 +237,7 @@ storiesOf('Toggle Group', module)
 					});
 				},
 			},
-			template: '<toggle-group :toggles="toggles" :has-toggle-all="true" @clicked-on-item="toggleItem" @clicked-on-all="toggleAll" style="max-width: 2.5rem;"></toggle-group>',
+			template: '<toggle-group :toggles="toggles" :has-toggle-all="true" tooltip-side="right" @clicked-on-item="toggleItem" @clicked-on-all="toggleAll" style="max-width: 2.5rem;"></toggle-group>',
 		};
 	});
 
