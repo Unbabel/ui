@@ -9,6 +9,7 @@
 			 class="c-ToggleGroup__item" v-bind:class="{'is-active': item.isActive}"
 			 v-for="item in toggles" :key="item.id" v-on:click="clickedOnItem(item)">
 			{{ item.label }}
+			<span v-show="item.name.length" class="c-ToggleGroup__tooltip">{{ item.name }}</span>
 		</div>
 	</div>
 </template>
@@ -75,6 +76,7 @@ export default {
 	font-family: 'Open Sans', sans-serif;
 
 	&__item {
+		position: relative;
 		margin: 0.4rem;
 		padding: 0.2rem;
 		border-radius: 100px;
@@ -90,6 +92,10 @@ export default {
 
 		&:hover {
 			background-color: $un-gray1;
+
+			.c-ToggleGroup__tooltip {
+				opacity: 1;
+			}
 		}
 
 		&.is-active {
@@ -98,6 +104,23 @@ export default {
 			color: white;
 			font-weight: bold;
 		}
+	}
+
+	&__tooltip {
+		position: absolute;
+		top: -1px;
+		left: 2rem;
+		padding: 0.25rem 0.45rem;
+		background-color: $un-gray3-dark;
+		border-radius: 3px;
+		white-space: nowrap;
+		font-weight: normal;
+		color: $un-gray1-light;
+		pointer-events: none;
+		box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.10);
+		opacity: 0;
+
+		transition: 0.25s all ease-in-out;
 	}
 }
 </style>

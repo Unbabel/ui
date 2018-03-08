@@ -204,12 +204,14 @@ storiesOf('Toggle Group', module)
 					toggles: [
 						{
 							id: 'beep',
+							name: 'Beep',
 							label: 'BB',
 							isActive: true,
 							isHidden: false,
 						},
 						{
 							id: 'gah',
+							name: 'Good Game',
 							label: 'GG',
 							isActive: false,
 							isHidden: false,
