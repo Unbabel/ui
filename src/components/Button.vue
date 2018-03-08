@@ -77,6 +77,7 @@ export default {
 			border-color: $un-purple;
 			color: $un-purple;
 			cursor: pointer;
+			box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.10);
 		}
 
 		// Default disabled state
