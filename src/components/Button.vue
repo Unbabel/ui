@@ -64,15 +64,7 @@ export default {
 
 	transition: all 0.25s ease-in-out;
 
-	&:hover {
-		cursor: pointer;
-		box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.10);
-	}
-
-	&.is-disabled, &[disabled] {
-		cursor: not-allowed;
-	}
-
+	// Default button (it's actually a Primary button)
 	&,
 	&--primary {
 		background-color: transparent;
@@ -80,28 +72,28 @@ export default {
 		color: $un-gray2-dark;
 		font-weight: 600;
 
+		// Default :hover state
 		&:hover {
 			border-color: $un-purple;
 			color: $un-purple;
+			cursor: pointer;
 		}
 
+		// Default disabled state
 		&.is-disabled,
 		&[disabled] {
 			border-color: $un-gray1-dark;
 			color: $un-gray1-dark;
+			cursor: not-allowed;
+			box-shadow: none;
 		}
 	}
 
+	// Secondary buttons
 	&--secondary {
 		background-color: transparent;
 		font-weight: normal;
 
-		&,
-		&:hover,
-		&.is-disabled,
-		&[disabled] {
-			border-color: transparent;
-		}
 		&:hover {
 			color: $un-purple;
 			border-color: $un-purple;
@@ -110,9 +102,11 @@ export default {
 		&.is-disabled,
 		&[disabled] {
 			color: $un-gray1-dark;
+			border-color: transparent;
 		}
 	}
 
+	// Call to Action buttons
 	&--cta {
 		background-color: $un-green-matte;
 		color: white;
@@ -131,6 +125,7 @@ export default {
 			background-color: $un-gray1;
 			text-shadow: none;
 			border-color: $un-gray1-dark;
+			color: $un-gray1-dark;
 		}
 	}
 }
