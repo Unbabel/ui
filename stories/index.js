@@ -67,6 +67,18 @@ storiesOf('Button', module)
 				log: action('clicked the CTA button'),
 			},
 		};
+	})
+	.add('Call to action - Alt', () => {
+		const content = text('Button text', 'Call to action');
+		const isDisabled = boolean('Disabled', false);
+
+		return {
+			components: { btn: Button },
+			template: `<btn :kind="'ctaAlt'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
+			methods: {
+				log: action('clicked the CTA button'),
+			},
+		};
 	});
 
 storiesOf('Modal', module)
