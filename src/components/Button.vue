@@ -54,37 +54,45 @@ export default {
 
 .c-Button {
 	display: inline-block;
-	padding: 0.3rem 1.4rem;
-	font-family: 'Open Sans', sans-serif;
+	padding: 0.625rem 1.5rem;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 1rem;
 	text-align: center;
 	text-transform: uppercase;
 	border-radius: 3px;
 	border: 1px solid;
+	cursor: pointer;
 
-	transition: all 0.25s ease-in-out;
+	transition: all 0.2s ease-in-out;
 
 	// Default button (it's actually a Primary button)
 	&,
 	&--primary {
-		background-color: transparent;
-		border-color: $un-gray2-light;
-		color: $un-gray2-dark;
+		background-color: $un-gray2;
+		border-color: $un-gray2;
+		color: white;
 		font-weight: 600;
 
 		// Default :hover state
+		&:hover,
+		&:active {
+			background-color: $un-gray3-light;
+			border-color: $un-gray3-light;
+		}
+
 		&:hover {
-			border-color: $un-purple;
-			color: $un-purple;
-			cursor: pointer;
 			box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.10);
+		}
+
+		&:active {
+			box-shadow: none;
 		}
 
 		// Default disabled state
 		&.is-disabled,
 		&[disabled] {
-			border-color: $un-gray1-dark;
-			color: $un-gray1-dark;
+			background-color: $un-gray1;
+			border-color: $un-gray1;
 			cursor: not-allowed;
 			box-shadow: none;
 		}
@@ -93,17 +101,21 @@ export default {
 	// Secondary buttons
 	&--secondary {
 		background-color: transparent;
-		font-weight: normal;
+		border-color: $un-gray2-dark;
+		color: $un-gray3-light;
 
-		&:hover {
+		&:hover,
+		&:active {
+			background-color: transparent;
 			color: $un-purple;
 			border-color: $un-purple;
 		}
 
 		&.is-disabled,
 		&[disabled] {
+			background-color: transparent;
 			color: $un-gray1-dark;
-			border-color: transparent;
+			border-color: $un-gray1-dark;
 		}
 	}
 
@@ -111,11 +123,10 @@ export default {
 	&--cta {
 		background-color: $un-green-matte;
 		color: white;
-		letter-spacing: 1px;
-		text-shadow: 0px 1px 0 rgba(0,0,0,0.2);
 		border: 1px solid $un-green-matte;
 
-		&:hover {
+		&:hover,
+		&:active {
 			background-color: darken($un-green-matte, 5%);
 			border-color: darken($un-green-matte, 5%);
 			color: white;
@@ -127,6 +138,16 @@ export default {
 			text-shadow: none;
 			border-color: $un-gray1-dark;
 			color: $un-gray1-dark;
+		}
+	}
+
+	// Blue Call to Action buttons
+	&--ctaAlt {
+		background-color: $un-purple;
+
+		&:hover,
+		&:active {
+			background-color: $un-purple-dark;
 		}
 	}
 }
