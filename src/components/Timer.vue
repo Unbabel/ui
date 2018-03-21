@@ -58,6 +58,9 @@ export default {
 	methods: {
 		// Start the Timer
 		start() {
+			window.clearInterval(this.interval);
+			this.interval = undefined;
+
 			this.interval = window.setInterval(() => {
 				this.elapsedTime += 1;
 
@@ -71,6 +74,7 @@ export default {
 		// Pause the Timer
 		pause() {
 			window.clearInterval(this.interval);
+			this.interval = undefined;
 		},
 		// Starts the timer again from 0
 		reset() {
