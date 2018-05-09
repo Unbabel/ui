@@ -67,7 +67,6 @@ export default {
 .c-BaseCard {
 	display: flex;
 	flex-direction: row;
-	// TODO: change to 900px
 	max-width: 800px;
 	border-radius: 8px;
 	overflow: hidden;
