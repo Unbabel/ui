@@ -15,6 +15,7 @@ import ModalWithLongText from './examples/ModalWithLongText.vue';
 import ModalWithInfo from './examples/ModalWithInfo.vue';
 import TopBarWithStuff from './examples/TopBarWithStuff.vue';
 import SidebarWithTabs from './examples/SidebarWithTabs.vue';
+import BaseCard from '../src/components/BaseCard.vue';
 
 storiesOf('Button', module)
 	.addDecorator(withKnobs)
@@ -353,5 +354,22 @@ storiesOf('Timer', module)
 				},
 			},
 			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :auto-start="true" :always-show-hours="true"></timer></div>',
+		};
+	});
+
+storiesOf('Card', module)
+	.addDecorator(withKnobs)
+	.add('Default', () => {
+		return {
+			components: {
+				BaseCard,
+			},
+			data: () => {
+				return {
+				};
+			},
+			methods: {
+			},
+			template: '<baseCard></baseCard>',
 		};
 	});
