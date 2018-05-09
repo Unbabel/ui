@@ -49,13 +49,9 @@ export default {
 	},
 	computed: {
 		sidebarClasses() {
-			let result = '';
-
-			if (this.isSidebarVisible) {
-				result += 'is-active';
+			return {
+				'is-active': this.isSidebarVisible,
 			}
-
-			return result;
 		}
 	}
 }
@@ -109,13 +105,13 @@ export default {
 		justify-content: space-between;
 		align-content: flex-start;
 		padding-bottom: 1.25rem;
+
+		& + .c-BaseCard__middle {
+			padding-top: 1.25rem;
+		}
 	}
 
 	&__middle {
-		&:nth-child(2) {
-			padding-top: 1.25rem;
-		}
-
 		&:nth-last-child(2) {
 			padding-bottom: 1.25rem;
 		}
