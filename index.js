@@ -6,6 +6,7 @@ import StarGroup from './src/components/StarGroup.vue';
 import LoadingScreen from './src/components/LoadingScreen.vue';
 import ToggleGroup from './src/components/ToggleGroup.vue';
 import Timer from './src/components/Timer.vue';
+import BaseCard from './src/components/BaseCard.vue';
 
 export {
 	Button,
@@ -16,4 +17,5 @@ export {
 	LoadingScreen,
 	ToggleGroup,
 	Timer,
+	BaseCard,
 };
