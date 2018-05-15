@@ -24,10 +24,15 @@
 						bottom
 					</div>
 				</slot>
+				<slot name="feedback">
+					<div v-show="feedback.length" class="c-BaseCard__feedback" v-html="feedback">
+						This is feedback!
+					</div>
+				</slot>
 			</div>
 		</slot>
-		<slot name="sidebar">
-			<div class="c-BaseCard__sidebar" :class="sidebarClasses">
+		<slot name="sidebar" :class="sidebarClasses">
+			<div class="c-BaseCard__sidebar">
 				sidebar
 			</div>
 		</slot>
@@ -43,6 +48,11 @@ export default {
 	props: {
 		isSidebarVisible: {
 			type: Boolean,
+			required: false,
+			default: false,
+		},
+		feedback: {
+			type: String,
 			required: false,
 			default: false,
 		},
@@ -124,6 +134,14 @@ export default {
 
 	&__bottom {
 		padding-top: 1.25rem;
+	}
+
+	&__feedback {
+		padding: 1rem 4rem;
+		text-align: center;
+		font-size: 0.85rem;
+		background-color: $un-gray1;
+		color: $un-gray2-dark;
 	}
 
 	&__sectionTitle,

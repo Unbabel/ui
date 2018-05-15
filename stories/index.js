@@ -370,6 +370,22 @@ storiesOf('Card', module)
 			},
 			methods: {
 			},
-			template: '<baseCard></baseCard>',
+			template: '<baseCard :is-sidebar-visible="true"></baseCard>',
+		};
+	})
+	.add('With error', () => {
+		const feedback = '<strong>This</strong> is the feedback!';
+
+		return {
+			components: {
+				BaseCard,
+			},
+			data: () => {
+				return {
+				};
+			},
+			methods: {
+			},
+			template: `<baseCard feedback="${feedback}"></baseCard>`,
 		};
 	});
