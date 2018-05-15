@@ -54,7 +54,7 @@ export default {
 		feedback: {
 			type: String,
 			required: false,
-			default: false,
+			default: '',
 		},
 	},
 	computed: {
