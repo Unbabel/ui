@@ -122,7 +122,7 @@ export default {
 	}
 
 	&__middle {
-		&:nth-last-child(2) {
+		&:nth-child(2) {
 			padding-bottom: 1.25rem;
 		}
 
