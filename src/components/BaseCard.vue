@@ -144,13 +144,18 @@ export default {
 		color: $un-gray2-dark;
 	}
 
-	&__sectionTitle,
-	&__subtitle {
+	&__title,
+	&__subtitle,
+	&__sectionTitle {
 		margin: 0;
 		padding-bottom: 0.5rem;
 		font-family: 'Montserrat', serif;
 		color: $un-purple;
 		font-size: 1.5rem;
+	}
+
+	&__title {
+		font-size: 2rem;
 	}
 
 	&__sectionTitle {
