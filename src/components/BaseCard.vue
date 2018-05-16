@@ -84,6 +84,12 @@ export default {
 		color: $un-blue;
 	}
 
+	.is-disabled {
+		opacity: 0.5;
+		pointer-events: none;
+		cursor: not-allowed;
+	}
+
 	&__main {
 		display: flex;
 		flex-direction: column;
@@ -92,10 +98,11 @@ export default {
 	}
 
 	&__sidebar {
+		flex-direction: column;
 		padding: 2rem;
 		box-sizing: border-box;
-		background-color: $un-purple-lighter;
 		flex-basis: 28%;
+		background-color: $un-purple-lightest;
 		display: none;
 
 		&.is-active {
@@ -133,7 +140,13 @@ export default {
 	}
 
 	&__bottom {
+		display: flex;
+		flex-direction: row;
 		padding-top: 1.25rem;
+
+		.c-Button + .c-Button {
+			margin-left: 1rem;
+		}
 	}
 
 	&__feedback {
@@ -142,6 +155,11 @@ export default {
 		font-size: 0.85rem;
 		background-color: $un-gray1;
 		color: $un-gray2-dark;
+
+		&.is-negative {
+			background-color: lighten($un-red-light, 12%);
+			color: $un-red;
+		}
 	}
 
 	&__title,
