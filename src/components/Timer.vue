@@ -129,7 +129,7 @@ export default {
 			}
 
 			if (this.hideSeconds) {
-				`${hours}:${minutes}`;
+				return `${hours}:${minutes}`;
 			}
 
 			return `${hours}:${minutes}:${seconds}`;
