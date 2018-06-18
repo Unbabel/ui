@@ -54,6 +54,13 @@ export default {
 			required: false,
 			default: false,
 		},
+		// If the Timer should not show seconds (if this is true, set the alwaysShowHours to true
+		// as well so it doesn't look weird)
+		hideSeconds: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
 	},
 	methods: {
 		// Start the Timer
@@ -114,7 +121,15 @@ export default {
 
 			// Only show the hours when you have to
 			if (!this.alwaysShowHours && hours === '00') {
+				if (this.hideSeconds) {
+					return `${minutes}`;
+				}
+
 				return `${minutes}:${seconds}`;
+			}
+
+			if (this.hideSeconds) {
+				`${hours}:${minutes}`;
 			}
 
 			return `${hours}:${minutes}:${seconds}`;
