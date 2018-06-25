@@ -11,6 +11,15 @@ export default {
 			type: String,
 			required: false,
 			default: 'secondary',
+			validator(kind) {
+				console.log('kind', kind);
+				return [
+					'primary',
+					'secondary',
+					'cta',
+					'ctaAlt',
+				].includes(kind);
+			},
 		},
 		link: {
 			type: String,
