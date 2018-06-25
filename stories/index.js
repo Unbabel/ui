@@ -22,7 +22,7 @@ storiesOf('Button', module)
 	.add('Default', () => {
 		const content = text('Button text', 'Click me');
 		const link = text('Button link', '');
-		const kind = select('Kind', { primary: 'Primary', cta: 'Call to Action', secondary: 'secondary' }, 'Primary');
+		const kind = select('Kind', { primary: 'Primary', cta: 'Call to Action', secondary: 'secondary' }, 'primary');
 		const isDisabled = boolean('Disabled', false);
 
 		return {
