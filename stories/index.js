@@ -27,7 +27,7 @@ storiesOf('Button', module)
 
 		return {
 			components: { btn: Button },
-			template: `<btn :kind="'${kind}'" :click-handler="log" :disabled="${isDisabled}" :link="'${link}'">${content}</btn>`,
+			template: `<btn :kind="'${kind}'" @click="log" :disabled="${isDisabled}" :href="'${link}'">${content}</btn>`,
 			methods: {
 				log: action('clicked the default button'),
 			},
