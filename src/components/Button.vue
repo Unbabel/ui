@@ -152,10 +152,12 @@ export default {
 	// Blue Call to Action buttons
 	&--ctaAlt {
 		background-color: $un-purple;
+		border-color: transparent;
 
 		&:hover,
 		&:active {
 			background-color: $un-purple-dark;
+			border-color: transparent;
 		}
 	}
 }
