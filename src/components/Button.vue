@@ -12,7 +12,6 @@ export default {
 			required: false,
 			default: 'secondary',
 			validator(kind) {
-				console.log('kind', kind);
 				return [
 					'primary',
 					'secondary',
