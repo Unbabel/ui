@@ -39,7 +39,7 @@ storiesOf('Button', module)
 
 		return {
 			components: { btn: Button },
-			template: `<btn :kind="'primary'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
+			template: `<btn :kind="'primary'" @click="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the primary button'),
 			},
@@ -51,7 +51,7 @@ storiesOf('Button', module)
 
 		return {
 			components: { btn: Button },
-			template: `<btn :kind="'secondary'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
+			template: `<btn :kind="'secondary'" @click="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the secondary button'),
 			},
@@ -63,7 +63,7 @@ storiesOf('Button', module)
 
 		return {
 			components: { btn: Button },
-			template: `<btn :kind="'cta'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
+			template: `<btn :kind="'cta'" @click="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the CTA button'),
 			},
@@ -75,7 +75,7 @@ storiesOf('Button', module)
 
 		return {
 			components: { btn: Button },
-			template: `<btn :kind="'ctaAlt'" :click-handler="log" :disabled="${isDisabled}">${content}</btn>`,
+			template: `<btn :kind="'ctaAlt'" @click="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the CTA button'),
 			},
