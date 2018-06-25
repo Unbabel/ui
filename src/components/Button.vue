@@ -9,14 +9,14 @@ export default {
 
 		// If button, allow disabled
 		// links have no disabled attribute
-		const disabledAttrValue = (elementName === 'button') ? this.disabled : undefined;
+		const disabled = (elementName === 'button') ? this.disabled : undefined;
 
 		return h(elementName, {
 			class: this.classObject,
 			on: this.$listeners, // Binds any listeners from element instance
 			attrs: {
 				href: this.href,
-				disabled: disabledAttrValue,
+				disabled,
 			},
 		}, this.$slots.default);
 	},
