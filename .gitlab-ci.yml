@@ -17,6 +17,7 @@ pages: # the job must be named pages
 publish:
   stage: deploy
   script:
+    - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
     - npm publish --access public
   only:
     - tags
