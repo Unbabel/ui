@@ -7,7 +7,9 @@
     "test": "jest --coverage",
     "lint": "eslint src test",
     "fix-lint": "eslint --fix src test",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook-build": "build-storybook -c .storybook -o storybook-dist",
+    "build": "npm run storybook-build"
   },
   "repository": {
     "type": "git",
