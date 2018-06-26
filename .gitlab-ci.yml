@@ -11,4 +11,4 @@ pages: # the job must be named pages
     paths:
       - public
   only:
-    - master
+    - tags
