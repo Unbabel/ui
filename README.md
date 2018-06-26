@@ -34,6 +34,12 @@ So you can use it in your templates:
 @import '~@unbabel/ui/src/colors';
 ```
 
+To use any color variable with custom properties you need to use interpolation
+
+```scss
+--color: #{$un-purple};
+```
+
 ## Components
 - Button
 - Modal
