@@ -1,6 +1,19 @@
 image: node:10.5.0-alpine
 stages:
+  - test
   - deploy
+before_script:
+  - echo 'Using Node.js version' $(node -v)
+  - echo 'Using npm version' $(npm -v)
+
+test:
+  stage: test
+  variables:
+    APP_ENV: "test"
+    NODE_ENV: "test"
+  script:
+    - npm ci
+    - npm test
 
 pages: # the job must be named pages
   stage: deploy
