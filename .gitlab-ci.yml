@@ -1,7 +1,8 @@
-# .gitlab-ci.yml file to be placed in the root of your repository
+image: node:10.5.0-alpine
+stages:
+  - deploy
 
 pages: # the job must be named pages
-  image: node:10.5.0-alpine
   stage: deploy
   script:
     - npm ci
@@ -10,5 +11,13 @@ pages: # the job must be named pages
   artifacts:
     paths:
       - public
+  only:
+    - tags
+
+publish:
+  stage: deploy
+  script:
+    - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+    - npm publish --access public
   only:
     - tags
