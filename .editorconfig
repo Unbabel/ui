@@ -4,5 +4,5 @@ root = true
 [*]
 indent_style = tab
 
-[*.json]
+[*.{json,yml}]
 indent_style = space
