@@ -1,13 +1,15 @@
 {
   "name": "@unbabel/ui",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "description": "The component library for Unbabel User Interfaces",
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
     "lint": "eslint src test",
     "fix-lint": "eslint --fix src test",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook-build": "build-storybook -c .storybook -o storybook-dist",
+    "build": "npm run storybook-build"
   },
   "repository": {
     "type": "git",

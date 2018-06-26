@@ -1,0 +1,14 @@
+# .gitlab-ci.yml file to be placed in the root of your repository
+
+pages: # the job must be named pages
+  image: node:10.5.0-alpine
+  stage: deploy
+  script:
+    - npm ci
+    - npm run build
+    - mv storybook-dist public
+  artifacts:
+    paths:
+      - public
+  only:
+    - tags
