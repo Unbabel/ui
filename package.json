@@ -1,7 +1,7 @@
 {
   "name": "@unbabel/ui",
   "version": "1.2.1",
-  "description": "The component library for Unbabel User Interfaces",
+  "description": "Samora Design System - The component library for Unbabel User Interfaces",
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
@@ -11,10 +11,7 @@
     "storybook-build": "build-storybook -c .storybook -o storybook-dist",
     "build": "npm run storybook-build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/Unbabel/ui.git"
-  },
+  "repository": "gitlab:Unbabel/ui",
   "keywords": [
     "component",
     "library",
@@ -41,7 +38,7 @@
   "bugs": {
     "url": "https://gitlab.com/Unbabel/ui/issues"
   },
-  "homepage": "https://gitlab.com/Unbabel/ui#README",
+  "homepage": "https://unbabel.gitlab.io/ui/",
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.12",
     "@storybook/addon-knobs": "^3.3.12",
