@@ -1,35 +1,43 @@
-# Unbabel UI
+![samora-design-system.png](assets/samora-design-system.png)
+
 This is the Unbabel UI (Vue.js) component library.
 
 ## Install
-Install it using npm
-```
-npm i --save git+ssh://git@gitlab.com:Unbabel/ui.git
+Install it using `npm`
+
+```shell
+npm i --save @unbabel/ui
 ```
 
 ## Usage
 Import the components into your app using:
 
-```
-import { CoolButton } from '@unbabel/ui';
+```javascript
+import { Button } from '@unbabel/ui';
 ```
 
 And set it as a component:
-```
+```javascript
 components: {
-	...
-	coolButton: CoolButton,
+	Button,
 },
 ```
 
 So you can use it in your templates:
-```
-<cool-button>Click me!</cool-button>
+```vue
+<Button>Click me!</Button>
 ```
 
 **Or** if you only need the colours for your styles, you can import the .scss file using:
-```
+
+```scss
 @import '~@unbabel/ui/src/colors';
+```
+
+To use any color variable with custom properties you need to use interpolation
+
+```scss
+--color: #{$un-purple};
 ```
 
 ## Components
@@ -43,9 +51,9 @@ So you can use it in your templates:
 - Timer
 
 ## Development
-To develop or add new components, install the dependencies and launch the [Storybooks](https://storybook.js.org/basics/guide-vue/) server to preview your components:
+To develop or add new components, install the dependencies and launch the [Storybook](https://storybook.js.org/basics/guide-vue/) server to preview your components:
 
-```
+```shell
 $ npm install
-$ npm run storybooks
+$ npm run storybook
 ```

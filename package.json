@@ -1,7 +1,7 @@
 {
   "name": "@unbabel/ui",
-  "version": "1.2.1",
-  "description": "The component library for Unbabel User Interfaces",
+  "version": "1.3.0",
+  "description": "Samora Design System - The component library for Unbabel User Interfaces",
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
@@ -11,10 +11,7 @@
     "storybook-build": "build-storybook -c .storybook -o storybook-dist",
     "build": "npm run storybook-build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/Unbabel/ui.git"
-  },
+  "repository": "gitlab:Unbabel/ui",
   "keywords": [
     "component",
     "library",
@@ -41,23 +38,27 @@
   "bugs": {
     "url": "https://gitlab.com/Unbabel/ui/issues"
   },
-  "homepage": "https://gitlab.com/Unbabel/ui#README",
+  "homepage": "https://unbabel.gitlab.io/ui/",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "eslint": "^4.17.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^6.0.6",
-    "vue-loader": "^14.1.1",
-    "vue-template-compiler": "^2.5.13"
-  },
-  "dependencies": {
     "@storybook/addon-actions": "^3.3.12",
     "@storybook/addon-knobs": "^3.3.12",
     "@storybook/addon-notes": "^3.3.12",
     "@storybook/vue": "^3.3.12",
+    "@vue/test-utils": "^1.0.0-beta.16",
     "@vuedoc/md": "^1.1.1",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^23.2.0",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "jest": "^23.2.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^6.0.6",
+    "vue-jest": "^2.6.0",
+    "vue-loader": "^14.1.1",
+    "vue-template-compiler": "^2.5.13"
+  },
+  "dependencies": {
     "vue": "^2.5.13"
   }
 }
