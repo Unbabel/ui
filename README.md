@@ -1,4 +1,4 @@
-# Unbabel UI
+![samora-design-system.png](assets/samora-design-system.png)
 
 This is the Unbabel UI (Vue.js) component library.
 

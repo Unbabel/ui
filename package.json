@@ -1,7 +1,7 @@
 {
   "name": "@unbabel/ui",
   "version": "1.2.1",
-  "description": "The component library for Unbabel User Interfaces",
+  "description": "Samora Design System - The component library for Unbabel User Interfaces",
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
