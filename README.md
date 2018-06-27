@@ -1,4 +1,4 @@
-![samora-design-system.png](assets/samora-design-system.png)
+![Samora Design System](https://gitlab.com/Unbabel/ui/uploads/2c0b33a1234c60ae3d97fa4390c68e4b/samora-design-system.png)
 
 This is the Unbabel UI (Vue.js) component library.
 
