@@ -69,6 +69,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../colors';
+@import '../fonts';
 
 .c-BaseCard {
 	display: flex;
