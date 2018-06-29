@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../colors';
+@import '../global';
 
 .c-ToggleGroup {
 	display: flex;

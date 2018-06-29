@@ -148,8 +148,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../colors';
-@import '../fonts';
+@import '../global';
 
 .c-Modal {
 	display: flex;

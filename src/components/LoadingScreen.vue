@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../colors';
+@import '../global';
 
 .c-LoadingScreen {
 	width: 100%;

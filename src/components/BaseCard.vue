@@ -68,8 +68,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../colors';
-@import '../fonts';
+@import '../global';
 
 .c-BaseCard {
 	display: flex;

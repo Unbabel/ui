@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../colors';
+@import '../global';
 
 .c-Sidebar {
 	display: flex;
@@ -126,7 +126,7 @@ export default {
 </style>
 
 <style lang="scss">
-@import '../colors';
+@import '../global';
 
 .c-Sidebar {
 	// Basic styles for the inside of the Panel
