@@ -76,12 +76,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../global';
+@import '../variables';
 
 .c-ToggleGroup {
 	display: flex;
 	flex-direction: column;
-	font-family: 'Open Sans', sans-serif;
+	font-family: $un-font-main;
 
 	&__item {
 		position: relative;

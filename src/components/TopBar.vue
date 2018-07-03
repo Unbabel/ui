@@ -33,13 +33,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../global';
+@import '../variables';
 
 .c-TopBar {
 	background-color: white;
 	font-size: 16px;
 	color: $un-gray2-dark;
-	font-family: 'Open Sans', sans-serif;
+	font-family: $un-font-main;
 
 	-webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.36);
 	-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.36);

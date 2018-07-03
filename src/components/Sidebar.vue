@@ -147,7 +147,7 @@ export default {
 
 	&__subtitle {
 		margin-bottom: 0.8rem;
-		font-family: 'Montserrat', sans-serif;
+		font-family: $un-font-heading;
 		font-weight: bold;
 	}
 
