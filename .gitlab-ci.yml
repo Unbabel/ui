@@ -26,6 +26,8 @@ pages: # the job must be named pages
   artifacts:
     paths:
       - public
+  environment:
+      name: production
   only:
     - tags
 
