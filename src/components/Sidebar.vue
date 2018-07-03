@@ -126,7 +126,7 @@ export default {
 </style>
 
 <style lang="scss">
-@import '../global';
+@import '../variables';
 
 .c-Sidebar {
 	// Basic styles for the inside of the Panel

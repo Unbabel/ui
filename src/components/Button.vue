@@ -58,7 +58,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../global';
+@import '../variables';
 
 .c-Button {
 	display: inline-block;
