@@ -37,5 +37,6 @@ module.exports = {
       'describe': true,
       'window': true,
       'beforeEach': true,
+      'document': true,
   },
 }

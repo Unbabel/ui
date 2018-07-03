@@ -29,7 +29,7 @@ export default {
 			default: 'nope',
 		},
 	},
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -38,7 +38,6 @@ export default {
 .c-TopBar {
 	background-color: white;
 	font-size: 16px;
-	color: $un-gray2-dark;
 	font-family: 'Open Sans', sans-serif;
 
 	-webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.36);

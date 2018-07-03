@@ -12,10 +12,20 @@
 				<slot name="middle">
 					<div class="c-BaseCard__middle">
 						<h2 class="c-BaseCard__subtitle">This is a title</h2>
-						<p class="c-BaseCard__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam, sint! Sed consequuntur, quidem perferendis cupiditate laborum suscipit esse necessitatibus harum voluptate <a href="#">maiores</a> consequatur asperiores. Repudiandae delectus excepturi aperiam. Quod.</p>
+						<p class="c-BaseCard__text">
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam, sint!
+							Sed consequuntur, quidem perferendis cupiditate laborum suscipit esse necessita
+							tibus harum voluptate <a href="#">maiores</a> consequatur asperiores.
+							Repudiandae delectus excepturi aperiam. Quod.
+						</p>
 
 						<h2 class="c-BaseCard__sectionTitle">This is a title</h2>
-						<p class="c-BaseCard__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam, sint! Sed consequuntur, quidem perferendis cupiditate laborum suscipit esse necessitatibus harum voluptate <a href="#">maiores</a> consequatur asperiores. Repudiandae delectus excepturi aperiam. Quod.</p>
+						<p class="c-BaseCard__text">
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam, sint!
+							Sed consequuntur, quidem perferendis cupiditate laborum suscipit esse necessita
+							tibus harum voluptate <a href="#">maiores</a> consequatur asperiores.
+							Repudiandae delectus excepturi aperiam. Quod.
+						</p>
 					</div>
 				</slot>
 
@@ -61,10 +71,10 @@ export default {
 		sidebarClasses() {
 			return {
 				'is-active': this.isSidebarVisible,
-			}
-		}
-	}
-}
+			};
+		},
+	},
+};
 </script>
 
 <style lang="scss" scoped>
