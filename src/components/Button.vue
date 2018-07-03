@@ -27,9 +27,8 @@ export default {
 		},
 		clickHandler: {
 			required: false,
-			default: () => {
-				return null;
-			},
+			// eslint-disable-next-line
+			default: () => () => null,
 		},
 		disabled: {
 			type: Boolean,
