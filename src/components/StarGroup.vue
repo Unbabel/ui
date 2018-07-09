@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../colors';
+@import '../variables';
 
 .c-StarGroup {
 	font-size: 2rem;

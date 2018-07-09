@@ -152,14 +152,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../colors';
+@import '../variables';
 
 .c-Modal {
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
 	padding: 10vh 4rem;
-	font-family: 'Open Sans', sans-serif;
+	font-family: $un-font-main;
 	font-size: 16px;
 	color: $un-gray3;
 
@@ -284,7 +284,7 @@ export default {
 		margin: 0;
 		color: $un-purple;
 		font-size: 1.5rem;
-		font-family: 'Montserrat', serif;
+		font-family: $un-font-heading;
 		text-align: center;
 	}
 

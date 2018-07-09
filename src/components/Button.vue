@@ -59,12 +59,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../colors';
+@import '../variables';
 
 .c-Button {
 	display: inline-block;
 	padding: 0.625rem 1.5rem;
-	font-family: 'Montserrat', sans-serif;
+	font-family: $un-font-heading;
 	font-size: 1rem;
 	text-align: center;
 	text-transform: uppercase;

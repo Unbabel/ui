@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../colors';
+@import '../variables';
 
 .c-Sidebar {
 	display: flex;
@@ -128,7 +128,7 @@ export default {
 </style>
 
 <style lang="scss">
-@import '../colors';
+@import '../variables';
 
 .c-Sidebar {
 	// Basic styles for the inside of the Panel
@@ -149,7 +149,7 @@ export default {
 
 	&__subtitle {
 		margin-bottom: 0.8rem;
-		font-family: 'Montserrat', sans-serif;
+		font-family: $un-font-heading;
 		font-weight: bold;
 	}
 
