@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../global';
+@import '../variables';
 
 .c-Sidebar {
 	display: flex;
