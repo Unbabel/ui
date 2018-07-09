@@ -9,7 +9,7 @@ import LoadingScreen from '../src/components/LoadingScreen.vue';
 import ToggleGroup from '../src/components/ToggleGroup.vue';
 import Timer from '../src/components/Timer.vue';
 import StarGroupWithStuff from './examples/StarGroupWithStuff.vue';
-import ModalExample from './examples/ModalExample.vue';
+import Modal from '../src/components/Modal.vue';
 import ModalWithForm from './examples/ModalWithForm.vue';
 import ModalWithLongText from './examples/ModalWithLongText.vue';
 import ModalWithInfo from './examples/ModalWithInfo.vue';
@@ -107,18 +107,41 @@ storiesOf('Button', module)
 	});
 
 storiesOf('Modal', module)
-	.addDecorator(withKnobs)
-	.add('Default', () => {
-		const title = text('Modal title', 'This is the title!');
-		const overlay = boolean('Dark overlay', true);
-
+	.add('Usage', withInfo({
+		summary: `The simplest Modal shows a message and a button for user acknowledgement.<br>
+			It also supports longer texts that trigger scrollbars, having a close button on the corner and having a form inside. You can put whatever elements you want on the bottom. By default it has the least destructive option selected (in this examples' case, the Cancel button).
+		`,
+	})(() => {
 		return {
-			components: {
-				ModalExample,
+			data: () => {
+				return {
+					isModalActive: false,
+				};
 			},
-			template: `<modal-example title="${title}" :show-overlay="${overlay}"></modal-example>`,
+			components: {
+				Modal,
+				btn: Button,
+			},
+			methods: {
+				openModal() {
+					this.isModalActive = true;
+				},
+				closeModal() {
+					this.isModalActive = false;
+				},
+			},
+			template: `<div>
+	<a @click="openModal">Open Modal</a>
+	<modal :active="isModalActive" :title="title" :show-overlay="showOverlay">
+		<p slot="content">This is the <strong>main</strong> text.</p>
+		<div slot="footer">
+			<btn kind="secondary" :click-handler="closeModal">Close</btn>
+			<btn kind="primary">Send</btn>
+		</div>
+	</modal>
+</div>`,
 		};
-	})
+	}))
 	.add('With Form', () => {
 		const title = text('Modal title', 'This is the title!');
 
