@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../colors';
+@import '../variables';
 
 .c-BaseCard {
 	display: flex;
@@ -77,7 +77,7 @@ export default {
 	border-radius: 8px;
 	overflow: hidden;
 	box-shadow: 0px 0px 50px -25px rgba(57,83,191,0.75);
-	font-family: 'Open Sans', sans-serif;
+	font-family: $un-font-main;
 	color: $un-gray3;
 
 	a {
@@ -167,7 +167,7 @@ export default {
 	&__sectionTitle {
 		margin: 0;
 		padding-bottom: 0.5rem;
-		font-family: 'Montserrat', serif;
+		font-family: $un-font-heading;
 		color: $un-purple;
 		font-size: 1.5rem;
 	}
