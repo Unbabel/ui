@@ -27,6 +27,7 @@ export default {
 		},
 		clickHandler: {
 			required: false,
+			// eslint-disable-next-line
 			default: () => () => null
 		},
 		disabled: {
@@ -53,8 +54,8 @@ export default {
 				[`c-Button--${this.kind}`]: true,
 			};
 		},
-	}
-}
+	},
+};
 </script>
 
 <style lang="scss" scoped>
