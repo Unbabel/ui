@@ -31,6 +31,7 @@
 				</slot>
 			</div>
 		</slot>
+		<!-- FIXME: these classes aren't actually passed -->
 		<slot name="sidebar" :class="sidebarClasses">
 			<div class="c-BaseCard__sidebar">
 				sidebar
