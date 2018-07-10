@@ -6,8 +6,9 @@ import { withInfo } from 'storybook-addon-vue-info';
 import Button from '../src/components/Button.vue';
 import TopBar from '../src/components/TopBar.vue';
 import LoadingScreen from '../src/components/LoadingScreen.vue';
-import ToggleGroup from '../src/components/ToggleGroup.vue';
 import Timer from '../src/components/Timer.vue';
+import ToggleGroup from '../src/components/ToggleGroup.vue';
+import StarGroup from '../src/components/StarGroup.vue';
 import StarGroupWithStuff from './examples/StarGroupWithStuff.vue';
 import Modal from '../src/components/Modal.vue';
 import ModalWithForm from './examples/ModalWithForm.vue';
@@ -150,11 +151,6 @@ storiesOf('Modal', module)
 				ModalWithForm,
 			},
 			template: `<modal-with-form title="${title}"></modal-with-form>`,
-			/*
-			methods: {
-				log: action('clicked the secondary button'),
-			},
-			*/
 		};
 	})
 	.add('Long text', () => {
@@ -165,11 +161,6 @@ storiesOf('Modal', module)
 				ModalWithLongText,
 			},
 			template: `<modal-with-long-text title="${title}"></modal-with-long-text>`,
-			/*
-			methods: {
-				log: action('clicked the secondary button'),
-			},
-			*/
 		};
 	})
 	.add('Info Modal', () => {
@@ -189,6 +180,17 @@ storiesOf('Modal', module)
 	});
 
 storiesOf('TopBar', module)
+	.add('Usage', withInfo({
+		summary: `A basic TopBar with three areas.
+		`,
+	})(() => {
+		return {
+			components: {
+				TopBar,
+			},
+			template: '<top-bar></top-bar>',
+		};
+	}))
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		const container = number('Container width', null);
@@ -223,6 +225,17 @@ storiesOf('Sidebar', module)
 	});
 
 storiesOf('Star Group', module)
+	.add('Usage', withInfo({
+		summary: `A group of stars used to rate something. You can customize the number of stars and its minimum value.<br>The group itself doesn't store its value, it emits an event when the user clicks and receives the value it should show.
+		`,
+	})(() => {
+		return {
+			components: {
+				StarGroup,
+			},
+			template: '<star-group :stars="5" :min-value="0"></star-group>',
+		};
+	}))
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		return {
@@ -234,6 +247,17 @@ storiesOf('Star Group', module)
 	});
 
 storiesOf('Loading Screen', module)
+	.add('Usage', withInfo({
+		summary: `A small popup while something loads. It only has a message a spinner.
+		`,
+	})(() => {
+		return {
+			components: {
+				LoadingScreen,
+			},
+			template: '<loading-screen></loading-screen>',
+		};
+	}))
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		return {
@@ -253,6 +277,16 @@ storiesOf('Loading Screen', module)
 	});
 
 storiesOf('Toggle Group', module)
+	.add('Usage', withInfo({
+		summary: 'A group of toggles, usually used to control the visibility of something.<br> Toggles are passed in an Array, and each Toggle should have an id, a name, a label, a "isActive" property and a "hidden" property.<br> There is an optional toggle that lets the user toggle everything at once.',
+	})(() => {
+		return {
+			components: {
+				ToggleGroup,
+			},
+			template: '<toggle-group></toggle-group>',
+		};
+	}))
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		return {
@@ -304,6 +338,37 @@ storiesOf('Toggle Group', module)
 	});
 
 storiesOf('Timer', module)
+	.add('Usage', withInfo({
+		summary: 'A easy and (slightly) customizable way to show time.<br>The limit property accepts the number of seconds that must pass before an event is emited.',
+	})(() => {
+		return {
+			components: {
+				Timer,
+			},
+			data: () => {
+				return {
+					timerOptions: {},
+				};
+			},
+			methods: {
+				startTimer() {
+					this.$refs.timer.start();
+				},
+				pauseTimer() {
+					this.$refs.timer.pause();
+				},
+				resetTimer() {
+					this.$refs.timer.reset();
+				},
+			},
+			template: `<div>
+	<button v-on:click="startTimer">Start</button>
+	<button v-on:click="pauseTimer">Stop</button>
+	<button v-on:click="resetTimer">Reset</button>
+	<timer ref="timer" :options="timerOptions"></timer>
+</div>`,
+		};
+	}))
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		return {
@@ -405,6 +470,22 @@ storiesOf('Timer', module)
 	});
 
 storiesOf('Card', module)
+	.add('Usage', withInfo({
+		summary: 'A basic card with three slots (top, middle and bottom)',
+	})(() => {
+		return {
+			components: {
+				BaseCard,
+			},
+			data: () => {
+				return {
+				};
+			},
+			methods: {
+			},
+			template: '<baseCard></baseCard>',
+		};
+	}))
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		return {
