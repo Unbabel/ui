@@ -3,7 +3,7 @@
 		<div class="c-Modal__overlay" v-bind:class="{'is-transparent': !showOverlay}" @click="clickedOnOutside"></div>
 		<div class="c-Modal__main" v-bind:role="modalRole" v-bind:aria-label="title">
 			<div class="c-Modal__top">
-				<btn v-show="closeIcon" id="js-modal-close" class="c-Modal__closeIcon" role="secondary" :click-handler="clickedOnClose" aria-label="Close">
+				<btn v-show="closeIcon" id="js-modal-close" class="c-Modal__closeIcon" role="secondary" @click="clickedOnClose" aria-label="Close">
 					<svg width="192px" height="192px" viewBox="0 0 192 192" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 						<g id="Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 							<g id="close-icon" fill-rule="nonzero">

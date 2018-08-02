@@ -5,7 +5,7 @@
 		<modal :active="modalIsActive" :title="title" :show-overlay="showOverlay">
 			<p slot="content">This is the <strong>main</strong> text.</p>
 			<div slot="footer">
-				<btn kind="secondary" :click-handler="closeModal">Close</btn>
+				<btn kind="secondary" @click="closeModal">Close</btn>
 				<btn kind="primary">Send</btn>
 			</div>
 		</modal>
