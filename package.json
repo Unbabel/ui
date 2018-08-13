@@ -11,7 +11,7 @@
     "storybook-build": "build-storybook -c .storybook -o storybook-dist",
     "build": "npm run storybook-build"
   },
-  "repository": "gitlab:Unbabel/ui",
+  "repository": "github:Unbabel/ui",
   "keywords": [
     "component",
     "library",
@@ -36,7 +36,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/Unbabel/ui/issues"
+    "url": "https://github.com/Unbabel/ui/issues"
   },
   "homepage": "https://unbabel.gitlab.io/ui/",
   "devDependencies": {
