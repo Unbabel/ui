@@ -5,7 +5,7 @@
 
 This is the Unbabel UI (Vue.js) component library AKA Samora.
 
-Contribute in the repository [here](https://gitlab.com/Unbabel/ui)
+Contribute in the repository [here](https://github.com/Unbabel/ui)
 
 ## Install
 Install it using `npm`
