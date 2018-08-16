@@ -1,7 +1,7 @@
 <template>
-	<div class="c-Modal" v-bind:class="cssClasses">
-		<div class="c-Modal__overlay" v-bind:class="{'is-transparent': !showOverlay}" @click="clickedOnOutside"></div>
-		<div class="c-Modal__main" v-bind:role="modalRole" v-bind:aria-label="title">
+	<div class="c-Modal" :class="cssClasses">
+		<div class="c-Modal__overlay" :class="{'is-transparent': !showOverlay}" @click="clickedOnOutside"></div>
+		<div class="c-Modal__main" :role="modalRole" :aria-label="title">
 			<div class="c-Modal__top">
 				<btn v-show="closeIcon" id="js-modal-close" class="c-Modal__closeIcon" role="secondary" :click-handler="clickedOnClose" aria-label="Close">
 					<svg width="192px" height="192px" viewBox="0 0 192 192" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -80,31 +80,31 @@ export default {
 			this.$emit('closed', this);
 		},
 		clickedOnOutside() {
-			if (this.closeOnOutsideClick) {
-				this.$emit('closed', this);
-			}
+			this.closeOnOutsideClick && this.$emit('closed', this);
 		},
 		pressedKey(event) {
-			if (event.keyCode === 27 && this.closeOnEscapePress) {
-				this.$emit('closed', this);
+			const escKey = event.keyCode === 27;
+			escKey && this.closeOnEscapePress && this.$emit('closed', this);
+		},
+		/**
+		 * Focus on the first button or the close button
+		 */
+		focusFirstOrCloseButton() {
+			if (this.hasFooter) {
+				const buttons = document.getElementById('js-modal-footer').getElementsByClassName('c-Button');
+				buttons.length && buttons[0].focus();
+			} else {
+				document.getElementById('js-modal-close').focus();
 			}
 		},
 	},
 	computed: {
 		// Hide the footer if nothing is passed to the slot
 		hasFooter() {
-			if (this.$slots.footer) {
-				return true;
-			}
-
-			return false;
+			return this.$slots.footer ? true : false;
 		},
 		modalRole() {
-			if (this.hasFooter) {
-				return 'alertdialog';
-			}
-
-			return 'dialog';
+			return this.hasFooter ? 'alertdialog' : 'dialog';
 		},
 		cssClasses() {
 			let result = '';
@@ -120,25 +120,12 @@ export default {
 		},
 	},
 	watch: {
-		// this function can't be an arrow function
-		active: function () {
+		active() {
 			if (this.active) {
 				// Listen to keypresses
 				document.addEventListener('keydown', this.pressedKey);
-
-				// Focus on the first button or the close button
-				if (this.hasFooter) {
-					const buttons = document.getElementById('js-modal-footer').getElementsByClassName('c-Button');
-
-					if (buttons.length) {
-						buttons[0].focus();
-					}
-				}
-				else {
-					document.getElementById('js-modal-close').focus();
-				}
-			}
-			else {
+				this.focusFirstOrCloseButton();
+			} else {
 				// Stop listening to keypresses
 				document.removeEventListener('keydown', this.pressedKey);
 			}
