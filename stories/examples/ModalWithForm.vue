@@ -2,7 +2,7 @@
 	<div>
 		<a v-on:click="modalIsActive = !modalIsActive">Open Modal with a form</a>
 
-		<modal :active="modalIsActive" :title="title">
+		<modal :active="modalIsActive" :title="title" defaultStyles>
 			<form slot="content" class="example-form">
 				<p class="example-form-feedback" v-show="feedback.length">{{ feedback }}</p>
 

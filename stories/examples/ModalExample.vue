@@ -2,7 +2,15 @@
 	<div>
 		<a v-on:click="modalIsActive = !modalIsActive">Open Modal</a>
 
-		<modal :active="modalIsActive" :title="title" :show-overlay="showOverlay">
+		<modal
+			:active="modalIsActive"
+			:title="title"
+			:show-overlay="showOverlay"
+			close-on-outside-click
+			close-on-escape-press
+			defaultStyles
+			@closed="toggleModal"
+		>
 			<p slot="content">This is the <strong>main</strong> text.</p>
 			<div slot="footer">
 				<btn kind="secondary" :click-handler="closeModal">Close</btn>
@@ -41,7 +49,10 @@ export default {
 	methods: {
 		closeModal() {
 			this.modalIsActive = false;
-		}
+		},
+		toggleModal() {
+			this.modalIsActive = !this.modalIsActive;
+		},
 	}
 }
 </script>
