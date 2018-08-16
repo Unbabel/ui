@@ -43,6 +43,11 @@ export default {
 			required: false,
 			default: false,
 		},
+		defaultStyles: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
 		content: {
 			type: String,
 			required: false,
@@ -106,17 +111,15 @@ export default {
 		modalRole() {
 			return this.hasFooter ? 'alertdialog' : 'dialog';
 		},
+		/**
+		 * The replace call is to remove new lines
+		 */
 		cssClasses() {
-			let result = '';
-
-			if (this.active) {
-				result += ' is-active';
-			}
-			if (!this.hasFooter) {
-				result += ' is-footerless';
-			}
-
-			return result;
+			return `
+				${this.active ? 'is-active' : ''}
+				${!this.hasFooter ? 'is-footerless' : ''}
+				${this.defaultStyles ? 'c-Modal--defaults' : ''}
+			`.replace(/\s+/g, ' ');
 		},
 	},
 	watch: {
@@ -230,17 +233,19 @@ export default {
 		}
 	}
 
-	&__middle {
-		padding-top: 0;
-		padding-bottom: 0;
-		overflow-y: auto;
-
+	&--defaults .c-Modal__middle {
 		:first-child {
 			padding-top: 0.7rem;
 		}
 		:last-child {
 			padding-bottom: 2.3rem;
 		}
+	}
+
+	&__middle {
+		padding-top: 0;
+		padding-bottom: 0;
+		overflow-y: auto;
 	}
 
 	// Align the buttons to the right
