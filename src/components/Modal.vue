@@ -115,11 +115,11 @@ export default {
 		 * The replace call is to remove new lines
 		 */
 		cssClasses() {
-			return `
-				${this.active ? 'is-active' : ''}
-				${!this.hasFooter ? 'is-footerless' : ''}
-				${this.defaultStyles ? 'c-Modal--defaults' : ''}
-			`.replace(/\s+/g, ' ');
+			return {
+				'is-active': this.active,
+				'is-footerless': !this.hasFooter,
+				'c-Modal--include-default-style': this.defaultStyles
+			}
 		},
 	},
 	watch: {
@@ -233,7 +233,7 @@ export default {
 		}
 	}
 
-	&--defaults .c-Modal__middle {
+	&--include-default-style &__middle {
 		:first-child {
 			padding-top: 0.7rem;
 		}
