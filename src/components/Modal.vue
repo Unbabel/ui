@@ -23,7 +23,11 @@
 					<p class="c-Modal__text">{{ content }}</p>
 				</slot>
 			</div>
-			<div v-show="hasFooter" id="js-modal-footer" class="c-Modal__bottom">
+			<div
+				v-if="hasFooter"
+				class="c-Modal__bottom"
+				ref="modalFooter"
+			>
 				<slot name="footer"></slot>
 			</div>
 		</div>
@@ -96,8 +100,12 @@ export default {
 		 */
 		focusFirstOrCloseButton() {
 			if (this.hasFooter) {
-				const buttons = document.getElementById('js-modal-footer').getElementsByClassName('c-Button');
-				buttons.length && buttons[0].focus();
+				const autoFocusBtn = this.$refs.modalFooter.querySelector('.c-Button[autofocus]');
+				const firstBtn = this.$refs.modalFooter.querySelector('.c-Button');
+
+				!autoFocusBtn
+					? firstBtn.focus()
+					: autoFocusBtn.focus();
 			} else {
 				document.getElementById('js-modal-close').focus();
 			}

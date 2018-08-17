@@ -14,7 +14,7 @@
 			<p slot="content">This is the <strong>main</strong> text.</p>
 			<div slot="footer">
 				<btn kind="secondary" :click-handler="closeModal">Close</btn>
-				<btn kind="primary">Send</btn>
+				<btn kind="primary" autofocus>Send</btn>
 			</div>
 		</modal>
 	</div>
