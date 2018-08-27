@@ -134,6 +134,9 @@ storiesOf('Modal', module)
 					this.isModalActive = false;
 				},
 			},
+			propsDescription: {
+				closeOnEscapePress: 'Close the modal on ESC key press',
+			},
 			template: `<div>
 	<a @click="openModal">Open Modal</a>
 	<modal :active="isModalActive" :title="title" :show-overlay="showOverlay">
