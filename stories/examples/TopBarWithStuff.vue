@@ -4,7 +4,6 @@
 			<div slot="left">
 				<strong>Cool App</strong>&nbsp;v2.0
 			</div>
-			<div slot="middle"></div>
 			<div slot="right">
 				<btn kind="cta">Click me</btn>
 			</div>
