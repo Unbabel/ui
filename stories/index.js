@@ -202,10 +202,14 @@ storiesOf('TopBar', module)
 		const container = number('Container width', null);
 
 		return {
-			components: {
-				TopBar,
-			},
-			template: `<top-bar container-width="${container}"></top-bar>`,
+			components: { TopBar },
+			template: `
+				<top-bar container-width="${container}">
+					<div slot="left">Left placeholder</div>
+					<div slot="middle">Middle placeholder</div>
+					<div slot="right">Right placeholder</div>
+				</top-bar>
+			`,
 		};
 	})
 	.add('With stuff', () => {
