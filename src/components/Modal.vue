@@ -1,7 +1,6 @@
 <template>
 	<div class="c-Modal" :class="cssClasses">
 		<div class="c-Modal__overlay" :class="{'is-transparent': !showOverlay}" @click="clickedOnOutside"></div>
-			@click="clickedOnOutside"></div>
 		<div class="c-Modal__main" :role="modalRole" :aria-label="title">
 			<div class="c-Modal__top">
 				<btn
