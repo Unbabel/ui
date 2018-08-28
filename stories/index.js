@@ -1,15 +1,16 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs/vue';
-// import { withNotes } from '@storybook/addon-notes';
+import { withInfo } from 'storybook-addon-vue-info';
 
 import Button from '../src/components/Button.vue';
 import TopBar from '../src/components/TopBar.vue';
 import LoadingScreen from '../src/components/LoadingScreen.vue';
-import ToggleGroup from '../src/components/ToggleGroup.vue';
 import Timer from '../src/components/Timer.vue';
+import ToggleGroup from '../src/components/ToggleGroup.vue';
+import StarGroup from '../src/components/StarGroup.vue';
 import StarGroupWithStuff from './examples/StarGroupWithStuff.vue';
-import ModalExample from './examples/ModalExample.vue';
+import Modal from '../src/components/Modal.vue';
 import ModalWithForm from './examples/ModalWithForm.vue';
 import ModalWithLongText from './examples/ModalWithLongText.vue';
 import ModalWithInfo from './examples/ModalWithInfo.vue';
@@ -18,6 +19,25 @@ import SidebarWithTabs from './examples/SidebarWithTabs.vue';
 import BaseCard from '../src/components/BaseCard.vue';
 
 storiesOf('Button', module)
+	.add('Usage', withInfo({
+		summary: `This is basic button: you click it and stuff happens. Hopefully.<br>
+			Besides its default state, it has 3 visual variations. It can also be disabled.`,
+	})(() => {
+		const content = text('Button text', 'Click me');
+		const link = text('Button link', '');
+		const kind = select('Kind', {
+			primary: 'Primary',
+			secondary: 'secondary',
+			cta: 'Call to Action',
+			ctaAlt: 'Call to Action (Alternative)',
+		}, 'primary');
+		const isDisabled = boolean('Disabled', false);
+
+		return {
+			components: { btn: Button },
+			template: `<btn :kind="'${kind}'" :click-handler="log" :disabled="${isDisabled}" :link="'${link}'">${content}</btn>`,
+		};
+	}))
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		const content = text('Button text', 'Click me');
@@ -88,18 +108,47 @@ storiesOf('Button', module)
 	});
 
 storiesOf('Modal', module)
-	.addDecorator(withKnobs)
-	.add('Default', () => {
-		const title = text('Modal title', 'This is the title!');
-		const overlay = boolean('Dark overlay', true);
-
+	.add('Usage', withInfo({
+		summary: `The simplest Modal shows a message and a button for user acknowledgement.<br>
+			It also supports longer texts that trigger scrollbars, having a close button on the corner and having a form inside. You can put whatever elements you want on the bottom. By default it has the least destructive option selected (in this examples' case, the Cancel button).
+		`,
+		propTables: [
+			Modal,
+		],
+	})(() => {
 		return {
-			components: {
-				ModalExample,
+			data: () => {
+				return {
+					isModalActive: false,
+				};
 			},
-			template: `<modal-example title="${title}" :show-overlay="${overlay}"></modal-example>`,
+			components: {
+				Modal,
+				btn: Button,
+			},
+			methods: {
+				openModal() {
+					this.isModalActive = true;
+				},
+				closeModal() {
+					this.isModalActive = false;
+				},
+			},
+			propsDescription: {
+				closeOnEscapePress: 'Close the modal on ESC key press',
+			},
+			template: `<div>
+	<a @click="openModal">Open Modal</a>
+	<modal :active="isModalActive" :title="title" :show-overlay="showOverlay">
+		<p slot="content">This is the <strong>main</strong> text.</p>
+		<div slot="footer">
+			<btn kind="secondary" :click-handler="closeModal">Close</btn>
+			<btn kind="primary">Send</btn>
+		</div>
+	</modal>
+</div>`,
 		};
-	})
+	}))
 	.add('With Form', () => {
 		const title = text('Modal title', 'This is the title!');
 
@@ -108,11 +157,6 @@ storiesOf('Modal', module)
 				ModalWithForm,
 			},
 			template: `<modal-with-form title="${title}"></modal-with-form>`,
-			/*
-			methods: {
-				log: action('clicked the secondary button'),
-			},
-			*/
 		};
 	})
 	.add('Long text', () => {
@@ -123,11 +167,6 @@ storiesOf('Modal', module)
 				ModalWithLongText,
 			},
 			template: `<modal-with-long-text title="${title}"></modal-with-long-text>`,
-			/*
-			methods: {
-				log: action('clicked the secondary button'),
-			},
-			*/
 		};
 	})
 	.add('Info Modal', () => {
@@ -147,6 +186,17 @@ storiesOf('Modal', module)
 	});
 
 storiesOf('TopBar', module)
+	.add('Usage', withInfo({
+		summary: `A basic TopBar with three areas.
+		`,
+	})(() => {
+		return {
+			components: {
+				TopBar,
+			},
+			template: '<top-bar></top-bar>',
+		};
+	}))
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		const container = number('Container width', null);
@@ -185,6 +235,17 @@ storiesOf('Sidebar', module)
 	});
 
 storiesOf('Star Group', module)
+	.add('Usage', withInfo({
+		summary: `A group of stars used to rate something. You can customize the number of stars and its minimum value.<br>The group itself doesn't store its value, it emits an event when the user clicks and receives the value it should show.
+		`,
+	})(() => {
+		return {
+			components: {
+				StarGroup,
+			},
+			template: '<star-group :stars="5" :min-value="0"></star-group>',
+		};
+	}))
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		return {
@@ -196,6 +257,17 @@ storiesOf('Star Group', module)
 	});
 
 storiesOf('Loading Screen', module)
+	.add('Usage', withInfo({
+		summary: `A small popup while something loads. It only has a message a spinner.
+		`,
+	})(() => {
+		return {
+			components: {
+				LoadingScreen,
+			},
+			template: '<loading-screen></loading-screen>',
+		};
+	}))
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		return {
@@ -215,6 +287,16 @@ storiesOf('Loading Screen', module)
 	});
 
 storiesOf('Toggle Group', module)
+	.add('Usage', withInfo({
+		summary: 'A group of toggles, usually used to control the visibility of something.<br> Toggles are passed in an Array, and each Toggle should have an id, a name, a label, a "isActive" property and a "hidden" property.<br> There is an optional toggle that lets the user toggle everything at once.',
+	})(() => {
+		return {
+			components: {
+				ToggleGroup,
+			},
+			template: '<toggle-group></toggle-group>',
+		};
+	}))
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		return {
@@ -266,6 +348,37 @@ storiesOf('Toggle Group', module)
 	});
 
 storiesOf('Timer', module)
+	.add('Usage', withInfo({
+		summary: 'A easy and (slightly) customizable way to show time.<br>The limit property accepts the number of seconds that must pass before an event is emited.',
+	})(() => {
+		return {
+			components: {
+				Timer,
+			},
+			data: () => {
+				return {
+					timerOptions: {},
+				};
+			},
+			methods: {
+				startTimer() {
+					this.$refs.timer.start();
+				},
+				pauseTimer() {
+					this.$refs.timer.pause();
+				},
+				resetTimer() {
+					this.$refs.timer.reset();
+				},
+			},
+			template: `<div>
+	<button v-on:click="startTimer">Start</button>
+	<button v-on:click="pauseTimer">Stop</button>
+	<button v-on:click="resetTimer">Reset</button>
+	<timer ref="timer" :options="timerOptions"></timer>
+</div>`,
+		};
+	}))
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		return {
@@ -367,6 +480,22 @@ storiesOf('Timer', module)
 	});
 
 storiesOf('Card', module)
+	.add('Usage', withInfo({
+		summary: 'A basic card with three slots (top, middle and bottom)',
+	})(() => {
+		return {
+			components: {
+				BaseCard,
+			},
+			data: () => {
+				return {
+				};
+			},
+			methods: {
+			},
+			template: '<baseCard></baseCard>',
+		};
+	}))
 	.addDecorator(withKnobs)
 	.add('Default', () => {
 		return {

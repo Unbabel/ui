@@ -1,8 +1,10 @@
 <template>
 	<div class="c-Sidebar">
-		<div class="c-Sidebar__item" v-bind:class="{ 'is-active': activeTab === index}" v-for="(tab, index) in tabs" :key="index">
+		<div class="c-Sidebar__item" v-bind:class="{ 'is-active': activeTab === index}"
+			v-for="(tab, index) in tabs" :key="index">
 			<div class="c-Sidebar__tab" v-on:click="clickedOnTab(index)">
-				<span class="c-Sidebar__tab__icon" v-show="activeTab === index">-</span><span class="c-Sidebar__tab__icon" v-show="activeTab !== index">+</span> {{ tab }}
+				<span v-show="activeTab === index" class="c-Sidebar__tab__icon">-</span>
+				<span class="c-Sidebar__tab__icon" v-show="activeTab !== index">+</span> {{ tab }}
 			</div>
 			<div class="c-Sidebar__panel">
 				<slot :name="tab"></slot>
@@ -38,7 +40,7 @@ export default {
 			this.$emit('clicked-on-tab', index, this.side);
 		},
 	},
-}
+};
 </script>
 
 <style lang="scss" scoped>

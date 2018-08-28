@@ -53,8 +53,8 @@ export default {
 				[`c-Button--${this.kind}`]: true,
 			};
 		},
-	}
-}
+	},
+};
 </script>
 
 <style lang="scss" scoped>
