@@ -1,6 +1,7 @@
 ![Samora Design System](assets/samora-design-system.png)
 
-[![Codacy Project Badge](https://api.codacy.com/project/badge/Grade/1ad45fb5ce1241d99587aabcf8b5df3b)](https://www.codacy.com/app/unbabel/ui)
+
+[![Codacy Project Badge](https://api.codacy.com/project/badge/Grade/ea4b54e307344256a5bd0e60fc3a402a)](https://www.codacy.com/app/unbabel/ui)
 [![Codacy Coverage Badge](https://api.codacy.com/project/badge/Coverage/1ad45fb5ce1241d99587aabcf8b5df3b)](https://www.codacy.com/app/unbabel/ui)
 
 This is the Unbabel UI (Vue.js) component library AKA Samora.
