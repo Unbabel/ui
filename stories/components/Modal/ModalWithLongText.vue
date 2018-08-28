@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import Modal from '../../src/components/Modal.vue';
-import Button from '../../src/components/Button.vue';
+import Modal from '@/components/Modal.vue';
+import Button from '@/components/Button.vue';
 
 export default {
 	data() {

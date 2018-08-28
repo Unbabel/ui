@@ -1,7 +1,7 @@
 import {
 	mount,
 } from '@vue/test-utils';
-import Button from '../../../src/components/Button.vue';
+import Button from '@/components/Button.vue';
 
 describe('Button', () => {
 	it('mount properly', () => {
