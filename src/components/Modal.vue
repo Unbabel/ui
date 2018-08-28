@@ -37,6 +37,7 @@
 import Button from './Button.vue';
 
 export default {
+	name: 'Modal',
 	components: {
 		btn: Button,
 	},
