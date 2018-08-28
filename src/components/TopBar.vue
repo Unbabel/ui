@@ -23,7 +23,7 @@ export default {
 			default: 'nope',
 		},
 	},
-}
+};
 </script>
 
 <style lang="scss" scoped>
