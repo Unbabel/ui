@@ -23,6 +23,12 @@ module.exports = {
               'vue': 'never'
           }
       ],
+      'object-curly-newline': [
+        'error',
+        {
+          'consistent': true
+        }
+      ]
   },
   'settings': {
       'import/resolver': {
