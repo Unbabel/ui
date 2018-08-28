@@ -4,6 +4,7 @@ import { withInfo } from 'storybook-addon-vue-info';
 
 import Button from '@/components/Button.vue';
 import Modal from '@/components/Modal.vue';
+import ModalSummary from './Modal.md';
 
 import ModalWithForm from './ModalWithForm.vue';
 import ModalWithLongText from './ModalWithLongText.vue';
@@ -11,9 +12,7 @@ import ModalWithInfo from './ModalWithInfo.vue';
 
 storiesOf('Modal', module)
 	.add('Usage', withInfo({
-		summary: `The simplest Modal shows a message and a button for user acknowledgement.<br>
-			It also supports longer texts that trigger scrollbars, having a close button on the corner and having a form inside. You can put whatever elements you want on the bottom. By default it has the least destructive option selected (in this examples' case, the Cancel button).
-		`,
+		summary: ModalSummary,
 		propTables: [
 			Modal,
 		],
