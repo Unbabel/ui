@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import Button from '../../src/components/Button.vue';
-import TopBar from '../../src/components/TopBar.vue';
+import Button from '@/components/Button.vue';
+import TopBar from '@/components/TopBar.vue';
 
 export default {
 	components: {

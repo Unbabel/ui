@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import StarGroup from '../../src/components/StarGroup.vue';
+import StarGroup from '@/components/StarGroup.vue';
 
 export default {
 	components: {
