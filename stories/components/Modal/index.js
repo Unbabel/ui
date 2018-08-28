@@ -21,7 +21,9 @@ storiesOf('Modal', module)
 		return {
 			data: () => {
 				return {
+					title: 'Modal',
 					isModalActive: false,
+					showOverlay: true,
 				};
 			},
 			components: {
