@@ -60,8 +60,6 @@ export default {
 		width: 2.1rem;
 		height: 2.1rem;
 
-		-webkit-animation: spin 1.5s ease infinite;
-		-moz-animation: spin 1.5s ease infinite;
 		animation: spin 1.5s ease infinite;
 	}
 
@@ -101,7 +99,5 @@ export default {
 	}
 }
 
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 </style>

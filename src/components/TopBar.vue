@@ -35,8 +35,6 @@ export default {
 	color: $un-gray2-dark;
 	font-family: $un-font-main;
 
-	-webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.36);
-	-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.36);
 	box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.36);
 
 	&__container {
