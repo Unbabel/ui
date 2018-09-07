@@ -1,6 +1,6 @@
 <template>
 	<div class="c-Modal" :class="cssClasses">
-		<div class="c-Modal__overlay" :class="{'is-transparent': !showOverlay}" @click="clickedOnOutside"></div>
+		<div class="c-Modal__overlay" :class="overlayclassObject" @click="clickedOnOutside"></div>
 		<div class="c-Modal__main" :role="modalRole" :aria-label="title">
 			<div class="c-Modal__top">
 				<btn
@@ -121,6 +121,11 @@ export default {
 		},
 	},
 	computed: {
+		overlayClassObject() {
+			return {
+				'is-transparent': !this.showOverlay
+			}
+		},
 		// Hide the footer if nothing is passed to the slot
 		hasFooter() {
 			return this.$slots.footer ? true : false;
