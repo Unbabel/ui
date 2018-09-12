@@ -40,7 +40,7 @@ storiesOf('Modal', module)
 			},
 			template: `<div>
 	<a @click="openModal">Open Modal</a>
-	<modal :active="isModalActive" :title="title" :show-overlay="showOverlay">
+	<modal :active="isModalActive" :title="title" :show-overlay="showOverlay" defaultStyles>
 		<p slot="content">This is the <strong>main</strong> text.</p>
 		<div slot="footer">
 			<btn kind="secondary" :click-handler="closeModal">Close</btn>
