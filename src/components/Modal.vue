@@ -98,11 +98,15 @@ export default {
 			this.$emit('closed', this);
 		},
 		clickedOnOutside() {
-			this.closeOnOutsideClick && this.$emit('closed', this);
+			if (this.closeOnOutsideClick) {
+				this.$emit('closed', this);
+			}
 		},
 		pressedKey(event) {
 			const escKey = event.keyCode === 27;
-			escKey && this.closeOnEscapePress && this.$emit('closed', this);
+			if (escKey && this.closeOnEscapePress) {
+				this.$emit('closed', this);
+			}
 		},
 		/**
 		 * Focus on the first button or the close button
