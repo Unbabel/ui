@@ -127,8 +127,8 @@ export default {
 	computed: {
 		overlayClassObject() {
 			return {
-				'is-transparent': !this.showOverlay
-			}
+				'is-transparent': !this.showOverlay,
+			};
 		},
 		// Hide the footer if nothing is passed to the slot
 		hasFooter() {
@@ -144,8 +144,8 @@ export default {
 			return {
 				'is-active': this.active,
 				'is-footerless': !this.hasFooter,
-				'c-Modal--include-default-style': this.defaultStyles
-			}
+				'c-Modal--include-default-style': this.defaultStyles,
+			};
 		},
 	},
 	watch: {
