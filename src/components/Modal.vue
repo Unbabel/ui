@@ -132,7 +132,7 @@ export default {
 		},
 		// Hide the footer if nothing is passed to the slot
 		hasFooter() {
-			return this.$slots.footer ? true : false;
+			return !!this.$slots.footer;
 		},
 		modalRole() {
 			return this.hasFooter ? 'alertdialog' : 'dialog';
