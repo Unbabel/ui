@@ -36,7 +36,13 @@ storiesOf('Modal', module)
 				},
 			},
 			propsDescription: {
-				closeOnEscapePress: 'Close the modal on ESC key press',
+				active: 'Boolean value that will conditionally show/hide the modal. Logic should be done in the parent.',
+				defaultStyles: 'Boolean value that will conditionally add default css styles for the content inside the modal.',
+				content: 'Simple way of adding content with predefined styles.',
+				closeIcon: 'Boolean value that will conditionally show/hide the close icon with the ability to close the modal. Logic should be done in the parent.',
+				closeOnOutsideClick: 'Boolean value that will conditionally allow users to click outside the modal and close the modal.',
+				closeOnEscapePress: 'Boolean value that will conditionally allow users to click on ESC key and close the modal.',
+				showOverlay: 'Boolean value that will conditionally show a transparent overlay or a darker one.',
 			},
 			template: `<div>
 	<a @click="openModal">Open Modal</a>
