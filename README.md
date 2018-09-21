@@ -40,6 +40,12 @@ So you can use it in your templates:
 @import '~@unbabel/ui/src/colors';
 ```
 
+If you just need the styles for a component, you can also import just those:
+
+```scss
+@import '~@unbabel/ui/src/components/styles/Button.scss';
+```
+
 To use any color variable with custom properties you need to use interpolation
 
 ```scss
