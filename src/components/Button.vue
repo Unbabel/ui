@@ -24,11 +24,11 @@ export default {
 		kind: {
 			type: String,
 			required: false,
-			default: () => 'secondary',
+			default: () => '',
 			validator(kind) {
 				return [
+					'',
 					'primary',
-					'secondary',
 					'cta',
 					'ctaAlt',
 				].includes(kind);
