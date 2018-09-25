@@ -1,0 +1,96 @@
+# Launch Readiness Review
+The purpose of this document is to set last quality gate safety inspection to launch product live 
+
+
+- [ ]	Handover Readiness Review is formally acknowledged (Re-check)
+  - [ ]	Catastrophe plan  
+      - [ ]	Rollback procedure is prepared if needed
+      - [ ]	Backup & recovery process in place and tested
+  - [ ]	DevOps Approved Infrastructure
+      - [ ]	Kubernetes definitions/Ansible playbooks developed and available
+      - [ ]	Clearly defined procedures for scalability, reliability and maintenance operations
+      - [ ]	Running in `staging`, supporting tested load
+      - [ ]	Security Audit
+  - [ ]	SQA Approved
+      - [ ]	Code Coverage > 60%
+      - [ ]	Smoke testing script with integration if possible
+      - [ ]	Regression testing script	
+      - [ ]	Load/Performance Testing complete and performance optimized
+  - [ ]	Contingency checklist 
+      - [ ]	List of known issues, their likelihood and actions to be done
+- [ ]	Auditing
+  - [ ]	Logs
+      - [ ] NewRelic
+      - [ ]	Sentry
+      - [ ]	LogDNA
+  - [ ]	Metrics
+      - [ ]	Mixpanel
+      - [ ]	Chartio
+- [ ] Customer onboarding:
+    - [ ] Glossary terms (any changes in regular collection process?)
+    - [ ] Translation memories (any changes in regular collection process?)
+    - [ ] Training/sample data for Machine Translation (any changes in regular collection process?)
+    - [ ] Instructions (check if they are curated)
+    - [ ] Web interfaces (special ineterface as pinterest seo) 
+    - [ ] Translation flow
+    - [ ] Specific Smartcheck rules
+    - [ ] Any changes in input and output formats
+- [ ] Evaluators Onboarding:
+    - [ ] Interface specifics
+    - [ ] Check if require:
+        - [ ] Updating the guidelines
+        - [ ] Quick mini-onboarding or change current onboarding
+        - [ ] Change the way we pay (changes on web site / outside materials if any)
+        - [ ] Any SLA
+        - [ ] Any specifics
+- [ ] Annotators Onboarding:
+    - [ ] Interface specifics
+    - [ ] Check if require:
+        - [ ] Updating the guidelines
+        - [ ] Quick mini-onboarding or change current onboarding
+        - [ ] Change the way we pay (changes on web site / outside materials if any)
+        - [ ] Any SLA
+        - [ ] Any specifics
+- [ ] Editors Onboarding:
+    - [ ] Interface specifics
+    - [ ] Check if require:
+        - [ ] Updating the guidelines
+        - [ ] Quick mini-onboarding or change current onboarding
+        - [ ] Change the way we pay (changes on web site / outside materials if any)
+        - [ ] Any SLA
+        - [ ] Any specifics
+	- [ ] Task reporting 
+- [ ] Translation Flow:
+    - [ ] Web interfaces (special ineterface as pinterest seo) 
+    - [ ] Translation flow
+        - [ ] Order placing
+        - [ ] Job split specifics
+        - [ ] Tarkin
+            - [ ] New categories
+            - [ ] New Rules
+        - [ ] SmartNotifications
+        - [ ] Smartcheck
+        - [ ] Number of Editors
+        - [ ] Evaluation flow
+        - [ ] Annotation flow
+- [ ] Job Disputing:
+    - [ ] Do this trigger any changes  
+- [ ] Annotation Manager:
+    - [ ] Require batch preparation
+- [ ] Evaluation Manager:
+    - [ ] Require batch preparation
+- [ ] Billing:
+    - [ ] How to bill
+    - [ ] Assess changes to existing process
+    - [ ] Any customizations
+- [ ] Customer Reporting:
+    - [ ] How to report
+    - [ ] Assess changes to existing process
+    - [ ] Any customizations
+    - [ ] Quality audit 
+- [ ] Sales Phase:
+    - [ ] How to set up Demos (OS team)
+
+----
+/label ~LRR
+/assign @emanuelv @tomaspinho
