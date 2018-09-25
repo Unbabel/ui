@@ -17,19 +17,20 @@
 
 	transition: all 0.1s ease-in-out, background-color 0.2s ease-in-out;
 
-	// Default hover state
-	&:not(.is-disabled):hover,
-	&:not([disabled]):hover {
-		background-color: #939BAB;
-		box-shadow: inset 0px 0px 0px 1px #939BAB;
-		color: white;
-	}
+	&:not(.is-disabled),
+	&:not([disabled]) {
+		// Default hover state
+		&:hover {
+			background-color: #939BAB;
+			box-shadow: inset 0px 0px 0px 1px #939BAB;
+			color: white;
+		}
 
-	// Default active (pressed) state
-	&:not(.is-disabled):active,
-	&:not([disabled]):active {
-		background-color: $un-gray2-dark;
-		font-size: 0.875rem; // 14px
+		// Default active (pressed) state
+		&:active {
+			background-color: $un-gray2-dark;
+			font-size: 0.875rem; // 14px
+		}
 	}
 
 	// Default disabled state
@@ -45,11 +46,11 @@
 	&--ctaAlt {
 		box-shadow: none;
 
-		&:not(.is-disabled):hover,
-		&:not([disabled]):hover,
-		&:not(.is-disabled):active,
-		&:not([disabled]):active {
-			box-shadow: none;
+		&:not(.is-disabled),
+		&:not([disabled]) {
+			&:hover, &:active {
+				box-shadow: none;
+			}
 		}
 
 		&.is-disabled,
@@ -65,15 +66,15 @@
 		background-color: $un-gray2;
 		color: white;
 
-		&:not(.is-disabled):hover,
-		&:not([disabled]):hover {
-			background-color: $un-gray3-light;
-		}
-
-		&:not(.is-disabled):active,
-		&:not([disabled]):active {
-			background-color: #788090;
-			font-size: 0.875rem; // 14px
+		&:not(.is-disabled),
+		&:not([disabled]) {
+			&:hover {
+				background-color: $un-gray3-light;
+			}
+			&:active {
+				background-color: #788090;
+				font-size: 0.875rem; // 14px
+			}
 		}
 	}
 
@@ -82,14 +83,14 @@
 		background-color: $un-green-matte;
 		color: white;
 
-		&:not(.is-disabled):hover,
-		&:not([disabled]):hover {
-			background-color: $un-green-dark;
-		}
-
-		&:not(.is-disabled):active,
-		&:not([disabled]):active {
-			background-color: #38A967;
+		&:not(.is-disabled),
+		&:not([disabled]) {
+			&:hover {
+				background-color: $un-green-dark;
+			}
+			&:active {
+				background-color: #38A967;
+			}
 		}
 	}
 
@@ -98,14 +99,14 @@
 		background-color: $un-purple;
 		color: white;
 
-		&:not(.is-disabled):hover,
-		&:not([disabled]):hover {
-			background-color: $un-purple-dark;
-		}
-
-		&:not(.is-disabled):active,
-		&:not([disabled]):active {
-			background-color: #495D95;
+		&:not(.is-disabled),
+		&:not([disabled]) {
+			&:hover {
+				background-color: $un-purple-dark;
+			}
+			&:active {
+				background-color: #495D95;
+			}
 		}
 	}
 }
