@@ -40,9 +40,28 @@
 		cursor: not-allowed;
 	}
 
+	&--primary,
+	&--cta,
+	&--ctaAlt {
+		box-shadow: none;
+
+		&:not(.is-disabled):hover,
+		&:not([disabled]):hover,
+		&:not(.is-disabled):active,
+		&:not([disabled]):active {
+			box-shadow: none;
+		}
+
+		&.is-disabled,
+		&[disabled] {
+			background-color: $un-gray1;
+			box-shadow: none;
+			color: white;
+		}
+	}
+
 	// Primary button
 	&--primary {
-		box-shadow: none;
 		background-color: $un-gray2;
 		color: white;
 
@@ -55,16 +74,6 @@
 		&:not([disabled]):active {
 			background-color: #788090;
 			font-size: 0.875rem; // 14px
-			box-shadow: none;
-		}
-
-		// Default disabled state
-		&.is-disabled,
-		&[disabled] {
-			background-color: $un-gray1;
-			color: white;
-			cursor: not-allowed;
-			box-shadow: none;
 		}
 	}
 
@@ -72,32 +81,31 @@
 	&--cta {
 		background-color: $un-green-matte;
 		color: white;
-		box-shadow: none;
 
 		&:not(.is-disabled):hover,
 		&:not([disabled]):hover {
-			background-color: darken($un-green-matte, 5%);
-			box-shadow: none;
+			background-color: $un-green-dark;
 		}
 
-		&.is-disabled,
-		&[disabled] {
+		&:not(.is-disabled):active,
+		&:not([disabled]):active {
 			background-color: #38A967;
-			color: white;
-			cursor: not-allowed;
-			box-shadow: none;
 		}
 	}
 
-	// Blue Call to Action buttons
+	// Alternative Call to Action (Blue)
 	&--ctaAlt {
 		background-color: $un-purple;
-		border-color: transparent;
+		color: white;
 
-		&:hover,
-		&:active {
+		&:not(.is-disabled):hover,
+		&:not([disabled]):hover {
 			background-color: $un-purple-dark;
-			border-color: transparent;
+		}
+
+		&:not(.is-disabled):active,
+		&:not([disabled]):active {
+			background-color: #495D95;
 		}
 	}
 }
