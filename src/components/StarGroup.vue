@@ -71,24 +71,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../variables';
-
-.c-StarGroup {
-	font-size: 2rem;
-
-	&__star {
-		height: 1.25rem;
-		width: 1.25rem;
-		margin-right: 0.5rem;
-
-		path {
-			stroke: $un-gray2;
-		}
-
-		&.is-active path {
-			stroke: $un-yellow;
-			fill: $un-yellow;
-		}
-	}
-}
+@import 'styles/StarGroup.scss';
 </style>
