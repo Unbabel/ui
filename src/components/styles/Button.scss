@@ -2,47 +2,42 @@
 
 .c-Button {
 	display: inline-block;
-	padding: 0.625rem 1.5rem;
+	padding: 0.53125rem 1.5rem;
+	min-height: 2rem; // 32px
 	font-family: $un-font-heading;
-	font-size: 1rem;
+	font-size: 0.9375rem; // 15px
+	line-height: 0.9375rem;
 	text-align: center;
-	text-transform: uppercase;
+	font-weight: 600; // semi-bold
 	border-radius: 3px;
-	border: 1px solid;
+	border: none;
 	cursor: pointer;
 
-	transition: all 0.2s ease-in-out;
+	transition: all 0.1s ease-in-out, background-color 0.2s ease-in-out;
 
 	// Default button (it's actually a Primary button)
 	&,
 	&--primary {
 		background-color: $un-gray2;
-		border-color: $un-gray2;
 		color: white;
-		font-weight: 600;
-
-		// Default :hover state
-		&:hover,
-		&:active {
-			background-color: $un-gray3-light;
-			border-color: $un-gray3-light;
-		}
 
 		&:hover {
-			box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.10);
+			background-color: $un-gray3-light;
 		}
 
-		&:active {
-			box-shadow: none;
+		&:not(.is-disabled):active,
+		&:not([disabled]):active {
+			background-color: #788090;
+			font-size: 0.875rem; // 14px
+			// extra left+right padding to compensate and make the width the same
+			padding: 0.53125rem 1.64rem;
 		}
 
 		// Default disabled state
 		&.is-disabled,
 		&[disabled] {
 			background-color: $un-gray1;
-			border-color: $un-gray1;
 			cursor: not-allowed;
-			box-shadow: none;
 		}
 	}
 
