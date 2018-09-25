@@ -28,11 +28,11 @@ storiesOf('Button', module)
 		const content = text('Button text', 'Click me');
 		const link = text('Button link', '');
 		const kind = select('Kind', {
+			default: 'Default',
 			primary: 'Primary',
-			secondary: 'secondary',
 			cta: 'Call to Action',
 			ctaAlt: 'Call to Action (Alternative)',
-		}, 'primary');
+		}, 'default');
 		const isDisabled = boolean('Disabled', false);
 
 		return {

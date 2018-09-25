@@ -9,19 +9,45 @@
 	line-height: 0.9375rem;
 	text-align: center;
 	font-weight: 600; // semi-bold
-	border-radius: 3px;
+	box-shadow: inset 0px 0px 0px 1px $un-gray3-dark;
+	background-color: transparent;
 	border: none;
+	border-radius: 3px;
 	cursor: pointer;
 
 	transition: all 0.1s ease-in-out, background-color 0.2s ease-in-out;
 
-	// Default button (it's actually a Primary button)
-	&,
+	// Default hover state
+	&:not(.is-disabled):hover,
+	&:not([disabled]):hover {
+		background-color: #939BAB;
+		box-shadow: inset 0px 0px 0px 1px #939BAB;
+		color: white;
+	}
+
+	// Default active (pressed) state
+	&:not(.is-disabled):active,
+	&:not([disabled]):active {
+		background-color: $un-gray2-dark;
+		font-size: 0.875rem; // 14px
+	}
+
+	// Default disabled state
+	&.is-disabled,
+	&[disabled] {
+		color: $un-gray1-dark;
+		box-shadow: inset 0px 0px 0px 1px $un-gray1-dark;
+		cursor: not-allowed;
+	}
+
+	// Primary button
 	&--primary {
+		box-shadow: none;
 		background-color: $un-gray2;
 		color: white;
 
-		&:hover {
+		&:not(.is-disabled):hover,
+		&:not([disabled]):hover {
 			background-color: $un-gray3-light;
 		}
 
@@ -29,15 +55,16 @@
 		&:not([disabled]):active {
 			background-color: #788090;
 			font-size: 0.875rem; // 14px
-			// extra left+right padding to compensate and make the width the same
-			padding: 0.53125rem 1.64rem;
+			box-shadow: none;
 		}
 
 		// Default disabled state
 		&.is-disabled,
 		&[disabled] {
 			background-color: $un-gray1;
+			color: white;
 			cursor: not-allowed;
+			box-shadow: none;
 		}
 	}
 
