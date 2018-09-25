@@ -64,8 +64,8 @@ export default {
 			return {
 				'c-Button': true,
 				'is-disabled': this.disabled,
-				[`c-Button--${this.kind}`]: true,
-				[`c-Button--${this.size}`]: true,
+				[`c-Button--${this.kind}`]: this.kind.length,
+				[`c-Button--${this.size}`]: this.size.length,
 			};
 		},
 	},

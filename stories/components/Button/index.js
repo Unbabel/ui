@@ -60,18 +60,6 @@ storiesOf('Button', module)
 			},
 		};
 	})
-	.add('Secondary', () => {
-		const content = text('Button text', 'Secondary action');
-		const isDisabled = boolean('Disabled', false);
-
-		return {
-			components: { btn: Button },
-			template: `<btn kind="secondary" @click="log" :disabled="${isDisabled}">${content}</btn>`,
-			methods: {
-				log: action('clicked the secondary button'),
-			},
-		};
-	})
 	.add('Call to action', () => {
 		const content = text('Button text', 'Call to action');
 		const isDisabled = boolean('Disabled', false);
