@@ -34,6 +34,20 @@ export default {
 				].includes(kind);
 			},
 		},
+		size: {
+			type: String,
+			required: false,
+			default: () => {
+				return '';
+			},
+			validator(kind) {
+				return [
+					'',
+					'big',
+					'bigger',
+				].includes(kind);
+			},
+		},
 		href: {
 			type: String,
 			required: false,
@@ -51,6 +65,7 @@ export default {
 				'c-Button': true,
 				'is-disabled': this.disabled,
 				[`c-Button--${this.kind}`]: true,
+				[`c-Button--${this.size}`]: true,
 			};
 		},
 	},

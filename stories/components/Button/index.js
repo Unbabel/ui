@@ -33,11 +33,16 @@ storiesOf('Button', module)
 			cta: 'Call to Action',
 			ctaAlt: 'Call to Action (Alternative)',
 		}, 'default');
+		const size = select('Size', {
+			normal: 'normal',
+			big: 'big',
+			bigger: 'bigger',
+		}, 'normal');
 		const isDisabled = boolean('Disabled', false);
 
 		return {
 			components: { btn: Button },
-			template: `<btn kind="${kind}" @click="log" :disabled="${isDisabled}" href="${link}">${content}</btn>`,
+			template: `<btn kind="${kind}" size="${size}" @click="log" :disabled="${isDisabled}" href="${link}">${content}</btn>`,
 			methods: {
 				log: action('clicked the default button'),
 			},
