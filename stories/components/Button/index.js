@@ -38,11 +38,12 @@ storiesOf('Button', module)
 			big: 'big',
 			bigger: 'bigger',
 		}, 'normal');
+		const isSmallerWhenClicked = boolean('Smaller', false);
 		const isDisabled = boolean('Disabled', false);
 
 		return {
 			components: { btn: Button },
-			template: `<btn kind="${kind}" size="${size}" @click="log" :disabled="${isDisabled}" href="${link}">${content}</btn>`,
+			template: `<btn kind="${kind}" size="${size}" @click="log" :disabled="${isDisabled}" :smaller-when-clicked="${isSmallerWhenClicked}" href="${link}">${content}</btn>`,
 			methods: {
 				log: action('clicked the default button'),
 			},
@@ -50,11 +51,12 @@ storiesOf('Button', module)
 	})
 	.add('Primary', () => {
 		const content = text('Button text', 'Primary action');
+		const isSmallerWhenClicked = boolean('Smaller', false);
 		const isDisabled = boolean('Disabled', false);
 
 		return {
 			components: { btn: Button },
-			template: `<btn kind="primary" @click="log" :disabled="${isDisabled}">${content}</btn>`,
+			template: `<btn kind="primary" @click="log" :disabled="${isDisabled}" :smaller-when-clicked="${isSmallerWhenClicked}">${content}</btn>`,
 			methods: {
 				log: action('clicked the primary button'),
 			},
@@ -62,11 +64,12 @@ storiesOf('Button', module)
 	})
 	.add('Call to action', () => {
 		const content = text('Button text', 'Call to action');
+		const isSmallerWhenClicked = boolean('Smaller', false);
 		const isDisabled = boolean('Disabled', false);
 
 		return {
 			components: { btn: Button },
-			template: `<btn kind="cta" @click="log" :disabled="${isDisabled}">${content}</btn>`,
+			template: `<btn kind="cta" @click="log" :disabled="${isDisabled}" :smaller-when-clicked="${isSmallerWhenClicked}">${content}</btn>`,
 			methods: {
 				log: action('clicked the CTA button'),
 			},
@@ -74,11 +77,12 @@ storiesOf('Button', module)
 	})
 	.add('Call to action - Alt', () => {
 		const content = text('Button text', 'Call to action');
+		const isSmallerWhenClicked = boolean('Smaller', false);
 		const isDisabled = boolean('Disabled', false);
 
 		return {
 			components: { btn: Button },
-			template: `<btn kind="ctaAlt" @click="log" :disabled="${isDisabled}">${content}</btn>`,
+			template: `<btn kind="ctaAlt" @click="log" :disabled="${isDisabled}" :smaller-when-clicked="${isSmallerWhenClicked}">${content}</btn>`,
 			methods: {
 				log: action('clicked the CTA button'),
 			},

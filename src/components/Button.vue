@@ -58,12 +58,18 @@ export default {
 			required: false,
 			default: () => false,
 		},
+		smallerWhenClicked: {
+			type: Boolean,
+			required: false,
+			default: () => false,
+		},
 	},
 	computed: {
 		classObject() {
 			return {
 				'c-Button': true,
 				'is-disabled': this.disabled,
+				'is-smaller-when-clicked': this.smallerWhenClicked,
 				[`c-Button--${this.kind}`]: this.kind.length,
 				[`c-Button--${this.size}`]: this.size.length,
 			};

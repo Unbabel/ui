@@ -18,10 +18,10 @@ describe('Button', () => {
 				default: 'Click me!',
 			},
 			propsData: {
-				href: 'www.google.com',
+				href: 'www.unbabel.com',
 			},
 		});
-		expect(wrapper.html()).toEqual('<a href="www.google.com" class="c-Button">Click me!</a>');
+		expect(wrapper.html()).toEqual('<a href="www.unbabel.com" class="c-Button">Click me!</a>');
 	});
 	it('passes a valid kind prop', () => {
 		const wrapper = mount(Button, {
