@@ -53,7 +53,7 @@
 		align-content: flex-start;
 		padding-bottom: 1.25rem;
 
-		& + .c-BaseCard__middle {
+		+ .c-BaseCard__middle {
 			padding-top: 1.25rem;
 		}
 	}
