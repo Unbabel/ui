@@ -1,10 +1,16 @@
-import { mount } from '@vue/test-utils';
-import Button from '../../../src/components/Button.vue';
+import {
+	mount,
+} from '@vue/test-utils';
+import Button from '@/components/Button.vue';
 
 describe('Button', () => {
-	it('mounts properly', () => {
-		const wrapper = mount(Button);
-		expect(wrapper.html()).toBe('<button class="c-Button c-Button--secondary">Click me</button>');
+	it('mount properly', () => {
+		const wrapper = mount(Button, {
+			slots: {
+				default: 'Button',
+			},
+		});
+		expect(wrapper.html()).toEqual('<button class="c-Button c-Button--secondary">Button</button>');
 	});
 
 	it('adds the right classes', () => {

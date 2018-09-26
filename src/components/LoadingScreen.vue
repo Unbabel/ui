@@ -4,13 +4,14 @@
 			<p class="c-LoadingScreen__message" v-show="message.length">{{ message }}</p>
 
 			<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-				<g id="Instructions-Open-Copy-4" stroke="none" stroke-width="1" fill="none"
-				fill-rule="evenodd" transform="translate(-666.000000, -367.000000)">
+				<g id="Instructions-Open-Copy-4"
+				stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+				transform="translate(-666.000000, -367.000000)">
 					<g id="Group-2" transform="translate(668.000000, 369.000000)" stroke-width="4">
 						<circle id="Oval-2" stroke="#E7E9EC" cx="15" cy="15" r="15"></circle>
-						<path d="M15,0 C6.71572875,0 0,6.71572875 0,15 C0,23.2842712 6.71572875,30 15,30
-						C23.2842712,30 30,23.2842712 30,15" id="Oval-5" stroke="#3953BF"
-						stroke-linecap="round"></path>
+						<path d="M15,0 C6.71572875,0 0,6.71572875 0,15 C0,23.2842712 6.71572875,30
+						15,30 C23.2842712,30 30,23.2842712 30,15" id="Oval-5"
+						stroke="#3953BF" stroke-linecap="round"></path>
 					</g>
 				</g>
 			</svg>
@@ -59,8 +60,6 @@ export default {
 		width: 2.1rem;
 		height: 2.1rem;
 
-		-webkit-animation: spin 1.5s ease infinite;
-		-moz-animation: spin 1.5s ease infinite;
 		animation: spin 1.5s ease infinite;
 	}
 
@@ -100,7 +99,9 @@ export default {
 	}
 }
 
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+@keyframes spin {
+	100% {
+		transform:rotate(360deg);
+	}
+}
 </style>

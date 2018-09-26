@@ -13,7 +13,7 @@
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam cupiditate natus nostrum? Esse error dolor suscipit. Animi, eveniet, inventore magnam ratione molestiae vitae quam omnis rem nulla dicta veniam similique.
 			</p>
 			<div slot="footer">
-				<btn kind="secondary" :click-handler="closeModal">Close</btn>
+				<btn kind="secondary" @click="closeModal">Close</btn>
 				<btn kind="primary">Send</btn>
 			</div>
 		</modal>
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import Modal from '../../src/components/Modal.vue';
-import Button from '../../src/components/Button.vue';
+import Modal from '@/components/Modal.vue';
+import Button from '@/components/Button.vue';
 
 export default {
 	data() {

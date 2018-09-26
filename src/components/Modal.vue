@@ -1,13 +1,15 @@
 <template>
 	<div class="c-Modal" v-bind:class="cssClasses">
-		<div class="c-Modal__overlay" v-bind:class="{'is-transparent': !showOverlay}" @click="clickedOnOutside"></div>
+		<div class="c-Modal__overlay" v-bind:class="{'is-transparent': !showOverlay}"
+			@click="clickedOnOutside"></div>
 		<div class="c-Modal__main" v-bind:role="modalRole" v-bind:aria-label="title">
 			<div class="c-Modal__top">
-				<btn v-show="closeIcon" id="js-modal-close" class="c-Modal__closeIcon" role="secondary" :click-handler="clickedOnClose" aria-label="Close">
+				<btn v-show="closeIcon" id="js-modal-close" class="c-Modal__closeIcon" role="secondary" @click="clickedOnClose" aria-label="Close">
 					<svg width="192px" height="192px" viewBox="0 0 192 192" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 						<g id="Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 							<g id="close-icon" fill-rule="nonzero">
-								<polygon id="Shape" points="180.2 0 95.8 84.3 11.8 0.4 0 12.2 84 96 0 179.9 11.8 191.6 95.8 107.8 180.2 192 192 180.3 107.6 96 192 11.8"></polygon>
+								<polygon id="Shape" points="180.2 0 95.8 84.3 11.8 0.4 0 12.2 84 96 0
+								179.9 11.8 191.6 95.8 107.8 180.2 192 192 180.3 107.6 96 192 11.8"></polygon>
 							</g>
 						</g>
 					</svg>
@@ -34,6 +36,7 @@
 import Button from './Button.vue';
 
 export default {
+	name: 'Modal',
 	components: {
 		btn: Button,
 	},
@@ -121,6 +124,7 @@ export default {
 	},
 	watch: {
 		// this function can't be an arrow function
+		// eslint-disable-next-line
 		active: function () {
 			if (this.active) {
 				// Listen to keypresses
@@ -142,9 +146,9 @@ export default {
 				// Stop listening to keypresses
 				document.removeEventListener('keydown', this.pressedKey);
 			}
-		}
+		},
 	},
-}
+};
 </script>
 
 <style lang="scss" scoped>

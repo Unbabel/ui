@@ -1,23 +1,17 @@
 <template>
-	<div class="c-TopBar">
+	<header class="c-TopBar">
 		<div class="c-TopBar__container" :style="'max-width: ' + containerWidth + 'px'">
-			<slot name="left" class="c-TopBar__left">
-				<div class="c-TopBar__left">
-					Left placeholder
-				</div>
-			</slot>
-			<slot name="middle">
-				<div class="c-TopBar__middle">
-					Middle placeholder
-				</div>
-			</slot>
-			<slot name="right">
-				<div class="c-TopBar__right">
-					Right placeholder
-				</div>
-			</slot>
+			<div class="c-TopBar__left">
+				<slot name="left"></slot>
+			</div>
+			<div class="c-TopBar__middle">
+				<slot name="middle"></slot>
+			</div>
+			<div class="c-TopBar__right">
+				<slot name="right"></slot>
+			</div>
 		</div>
-	</div>
+	</header>
 </template>
 
 <script>
@@ -29,7 +23,7 @@ export default {
 			default: 'nope',
 		},
 	},
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -41,8 +35,6 @@ export default {
 	color: $un-gray2-dark;
 	font-family: $un-font-main;
 
-	-webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.36);
-	-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.36);
 	box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.36);
 
 	&__container {

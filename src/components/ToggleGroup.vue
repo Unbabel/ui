@@ -1,13 +1,12 @@
 <template>
 	<div class="c-ToggleGroup">
-		<div v-show="hasToggleAll"
-			 class="c-ToggleGroup__item" v-bind:class="{'is-active': all}"
-			 v-on:click="clickedOnAll(all)">
+		<div v-show="hasToggleAll" class="c-ToggleGroup__item" v-bind:class="{'is-active': all}"
+			v-on:click="clickedOnAll(all)">
 			All
 		</div>
 		<div v-show="!item.hidden"
-			 class="c-ToggleGroup__item" v-bind:class="{'is-active': item.isActive}"
-			 v-for="item in toggles" :key="item.id" v-on:click="clickedOnItem(item)">
+			class="c-ToggleGroup__item" v-bind:class="{'is-active': item.isActive}"
+			v-for="item in toggles" :key="item.id" v-on:click="clickedOnItem(item)">
 			{{ item.label }}
 			<span v-show="item.name.length"
 				class="c-ToggleGroup__tooltip" :class="{'is-right-side': tooltipSide === 'right'}">
