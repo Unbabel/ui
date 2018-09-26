@@ -1,0 +1,128 @@
+@import '../variables';
+
+.c-Button {
+	display: inline-block;
+	padding: 0.53125rem 1.5rem;
+	min-height: 2rem; // 32px
+	font-family: $un-font-heading;
+	font-size: 0.9375rem; // 15px
+	line-height: 0.9375rem;
+	text-align: center;
+	font-weight: 600; // semi-bold
+	box-shadow: inset 0px 0px 0px 1px $un-gray3-dark;
+	background-color: transparent;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+
+	transition: all 0.1s ease-in-out, background-color 0.2s ease-in-out;
+
+	// as Link exception
+	@at-root a#{&} {
+		text-decoration: none;
+	}
+
+	&:not(.is-disabled),
+	&:not([disabled]) {
+		// Default hover state
+		&:hover {
+			background-color: #939BAB;
+			box-shadow: inset 0 0 0 1px #939BAB;
+			color: white;
+		}
+
+		// Default active (pressed) state
+		&:active {
+			background-color: $un-gray2-dark;
+		}
+
+		&.is-smaller-when-clicked:active {
+			font-size: 0.875rem; // 14px
+		}
+	}
+
+	// Default disabled state
+	&.is-disabled,
+	&[disabled] {
+		color: $un-gray1-dark;
+		box-shadow: inset 0 0 0 1px $un-gray1-dark;
+		cursor: not-allowed;
+	}
+
+	&--primary,
+	&--cta,
+	&--ctaAlt {
+		box-shadow: none;
+
+		&:not(.is-disabled),
+		&:not([disabled]) {
+			&:hover, &:active {
+				box-shadow: none;
+			}
+		}
+
+		&.is-disabled,
+		&[disabled] {
+			background-color: $un-gray1;
+			box-shadow: none;
+			color: white;
+		}
+	}
+
+	// Primary button
+	&--primary {
+		background-color: $un-gray2;
+		color: white;
+
+		&:not(.is-disabled),
+		&:not([disabled]) {
+			&:hover {
+				background-color: $un-gray3-light;
+			}
+			&:active {
+				background-color: #788090;
+				font-size: 0.875rem; // 14px
+			}
+		}
+	}
+
+	// Call to Action (Green)
+	&--cta {
+		background-color: $un-green-matte;
+		color: white;
+
+		&:not(.is-disabled),
+		&:not([disabled]) {
+			&:hover {
+				background-color: $un-green-dark;
+			}
+			&:active {
+				background-color: #38A967;
+			}
+		}
+	}
+
+	// Alternative Call to Action (Blue)
+	&--ctaAlt {
+		background-color: $un-purple;
+		color: white;
+
+		&:not(.is-disabled),
+		&:not([disabled]) {
+			&:hover {
+				background-color: $un-purple-dark;
+			}
+			&:active {
+				background-color: #495D95;
+			}
+		}
+	}
+
+	&--big {
+		padding: 0.79rem 1.5rem;
+	}
+
+	&--bigger {
+		padding: 1.05rem 1.5rem;
+	}
+}

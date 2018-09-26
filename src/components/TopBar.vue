@@ -27,39 +27,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../variables';
-
-.c-TopBar {
-	background-color: white;
-	font-size: 16px;
-	color: $un-gray2-dark;
-	font-family: $un-font-main;
-
-	-webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.36);
-	-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.36);
-	box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.36);
-
-	&__container {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		margin: 0 auto;
-		width: 100%;
-
-		> div {
-			display: flex;
-			flex-direction: row;
-			padding: 0.6rem 0.8rem;
-
-			&:nth-child(2) {
-				text-align: center;
-			}
-
-			&:nth-child(3) {
-				text-align: right;
-			}
-		}
-	}
-}
+@import 'styles/TopBar.scss';
 </style>
