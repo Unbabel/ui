@@ -28,16 +28,21 @@ storiesOf('Button', module)
 		const content = text('Button text', 'Click me');
 		const link = text('Button link', '');
 		const kind = select('Kind', {
+			default: 'Default',
 			primary: 'Primary',
-			secondary: 'secondary',
 			cta: 'Call to Action',
 			ctaAlt: 'Call to Action (Alternative)',
-		}, 'primary');
+		}, 'default');
+		const size = select('Size', {
+			normal: 'normal',
+			big: 'big',
+			bigger: 'bigger',
+		}, 'normal');
 		const isDisabled = boolean('Disabled', false);
 
 		return {
 			components: { btn: Button },
-			template: `<btn kind="${kind}" @click="log" :disabled="${isDisabled}" href="${link}">${content}</btn>`,
+			template: `<btn kind="${kind}" size="${size}" @click="log" :disabled="${isDisabled}" href="${link}">${content}</btn>`,
 			methods: {
 				log: action('clicked the default button'),
 			},
@@ -52,18 +57,6 @@ storiesOf('Button', module)
 			template: `<btn kind="primary" @click="log" :disabled="${isDisabled}">${content}</btn>`,
 			methods: {
 				log: action('clicked the primary button'),
-			},
-		};
-	})
-	.add('Secondary', () => {
-		const content = text('Button text', 'Secondary action');
-		const isDisabled = boolean('Disabled', false);
-
-		return {
-			components: { btn: Button },
-			template: `<btn kind="secondary" @click="log" :disabled="${isDisabled}">${content}</btn>`,
-			methods: {
-				log: action('clicked the secondary button'),
 			},
 		};
 	})
