@@ -12,6 +12,17 @@ describe('Button', () => {
 		});
 		expect(wrapper.html()).toEqual('<button class="c-Button">Click me!</button>');
 	});
+	it("mounts properly if it's a <a> element", () => {
+		const wrapper = mount(Button, {
+			slots: {
+				default: 'Click me!',
+			},
+			propsData: {
+				href: 'www.unbabel.com',
+			},
+		});
+		expect(wrapper.html()).toEqual('<a href="www.unbabel.com" class="c-Button">Click me!</a>');
+	});
 	it('passes a valid kind prop', () => {
 		const wrapper = mount(Button, {
 			slots: {
