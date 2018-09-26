@@ -2,9 +2,9 @@ This component works like a classic `<button>` element but can also be used as a
 
 To use this component as an `<a>` element you must provide the `href` prop.
 
-Besides its default state, it has 3 visual variations, check the `kind` prop.
+Besides its default state, it has 3 visual variations (`kind` prop) and 2 size variations (`size` prop).
 
-There are also 2 size variations, check the `size` prop.
+There is also an extra CSS class `is-smaller-when-clicked` that makes the button a bit smaller when it's being clicked.
 
 It can also be disabled using the `disabled` prop.
 

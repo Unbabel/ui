@@ -34,6 +34,9 @@
 		// Default active (pressed) state
 		&:active {
 			background-color: $un-gray2-dark;
+		}
+
+		&.is-smaller-when-clicked:active {
 			font-size: 0.875rem; // 14px
 		}
 	}
