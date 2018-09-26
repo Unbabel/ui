@@ -24,13 +24,27 @@ export default {
 		kind: {
 			type: String,
 			required: false,
-			default: () => 'secondary',
+			default: () => '',
 			validator(kind) {
 				return [
+					'',
 					'primary',
-					'secondary',
 					'cta',
 					'ctaAlt',
+				].includes(kind);
+			},
+		},
+		size: {
+			type: String,
+			required: false,
+			default: () => {
+				return '';
+			},
+			validator(kind) {
+				return [
+					'',
+					'big',
+					'bigger',
 				].includes(kind);
 			},
 		},
@@ -44,13 +58,20 @@ export default {
 			required: false,
 			default: () => false,
 		},
+		smallerWhenClicked: {
+			type: Boolean,
+			required: false,
+			default: () => false,
+		},
 	},
 	computed: {
 		classObject() {
 			return {
 				'c-Button': true,
 				'is-disabled': this.disabled,
-				[`c-Button--${this.kind}`]: true,
+				'is-smaller-when-clicked': this.smallerWhenClicked,
+				[`c-Button--${this.kind}`]: this.kind.length,
+				[`c-Button--${this.size}`]: this.size.length,
 			};
 		},
 	},

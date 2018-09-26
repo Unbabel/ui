@@ -2,108 +2,127 @@
 
 .c-Button {
 	display: inline-block;
-	padding: 0.625rem 1.5rem;
+	padding: 0.53125rem 1.5rem;
+	min-height: 2rem; // 32px
 	font-family: $un-font-heading;
-	font-size: 1rem;
+	font-size: 0.9375rem; // 15px
+	line-height: 0.9375rem;
 	text-align: center;
-	text-transform: uppercase;
+	font-weight: 600; // semi-bold
+	box-shadow: inset 0px 0px 0px 1px $un-gray3-dark;
+	background-color: transparent;
+	border: none;
 	border-radius: 3px;
-	border: 1px solid;
 	cursor: pointer;
 
-	transition: all 0.2s ease-in-out;
+	transition: all 0.1s ease-in-out, background-color 0.2s ease-in-out;
 
 	// as Link exception
 	@at-root a#{&} {
 		text-decoration: none;
 	}
-	// will generate a.c-Button
 
-	// Default button (it's actually a Primary button)
-	&,
-	&--primary {
-		background-color: $un-gray2;
-		border-color: $un-gray2;
-		color: white;
-		font-weight: 600;
-
-		// Default :hover state
-		&:hover,
-		&:active {
-			background-color: $un-gray3-light;
-			border-color: $un-gray3-light;
-		}
-
+	&:not(.is-disabled),
+	&:not([disabled]) {
+		// Default hover state
 		&:hover {
-			box-shadow: 0 3px 5px 0 rgba(0,0,0,0.10);
-		}
-
-		&:active {
-			box-shadow: none;
-		}
-
-		// Default disabled state
-		&.is-disabled,
-		&[disabled] {
-			background-color: $un-gray1;
-			border-color: $un-gray1;
-			cursor: not-allowed;
-			box-shadow: none;
-		}
-	}
-
-	// Secondary buttons
-	&--secondary {
-		background-color: transparent;
-		border-color: $un-gray2-dark;
-		color: $un-gray3-light;
-
-		&:hover,
-		&:active {
-			background-color: transparent;
-			color: $un-purple;
-			border-color: $un-purple;
-		}
-
-		&.is-disabled,
-		&[disabled] {
-			background-color: transparent;
-			color: $un-gray1-dark;
-			border-color: $un-gray1-dark;
-		}
-	}
-
-	// Call to Action buttons
-	&--cta {
-		background-color: $un-green-matte;
-		color: white;
-		border: 1px solid $un-green-matte;
-
-		&:hover,
-		&:active {
-			background-color: darken($un-green-matte, 5%);
-			border-color: darken($un-green-matte, 5%);
+			background-color: #939BAB;
+			box-shadow: inset 0 0 0 1px #939BAB;
 			color: white;
 		}
 
-		&.is-disabled,
-		&[disabled] {
-			background-color: $un-gray1;
-			text-shadow: none;
-			border-color: $un-gray1-dark;
-			color: $un-gray1-dark;
+		// Default active (pressed) state
+		&:active {
+			background-color: $un-gray2-dark;
+		}
+
+		&.is-smaller-when-clicked:active {
+			font-size: 0.875rem; // 14px
 		}
 	}
 
-	// Blue Call to Action buttons
+	// Default disabled state
+	&.is-disabled,
+	&[disabled] {
+		color: $un-gray1-dark;
+		box-shadow: inset 0 0 0 1px $un-gray1-dark;
+		cursor: not-allowed;
+	}
+
+	&--primary,
+	&--cta,
+	&--ctaAlt {
+		box-shadow: none;
+
+		&:not(.is-disabled),
+		&:not([disabled]) {
+			&:hover, &:active {
+				box-shadow: none;
+			}
+		}
+
+		&.is-disabled,
+		&[disabled] {
+			background-color: $un-gray1;
+			box-shadow: none;
+			color: white;
+		}
+	}
+
+	// Primary button
+	&--primary {
+		background-color: $un-gray2;
+		color: white;
+
+		&:not(.is-disabled),
+		&:not([disabled]) {
+			&:hover {
+				background-color: $un-gray3-light;
+			}
+			&:active {
+				background-color: #788090;
+				font-size: 0.875rem; // 14px
+			}
+		}
+	}
+
+	// Call to Action (Green)
+	&--cta {
+		background-color: $un-green-matte;
+		color: white;
+
+		&:not(.is-disabled),
+		&:not([disabled]) {
+			&:hover {
+				background-color: $un-green-dark;
+			}
+			&:active {
+				background-color: #38A967;
+			}
+		}
+	}
+
+	// Alternative Call to Action (Blue)
 	&--ctaAlt {
 		background-color: $un-purple;
-		border-color: transparent;
+		color: white;
 
-		&:hover,
-		&:active {
-			background-color: $un-purple-dark;
-			border-color: transparent;
+		&:not(.is-disabled),
+		&:not([disabled]) {
+			&:hover {
+				background-color: $un-purple-dark;
+			}
+			&:active {
+				background-color: #495D95;
+			}
 		}
+	}
+
+	&--big {
+		padding: 0.79rem 1.5rem;
+	}
+
+	&--bigger {
+		padding: 1.05rem 1.5rem;
 	}
 }
