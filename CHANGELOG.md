@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [[v2.0.0](https://github.com/Unbabel/ui/compare/v1.4.3...v2.0.0)] - 2018-10-25
+### Changed
+- Button component API
+
 ## [[v1.4.3](https://gitlab.com/Unbabel/ui/compare/v1.4.2...v1.4.3)] - 2018-08-27
 ### Added
 - Basic documentation for the components
