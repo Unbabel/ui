@@ -148,7 +148,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.c-Timer {
-	display: inline;
-}
+@import 'styles/Timer.scss';
 </style>
