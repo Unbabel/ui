@@ -13,6 +13,12 @@
 
 	transition: all 0.2s ease-in-out;
 
+	// as Link exception
+	@at-root a#{&} {
+		text-decoration: none;
+	}
+	// will generate a.c-Button
+
 	// Default button (it's actually a Primary button)
 	&,
 	&--primary {

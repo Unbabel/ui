@@ -21,7 +21,9 @@ storiesOf('Modal', module)
 		return {
 			data: () => {
 				return {
+					title: 'Modal',
 					isModalActive: false,
+					showOverlay: true,
 				};
 			},
 			components: {
@@ -44,7 +46,7 @@ storiesOf('Modal', module)
 	<modal :active="isModalActive" :title="title" :show-overlay="showOverlay">
 		<p slot="content">This is the <strong>main</strong> text.</p>
 		<div slot="footer">
-			<btn kind="secondary" :click-handler="closeModal">Close</btn>
+			<btn kind="secondary" @click="closeModal">Close</btn>
 			<btn kind="primary">Send</btn>
 		</div>
 	</modal>

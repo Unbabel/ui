@@ -1,16 +1,30 @@
-<template>
-	<button class="c-Button" :class="classObject" @click="openLink">
-		<slot>Click me</slot>
-	</button>
-</template>
-
 <script>
 export default {
+	render(h) {
+		// Lets us change the type of element if is link
+		let elementName = 'button';
+		if (this.href) {
+			elementName = 'a';
+		}
+
+		// If button, allow disabled
+		// links have no disabled attribute
+		const disabled = (elementName === 'button') ? this.disabled : undefined;
+
+		return h(elementName, {
+			class: this.classObject,
+			on: this.$listeners, // Binds any listeners from element instance
+			attrs: {
+				href: this.href,
+				disabled,
+			},
+		}, this.$slots.default);
+	},
 	props: {
 		kind: {
 			type: String,
 			required: false,
-			default: 'secondary',
+			default: () => 'secondary',
 			validator(kind) {
 				return [
 					'primary',
@@ -20,36 +34,21 @@ export default {
 				].includes(kind);
 			},
 		},
-		link: {
+		href: {
 			type: String,
 			required: false,
-			default: '',
-		},
-		clickHandler: {
-			required: false,
-			// eslint-disable-next-line
-			default: () => () => null,
+			default: () => undefined,
 		},
 		disabled: {
 			type: Boolean,
 			required: false,
-			default: false,
-		},
-	},
-	methods: {
-		openLink(event) {
-			if (this.clickHandler) {
-				this.clickHandler(event);
-			}
-
-			if (this.link.length) {
-				window.open(this.link, '_blank');
-			}
+			default: () => false,
 		},
 	},
 	computed: {
 		classObject() {
 			return {
+				'c-Button': true,
 				'is-disabled': this.disabled,
 				[`c-Button--${this.kind}`]: true,
 			};
