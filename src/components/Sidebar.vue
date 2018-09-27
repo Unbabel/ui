@@ -36,7 +36,7 @@ export default {
 	methods: {
 		clickedOnTab(index) {
 			// eslint-disable-next-line
-			console.log('fire an event! clicked on a tab!');
+			// console.log('fire an event! clicked on a tab!');
 			this.$emit('clicked-on-tab', index, this.side);
 		},
 	},
