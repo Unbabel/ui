@@ -26,7 +26,6 @@ describe('Base Card', () => {
 		expect(html).toContain('<div class="c-BaseCard is-sidebar-active">');
 	});
 
-	/*
 	it('shows the sidebar and its custom content', () => {
 		const component = mount(BaseCard, {
 			propsData: {
@@ -40,8 +39,6 @@ describe('Base Card', () => {
 			collapseWhitespace: true,
 		});
 
-		expect(component.vm.sidebarClasses['is-active']).toBeTruthy();
-		expect(html).toContain('<div class="c-BaseCard__sidebar beep is-active">coolest sidebar');
+		expect(html).toContain('<div class="c-BaseCard__sidebar beep">coolest sidebar');
 	});
-	*/
 });
