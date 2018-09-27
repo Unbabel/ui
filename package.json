@@ -4,7 +4,7 @@
   "description": "Samora Design System - The component library for Unbabel User Interfaces",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --no-cache --coverage",
     "lint": "eslint src test",
     "fix-lint": "eslint --fix src test",
     "storybook": "start-storybook -p 9001 -c .storybook",
