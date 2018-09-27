@@ -16,6 +16,9 @@
 
 <script>
 export default {
+	data() {
+		return {};
+	},
 	props: {
 		containerWidth: {
 			type: String,
