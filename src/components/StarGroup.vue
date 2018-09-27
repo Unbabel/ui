@@ -27,6 +27,9 @@
 
 <script>
 export default {
+	data() {
+		return {};
+	},
 	props: {
 		value: {
 			type: Number,
