@@ -34,10 +34,6 @@
 		flex-basis: 28%;
 		background-color: $un-purple-lightest;
 		display: none;
-
-		&.is-active {
-			display: flex;
-		}
 	}
 
 	&__top,
@@ -125,5 +121,9 @@
 		color: $un-purple;
 		font-weight: 600;
 		font-size: 1.2rem;
+	}
+
+	&.is-sidebar-active {
+		display: flex;
 	}
 }

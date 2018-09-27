@@ -1,5 +1,5 @@
 <template>
-	<div class="c-BaseCard">
+	<div class="c-BaseCard" :class="cssClasses">
 		<slot name="main">
 			<div class="c-BaseCard__main">
 				<slot name="top">
@@ -41,8 +41,7 @@
 				</slot>
 			</div>
 		</slot>
-		<!-- FIXME: these classes aren't actually passed -->
-		<slot name="sidebar" :class="sidebarClasses">
+		<slot name="sidebar">
 			<div class="c-BaseCard__sidebar">
 				sidebar
 			</div>
@@ -69,9 +68,9 @@ export default {
 		},
 	},
 	computed: {
-		sidebarClasses() {
+		cssClasses() {
 			return {
-				'is-active': this.isSidebarVisible,
+				'is-sidebar-active': this.isSidebarVisible,
 			};
 		},
 	},
