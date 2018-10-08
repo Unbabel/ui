@@ -28,16 +28,16 @@ storiesOf('Button', module)
 		const content = text('Button text', 'Click me');
 		const link = text('Button link', '');
 		const kind = select('Kind', {
-			default: 'Default',
+			'': 'Default',
 			primary: 'Primary',
 			cta: 'Call to Action',
 			ctaAlt: 'Call to Action (Alternative)',
-		}, 'default');
+		}, '');
 		const size = select('Size', {
-			normal: 'normal',
+			'': 'normal',
 			big: 'big',
 			bigger: 'bigger',
-		}, 'normal');
+		}, '');
 		const isSmallerWhenClicked = boolean('Smaller', false);
 		const isDisabled = boolean('Disabled', false);
 
