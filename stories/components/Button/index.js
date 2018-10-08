@@ -17,7 +17,7 @@ storiesOf('Button', module)
 			},
 			template: '<Button kind="primary" @click="handleClick">Click me</Button>',
 			propsDescription: {
-				kind: 'One of [primary, secondary, cta, ctaAlt]',
+				kind: 'One of [primary, cta, ctaAlt]',
 				href: 'When used, Button behaves just like a <a> element',
 				disabled: 'Disables the Button element. When used together with \'href\' it will have the class \'is-disabled\'',
 			},
