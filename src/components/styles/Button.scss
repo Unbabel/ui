@@ -37,7 +37,7 @@
 		}
 
 		&.is-smaller-when-clicked:active {
-			font-size: 0.875rem; // 14px
+			transform: scale(0.98);
 		}
 	}
 
