@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [[v2.0.0](https://github.com/Unbabel/ui/compare/v1.4.3...v2.0.0)] - 2018-10-25
+## [[v2.0.1](https://github.com/Unbabel/ui/compare/v2.0.0...v2.0.1)] - 2018-10-02
+### Fixed
+- Button font-size
+
+## [[v2.0.0](https://github.com/Unbabel/ui/compare/v1.4.3...v2.0.0)] - 2018-09-25
 ### Changed
 - Button component API
 
