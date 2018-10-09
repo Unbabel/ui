@@ -1,6 +1,6 @@
 {
   "name": "@unbabel/ui",
-  "version": "1.4.1",
+  "version": "2.0.1",
   "description": "Samora Design System - The component library for Unbabel User Interfaces",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "storybook-build": "build-storybook -c .storybook -o storybook-dist",
     "build": "npm run storybook-build"
   },
-  "repository": "gitlab:Unbabel/ui",
+  "repository": "github:Unbabel/ui",
   "keywords": [
     "component",
     "library",
@@ -36,32 +36,35 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/Unbabel/ui/issues"
+    "url": "https://github.com/Unbabel/ui/issues"
   },
   "homepage": "https://unbabel.gitlab.io/ui/",
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.16",
-    "@vuedoc/md": "^1.1.1",
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.5",
     "babel-jest": "^23.2.0",
     "codacy-coverage": "^3.0.0",
-    "eslint": "^4.17.0",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "jest": "^23.2.0",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^6.0.6",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-plugin-html": "^4.0.5",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-vue": "^4.5.0",
+    "jest": "^23.3.0",
+    "node-sass": "^4.9.2",
+    "sass-loader": "^6.0.7",
     "vue-jest": "^2.6.0",
-    "vue-loader": "^14.1.1",
-    "vue-template-compiler": "^2.5.13"
+    "vue-loader": "^14.2.1",
+    "vue-template-compiler": "^2.5.16"
   },
   "dependencies": {
     "@storybook/addon-actions": "^3.4.8",
     "@storybook/addon-knobs": "^3.4.8",
     "@storybook/addon-notes": "^3.4.8",
-    "@storybook/addon-info": "^3.4.8",
     "@storybook/addon-options": "^3.4.8",
     "@storybook/vue": "^3.4.8",
-    "vue": "^2.5.13"
+    "storybook-addon-vue-info": "^0.6.1",
+    "vue": "^2.5.16"
   }
 }
