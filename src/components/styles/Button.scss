@@ -10,10 +10,10 @@
 	text-align: center;
 	font-weight: 600; // semi-bold
 	color: $un-gray3-light;
-	box-shadow: inset 0px 0px 0px 1px $un-gray3-dark;
+	box-shadow: inset 0px 0px 0px $un-control-border-width $un-gray3-dark;
 	background-color: transparent;
 	border: none;
-	border-radius: 3px;
+	border-radius: $un-control-radius;
 	cursor: pointer;
 
 	transition: all 0.1s ease-in-out, background-color 0.2s ease-in-out;
@@ -28,7 +28,7 @@
 		// Default hover state
 		&:hover {
 			background-color: #939BAB;
-			box-shadow: inset 0 0 0 1px #939BAB;
+			box-shadow: inset 0 0 0 $un-control-border-width #939BAB;
 			color: white;
 		}
 
@@ -46,7 +46,7 @@
 	&.is-disabled,
 	&[disabled] {
 		color: $un-gray1-dark;
-		box-shadow: inset 0 0 0 1px $un-gray1-dark;
+		box-shadow: inset 0 0 0 $un-control-border-width $un-gray1-dark;
 		cursor: not-allowed;
 	}
 

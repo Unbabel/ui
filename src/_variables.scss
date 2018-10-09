@@ -5,3 +5,10 @@
 // Typography
 $un-font-heading: 'Montserrat', sans-serif;
 $un-font-main: 'Open Sans', sans-serif;
+
+// Controls - Form elements such as buttons, inputs, etc.
+$un-control-radius: 3px !default; // Describes the radius of form control elements
+$un-control-border-width: 1px !default;
+
+// Modal
+$un-modal-radius: 2px !default; // Describes the radius of modal

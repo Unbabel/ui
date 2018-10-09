@@ -52,12 +52,12 @@
 
 	// Round the corners
 	&__top {
-		border-top-left-radius: 2px;
-		border-top-right-radius: 2px;
+		border-top-left-radius: $un-modal-radius;
+		border-top-right-radius: $un-modal-radius;
 	}
 	&__bottom {
-		border-bottom-left-radius: 2px;
-		border-bottom-right-radius: 2px;
+		border-bottom-left-radius: $un-modal-radius;
+		border-bottom-right-radius: $un-modal-radius;
 	}
 
 	&__top,
@@ -146,8 +146,8 @@
 
 	&.is-footerless {
 		.c-Modal__middle {
-			border-bottom-left-radius: 2px;
-			border-bottom-right-radius: 2px;
+			border-bottom-left-radius: $un-modal-radius;
+			border-bottom-right-radius: $un-modal-radius;
 		}
 	}
 }
