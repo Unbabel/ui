@@ -94,10 +94,10 @@
 	}
 
 	&--include-default-style &__middle {
-		:first-child {
+		> :first-child {
 			padding-top: 0.7rem;
 		}
-		:last-child {
+		> :last-child {
 			padding-bottom: 2.3rem;
 		}
 	}
