@@ -17,7 +17,7 @@ storiesOf('Button', module)
 			},
 			template: '<Button kind="primary" @click="handleClick">Click me</Button>',
 			propsDescription: {
-				kind: 'One of [primary, secondary, cta, ctaAlt]',
+				kind: 'One of [primary, cta, ctaAlt]',
 				href: 'When used, Button behaves just like a <a> element',
 				disabled: 'Disables the Button element. When used together with \'href\' it will have the class \'is-disabled\'',
 			},
@@ -28,16 +28,16 @@ storiesOf('Button', module)
 		const content = text('Button text', 'Click me');
 		const link = text('Button link', '');
 		const kind = select('Kind', {
-			default: 'Default',
+			'': 'Default',
 			primary: 'Primary',
 			cta: 'Call to Action',
 			ctaAlt: 'Call to Action (Alternative)',
-		}, 'default');
+		}, '');
 		const size = select('Size', {
-			normal: 'normal',
+			'': 'normal',
 			big: 'big',
 			bigger: 'bigger',
-		}, 'normal');
+		}, '');
 		const isSmallerWhenClicked = boolean('Smaller', false);
 		const isDisabled = boolean('Disabled', false);
 
