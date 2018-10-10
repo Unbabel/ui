@@ -93,17 +93,19 @@
 		}
 	}
 
-	&__middle {
-		padding-top: 0;
-		padding-bottom: 0;
-		overflow-y: auto;
-
+	&--include-default-style &__middle {
 		:first-child {
 			padding-top: 0.7rem;
 		}
 		:last-child {
 			padding-bottom: 2.3rem;
 		}
+	}
+
+	&__middle {
+		padding-top: 0;
+		padding-bottom: 0;
+		overflow-y: auto;
 	}
 
 	// Align the buttons to the right
