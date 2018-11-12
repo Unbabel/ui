@@ -4,9 +4,10 @@
 .c-FormInputText {
 	display: inline-block;
 	vertical-align: $un-form-vertical-align;
+	font-size: 1rem;
 
   &__label {
-    margin-bottom: 6px;
+    margin-bottom: $un-form-label-bottom-margin;
   }
   &__controlContainer {
     position: relative;
@@ -14,14 +15,14 @@
   &__control {
 		display: block;
 		box-sizing: border-box;
+		font-size: 0.875rem;
     width: 100%;
     color: $un-gray4-light;
-    border-radius: 5px;
-    border: 1px solid $un-gray2-dark;
-    padding: 0 16px;
-    padding-right: 58px;
+    border-radius: $un-control-radius;
+    border: $un-form-border-width solid $un-gray2-dark;
+    padding: 0 1rem;
     background-color: #fff;
-    -webkit-appearance: none;
+		-webkit-appearance: none;
 		cursor: pointer;
   }
 
@@ -31,10 +32,14 @@
     line-height: 31px;
   }
   &--big &__control {
+		font-size: 1rem;
 		height: 40px;
-    line-height: 39px;
+    line-height: 40px;
   }
   &--bigger &__control {
+		font-size: 1rem;
+		height: 48px;
+    line-height: 47px;
   }
 
   // Disabled state
