@@ -1,5 +1,6 @@
 import './components/Button';
 import './components/InputText';
+import './components/Select';
 import './components/Textarea';
 import './components/Modal';
 import './components/TopBar';
