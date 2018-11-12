@@ -1,5 +1,5 @@
 <template>
-	<label class="c-FormTextarea" :disabled="disabled">
+	<label class="c-FormTextarea" :class="classObject" :disabled="disabled">
 		<div class="c-FormTextarea__label" v-show="showLabel">{{ label }}</div>
 		<div class="c-FormTextarea__controlContainer">
 			<textarea
@@ -16,8 +16,13 @@
 </template>
 
 <script>
+import SizeMixin from '../mixins/SizeMixin';
+
 export default {
 	name: 'Textarea',
+	mixins: [
+		SizeMixin,
+	],
 	model: {
 		prop: 'value',
 		event: 'changeModel',
@@ -57,19 +62,16 @@ export default {
 			default: () => true,
 		},
 		rows: {
-			type: Number,
+			type: [Number, String],
 			required: false,
 			default: () => 1,
 		},
 	},
-	watch: {
-		selected(newValue) {
-			if (newValue === undefined) {
-				const {
-					select,
-				} = this.$refs;
-				select.selectedIndex = undefined;
-			}
+	computed: {
+		classObject() {
+			return {
+				[`c-FormTextarea--${this.size}`]: this.size.length,
+			};
 		},
 	},
 	methods: {
