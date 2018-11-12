@@ -3,14 +3,16 @@ export default {
 		size: {
 			type: String,
 			required: false,
-			default: () => '',
-			validator(kind) {
-			  return [
-				'',
-				'big',
-				'bigger',
-			  ].includes(kind);
+			default() {
+				return '';
 			},
-		  },
+			validator(kind) {
+				return [
+					'',
+					'big',
+					'bigger',
+				].includes(kind);
+			},
+		},
 	},
 }
