@@ -2,6 +2,7 @@
 
 .c-Button {
 	display: inline-block;
+	vertical-align: $un-form-vertical-align;
 	padding: 0.53125rem 1.5rem;
 	min-height: 2rem; // 32px
 	font-family: $un-font-heading;
