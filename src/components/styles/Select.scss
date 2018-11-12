@@ -1,0 +1,75 @@
+@import '../../variables';
+@import '../../colors';
+
+.c-FormSelect {
+	display: inline-block;
+	vertical-align: $un-form-vertical-align;
+
+  &__label {
+    margin-bottom: 6px;
+  }
+  &__controlContainer {
+    position: relative;
+  }
+  &__control {
+		display: block;
+		box-sizing: border-box;
+    width: 100%;
+    color: $un-gray4-light;
+    border-radius: 5px;
+    border: 1px solid $un-gray2-dark;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+		cursor: pointer;
+  }
+
+  &__decorator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    display: block;
+    border-left: 1px solid $un-gray2-dark;
+    pointer-events: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml,%3Csvg width="11" height="7" viewBox="0 0 11 7" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M5.166 4.21L8.976.4a.795.795 0 0 1 1.125 1.125l-4.409 4.41a.795.795 0 0 1-1.288-.238L.233 1.527A.795.795 0 0 1 1.358.401L5.166 4.21z" fill="%23343F50" fill-rule="evenodd"/%3E%3C/svg%3E%0A');
+  }
+
+  // TODO: Rewrite using custom properties
+  &__control {
+    padding: 0 10px;
+    padding-right: (36px + 16px);
+    height: 32px;
+    line-height: 30px;
+  }
+  &__decorator {
+    width: 36px;
+  }
+  &--big &__control {
+    padding: 0 16px;
+    height: 40px;
+    line-height: 39px;
+    padding-right: (42px + 16px);
+  }
+  &--big &__decorator {
+    width: 42px;
+  }
+  &--bigger &__control {
+    height: 48px;
+    line-height: 46px;
+    padding-right: (48px + 16px);
+  }
+  &--bigger &__decorator {
+    width: 48px;
+  }
+
+  // Disabled state
+  &[disabled] &__decorator,
+  &[disabled] &__control {
+    color: $un-gray1-dark;
+    border-color: $un-gray1-dark;
+  }
+}
