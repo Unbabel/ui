@@ -16,8 +16,13 @@
 </template>
 
 <script>
+import SizeMixin from '../mixins/SizeMixin';
+
 export default {
-  name: 'InputFile',
+	name: 'InputFile',
+	mixins: [
+		SizeMixin,
+	],
   props: {
     label: {
       type: String,

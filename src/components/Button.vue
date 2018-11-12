@@ -1,5 +1,10 @@
 <script>
+import SizeMixin from '../mixins/SizeMixin';
+
 export default {
+	mixins: [
+		SizeMixin,
+	],
 	render(h) {
 		// Lets us change the type of element if is link
 		let elementName = 'button';
@@ -31,20 +36,6 @@ export default {
 					'primary',
 					'cta',
 					'ctaAlt',
-				].includes(kind);
-			},
-		},
-		size: {
-			type: String,
-			required: false,
-			default: () => {
-				return '';
-			},
-			validator(kind) {
-				return [
-					'',
-					'big',
-					'bigger',
 				].includes(kind);
 			},
 		},

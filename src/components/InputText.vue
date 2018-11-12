@@ -1,5 +1,5 @@
 <template>
-  <label class="c-FormInputText" :disabled="disabled">
+  <label class="c-FormInputText" :class="classObject" :disabled="disabled">
     <div class="c-FormInputText__label" v-show="showLabel">{{ label }}</div>
     <div class="c-FormInputText__controlContainer">
       <input
@@ -16,8 +16,13 @@
 </template>
 
 <script>
+import SizeMixin from '../mixins/SizeMixin';
+
 export default {
-  name: 'InputText',
+	name: 'InputText',
+	mixins: [
+		SizeMixin,
+	],
   model: {
     prop: 'value',
     event: 'changeModel',
@@ -60,6 +65,13 @@ export default {
       type: Boolean,
       required: false,
       default: () => true,
+    },
+	},
+	computed: {
+    classObject() {
+      return {
+        [`c-FormInputText--${this.size}`]: this.size.length,
+      };
     },
   },
   watch: {

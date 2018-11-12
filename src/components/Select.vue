@@ -20,9 +20,13 @@
 import {
 	looseEqual,
 } from '@/utilities';
+import SizeMixin from '../mixins/SizeMixin';
 
 export default {
-  name: 'Select',
+	name: 'Select',
+	mixins: [
+		SizeMixin,
+	],
   model: {
     prop: 'selected',
     event: 'change',
@@ -55,18 +59,6 @@ export default {
       type: Boolean,
       required: false,
       default: () => true,
-    },
-    size: {
-      type: String,
-      required: false,
-      default: () => '',
-      validator(kind) {
-        return [
-          '',
-          'big',
-          'bigger',
-        ].includes(kind);
-      },
     },
   },
   computed: {
