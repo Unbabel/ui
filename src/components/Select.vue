@@ -129,8 +129,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@unbabel/ui/src/colors';
 @import '../variables';
+@import '../colors';
 
 .c-FormSelect {
   display: inline-block;

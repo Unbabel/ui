@@ -82,8 +82,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@unbabel/ui/src/colors';
 @import '../variables';
+@import '../colors';
 
 .c-FormInputText {
   display: inline-block;
