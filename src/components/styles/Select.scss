@@ -4,9 +4,10 @@
 .c-FormSelect {
 	display: inline-block;
 	vertical-align: $un-form-vertical-align;
+	font-size: 1rem;
 
   &__label {
-    margin-bottom: 6px;
+    margin-bottom: $un-form-label-bottom-margin;
   }
   &__controlContainer {
     position: relative;
@@ -14,10 +15,12 @@
   &__control {
 		display: block;
 		box-sizing: border-box;
+		padding: 0 1rem;
+		padding-right: (42px + 16px);
     width: 100%;
     color: $un-gray4-light;
-    border-radius: 5px;
-    border: 1px solid $un-gray2-dark;
+    border-radius: $un-control-radius;
+    border: $un-form-border-width solid $un-gray2-dark;
     background-color: #fff;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -30,8 +33,9 @@
     right: 0;
     bottom: 0;
     content: '';
-    display: block;
-    border-left: 1px solid $un-gray2-dark;
+		display: block;
+		width: 42px;
+    border-left: $un-form-border-width solid $un-gray2-dark;
     pointer-events: none;
     background-position: center;
     background-repeat: no-repeat;
@@ -40,30 +44,19 @@
 
   // TODO: Rewrite using custom properties
   &__control {
-    padding: 0 10px;
-    padding-right: (36px + 16px);
     height: 32px;
-    line-height: 30px;
-  }
-  &__decorator {
-    width: 36px;
+		line-height: 30px;
+		font-size: 0.875rem;
   }
   &--big &__control {
-    padding: 0 16px;
     height: 40px;
     line-height: 39px;
-    padding-right: (42px + 16px);
-  }
-  &--big &__decorator {
-    width: 42px;
+		font-size: 1rem;
   }
   &--bigger &__control {
     height: 48px;
-    line-height: 46px;
-    padding-right: (48px + 16px);
-  }
-  &--bigger &__decorator {
-    width: 48px;
+    line-height: 47px;
+		font-size: 1rem;
   }
 
   // Disabled state
