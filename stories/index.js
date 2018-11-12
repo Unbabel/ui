@@ -1,4 +1,5 @@
 import './components/Button';
+import './components/Textarea';
 import './components/Modal';
 import './components/TopBar';
 import './components/Sidebar';
