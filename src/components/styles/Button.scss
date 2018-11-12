@@ -3,7 +3,6 @@
 .c-Button {
 	display: inline-block;
 	vertical-align: $un-form-vertical-align;
-	padding: 0.53125rem 1.5rem;
 	min-height: 2rem; // 32px
 	font-family: $un-font-heading;
 	font-size: 0.9375rem; // 15px
@@ -119,11 +118,18 @@
 		}
 	}
 
+	& {
+		padding: 0.53125rem 1.5rem;
+		height: 32px; // Prevents inconsistent vertical-align in safari
+	}
+	
 	&--big {
 		padding: 0.78125rem 1.5rem;
+		height: 40px; // Prevents inconsistent vertical-align in safari
 	}
 
 	&--bigger {
 		padding: 1.03125rem 1.5rem;
+		height: 48px; // Prevents inconsistent vertical-align in safari
 	}
 }
