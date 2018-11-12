@@ -2,6 +2,7 @@ import './components/Button';
 import './components/InputText';
 import './components/Select';
 import './components/Textarea';
+import './molecules/Form';
 import './components/Modal';
 import './components/TopBar';
 import './components/Sidebar';
