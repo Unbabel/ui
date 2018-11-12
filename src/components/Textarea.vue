@@ -81,40 +81,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../variables';
-
-.c-FormTextarea {
-	display: inline-block;
-	box-sizing: border-box;
-
-	* {
-		box-sizing: inherit;
-	}
-
-  &__label {
-    margin-bottom: 6px;
-  }
-  &__controlContainer {
-    position: relative;
-  }
-  &__control {
-    display: block;
-    width: 100%;
-    color: $un-gray4-light;
-    line-height: 38px;
-    border-radius: 5px;
-    border: 1px solid $un-gray2-dark;
-    padding: 0 16px;
-    background-color: #fff;
-    -webkit-appearance: none;
-    cursor: pointer;
-  }
-
-  // Disabled state
-  &[disabled] &__control {
-    color: $un-gray1-dark;
-    border-color: $un-gray1-dark;
-  }
-}
-</style>
+<style lang="scss" scoped src="./styles/Textarea.scss"></style>
