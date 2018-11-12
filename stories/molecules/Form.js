@@ -21,15 +21,19 @@ storiesOf('Form', module)
 				Button,
 			},
 			template: `
-			<form> <InputText
-				label="Label"
-				:showLabel="true"
-				placeholder="Placeholder"
-				size="${size}" /> <Select
-				label="Label"
-				:showLabel="true"
-				placeholder="Placeholder"
-				size="${size}">
-			</Select> <Button size="${size}">Button</Button> </form>`,
+			<form>
+				<InputText
+					label="Label"
+					:showLabel="true"
+					placeholder="Placeholder"
+					size="${size}" />
+				<Select
+					label="Label"
+					:showLabel="true"
+					placeholder="Placeholder"
+					size="${size}">
+				</Select>
+				<Button size="${size}">Button</Button>
+			</form>`,
 		};
 	});
