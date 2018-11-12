@@ -133,7 +133,7 @@ export default {
 @import '../colors';
 
 .c-FormSelect {
-  display: inline-block;
+	display: inline-block;
 	vertical-align: $un-form-vertical-align;
 
   &__label {
@@ -143,7 +143,8 @@ export default {
     position: relative;
   }
   &__control {
-    display: block;
+		display: block;
+		box-sizing: border-box;
     width: 100%;
     color: $un-gray4-light;
     border-radius: 5px;
@@ -151,7 +152,7 @@ export default {
     background-color: #fff;
     -webkit-appearance: none;
     -moz-appearance: none;
-    cursor: pointer;
+		cursor: pointer;
   }
 
   &__decorator {

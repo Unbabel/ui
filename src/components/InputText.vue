@@ -86,7 +86,7 @@ export default {
 @import '../colors';
 
 .c-FormInputText {
-  display: inline-block;
+	display: inline-block;
 	vertical-align: $un-form-vertical-align;
 
   &__label {
@@ -96,24 +96,35 @@ export default {
     position: relative;
   }
   &__control {
-    display: block;
+		display: block;
+		box-sizing: border-box;
     width: 100%;
     color: $un-gray4-light;
-    height: 40px;
-    line-height: 39px;
     border-radius: 5px;
     border: 1px solid $un-gray2-dark;
     padding: 0 16px;
     padding-right: 58px;
     background-color: #fff;
     -webkit-appearance: none;
-    cursor: pointer;
+		cursor: pointer;
+  }
+
+// TODO: Rewrite using custom properties
+  &__control {
+		height: 32px;
+    line-height: 31px;
+  }
+  &--big &__control {
+		height: 40px;
+    line-height: 39px;
+  }
+  &--bigger &__control {
   }
 
   // Disabled state
   &[disabled] &__control {
     color: $un-gray1-dark;
     border-color: $un-gray1-dark;
-  }
+	}
 }
 </style>
