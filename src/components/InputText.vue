@@ -74,16 +74,6 @@ export default {
 			};
 		},
 	},
-	watch: {
-		selected(newValue) {
-			if (newValue === undefined) {
-				const {
-					select,
-				} = this.$refs;
-				select.selectedIndex = undefined;
-			}
-		},
-	},
 	methods: {
 		onInput(event) {
 			this.$emit('input', event);
