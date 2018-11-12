@@ -32,7 +32,6 @@ storiesOf('Select', module)
 	.add('Example', () => {
 		const label = text('Label', 'Username');
 		const showLabel = boolean('Show label', true);
-		const type = text('Type', 'text');
 		const placeholder = text('Placeholder', 'Select an option');
 		const required = boolean('Required', false);
 		const disabled = boolean('Disabled', false);
@@ -49,7 +48,6 @@ storiesOf('Select', module)
 			template: `
 			<Select
 				label="${label}"
-				type="${type}"
 				:showLabel="${showLabel}"
 				placeholder="${placeholder}"
 				size="${size}"
