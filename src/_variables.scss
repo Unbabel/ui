@@ -2,6 +2,10 @@
 @import 'colors';
 @import 'highlights';
 
+// To achieve consistent vertical alignment
+// All form elements should share this value
+$un-form-vertical-align: bottom;
+
 // Typography
 $un-font-heading: 'Montserrat', sans-serif;
 $un-font-main: 'Open Sans', sans-serif;

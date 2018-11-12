@@ -83,9 +83,11 @@ export default {
 
 <style lang="scss">
 @import '~@unbabel/ui/src/colors';
+@import '../variables';
 
 .c-FormInputText {
   display: inline-block;
+	vertical-align: $un-form-vertical-align;
 
   &__label {
     margin-bottom: 6px;
