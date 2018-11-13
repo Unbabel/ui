@@ -51,3 +51,43 @@ export function looseEqual(a, b) {
 		return false;
 	}
 }
+
+/**
+ * Set selectedIndex on Vue-powered <select> element
+ *
+ * A Vue-powered <select> element contains a new property
+ * called _value which contains the value set as :value="myValue"
+ * this allows the select to have an object or any other value
+ * instead of just a string as the standard html element
+ */
+export function setSelectOptionIndex(select, value) {
+	// Resets to placeholder if exists
+	if (looseEqual(value, undefined)) {
+		// eslint-disable-next-line
+		select.selectedIndex = undefined;
+	}
+	else {
+		const {
+			options,
+		} = select;
+		const optionsArray = Array.from(options);
+
+		// Select option from native <options> list
+		optionsArray.forEach((option) => {
+			// Get _value if exists (may contain object or any other JS data type)
+			const optionValue = (Object.prototype.hasOwnProperty.call(option, '_value'))
+				? option._value // eslint-disable-line
+				: option.value;
+			const optionIsEqualToModel = looseEqual(optionValue, this.selected);
+
+			// We found a match, apply option index
+			if (optionIsEqualToModel) {
+				const {
+					index,
+				} = option;
+				// eslint-disable-next-line
+				select.selectedIndex = index;
+			}
+		});
+	}
+}

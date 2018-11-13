@@ -19,6 +19,7 @@
 <script>
 import {
 	looseEqual,
+	setSelectOptionIndex,
 } from '@/utilities';
 import SizeMixin from '../mixins/SizeMixin';
 
@@ -78,28 +79,7 @@ export default {
 			const {
 				select,
 			} = this.$refs;
-
-			// Resets to placeholder if exists
-			if (looseEqual(newValue, undefined)) {
-				select.selectedIndex = undefined;
-			}
-
-			const {
-				options,
-			} = select;
-			const optionsArray = Array.from(options);
-
-			// Select option from native <options> list
-			optionsArray.forEach((option) => {
-				const value = (option.hasOwnProperty('_value')) ? option._value : option.value;
-				const optionIsEqualToModel = looseEqual(value, this.selected);
-				if (optionIsEqualToModel) {
-					const {
-						index,
-					} = option;
-					select.selectedIndex = index;
-				}
-			});
+			setSelectOptionIndex(select, value);
 		},
 		onChange(event) {
 			const {
