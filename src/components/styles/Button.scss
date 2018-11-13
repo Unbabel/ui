@@ -118,16 +118,15 @@
 		}
 	}
 
+	// Size related section
 	& {
 		padding: 0.53125rem 1.5rem;
 		height: 32px; // Prevents inconsistent vertical-align in safari
 	}
-	
 	&--big {
 		padding: 0.78125rem 1.5rem;
 		height: 40px; // Prevents inconsistent vertical-align in safari
 	}
-
 	&--bigger {
 		padding: 1.03125rem 1.5rem;
 		height: 48px; // Prevents inconsistent vertical-align in safari
