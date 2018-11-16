@@ -163,6 +163,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import 'styles/Modal.scss';
-</style>
+<style lang="scss" scoped src="./styles/Modal.scss"></style>
