@@ -1,6 +1,7 @@
 @import '../variables';
 
 .c-Modal {
+	$self: &;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
@@ -20,7 +21,7 @@
 	}
 
 	&__overlay {
-		background: rgba(0, 0, 0, 0.5);
+		background-color: rgba(0, 0, 0, 0.5);
 		z-index: 5;
 
 		opacity: 0;
@@ -148,18 +149,16 @@
 
 	&.is-active {
 		&,
-		.c-Modal__overlay,
-		.c-Modal__main {
+		#{$self}__overlay,
+		#{$self}__main {
 			pointer-events: all;
 			opacity: 1;
 			transform: none;
 		}
 	}
 
-	&.is-footerless {
-		.c-Modal__middle {
-			border-bottom-left-radius: $un-modal-radius;
-			border-bottom-right-radius: $un-modal-radius;
-		}
+	&.is-footerless &__middle {
+		border-bottom-left-radius: $un-modal-radius;
+		border-bottom-right-radius: $un-modal-radius;
 	}
 }
