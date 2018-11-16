@@ -49,7 +49,7 @@ storiesOf('Modal', module)
 	<modal :active="isModalActive" :title="title" :show-overlay="showOverlay" defaultStyles>
 		<p slot="content">This is the <strong>main</strong> text.</p>
 		<div slot="footer">
-			<btn kind="secondary" @click="closeModal">Close</btn>
+			<btn @click="closeModal">Close</btn>
 			<btn kind="primary">Send</btn>
 		</div>
 	</modal>

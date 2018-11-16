@@ -26,7 +26,7 @@
 				</div>
 			</form>
 			<div slot="footer">
-				<btn kind="secondary" @click="closeModal">Close</btn>
+				<btn @click="closeModal">Close</btn>
 				<btn kind="primary" @click="submitForm">Send</btn>
 			</div>
 		</modal>
