@@ -125,13 +125,15 @@
 	}
 
 	// Title
-	&__top,
-	&__title {
-		margin: 0;
+	&__top {
 		color: $un-purple;
 		font-size: 1.5rem;
 		font-family: $un-font-heading;
 		text-align: center;
+	}
+	&__title {
+		font-size: inherit;
+		margin: 0;
 	}
 
 	&.is-active {
