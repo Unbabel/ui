@@ -1,0 +1,3 @@
+The goal of this component is to behave as closely as possible to the native [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) however it was prepared to handle **text** only, this means it's suited to any text based input type (`text`, `password`, `email`, `url`, `search`, `tel`, `date`, etc).
+
+It includes some elements such as labels to enable consistent comunication across forms.
