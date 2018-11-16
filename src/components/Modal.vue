@@ -3,12 +3,12 @@
 		<div class="c-Modal__overlay" :class="overlayClassObject" @click="clickedOnOutside"></div>
 		<div class="c-Modal__main" :role="modalRole" :aria-label="title">
 			<div class="c-Modal__top">
-				<btn
+				<Button
 					v-show="closeIcon"
 					ref="modalCloseIcon"
 					class="c-Modal__closeIcon"
 					role="secondary"
-					:click-handler="clickedOnClose"
+					@click="clickedOnClose"
 					aria-label="Close"
 				>
 					<svg width="192px" height="192px" viewBox="0 0 192 192" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -19,7 +19,7 @@
 							</g>
 						</g>
 					</svg>
-				</btn>
+				</Button>
 				<!-- You can pass the title as a slot or as a prop -->
 				<slot name="title">
 					<h1 class="c-Modal__title">{{ title }}</h1>
@@ -48,7 +48,7 @@ import Button from './Button.vue';
 export default {
 	name: 'Modal',
 	components: {
-		btn: Button,
+		Button,
 	},
 	props: {
 		active: {
