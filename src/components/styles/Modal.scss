@@ -74,19 +74,32 @@
 		right: 0.4rem;
 		padding: 0.5rem;
 		line-height: 14px;
+		box-shadow: none;
 
 		svg {
 			width: 0.9rem;
 			height: 0.9rem;
 
-			g {
-				fill: $un-gray2;
-				transition: fill 0.25s ease-in-out;
-			}
+			// Using this enables the child g to inherit too
+			// Using the values from the .c-Button parent
+			transition-duration: inherit;
+			transition-timing-function: inherit;
 		}
 
-		&:hover svg g {
-			fill: $un-gray2-dark;
+		g {
+			fill: $un-gray2;
+			transition-property: fill;
+			transition-duration: inherit;
+			transition-timing-function: inherit;
+		}
+
+		&:not(.is-disabled):hover,
+		&:not([disabled]):hover {
+			box-shadow: none;
+
+			g {
+				fill: $un-white;
+			}
 		}
 	}
 
