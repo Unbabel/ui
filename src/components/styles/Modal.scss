@@ -66,27 +66,27 @@
 	&__top {
 		padding-top: 1.8rem;
 		padding-bottom: 0.7rem;
+	}
 
-		.c-Modal__closeIcon {
-			position: absolute;
-			top: 0.4rem;
-			right: 0.4rem;
-			padding: 0.5rem;
-			line-height: 14px;
+	&__closeIcon.c-Button {
+		position: absolute;
+		top: 0.4rem;
+		right: 0.4rem;
+		padding: 0.5rem;
+		line-height: 14px;
 
-			svg {
-				width: 0.9rem;
-				height: 0.9rem;
+		svg {
+			width: 0.9rem;
+			height: 0.9rem;
 
-				g {
-					fill: $un-gray2;
-					transition: fill 0.25s ease-in-out;
-				}
+			g {
+				fill: $un-gray2;
+				transition: fill 0.25s ease-in-out;
 			}
+		}
 
-			&:hover svg g {
-				fill: $un-gray2-dark;
-			}
+		&:hover svg g {
+			fill: $un-gray2-dark;
 		}
 	}
 
