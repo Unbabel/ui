@@ -9,7 +9,8 @@
 	font-size: 16px;
 	color: $un-gray3;
 
-	&, &__overlay {
+	&,
+	&__overlay {
 		position: fixed;
 		top: 0;
 		right: 0;
