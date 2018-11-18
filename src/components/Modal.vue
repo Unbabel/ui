@@ -140,7 +140,7 @@ export default {
 		/**
 		 * The replace call is to remove new lines
 		 */
-		cssClasses() {
+		classObject() {
 			return {
 				'is-active': this.active,
 				'is-footerless': !this.hasFooter,
