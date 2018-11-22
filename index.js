@@ -7,6 +7,7 @@ import LoadingScreen from './src/components/LoadingScreen.vue';
 import ToggleGroup from './src/components/ToggleGroup.vue';
 import Timer from './src/components/Timer.vue';
 import BaseCard from './src/components/BaseCard.vue';
+import InputText from './src/components/InputText.vue';
 
 export {
 	Button,
@@ -18,4 +19,5 @@ export {
 	ToggleGroup,
 	Timer,
 	BaseCard,
+	InputText,
 };
