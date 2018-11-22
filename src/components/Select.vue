@@ -20,7 +20,7 @@
 import {
 	looseEqual,
 	setSelectOptionIndex,
-} from '@/utilities';
+} from '../utilities';
 import SizeMixin from '../mixins/SizeMixin';
 
 export default {
