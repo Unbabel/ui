@@ -20,7 +20,7 @@
 import {
 	looseEqual,
 	setSelectOptionIndex,
-} from '@/utilities';
+} from '../utilities';
 import SizeMixin from '../mixins/SizeMixin';
 
 export default {
@@ -70,12 +70,12 @@ export default {
 		},
 	},
 	watch: {
-		selected(newValue, oldValue) {
+		selected(newValue) {
 			this.selectNativeOption(newValue);
 		},
 	},
 	methods: {
-		selectNativeOption(newValue) {
+		selectNativeOption(value) {
 			const {
 				select,
 			} = this.$refs;
