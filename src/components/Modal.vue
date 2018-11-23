@@ -1,5 +1,5 @@
 <template>
-	<div class="c-Modal" :class="cssClasses">
+	<div class="c-Modal" :class="classObject">
 		<div class="c-Modal__overlay" :class="overlayClassObject" @click="clickedOnOutside"></div>
 		<div class="c-Modal__main" :role="modalRole" :aria-label="title">
 			<div class="c-Modal__top">
