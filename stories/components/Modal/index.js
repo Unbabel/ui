@@ -4,6 +4,7 @@ import { withInfo } from 'storybook-addon-vue-info';
 
 import Button from '@/components/Button.vue';
 import Modal from '@/components/Modal.vue';
+import ModalSummary from './Modal.md';
 
 import ModalWithForm from './ModalWithForm.vue';
 import ModalWithLongText from './ModalWithLongText.vue';
@@ -11,21 +12,17 @@ import ModalWithInfo from './ModalWithInfo.vue';
 
 storiesOf('Modal', module)
 	.add('Usage', withInfo({
-		summary: `The simplest Modal shows a message and a button for user acknowledgement.<br>
-			It also supports longer texts that trigger scrollbars, having a close button on the corner and having a form inside. You can put whatever elements you want on the bottom. By default it has the least destructive option selected (in this examples' case, the Cancel button).
-		`,
+		summary: ModalSummary,
 		propTables: [
 			Modal,
 		],
 	})(() => {
 		return {
-			data: () => {
-				return {
-					title: 'Modal',
-					isModalActive: false,
-					showOverlay: true,
-				};
-			},
+			data: () => ({
+				title: 'Modal',
+				isModalActive: false,
+				showOverlay: true,
+			}),
 			components: {
 				Modal,
 				btn: Button,
@@ -39,14 +36,20 @@ storiesOf('Modal', module)
 				},
 			},
 			propsDescription: {
-				closeOnEscapePress: 'Close the modal on ESC key press',
+				active: 'Boolean value that will conditionally show/hide the modal. Logic should be done in the parent.',
+				defaultStyles: 'Boolean value that will conditionally add default css styles for the content inside the modal.',
+				content: 'Simple way of adding content with predefined styles.',
+				closeIcon: 'Boolean value that will conditionally show/hide the close icon with the ability to close the modal. Logic should be done in the parent.',
+				closeOnOutsideClick: 'Boolean value that will conditionally allow users to click outside the modal and close the modal.',
+				closeOnEscapePress: 'Boolean value that will conditionally allow users to click on ESC key and close the modal.',
+				showOverlay: 'Boolean value that will conditionally show a transparent overlay or a darker one.',
 			},
 			template: `<div>
 	<a @click="openModal">Open Modal</a>
-	<modal :active="isModalActive" :title="title" :show-overlay="showOverlay">
+	<modal :active="isModalActive" :title="title" :show-overlay="showOverlay" defaultStyles>
 		<p slot="content">This is the <strong>main</strong> text.</p>
 		<div slot="footer">
-			<btn kind="secondary" @click="closeModal">Close</btn>
+			<btn @click="closeModal">Close</btn>
 			<btn kind="primary">Send</btn>
 		</div>
 	</modal>
