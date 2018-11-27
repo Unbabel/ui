@@ -70,15 +70,7 @@ export default {
 		state: {
 			type: String,
 			required: false,
-			default: 'neutral',
-			validator(kind) {
-				return [
-					'',
-					'positive',
-					'negative',
-					'neutral',
-				].includes(kind);
-			},
+			default: () => 'neutral',
 		},
 		feedback: {
 			type: String,
