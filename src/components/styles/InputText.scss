@@ -25,6 +25,10 @@
 		cursor: pointer;
 	}
 
+	&__feedback {
+		font-size: 0.75rem;
+	}
+
 	// TODO: Rewrite using custom properties
 	// Size related section
 	&__control {
@@ -42,9 +46,28 @@
 		line-height: 47px;
 	}
 
+	// State related section
+	&--negative &__control,
+	&--negative &__feedback {
+		color: $un-red;
+	}
+	&--negative &__control {
+		border-color: $un-red;
+	}
+
+	&--positive &__feedback {
+		color: $un-green;
+	}
+	&--positive &__control {
+		border-color: $un-green;
+	}
+
 	// Disabled state
 	&[disabled] &__control {
 		color: $un-gray1-dark;
 		border-color: $un-gray1-dark;
+	}
+	&[disabled] &__feedback {
+		color: $un-gray1-dark;
 	}
 }

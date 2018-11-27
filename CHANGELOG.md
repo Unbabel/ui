@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [[v2.2.5](https://github.com/Unbabel/ui/compare/v2.2.4...v2.2.5)] - 2018-11-27
+### Added
+- `state` and `feedback` props to the Input element
+
 ## [[v2.2.4](https://github.com/Unbabel/ui/compare/v2.2.3...v2.2.4)] - 2018-11-22
 ### Fix
 - Fix an import issue with an alias

@@ -12,6 +12,7 @@
 				class="c-FormInputText__control"
 				@input="onInput">
 		</div>
+		<div class="c-FormInputText__feedback" v-show="feedback">{{ feedback }}</div>
 	</label>
 </template>
 
@@ -66,11 +67,30 @@ export default {
 			required: false,
 			default: () => true,
 		},
+		state: {
+			type: String,
+			required: false,
+			default: () => 'neutral',
+			validator(kind) {
+				return [
+					'',
+					'neutral',
+					'positive',
+					'negative',
+				].includes(kind);
+			},
+		},
+		feedback: {
+			type: String,
+			required: false,
+			default: () => null,
+		},
 	},
 	computed: {
 		classObject() {
 			return {
 				[`c-FormInputText--${this.size}`]: this.size.length,
+				[`c-FormInputText--${this.state}`]: this.state,
 			};
 		},
 	},
