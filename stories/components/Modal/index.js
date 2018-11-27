@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { text } from '@storybook/addon-knobs/vue';
+import { withKnobs, text } from '@storybook/addon-knobs/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 
 import Button from '@/components/Button.vue';
@@ -56,6 +56,7 @@ storiesOf('Modal', module)
 </div>`,
 		};
 	}))
+	.addDecorator(withKnobs)
 	.add('With Form', () => {
 		const title = text('Modal title', 'This is the title!');
 
