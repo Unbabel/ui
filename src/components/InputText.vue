@@ -71,6 +71,14 @@ export default {
 			type: String,
 			required: false,
 			default: () => 'neutral',
+			validator(kind) {
+				return [
+					'',
+					'neutral',
+					'positive',
+					'negative',
+				].includes(kind);
+			},
 		},
 		feedback: {
 			type: String,
