@@ -4,6 +4,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [[v3.0.0](https://github.com/Unbabel/ui/compare/v2.2.4...v3.0.0)] - 2018-11-27
+### Added
+- `defaultStyles` prop to `Modal`. Adds default margins to modal content
+- `state` and `feedback` props to the Input element
+
+### Fix
+- Loading screen line height
+
+## [[v2.2.4](https://github.com/Unbabel/ui/compare/v2.2.3...v2.2.4)] - 2018-11-22
+### Fix
+- Fix an import issue with an alias
+
+## [[v2.2.3](https://github.com/Unbabel/ui/compare/v2.2.2...v2.2.3)] - 2018-11-22
+### Fix
+- Export the Input, Select and Textarea form elements
+
+## [[v2.2.2](https://github.com/Unbabel/ui/compare/v2.2.1...v2.2.2)] - 2018-10-15
+### Fix
+- Version number
+
+## [[v2.2.1](https://github.com/Unbabel/ui/compare/v2.2.0...v2.2.1)] - 2018-10-15
+### Fix
+- Version number
+
+## [[v2.2.0](https://github.com/Unbabel/ui/compare/v2.1.1...v2.2.0)] - 2018-10-15
+### Added
+- Added Input, Select and Textarea form elements
+
+## [[v2.1.1](https://github.com/Unbabel/ui/compare/v2.1.0...v2.1.1)] - 2018-10-09
+### Fix
+- Bump version number
+
 ## [[v2.1.0](https://github.com/Unbabel/ui/compare/v2.0.1...v2.1.0)] - 2018-10-09
 ### Added
 - Component properties live in SASS variables [#25](https://gitlab.com/Unbabel/ui/issues/25)

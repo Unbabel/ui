@@ -52,11 +52,13 @@
 	&__message {
 		margin: 0;
 		margin-bottom: 1.6rem;
-		font-family: inherit;
-		color: $un-gray2;
-		font-size: 1.9rem;
 		color: $un-purple;
-		font-weight: 600;
+		line-height: 1.2em;
+		font: {
+			family: inherit;
+			size: 1.9rem;
+			weight: 600;
+		}
 	}
 }
 
