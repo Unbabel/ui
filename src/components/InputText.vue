@@ -75,7 +75,7 @@ export default {
 		feedback: {
 			type: String,
 			required: false,
-			default: () => undefined,
+			default: () => null,
 		},
 	},
 	computed: {
