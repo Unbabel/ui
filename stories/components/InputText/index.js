@@ -39,6 +39,12 @@ storiesOf('InputText', module)
 			big: 'big',
 			bigger: 'bigger',
 		}, '');
+		const state = select('State', {
+			neutral: 'neutral',
+			positive: 'positive',
+			negative: 'negative',
+		}, 'neutral');
+		const feedback = text('Feedback', '');
 
 		return {
 			components: {
@@ -52,6 +58,8 @@ storiesOf('InputText', module)
 				:rows="${rows}"
 				size="${size}"
 				:disabled="${disabled}"
-				:required="${required}" />`,
+				:required="${required}"
+				state="${state}"
+				feedback="${feedback}" />`,
 		};
 	});
