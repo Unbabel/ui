@@ -1,0 +1,101 @@
+#!/usr/bin/env ruby
+#
+# Goes through all the unreleased changelogs and updates CHANGELOG.md.
+
+require 'optparse'
+require 'yaml'
+
+class ChangelogEntry
+
+  ENTRY_TYPES = [:added, :fixed, :changed, :deprecated, :removed, :security, :performance, :other]
+
+  attr_reader :title, :author, :merge_request, :type
+
+  def initialize(yaml)
+    @title          = yaml["title"]
+    @author         = yaml["author"]
+    @merge_request  = yaml["merge_request"]
+    @type           = yaml["type"]
+  end
+
+  def text
+    return "* #{self.title} #{merge_request_uri()}"
+  end
+
+  def merge_request_uri
+    if self.merge_request == nil
+      return ""
+    end
+    return "- [!#{self.merge_request}](#{repository_url}/merge_requests/#{self.merge_request})"
+  end
+
+  def repository_url
+    remote = `git remote -v | grep fetch | cut -d$'\t' -f2 | cut -d' ' -f1`
+
+    # These two lines basically transform a string like
+    # git@gitlab.com:Unbabel/core.git into a string like
+    # gitlab.com/Unbabel/core
+    remote = remote[4..(remote.length - 6)]
+    remote = remote.sub(':', '/')
+
+    return "https://www.#{remote}"
+  end
+
+  private :merge_request_uri, :repository_url
+end
+
+entries         = {}
+changelog_files = Dir["changelogs/unreleased/*.yml"]
+
+# Parse changelog entry files into ChangelogEntry instances.
+for file in changelog_files do
+  entry = ChangelogEntry.new(YAML.load(File.read(file)))
+
+  if !entries.include?(entry.type.to_sym) then
+    entries[entry.type.to_sym] = []
+  end
+
+  entries[entry.type.to_sym].concat([entry.text])
+end
+
+# Parse Command Line Arguments.
+Options = Struct.new(:tag)
+
+options = Options.new
+parser  = OptionParser.new do |opts|
+  opts.on("-t", "--tag [string]", String, "Version Tag") do |value|
+    options.tag = value.strip()
+  end
+end
+
+parser.parse!(ARGV)
+
+# Update CHANGELOG.md
+original_file = "CHANGELOG.md"
+new_file      = "CHANGELOG.new.md"
+
+File.open(new_file, 'w') do |file|
+  file.puts "## [[#{options.tag or "VERSION"}](https://www.gitlab.com/Unbabel/core/tags/#{options.tag})] - #{Time.now.strftime("%Y/%m/%d")}"
+
+  for entry_type in ChangelogEntry::ENTRY_TYPES do
+    if !entries.key?(entry_type)
+      next
+    end
+
+    type_entries = entries[entry_type]
+    file.puts "### #{entry_type.to_s.capitalize}\n#{type_entries.join("\n")}\n\n"
+  end
+
+  File.foreach(original_file) do |line|
+    file.puts line
+  end
+end
+
+File.rename(original_file, original_file + ".old")
+File.rename(new_file, original_file)
+File.delete(original_file + ".old")
+
+# Delete changelog entry files.
+changelog_files.each { |file| File.delete(file) }
+
+# vim: ft=ruby

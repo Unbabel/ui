@@ -69,3 +69,17 @@ To develop or add new components, install the dependencies and launch the [Story
 $ npm install
 $ npm run storybook
 ```
+
+## Generating changelog entries
+
+Adding an entry per feature/MR
+
+```shell
+$ bin/changelog_entry "Changelog Entry Title" -m 1022
+```
+
+Releasing a version
+
+```shell
+$ bin/changelog -t v1.0.42
+```
