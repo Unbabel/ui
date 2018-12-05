@@ -4,6 +4,10 @@ import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 
 import Button from '@/components/Button.vue';
+import ButtonWithPanel from '@/components/ButtonWithPanel.vue';
+import OptionsList, {
+	OptionsListItem,
+} from '@/components/OptionsList.vue';
 import ButtonSummary from './Button.md';
 
 storiesOf('Button', module)
@@ -86,5 +90,21 @@ storiesOf('Button', module)
 			methods: {
 				log: action('clicked the CTA button'),
 			},
+		};
+	})
+	.add('With content panel', () => {
+		return {
+			components: {
+				ButtonWithPanel,
+				OptionsList,
+				OptionsListItem,
+			},
+			template: `<ButtonWithPanel kind="cta">
+				Button Label
+				<OptionsList slot="panel">
+					<OptionsListItem>As button</OptionsListItem>
+					<OptionsListItem href="#">As link</OptionsListItem>
+				</OptionsList>
+			</ButtonWithPanel>`,
 		};
 	});
