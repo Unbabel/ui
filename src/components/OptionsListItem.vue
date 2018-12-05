@@ -45,12 +45,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../variables';
+
 .c-OptionsListItem {
 	color: inherit;
 	display: block;
 	box-sizing: border-box;
-	padding: var(--optionsListSpacing);
+	padding: var(--optionsListSpacingY) var(--optionsListSpacingX);
 	text-align: inherit;
+	cursor: pointer;
+	transition: background-color 0.25s ease-in-out;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: $un-gray1;
+	}
 
 	@at-root a#{&} {
 		text-decoration: none;
@@ -61,6 +71,7 @@ export default {
 		border: inherit;
 		font-family: inherit;
 		font-size: inherit;
+		font-weight: inherit;
 		line-height: inherit;
 	}
 }
