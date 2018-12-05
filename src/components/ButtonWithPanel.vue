@@ -85,6 +85,7 @@ export default {
 		margin-left: -1px;
 		padding-left: 14px;
 		padding-right: 14px;
+		border-left: 1px solid rgba(0,0,0,0.1);
 
 		path {
 			fill: #fff;
@@ -113,10 +114,15 @@ export default {
 
 .panelVisible-enter-active,
 .panelVisible-leave-active {
-  transition: opacity .5s;
+  transition: 0.15s ease-out;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-property: opacity, transform;
+  transform-origin: right top;
 }
 .panelVisible-enter,
 .panelVisible-leave-to {
   opacity: 0;
+  transform: translateY(-10px) scale(0.9);
 }
 </style>
