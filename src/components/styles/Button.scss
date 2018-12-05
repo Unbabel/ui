@@ -33,7 +33,9 @@
 		}
 
 		// Default active (pressed) state
-		&:active {
+		&:active,
+		&.is-active {
+			color: white;
 			background-color: $un-gray2-dark;
 		}
 
@@ -57,7 +59,9 @@
 
 		&:not(.is-disabled),
 		&:not([disabled]) {
-			&:hover, &:active {
+			&:hover,
+			&:active,
+			&.is-active {
 				box-shadow: none;
 			}
 		}
@@ -80,7 +84,8 @@
 			&:hover {
 				background-color: $un-gray3-light;
 			}
-			&:active {
+			&:active,
+			&.is-active {
 				background-color: #788090;
 			}
 		}
@@ -96,7 +101,8 @@
 			&:hover {
 				background-color: $un-green-dark;
 			}
-			&:active {
+			&:active,
+			&.is-active {
 				background-color: #38A967;
 			}
 		}
