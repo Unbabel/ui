@@ -1,9 +1,11 @@
 <script>
 import SizeMixin from '../mixins/SizeMixin';
+import ButtonKindMixin from '../mixins/ButtonKindMixin';
 
 export default {
 	mixins: [
 		SizeMixin,
+		ButtonKindMixin,
 	],
 	render(h) {
 		// Lets us change the type of element if is link
@@ -26,19 +28,6 @@ export default {
 		}, this.$slots.default);
 	},
 	props: {
-		kind: {
-			type: String,
-			required: false,
-			default: () => '',
-			validator(kind) {
-				return [
-					'',
-					'primary',
-					'cta',
-					'ctaAlt',
-				].includes(kind);
-			},
-		},
 		href: {
 			type: String,
 			required: false,
