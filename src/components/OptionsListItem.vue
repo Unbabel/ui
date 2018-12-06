@@ -48,10 +48,10 @@ export default {
 @import '../variables';
 
 .c-OptionsListItem {
-	color: inherit;
 	display: block;
 	box-sizing: border-box;
 	padding: var(--optionsListSpacingY) var(--optionsListSpacingX);
+	color: inherit;
 	text-align: inherit;
 	cursor: pointer;
 	transition: background-color 0.25s ease-in-out;
