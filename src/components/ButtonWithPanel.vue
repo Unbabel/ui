@@ -49,7 +49,6 @@ const calculateOpenPosition = debounce(function() {
 	const spaceToTop = offsetTop - scrollY;
 	const spaceToBottom = windowHeight - (spaceToTop + offsetHeight);
 	this.openLocation = spaceToTop > spaceToBottom ? 'top' : 'bottom';
-	console.log('openLocation', this.openLocation);
 }, 100);
 
 
