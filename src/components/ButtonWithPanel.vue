@@ -177,24 +177,16 @@ export default {
 	}
 
 	// Toggle
-	&.open-top &__toggle {
-		svg {
-			transform: rotate(180deg);
-		}
-	}
-	&.open-top.is-active &__toggle {
-		svg {
-			transform: rotate(0);
-		}
-	}
-	&.open-bottom &__toggle {
-		svg {
-			transform: rotate(0);
-		}
-	}
+	&.open-top &__toggle,
 	&.open-bottom.is-active &__toggle {
 		svg {
 			transform: rotate(180deg);
+		}
+	}
+	&.open-top.is-active &__toggle,
+	&.open-bottom &__toggle {
+		svg {
+			transform: rotate(0);
 		}
 	}
 
