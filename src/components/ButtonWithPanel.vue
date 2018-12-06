@@ -32,6 +32,7 @@ import OptionsList, {
 } from './OptionsList.vue';
 import {
 	debounce,
+	getEventPath,
 } from '../utilities';
 
 const calculateOpenPosition = debounce(function() {
@@ -108,7 +109,7 @@ export default {
 			}
 		},
 		handleClick(event) {
-			const eventPath = event.composedPath() || []; // needs polyfill
+			const eventPath = getEventPath(event);
 			const clickedOutside = eventPath.indexOf(this.$el) === -1;
 			if (clickedOutside) {
 				this.panelOpen = false;

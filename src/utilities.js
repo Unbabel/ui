@@ -112,3 +112,24 @@ export function debounce(func, wait, immediate) {
 		}
 	};
 }
+
+/*
+ * Get event click path
+ *
+ * Get path from clicked element up to Window object.
+ * Useful to understand if a click was inside or outside an element
+ */
+
+export function eventPathPolyfill(event) {
+	const path = [];
+	let currentEl = event.target;
+	while (currentEl) {
+		path.push(currentEl);
+		currentEl = currentEl.parentElement;
+	}
+	return path;
+}
+
+export function getEventPath(event) {
+	return (event.path) ? event.path : eventPathPolyfill(event);
+}
