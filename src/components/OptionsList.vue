@@ -49,8 +49,8 @@ export default {
 	font-weight: 600;
 	line-height: 1.267em;
 	color: $un-gray4-light;
-	--optionsListSpacingY: 4px;
-	--optionsListSpacingX: 8px;
+	--optionsListSpacingY: 8px;
+	--optionsListSpacingX: 16px;
 
 	&__item {
 		border-top: 1px solid var(--optionsListBorderColor, #{$un-gray1-dark});
