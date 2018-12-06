@@ -114,9 +114,9 @@ export function debounce(func, wait, immediate) {
 }
 
 /*
- * Get event click path
+ * Get event path
  *
- * Get path from clicked element up to Window object.
+ * Get path from event element up to Window object.
  * Useful to understand if a click was inside or outside an element
  */
 
