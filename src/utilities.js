@@ -91,3 +91,24 @@ export function setSelectOptionIndex(select, value) {
 		});
 	}
 }
+
+// From https://davidwalsh.name/javascript-debounce-function
+export function debounce(func, wait, immediate) {
+	let timeout;
+	return function debouncedFunction(...parameters) {
+		const context = this;
+		const args = parameters;
+		const later = function debounceLater() {
+			timeout = null;
+			if (!immediate) {
+				func.apply(context, args);
+			}
+		};
+		const callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) {
+			func.apply(context, args);
+		}
+	};
+}

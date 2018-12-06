@@ -30,6 +30,28 @@ import Button from './Button.vue';
 import OptionsList, {
 	OptionsListItem,
 } from './OptionsList.vue';
+import {
+	debounce,
+} from '../utilities';
+
+const calculateOpenPosition = debounce(function() {
+	const {
+		$el: element,
+	} = this;
+	const {
+		innerHeight: windowHeight,
+		scrollY,
+	} = window;
+	const {
+		offsetHeight,
+		offsetTop,
+	} = element;
+	const spaceToTop = offsetTop - scrollY;
+	const spaceToBottom = windowHeight - (spaceToTop + offsetHeight);
+	this.openLocation = spaceToTop > spaceToBottom ? 'top' : 'bottom';
+	console.log('openLocation', this.openLocation);
+}, 100);
+
 
 export default {
 	name: 'ButtonWithPanel',
@@ -42,13 +64,32 @@ export default {
 		OptionsList,
 		OptionsListItem,
 	},
+	props: {
+		closeOnEscapePress: {
+			type: Boolean,
+			required: false,
+			default: true,
+		},
+		closeOnOutsideClick: {
+			type: Boolean,
+			required: false,
+			default: true,
+		},
+		autoPanelPosition: {
+			type: Boolean,
+			required: false,
+			default: true,
+		},
+	},
 	data: () => ({
 		panelOpen: false,
+		openLocation: 'bottom',
 	}),
 	computed: {
 		classObject() {
 			return {
 				'is-active': this.panelOpen,
+				[`open-${this.openLocation}`]: true,
 			};
 		},
 		toggleButtonClassObject() {
@@ -61,6 +102,52 @@ export default {
 		togglePanel() {
 			this.panelOpen = !this.panelOpen;
 		},
+		handleKeyPress(event) {
+			const clickedEscKey = event.keyCode === 27;
+			if (clickedEscKey && this.closeOnEscapePress) {
+				this.panelOpen = false;
+			}
+		},
+		handleClick(event) {
+			const eventPath = event.composedPath() || []; // needs polyfill
+			const clickedOutside = eventPath.indexOf(this.$el) === -1;
+			if (clickedOutside) {
+				this.panelOpen = false;
+			}
+		},
+		calculateOpenPosition,
+		bindWatchForOpenSpace() {
+			// Apply debounce
+			window.addEventListener('resize', this.calculateOpenPosition, true);
+			window.addEventListener('scroll', this.calculateOpenPosition, true);
+		},
+		unbindWatchForOpenSpace() {
+			window.removeEventListener('resize', this.calculateOpenPosition, true);
+			window.removeEventListener('scroll', this.calculateOpenPosition, true);
+		},
+	},
+	watch: {
+		panelOpen(panelOpen) {
+			if (panelOpen) {
+				// Listen to keypresses
+				document.addEventListener('keydown', this.handleKeyPress, true);
+				document.addEventListener('click', this.handleClick, true);
+			} else {
+				// Stop listening to keypresses
+				document.removeEventListener('keydown', this.handleKeyPress, true);
+				document.removeEventListener('click', this.handleClick, true);
+			}
+		},
+	},
+	mounted() {
+		if (this.autoPanelPosition) {
+			this.bindWatchForOpenSpace();
+		}
+	},
+	beforeDestroy() {
+		if (this.autoPanelPosition) {
+			this.unbindWatchForOpenSpace();
+		}
 	},
 };
 </script>
@@ -91,17 +178,41 @@ export default {
 			fill: #fff;
 		}
 	}
-	&.is-active &__toggle {
+
+	// Toggle
+	&.open-top &__toggle {
+		svg {
+			transform: rotate(180deg);
+		}
+	}
+	&.open-top.is-active &__toggle {
+		svg {
+			transform: rotate(0);
+		}
+	}
+	&.open-bottom &__toggle {
+		svg {
+			transform: rotate(0);
+		}
+	}
+	&.open-bottom.is-active &__toggle {
 		svg {
 			transform: rotate(180deg);
 		}
 	}
 
+	// Panel
 	.c-ButtonPanel {
 		position: absolute;
-		top: 100%;
 		left: 0;
 		right: 0;
+	}
+	&.open-top .c-ButtonPanel {
+		bottom: 100%;
+		margin-bottom: 4px;
+	}
+	&.open-bottom .c-ButtonPanel {
+		top: 100%;
 		margin-top: 4px;
 	}
 }
@@ -114,15 +225,29 @@ export default {
 
 .panelVisible-enter-active,
 .panelVisible-leave-active {
-  transition: 0.15s ease-out;
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition-property: opacity, transform;
-  transform-origin: right top;
+	transition: 0.15s ease-out;
+	opacity: 1;
+	transform: translateY(0) scale(1);
+	transition-property: opacity, transform;
+
+	.open-top & {
+		transform-origin: right bottom;
+	}
+	.open-bottom & {
+		transform-origin: right top;
+	}
 }
 .panelVisible-enter,
 .panelVisible-leave-to {
-  opacity: 0;
-  transform: translateY(-10px) scale(0.9);
+	opacity: 0;
+	--positionOffset: 10;
+	--scaleFactor: 0.9;
+
+	.open-top & {
+		transform: translateY(calc(var(--positionOffset) * 1px)) scale(var(--scaleFactor));
+	}
+	.open-bottom & {
+		transform: translateY(calc(var(--positionOffset) * -1px)) scale(var(--scaleFactor));
+	}
 }
 </style>
