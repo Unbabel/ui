@@ -116,7 +116,6 @@ export default {
 		},
 		calculateOpenPosition,
 		bindWatchForOpenSpace() {
-			// Apply debounce
 			window.addEventListener('resize', this.calculateOpenPosition, true);
 			window.addEventListener('scroll', this.calculateOpenPosition, true);
 		},
@@ -128,11 +127,9 @@ export default {
 	watch: {
 		panelOpen(panelOpen) {
 			if (panelOpen) {
-				// Listen to keypresses
 				document.addEventListener('keydown', this.handleKeyPress, true);
 				document.addEventListener('click', this.handleClick, true);
 			} else {
-				// Stop listening to keypresses
 				document.removeEventListener('keydown', this.handleKeyPress, true);
 				document.removeEventListener('click', this.handleClick, true);
 			}
