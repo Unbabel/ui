@@ -99,7 +99,7 @@ storiesOf('Button', module)
 				OptionsList,
 				OptionsListItem,
 			},
-			template: `<ButtonWithPanel kind="cta">
+			template: `<ButtonWithPanel size="big" kind="cta">
 				Button Label
 				<OptionsList slot="panel">
 					<OptionsListItem>As button</OptionsListItem>
