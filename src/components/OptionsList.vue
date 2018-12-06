@@ -37,27 +37,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import '../variables';
-
-.c-OptionsList {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-	font-family: $un-font-heading;
-	font-size: 0.9375rem; // 15px
-	font-weight: 600;
-	line-height: 1.267em;
-	color: $un-gray4-light;
-	--optionsListSpacingY: 8px;
-	--optionsListSpacingX: 16px;
-
-	&__item {
-		border-top: 1px solid var(--optionsListBorderColor, #{$un-gray1-dark});
-
-		&:first-child {
-			border-top: none;
-		}
-	}
-}
-</style>
+<style lang="scss" src="./styles/OptionsList.scss" scoped></style>
