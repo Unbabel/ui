@@ -4,10 +4,7 @@ export default {
 	name: 'OptionsListItem',
 	render(h) {
 		// Lets us change the type of element if is link
-		let elementName = 'button';
-		if (this.href) {
-			elementName = 'a';
-		}
+		const elementName = (this.href) ? 'a' : 'button';
 
 		// If button, allow disabled
 		// links have no disabled attribute
