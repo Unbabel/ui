@@ -22,7 +22,6 @@ export default {
 		href: {
 			type: String,
 			required: false,
-			default: () => undefined,
 		},
 		disabled: {
 			type: Boolean,
