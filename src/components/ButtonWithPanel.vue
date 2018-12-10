@@ -9,10 +9,10 @@
 			class="c-ButtonWithPanel__toggle"
 			:class="toggleButtonClassObject"
 			@click="togglePanel" title="Toggle Panel">
-				<svg width="15" height="10" xmlns="http://www.w3.org/2000/svg">
-					<path d="M.25 2.12l6.59 7.49a.64.64 0 0 0 .92 0l6.6-7.49a.6.6 0 0 0-.07-.84L13.18.34a.62.62 0 0 0-.87.07l-4.9 5.67a.15.15 0 0 1-.22 0L2.29.41A.61.61 0 0 0 1.87.2a.6.6 0 0 0-.45.14l-1.1.94a.6.6 0 0 0-.07.84z" fill-rule="evenodd"/>
-				</svg>
-			</button>
+			<svg width="15" height="10" xmlns="http://www.w3.org/2000/svg">
+				<path d="M.25 2.12l6.59 7.49a.64.64 0 0 0 .92 0l6.6-7.49a.6.6 0 0 0-.07-.84L13.18.34a.62.62 0 0 0-.87.07l-4.9 5.67a.15.15 0 0 1-.22 0L2.29.41A.61.61 0 0 0 1.87.2a.6.6 0 0 0-.45.14l-1.1.94a.6.6 0 0 0-.07.84z" fill-rule="evenodd"/>
+			</svg>
+		</button>
 		<transition name="panelVisible">
 			<div
 				v-show="panelOpen"
