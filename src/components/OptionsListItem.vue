@@ -1,5 +1,4 @@
 <script>
-import { log } from 'util';
 export default {
 	name: 'OptionsListItem',
 	render(h) {
