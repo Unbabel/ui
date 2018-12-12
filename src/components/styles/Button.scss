@@ -31,8 +31,8 @@
 	&:not([disabled]) {
 		// Default hover state
 		&:hover {
-			background-color: #939BAB;
-			border-color: #939BAB;
+			background-color: $un-gray2;
+			border-color: $un-gray2;
 			color: white;
 		}
 
@@ -85,7 +85,7 @@
 				background-color: $un-gray3-light;
 			}
 			&:active {
-				background-color: #788090;
+				background-color: $un-gray2-dark;
 			}
 		}
 	}
@@ -101,7 +101,7 @@
 				background-color: $un-green-dark;
 			}
 			&:active {
-				background-color: #38A967;
+				background-color: desaturate(lighten($un-green-matte, 8%), 45%);
 			}
 		}
 	}
@@ -117,7 +117,7 @@
 				background-color: $un-purple-dark;
 			}
 			&:active {
-				background-color: #495D95;
+				background-color: desaturate(darken($un-purple, 5%), 20%);
 			}
 		}
 	}
