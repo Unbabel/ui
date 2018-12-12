@@ -116,7 +116,8 @@
 			&:hover {
 				background-color: $un-purple-dark;
 			}
-			&:active {
+			&:active,
+			&.is-active {
 				background-color: desaturate(darken($un-purple, 5%), 20%);
 			}
 		}
