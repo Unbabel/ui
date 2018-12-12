@@ -27,9 +27,6 @@
 import SizeMixin from '../mixins/SizeMixin';
 import ButtonKindMixin from '../mixins/ButtonKindMixin';
 import Button from './Button.vue';
-import OptionsList, {
-	OptionsListItem,
-} from './OptionsList.vue';
 import {
 	debounce,
 	getEventPath,
@@ -61,8 +58,6 @@ export default {
 	],
 	components: {
 		Button,
-		OptionsList,
-		OptionsListItem,
 	},
 	props: {
 		closeOnEscapePress: {
