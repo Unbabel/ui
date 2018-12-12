@@ -81,10 +81,12 @@ export default {
 			default: true,
 		},
 	},
-	data: () => ({
-		panelOpen: false,
-		openLocation: 'bottom',
-	}),
+	data() {
+		return {
+			panelOpen: false,
+			openLocation: 'bottom',
+		};
+	},
 	computed: {
 		classObject() {
 			return {
