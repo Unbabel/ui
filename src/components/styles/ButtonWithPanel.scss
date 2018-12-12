@@ -1,0 +1,96 @@
+@import '../../variables';
+
+.c-ButtonWithPanel {
+	display: inline-flex;
+	position: relative;
+
+	.c-Button {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	&__toggle.c-Button {
+		border-top-left-radius: inherit;
+		border-bottom-left-radius: inherit;
+		border-top-right-radius: $un-control-radius;
+		border-bottom-right-radius: $un-control-radius;
+		margin-left: -1px;
+		padding-left: 14px;
+		padding-right: 14px;
+		border-left: 1px solid rgba(0, 0, 0, 0.15);
+
+		path {
+			fill: currentColor;
+		}
+	}
+
+	// Toggle
+	&.open-top &__toggle,
+	&.open-bottom.is-active &__toggle {
+		svg {
+			transform: rotate(180deg);
+		}
+	}
+
+	&.open-top.is-active &__toggle,
+	&.open-bottom &__toggle {
+		svg {
+			transform: rotate(0);
+		}
+	}
+
+	// Panel
+	.c-ButtonPanel {
+		position: absolute;
+		left: 0;
+		right: 0;
+	}
+
+	&.open-top .c-ButtonPanel {
+		bottom: 100%;
+		margin-bottom: 4px;
+	}
+
+	&.open-bottom .c-ButtonPanel {
+		top: 100%;
+		margin-top: 4px;
+	}
+}
+
+.c-ButtonPanel {
+	background-color: #fff;
+	border: 1px solid #D0D4DA;
+	--optionsListBorderColor: #{$un-gray1-dark};
+	border-radius: $un-control-radius;
+}
+
+.panelVisible-enter-active,
+.panelVisible-leave-active {
+	transition: 0.15s ease-out;
+	opacity: 1;
+	transform: translateY(0) scale(1);
+	transition-property: opacity, transform;
+
+	.open-top & {
+		transform-origin: right bottom;
+	}
+
+	.open-bottom & {
+		transform-origin: right top;
+	}
+}
+
+.panelVisible-enter,
+.panelVisible-leave-to {
+	opacity: 0;
+	--positionOffset: 10;
+	--scaleFactor: 0.9;
+
+	.open-top & {
+		transform: translateY(calc(var(--positionOffset) * 1px)) scale(var(--scaleFactor));
+	}
+
+	.open-bottom & {
+		transform: translateY(calc(var(--positionOffset) * -1px)) scale(var(--scaleFactor));
+	}
+}

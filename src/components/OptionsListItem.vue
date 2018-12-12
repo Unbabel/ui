@@ -1,18 +1,9 @@
 <script>
-import SizeMixin from '../mixins/SizeMixin';
-import ButtonKindMixin from '../mixins/ButtonKindMixin';
-
 export default {
-	mixins: [
-		SizeMixin,
-		ButtonKindMixin,
-	],
+	name: 'OptionsListItem',
 	render(h) {
 		// Lets us change the type of element if is link
-		let elementName = 'button';
-		if (this.href) {
-			elementName = 'a';
-		}
+		const elementName = (this.href) ? 'a' : 'button';
 
 		// If button, allow disabled
 		// links have no disabled attribute
@@ -31,14 +22,8 @@ export default {
 		href: {
 			type: String,
 			required: false,
-			default: () => undefined,
 		},
 		disabled: {
-			type: Boolean,
-			required: false,
-			default: () => false,
-		},
-		smallerWhenClicked: {
 			type: Boolean,
 			required: false,
 			default: () => false,
@@ -47,17 +32,11 @@ export default {
 	computed: {
 		classObject() {
 			return {
-				'c-Button': true,
-				'is-disabled': this.disabled,
-				'is-smaller-when-clicked': this.smallerWhenClicked,
-				[`c-Button--${this.kind}`]: this.kind.length,
-				[`c-Button--${this.size}`]: this.size.length,
+				'c-OptionsListItem': true,
 			};
 		},
 	},
 };
 </script>
 
-<style lang="scss" scoped>
-@import 'styles/Button.scss';
-</style>
+<style lang="scss" src="./styles/OptionsListItem.scss" scoped></style>
