@@ -2,7 +2,11 @@
 	<div
 		class="c-ButtonWithPanel"
 		:class="classObject">
-		<Button :kind="kind" :size="size"><slot /></Button>
+		<Button
+			:kind="kind"
+			:size="size">
+			<slot />
+		</Button>
 		<Button
 			:kind="kind"
 			:size="size"
