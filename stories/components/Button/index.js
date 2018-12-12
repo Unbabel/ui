@@ -93,14 +93,26 @@ storiesOf('Button', module)
 		};
 	})
 	.add('With content panel', () => {
+		const content = text('Button text', 'Click me');
+		const kind = select('Kind', {
+			'': 'Default',
+			primary: 'Primary',
+			cta: 'Call to Action',
+			ctaAlt: 'Call to Action (Alternative)',
+		}, '');
+		const size = select('Size', {
+			'': 'normal',
+			big: 'big',
+			bigger: 'bigger',
+		}, '');
 		return {
 			components: {
 				ButtonWithPanel,
 				OptionsList,
 				OptionsListItem,
 			},
-			template: `<ButtonWithPanel size="big" kind="cta">
-				Button Label
+			template: `<ButtonWithPanel kind="${kind}" size="${size}">
+				${content}
 				<OptionsList slot="panel">
 					<OptionsListItem>As button</OptionsListItem>
 					<OptionsListItem href="#">As link</OptionsListItem>
