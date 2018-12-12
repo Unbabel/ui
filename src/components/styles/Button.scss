@@ -10,9 +10,11 @@
 	text-align: center;
 	font-weight: 600; // semi-bold
 	color: $un-gray3-light;
-	border-width: $un-control-border-width;
-	border-style: solid;
-	border-color: $un-gray3-dark;
+	border: {
+		width: $un-control-border-width;
+		style: solid;
+		color: $un-gray3-dark;
+	}
 	background-color: transparent;
 	border-radius: $un-control-radius;
 	box-sizing: border-box;
