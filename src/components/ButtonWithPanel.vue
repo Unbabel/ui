@@ -111,7 +111,7 @@ export default {
 		handleClick(event) {
 			const eventPath = getEventPath(event);
 			const clickedOutside = eventPath.indexOf(this.$el) === -1;
-			if (clickedOutside) {
+			if (clickedOutside && this.closeOnOutsideClick) {
 				this.panelOpen = false;
 			}
 		},
