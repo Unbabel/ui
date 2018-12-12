@@ -10,10 +10,14 @@
 	text-align: center;
 	font-weight: 600; // semi-bold
 	color: $un-gray3-light;
-	box-shadow: inset 0px 0px 0px $un-control-border-width $un-gray3-dark;
+	border: {
+		width: $un-control-border-width;
+		style: solid;
+		color: $un-gray3-dark;
+	}
 	background-color: transparent;
-	border: none;
 	border-radius: $un-control-radius;
+	box-sizing: border-box;
 	cursor: pointer;
 
 	transition: all 0.1s ease-in-out, background-color 0.2s ease-in-out;
@@ -27,8 +31,8 @@
 	&:not([disabled]) {
 		// Default hover state
 		&:hover {
-			background-color: #939BAB;
-			box-shadow: inset 0 0 0 $un-control-border-width #939BAB;
+			background-color: $un-gray2;
+			border-color: $un-gray2;
 			color: white;
 		}
 
@@ -46,26 +50,26 @@
 	&.is-disabled,
 	&[disabled] {
 		color: $un-gray1-dark;
-		box-shadow: inset 0 0 0 $un-control-border-width $un-gray1-dark;
+		border-color: $un-gray1-dark;
 		cursor: not-allowed;
 	}
 
 	&--primary,
 	&--cta,
 	&--ctaAlt {
-		box-shadow: none;
+		border-color: transparent;
 
 		&:not(.is-disabled),
 		&:not([disabled]) {
 			&:hover, &:active {
-				box-shadow: none;
+				border-color: transparent;
 			}
 		}
 
 		&.is-disabled,
 		&[disabled] {
 			background-color: $un-gray1;
-			box-shadow: none;
+			border-color: transparent;
 			color: white;
 		}
 	}
@@ -81,7 +85,7 @@
 				background-color: $un-gray3-light;
 			}
 			&:active {
-				background-color: #788090;
+				background-color: $un-gray2-dark;
 			}
 		}
 	}
@@ -97,7 +101,7 @@
 				background-color: $un-green-dark;
 			}
 			&:active {
-				background-color: #38A967;
+				background-color: desaturate(lighten($un-green-matte, 8%), 45%);
 			}
 		}
 	}
@@ -113,22 +117,22 @@
 				background-color: $un-purple-dark;
 			}
 			&:active {
-				background-color: #495D95;
+				background-color: desaturate(darken($un-purple, 5%), 20%);
 			}
 		}
 	}
 
 	// Size related section
 	& {
-		padding: 0.53125rem 1.5rem;
+		padding: 0.5rem 1.5rem 0.4375rem; // To level out line height + padding the number cannot be the same in top and bottom
 		height: 32px; // Prevents inconsistent vertical-align in safari
 	}
 	&--big {
-		padding: 0.78125rem 1.5rem;
+		padding: 0.75rem 1.5rem 0.6875rem; // To level out line height + padding the number cannot be the same in top and bottom
 		height: 40px; // Prevents inconsistent vertical-align in safari
 	}
 	&--bigger {
-		padding: 1.03125rem 1.5rem;
+		padding: 1rem 1.5rem 0.9375rem; // To level out line height + padding the number cannot be the same in top and bottom
 		height: 48px; // Prevents inconsistent vertical-align in safari
 	}
 }
