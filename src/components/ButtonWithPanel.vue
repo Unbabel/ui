@@ -97,7 +97,13 @@ export default {
 	},
 	methods: {
 		togglePanel() {
-			this.panelOpen = !this.panelOpen;
+			return (this.panelOpen) ? this.close() : this.open();
+		},
+		open() {
+			this.panelOpen = true;
+		},
+		close() {
+			this.panelOpen = false;
 		},
 		handleKeyPress(event) {
 			const clickedEscKey = event.keyCode === 27;
