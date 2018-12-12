@@ -10,7 +10,6 @@
 	}
 
 	&__toggle.c-Button {
-		border-left: none;
 		border-top-left-radius: inherit;
 		border-bottom-left-radius: inherit;
 		border-top-right-radius: $un-control-radius;
@@ -21,7 +20,7 @@
 		border-left: 1px solid rgba(0, 0, 0, 0.1);
 
 		path {
-			fill: #fff;
+			fill: currentColor;
 		}
 	}
 
