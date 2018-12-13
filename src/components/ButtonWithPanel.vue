@@ -42,13 +42,12 @@ const calculateOpenPosition = debounce(function() {
 	} = this;
 	const {
 		innerHeight: windowHeight,
-		scrollY,
 	} = window;
 	const {
-		offsetHeight,
-		offsetTop,
-	} = element;
-	const spaceToTop = offsetTop - scrollY;
+		top: offsetTop,
+		height: offsetHeight,
+	} = element.getBoundingClientRect();
+	const spaceToTop = offsetTop;
 	const spaceToBottom = windowHeight - (spaceToTop + offsetHeight);
 	this.openLocation = spaceToTop > spaceToBottom ? 'top' : 'bottom';
 }, 100);
