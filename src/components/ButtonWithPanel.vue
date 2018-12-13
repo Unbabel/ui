@@ -123,6 +123,7 @@ export default {
 		},
 		calculateOpenPosition,
 		bindWatchForOpenSpace() {
+			this.calculateOpenPosition();
 			window.addEventListener('resize', this.calculateOpenPosition, true);
 			window.addEventListener('scroll', this.calculateOpenPosition, true);
 		},
