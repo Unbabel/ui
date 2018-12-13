@@ -3,6 +3,7 @@
 		class="c-ButtonWithPanel"
 		:class="classObject">
 		<Button
+			:type="type"
 			:kind="kind"
 			:size="size">
 			<slot />
@@ -63,6 +64,10 @@ export default {
 		Button,
 	},
 	props: {
+		type: {
+			type: String,
+			required: false,
+		},
 		closeOnEscapePress: {
 			type: Boolean,
 			required: false,
