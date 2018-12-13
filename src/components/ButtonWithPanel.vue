@@ -5,7 +5,8 @@
 		<Button
 			:type="type"
 			:kind="kind"
-			:size="size">
+			:size="size"
+			v-on="$listeners">
 			<slot />
 		</Button>
 		<Button
@@ -83,6 +84,10 @@ export default {
 			required: false,
 			default: true,
 		},
+		openPosition: {
+			type: String,
+			required: false,
+		},
 	},
 	data() {
 		return {
@@ -94,13 +99,16 @@ export default {
 		classObject() {
 			return {
 				'is-active': this.panelOpen,
-				[`open-${this.openLocation}`]: true,
+				[`open-${this.actualOpenLocation}`]: true,
 			};
 		},
 		toggleButtonClassObject() {
 			return {
 				'is-active': this.panelOpen,
 			};
+		},
+		actualOpenLocation() {
+			return this.openPosition || this.openLocation;
 		},
 	},
 	methods: {
