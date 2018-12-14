@@ -1,3 +1,10 @@
+## [[v3.1.0](https://www.gitlab.com/Unbabel/core/tags/v3.1.0)] - 2018/12/14
+### Added
+* Add button with panel and list - [!39](https://www.gitlab.com/Unbabel/ui/merge_requests/39)
+
+### Changed
+* Replace box-shadow border with actual border - [!38](https://www.gitlab.com/Unbabel/ui/merge_requests/38)
+
 ## [[v3.0.0](https://github.com/Unbabel/ui/compare/v2.2.4...v3.0.0)] - 2018-11-27
 ### Added
 - `defaultStyles` prop to `Modal`. Adds default margins to modal content
