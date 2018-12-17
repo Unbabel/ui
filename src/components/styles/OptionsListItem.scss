@@ -3,7 +3,6 @@
 .c-OptionsListItem {
 	display: block;
 	box-sizing: border-box;
-	padding: var(--optionsListSpacingY) var(--optionsListSpacingX);
 	color: inherit;
 	text-align: inherit;
 	cursor: pointer;
@@ -27,5 +26,21 @@
 		font-size: inherit;
 		font-weight: inherit;
 		line-height: inherit;
+	}
+
+
+	// Sizing
+	& {
+		--optionsListSpacingY: 0.375rem;
+		--optionsListSpacingX: 1.5rem;
+		padding: var(--optionsListSpacingY) var(--optionsListSpacingX);
+	}
+	.c-OptionsList--big &,
+	&--big {
+		--optionsListSpacingY: 0.625rem;
+	}
+	.c-OptionsList--bigger &,
+	&--bigger {
+		--optionsListSpacingY: 0.875rem;
 	}
 }

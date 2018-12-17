@@ -1,6 +1,11 @@
 <script>
+import SizeMixin from '../mixins/SizeMixin';
+
 export default {
 	name: 'OptionsListItem',
+	mixins: [
+		SizeMixin,
+	],
 	render(h) {
 		// Lets us change the type of element if is link
 		const elementName = (this.href) ? 'a' : 'button';
@@ -33,6 +38,7 @@ export default {
 		classObject() {
 			return {
 				'c-OptionsListItem': true,
+				[`c-OptionsListItem--${this.size}`]: this.size.length,
 			};
 		},
 	},
