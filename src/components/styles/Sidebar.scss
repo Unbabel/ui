@@ -6,7 +6,7 @@
 	width: 100%;
 	max-width: 256px;
 	color: $un-gray4;
-	background-color: #FAFAFA;
+	background-color: $un-panel-background-color;
 	border-right: 1px solid $un-gray1;
 
 	&__tab {
