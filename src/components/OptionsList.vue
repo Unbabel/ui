@@ -1,4 +1,5 @@
 <script>
+import SizeMixin from '../mixins/SizeMixin';
 import OptionsListItem from './OptionsListItem.vue';
 
 export {
@@ -22,17 +23,26 @@ function render(h) {
 
 	// Return list with wrapped items
 	return h('ul', {
-		class: {
-			'c-OptionsList': true,
-		},
+		class: this.classObject,
 	}, wrappedSlotItems);
 }
 
 export default {
 	name: 'OptionsList',
-	render,
+	mixins: [
+		SizeMixin,
+	],
 	components: {
 		OptionsListItem,
+	},
+	render,
+	computed: {
+		classObject() {
+			return {
+				'c-OptionsList': true,
+				[`c-OptionsList--${this.size}`]: this.size.length,
+			};
+		},
 	},
 };
 </script>

@@ -113,7 +113,7 @@ storiesOf('Button', module)
 			},
 			template: `<ButtonWithPanel kind="${kind}" size="${size}">
 				${content}
-				<OptionsList slot="panel">
+				<OptionsList size="${size}" slot="panel">
 					<OptionsListItem>As button</OptionsListItem>
 					<OptionsListItem href="#">As link</OptionsListItem>
 				</OptionsList>
