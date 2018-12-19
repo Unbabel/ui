@@ -1,3 +1,7 @@
+## [[v3.2.0](https://www.gitlab.com/Unbabel/core/tags/v3.2.0)] - 2018/12/19
+### Added
+* Enable size in options list and list item 
+
 ## [[v3.1.0](https://www.gitlab.com/Unbabel/core/tags/v3.1.0)] - 2018/12/14
 ### Added
 * Add button with panel and list - [!39](https://www.gitlab.com/Unbabel/ui/merge_requests/39)
