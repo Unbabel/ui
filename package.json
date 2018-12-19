@@ -1,6 +1,6 @@
 {
   "name": "@unbabel/ui",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Samora Design System - The component library for Unbabel User Interfaces",
   "main": "index.js",
   "scripts": {
