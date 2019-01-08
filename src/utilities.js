@@ -78,7 +78,7 @@ export function setSelectOptionIndex(select, value) {
 			const optionValue = (Object.prototype.hasOwnProperty.call(option, '_value'))
 				? option._value // eslint-disable-line
 				: option.value;
-			const optionIsEqualToModel = looseEqual(optionValue, this.selected);
+			const optionIsEqualToModel = looseEqual(optionValue, select.selected);
 
 			// We found a match, apply option index
 			if (optionIsEqualToModel) {
