@@ -1,0 +1,5 @@
+---
+title: Fix get valu e from select
+merge_request: 42
+author: João Sardinha
+type: fixed
