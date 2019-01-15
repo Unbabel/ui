@@ -75,7 +75,7 @@ original_file = "CHANGELOG.md"
 new_file      = "CHANGELOG.new.md"
 
 File.open(new_file, 'w') do |file|
-  file.puts "## [[#{options.tag or "VERSION"}](https://www.gitlab.com/Unbabel/core/tags/#{options.tag})] - #{Time.now.strftime("%Y/%m/%d")}"
+  file.puts "## [[#{options.tag or "VERSION"}](https://www.gitlab.com/Unbabel/ui/tags/#{options.tag})] - #{Time.now.strftime("%Y/%m/%d")}"
 
   for entry_type in ChangelogEntry::ENTRY_TYPES do
     if !entries.key?(entry_type)

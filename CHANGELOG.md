@@ -1,12 +1,12 @@
-## [[v3.2.1](https://www.gitlab.com/Unbabel/core/tags/v3.2.1)] - 2019/01/15
+## [[v3.2.1](https://www.gitlab.com/Unbabel/ui/tags/v3.2.1)] - 2019/01/15
 ### Fixed
 * Fix get value from select - [!42](https://www.gitlab.com/Unbabel/ui/merge_requests/42)
 
-## [[v3.2.0](https://www.gitlab.com/Unbabel/core/tags/v3.2.0)] - 2018/12/19
+## [[v3.2.0](https://www.gitlab.com/Unbabel/ui/tags/v3.2.0)] - 2018/12/19
 ### Added
-* Enable size in options list and list item 
+* Enable size in options list and list item
 
-## [[v3.1.0](https://www.gitlab.com/Unbabel/core/tags/v3.1.0)] - 2018/12/14
+## [[v3.1.0](https://www.gitlab.com/Unbabel/ui/tags/v3.1.0)] - 2018/12/14
 ### Added
 * Add button with panel and list - [!39](https://www.gitlab.com/Unbabel/ui/merge_requests/39)
 
