@@ -7,6 +7,7 @@
 				ref="select"
 				:name="name"
 				@change="onChange"
+				:aria-label="label"
 				:disabled="disabled">
 				<option v-if="placeholder" selected disabled>{{ placeholder }}</option>
 				<slot />

@@ -10,6 +10,7 @@
 				:placeholder="placeholder"
 				:rows="rows"
 				class="c-FormTextarea__control"
+				:aria-label="label"
 				@input="onInput"></textarea>
 		</div>
 	</label>

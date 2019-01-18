@@ -9,6 +9,7 @@
 				:required="required"
 				:disabled="disabled"
 				:placeholder="placeholder"
+				:aria-label="label"
 				class="c-FormInputText__control"
 				@input="onInput">
 		</div>
