@@ -12,9 +12,9 @@
 					aria-label="Close"
 				>
 					<svg width="192px" height="192px" viewBox="0 0 192 192" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-						<g id="Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-							<g id="close-icon" fill-rule="nonzero">
-								<polygon id="Shape" points="180.2 0 95.8 84.3 11.8 0.4 0 12.2 84 96 0
+						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							<g fill-rule="nonzero">
+								<polygon points="180.2 0 95.8 84.3 11.8 0.4 0 12.2 84 96 0
 								179.9 11.8 191.6 95.8 107.8 180.2 192 192 180.3 107.6 96 192 11.8"></polygon>
 							</g>
 						</g>
