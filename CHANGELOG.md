@@ -1,3 +1,7 @@
+## [[v3.2.2](https://www.gitlab.com/Unbabel/ui/tags/v3.2.2)] - 2019/01/18
+### Changed
+* Improves form elements and modal close button accessibility - [!43](https://www.gitlab.com/Unbabel/ui/merge_requests/43)
+
 ## [[v3.2.1](https://www.gitlab.com/Unbabel/ui/tags/v3.2.1)] - 2019/01/15
 ### Fixed
 * Fix get value from select - [!42](https://www.gitlab.com/Unbabel/ui/merge_requests/42)
