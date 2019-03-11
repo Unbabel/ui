@@ -134,4 +134,28 @@ storiesOf('Timer', module)
 			},
 			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :auto-start="true" :always-show-hours="true"></timer></div>',
 		};
+	})
+	.add('Count down', () => {
+		return {
+			components: {
+				Timer,
+			},
+			data: () => {
+				return {
+					timerOptions: {},
+				};
+			},
+			methods: {
+				startTimer() {
+					this.$refs.timer.start();
+				},
+				pauseTimer() {
+					this.$refs.timer.pause();
+				},
+				resetTimer() {
+					this.$refs.timer.reset();
+				},
+			},
+			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :auto-start="true" :always-show-hours="true" :startingTime="10" countdown></timer></div>',
+		};
 	});
