@@ -61,6 +61,11 @@ export default {
 			required: false,
 			default: false,
 		},
+		countdown: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
 	},
 	methods: {
 		// Start the Timer
@@ -69,7 +74,12 @@ export default {
 			this.interval = undefined;
 
 			this.interval = window.setInterval(() => {
-				this.elapsedTime += 1;
+				if (!this.countdown) {
+					this.elapsedTime += 1;
+				}
+				else {
+					this.elapsedTime -= 1;
+				}
 
 				if (this.limit) {
 					if (this.limit === this.elapsedTime) {
@@ -91,7 +101,7 @@ export default {
 		// Pauses the Timer and puts it at 0
 		stop() {
 			this.pause();
-			this.elapsedTime = 0;
+			this.elapsedTime = this.startingTime;
 		},
 		// In case you need to change the elapsedTime value
 		setElapsedTime(time) {
@@ -139,7 +149,9 @@ export default {
 		if (this.startingTime) {
 			this.elapsedTime = this.startingTime;
 		}
-
+		if (this.countdown && !this.startingTime) {
+			throw new Error('Timer using countdown must have a starting time.');
+		}
 		if (this.autoStart) {
 			this.start();
 		}
