@@ -5,9 +5,11 @@ import { withInfo } from 'storybook-addon-vue-info';
 import Timer from '@/components/Timer.vue';
 import { boolean } from '@storybook/addon-knobs/dist/vue';
 
+import TimerSumary from './Timer.md';
+
 storiesOf('Timer', module)
 	.add('Usage', withInfo({
-		summary: 'A easy and (slightly) customizable way to show time.<br>The limit property accepts the number of seconds that must pass before an event is emited.',
+		summary: TimerSumary,
 	})(() => {
 		return {
 			components: {
@@ -60,8 +62,10 @@ storiesOf('Timer', module)
 		const countdown = boolean('Count down', false, behaviourGroup);
 		const autoStart = boolean('Start automatically', true, behaviourGroup);
 		const startTime = number('Starting Time', 0, {}, behaviourGroup);
-		const limit = number('Limit', undefined, {}, behaviourGroup);
 		const tick = number('Tick', 1000, {}, behaviourGroup);
+
+		const eventGroup = 'Events';
+		const limit = number('Limit', undefined, {}, eventGroup);
 
 		return {
 			components: {
@@ -107,6 +111,38 @@ storiesOf('Timer', module)
 						@passed-limit="passedLimit"
 					></timer>
 					<p v-show="atLimit">Timer is at limit and has been manually paused.</p>
+				</div>`,
+		};
+	})
+	.add('@tick example', () => {
+		return {
+			components: {
+				Timer,
+			},
+			methods: {
+				onticked(time) {
+					// Color red if below 10
+					if (time < 10) {
+						this.$refs.timer.$el.style.color = '#f44242';
+						return;
+					}
+					// Color yellow if below 20
+					if (time < 15) {
+						this.$refs.timer.$el.style.color = '#CCCC00';
+					}
+				},
+			},
+			template:
+				`<div>
+					<timer ref="timer"
+						:auto-start="true"
+						:startingTime="15"
+						countdown
+						@passed-limit="passedLimit"
+						@tick="onticked"
+					></timer>
+					<p>This example shows a timer that turns yellow at 15 and red at 10</p>
+					<p>two limits were needed, and so we needed to use the 'tick' event to detect these changes</p>
 				</div>`,
 		};
 	});
