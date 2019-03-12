@@ -18,6 +18,17 @@ storiesOf('Timer', module)
 					timerOptions: {},
 				};
 			},
+			propsDescription: {
+				tick: 'Miliseconds for the timer to count 1 second, used to speed / slow timer',
+				countdown: 'Count down instead of up',
+				autoStart: 'Start the timer automatically',
+				startingTime: 'Time where timer begins',
+				limit: 'Time in seconds where the @passed-limit event triggers',
+				alwaysShowHours: 'Show hours even when the value is 00',
+				hideSeconds: 'Hide the seconds',
+				invisible: 'Dont\' display the timer (can still get values)',
+
+			},
 			methods: {
 				startTimer() {
 					this.$refs.timer.start();
