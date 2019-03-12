@@ -115,34 +115,37 @@ export default {
 	computed: {
 		// This is the description for the formatedTime
 		formatedTime() {
-			let hours = Math.floor(this.elapsedTime / 3600);
-			let minutes = Math.floor((this.elapsedTime - (hours * 3600)) / 60);
-			let seconds = this.elapsedTime - (hours * 3600) - (minutes * 60);
+			let time = this.elapsedTime;
 
-			if (hours < 10) {
-				hours = `0${hours}`;
-			}
-			if (minutes < 10) {
-				minutes = `0${minutes}`;
-			}
-			if (seconds < 10) {
-				seconds = `0${seconds}`;
+			// If time is negative calc as normal and append "-" to it
+			const negative = (this.elapsedTime < 0);
+
+			if (negative) {
+				time = this.elapsedTime * -1;
 			}
 
+			let hours = Math.floor(time / 3600);
+			let minutes = Math.floor((time - (hours * 3600)) / 60);
+			let seconds = time - (hours * 3600) - (minutes * 60);
+
+			hours = hours.toString().padStart(2, 0);
+			minutes = minutes.toString().padStart(2, 0);
+			seconds = seconds.toString().padStart(2, 0);
+
+			// Build the string
+			let formattedString = (negative ? '-' : ''); // Append a "-" to negative numbers
 			// Only show the hours when you have to
 			if (!this.alwaysShowHours && hours === '00') {
-				if (this.hideSeconds) {
-					return `${minutes}`;
-				}
-
-				return `${minutes}:${seconds}`;
+				formattedString += `${hours}:`;
 			}
 
-			if (this.hideSeconds) {
-				return `${hours}:${minutes}`;
+			formattedString += `${minutes}`;
+
+			if (!this.hideSeconds) {
+				formattedString += `:${seconds}`;
 			}
 
-			return `${hours}:${minutes}:${seconds}`;
+			return formattedString;
 		},
 	},
 	mounted() {
