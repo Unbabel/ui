@@ -36,6 +36,12 @@ export default {
 			required: false,
 			default: 0,
 		},
+		// If the timer is supposed to count in reverse
+		countdown: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
 		// Number of seconds the Timer will wait before emitting an event
 		limit: {
 			type: Number,
@@ -61,11 +67,6 @@ export default {
 			required: false,
 			default: false,
 		},
-		countdown: {
-			type: Boolean,
-			required: false,
-			default: false,
-		},
 	},
 	methods: {
 		// Start the Timer
@@ -81,7 +82,7 @@ export default {
 					this.elapsedTime -= 1;
 				}
 
-				if (this.limit) {
+				if (this.limit !== undefined) {
 					if (this.limit === this.elapsedTime) {
 						this.warnPassingOfLimit();
 					}
@@ -98,7 +99,7 @@ export default {
 			this.stop();
 			this.start();
 		},
-		// Pauses the Timer and puts it at 0
+		// Pauses the Timer and puts it at starting time
 		stop() {
 			this.pause();
 			this.elapsedTime = this.startingTime;
@@ -115,18 +116,14 @@ export default {
 	computed: {
 		// This is the description for the formatedTime
 		formatedTime() {
-			let time = this.elapsedTime;
+			// Always use positive time for calculus
+			const absTime = Math.abs(this.elapsedTime);
 
-			// If time is negative calc as normal and append "-" to it
 			const negative = (this.elapsedTime < 0);
 
-			if (negative) {
-				time = this.elapsedTime * -1;
-			}
-
-			let hours = Math.floor(time / 3600);
-			let minutes = Math.floor((time - (hours * 3600)) / 60);
-			let seconds = time - (hours * 3600) - (minutes * 60);
+			let hours = Math.floor(absTime / 3600);
+			let minutes = Math.floor((absTime - (hours * 3600)) / 60);
+			let seconds = absTime - (hours * 3600) - (minutes * 60);
 
 			hours = hours.toString().padStart(2, 0);
 			minutes = minutes.toString().padStart(2, 0);
@@ -134,8 +131,9 @@ export default {
 
 			// Build the string
 			let formattedString = (negative ? '-' : ''); // Append a "-" to negative numbers
+
 			// Only show the hours when you have to
-			if (!this.alwaysShowHours && hours === '00') {
+			if (this.alwaysShowHours || hours !== '00') {
 				formattedString += `${hours}:`;
 			}
 
@@ -152,8 +150,8 @@ export default {
 		if (this.startingTime) {
 			this.elapsedTime = this.startingTime;
 		}
-		if (this.countdown && !this.startingTime) {
-			throw new Error('Timer using countdown must have a starting time.');
+		if (this.startingTime === this.limit) {
+			throw new Error('starting time is equal to limit, this will not trigger the limit');
 		}
 		if (this.autoStart) {
 			this.start();
