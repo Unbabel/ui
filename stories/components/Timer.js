@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/vue';
-import { withKnobs } from '@storybook/addon-knobs/vue';
+import { withKnobs, number } from '@storybook/addon-knobs/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 
 import Timer from '@/components/Timer.vue';
+import { boolean } from '@storybook/addon-knobs/dist/vue';
 
 storiesOf('Timer', module)
 	.add('Usage', withInfo({
@@ -37,14 +38,27 @@ storiesOf('Timer', module)
 		};
 	}))
 	.addDecorator(withKnobs)
-	.add('Default', () => {
+	.add('Example', () => {
+		const displayGroup = 'Display';
+		const controls = boolean('Testing controls', true, displayGroup);
+		const invisible = boolean('Invisible', false, displayGroup);
+		const alwaysShowHours = boolean('Always show hours', false, displayGroup);
+		const hideSeconds = boolean('Hide seconds', false, displayGroup);
+
+		const behaviourGroup = 'Behaviour';
+		const countdown = boolean('Count down', false, behaviourGroup);
+		const autoStart = boolean('Start automatically', true, behaviourGroup);
+		const startTime = number('Starting Time', 0, {}, behaviourGroup);
+		const limit = number('Limit', undefined, {}, behaviourGroup);
+		const tick = number('Tick', 1000, {}, behaviourGroup);
+
 		return {
 			components: {
 				Timer,
 			},
 			data: () => {
 				return {
-					timerOptions: {},
+					atLimit: false,
 				};
 			},
 			methods: {
@@ -56,106 +70,32 @@ storiesOf('Timer', module)
 				},
 				resetTimer() {
 					this.$refs.timer.reset();
+					this.atLimit = false;
 				},
-			},
-			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :options="timerOptions"></timer></div>',
-		};
-	})
-	.add('Auto start', () => {
-		return {
-			components: {
-				Timer,
-			},
-			data: () => {
-				return {
-					timerOptions: {},
-				};
-			},
-			methods: {
-				startTimer() {
-					this.$refs.timer.start();
-				},
-				pauseTimer() {
+				passedLimit() {
 					this.$refs.timer.pause();
-				},
-				resetTimer() {
-					this.$refs.timer.reset();
+					this.atLimit = true;
 				},
 			},
-			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :options="timerOptions" :auto-start="true"></timer></div>',
-		};
-	})
-	.add('With a limit', () => {
-		return {
-			components: {
-				Timer,
-			},
-			data: () => {
-				return {
-					timerOptions: {},
-					limit: 3,
-					passedLimit: false,
-				};
-			},
-			methods: {
-				startTimer() {
-					this.$refs.timer.start();
-				},
-				pauseTimer() {
-					this.$refs.timer.pause();
-				},
-				resetTimer() {
-					this.$refs.timer.reset();
-				},
-			},
-			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :auto-start="true" :limit="limit" @passed-limit="passedLimit = true"></timer><p v-show="passedLimit">You passed the {{ limit }} second limit!</p></div>',
-		};
-	})
-	.add('Always show the hours', () => {
-		return {
-			components: {
-				Timer,
-			},
-			data: () => {
-				return {
-					timerOptions: {},
-				};
-			},
-			methods: {
-				startTimer() {
-					this.$refs.timer.start();
-				},
-				pauseTimer() {
-					this.$refs.timer.pause();
-				},
-				resetTimer() {
-					this.$refs.timer.reset();
-				},
-			},
-			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :auto-start="true" :always-show-hours="true"></timer></div>',
-		};
-	})
-	.add('Count down', () => {
-		return {
-			components: {
-				Timer,
-			},
-			data: () => {
-				return {
-					timerOptions: {},
-				};
-			},
-			methods: {
-				startTimer() {
-					this.$refs.timer.start();
-				},
-				pauseTimer() {
-					this.$refs.timer.pause();
-				},
-				resetTimer() {
-					this.$refs.timer.reset();
-				},
-			},
-			template: '<div><button v-on:click="startTimer">Start</button><button v-on:click="pauseTimer">Stop</button><button v-on:click="resetTimer">Reset</button><timer ref="timer" :auto-start="true" :always-show-hours="true" :startingTime="10" countdown></timer></div>',
+			template:
+				`<div>
+					<span v-if="${controls}">
+						<button @click="startTimer">Start</button>
+						<button @click="pauseTimer">Pause</button>
+						<button @click="resetTimer">Reset</button>
+					</span>
+					<timer ref="timer"
+						:tick="${tick}"
+						:auto-start="${autoStart}"
+						:always-show-hours="${alwaysShowHours}"
+						:hide-seconds="${hideSeconds}"
+						:startingTime="${startTime}"
+						:countdown="${countdown}"
+						:limit="${limit}"
+						:invisible="${invisible}"
+						@passed-limit="passedLimit"
+					></timer>
+					<p v-show="atLimit">Timer is at limit and has been manually paused.</p>
+				</div>`,
 		};
 	});
