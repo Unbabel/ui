@@ -87,7 +87,7 @@ export default {
 						this.warnPassingOfLimit();
 					}
 				}
-				this.$emit('ticked');
+				this.$emit('tick', this.elapsedTime);
 			}, this.tick);
 		},
 		// Pause the Timer
