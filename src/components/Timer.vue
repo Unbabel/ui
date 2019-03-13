@@ -127,22 +127,22 @@ export default {
 			const minutes = date.getUTCMinutes();
 			const seconds = date.getUTCSeconds();
 
-			const hoursStr = hours.toString().padStart(2, 0);
-			const minutesStr = minutes.toString().padStart(2, 0);
-			const secondsStr = seconds.toString().padStart(2, 0);
+			const paddedHours = hours.toString().padStart(2, 0);
+			const paddedMinutes = minutes.toString().padStart(2, 0);
+			const paddedSeconds = seconds.toString().padStart(2, 0);
 
 			// Build the string
 			let formattedString = (negative ? '-' : ''); // Append a "-" to negative numbers
 
 			// Only show the hours when you have to
 			if (this.alwaysShowHours || hours !== '00') {
-				formattedString += `${hours}:`;
+				formattedString += `${paddedHours}:`;
 			}
 
-			formattedString += `${minutes}`;
+			formattedString += `${paddedMinutes}`;
 
 			if (!this.hideSeconds) {
-				formattedString += `:${seconds}`;
+				formattedString += `:${paddedSeconds}`;
 			}
 
 			return formattedString;
