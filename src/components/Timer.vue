@@ -82,10 +82,8 @@ export default {
 					this.elapsedTime -= 1;
 				}
 
-				if (this.limit !== undefined) {
-					if (this.limit === this.elapsedTime) {
-						this.warnPassingOfLimit();
-					}
+				if (this.limit !== undefined && this.limit === this.elapsedTime) {
+					this.warnPassingOfLimit();
 				}
 				this.$emit('tick', this.elapsedTime);
 			}, this.tick);
