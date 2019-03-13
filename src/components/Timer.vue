@@ -121,7 +121,7 @@ export default {
 			const negative = (this.elapsedTime < 0);
 
 			const date = new Date();
-			date.setSeconds(this.elapsedTime);
+			date.setSeconds(absTime);
 
 			const hours = date.getUTCHours();
 			const minutes = date.getUTCMinutes();
