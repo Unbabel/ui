@@ -120,13 +120,16 @@ export default {
 
 			const negative = (this.elapsedTime < 0);
 
-			let hours = Math.floor(absTime / 3600);
-			let minutes = Math.floor((absTime - (hours * 3600)) / 60);
-			let seconds = absTime - (hours * 3600) - (minutes * 60);
+			const date = new Date();
+			date.setSeconds(this.elapsedTime);
 
-			hours = hours.toString().padStart(2, 0);
-			minutes = minutes.toString().padStart(2, 0);
-			seconds = seconds.toString().padStart(2, 0);
+			const hours = date.getUTCHours();
+			const minutes = date.getUTCMinutes();
+			const seconds = date.getUTCSeconds();
+
+			const hoursStr = hours.toString().padStart(2, 0);
+			const minutesStr = minutes.toString().padStart(2, 0);
+			const secondsStr = seconds.toString().padStart(2, 0);
 
 			// Build the string
 			let formattedString = (negative ? '-' : ''); // Append a "-" to negative numbers
