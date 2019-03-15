@@ -120,7 +120,7 @@ export default {
 
 			const negative = (this.elapsedTime < 0);
 
-			const date = new Date();
+			const date = new Date(null);
 			date.setSeconds(absTime);
 
 			const hours = date.getUTCHours();
@@ -135,7 +135,7 @@ export default {
 			let formattedString = (negative ? '-' : ''); // Append a "-" to negative numbers
 
 			// Only show the hours when you have to
-			if (this.alwaysShowHours || hours !== '00') {
+			if (this.alwaysShowHours || paddedHours !== '00') {
 				formattedString += `${paddedHours}:`;
 			}
 
