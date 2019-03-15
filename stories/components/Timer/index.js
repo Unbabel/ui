@@ -115,6 +115,9 @@ storiesOf('Timer', module)
 		};
 	})
 	.add('@tick example', () => {
+		const yellowColor = '#f44242';
+		const redColor = '#CCCC00';
+
 		return {
 			components: {
 				Timer,
@@ -128,12 +131,12 @@ storiesOf('Timer', module)
 				onticked(time) {
 					// Color red if below 10
 					if (time < 10) {
-						this.timerColor = '#f44242';
+						this.timerColor = yellowColor;
 						return;
 					}
 					// Color yellow if below 20
 					if (time < 15) {
-						this.timerColor = '#CCCC00';
+						this.timerColor = redColor;
 					}
 				},
 			},
