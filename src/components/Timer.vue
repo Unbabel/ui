@@ -75,12 +75,9 @@ export default {
 			this.interval = undefined;
 
 			this.interval = window.setInterval(() => {
-				if (!this.countdown) {
-					this.elapsedTime += 1;
-				}
-				else {
-					this.elapsedTime -= 1;
-				}
+				const unit = this.countdown ? -1 : 1;
+				this.elapsedTime += unit;
+
 
 				if (this.limit !== undefined && this.limit === this.elapsedTime) {
 					this.warnPassingOfLimit();
