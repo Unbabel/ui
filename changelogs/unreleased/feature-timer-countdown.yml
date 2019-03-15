@@ -1,5 +1,5 @@
 ---
-title: Timer Refactor
+title: Add option to countdown in the timer component
 merge_request: 44
 author: "duarte.dias"
-type: changed
+type: added
