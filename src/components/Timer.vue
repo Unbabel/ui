@@ -118,7 +118,7 @@ export default {
 			// Always use positive time for calculus
 			const absTime = Math.abs(this.elapsedTime);
 
-			const negative = (this.elapsedTime < 0);
+			const negative = this.elapsedTime < 0;
 
 			const date = new Date(null);
 			date.setSeconds(absTime);
@@ -132,7 +132,7 @@ export default {
 			const paddedSeconds = seconds.toString().padStart(2, 0);
 
 			// Build the string
-			let formattedString = (negative ? '-' : ''); // Append a "-" to negative numbers
+			let formattedString = negative ? '-' : ''; // Append a "-" to negative numbers
 
 			// Only show the hours when you have to
 			if (this.alwaysShowHours || paddedHours !== '00') {
