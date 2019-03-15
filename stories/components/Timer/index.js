@@ -119,16 +119,21 @@ storiesOf('Timer', module)
 			components: {
 				Timer,
 			},
+			data: () => {
+				return {
+					timerColor: '#000000',
+				};
+			},
 			methods: {
 				onticked(time) {
 					// Color red if below 10
 					if (time < 10) {
-						this.$refs.timer.$el.style.color = '#f44242';
+						this.timerColor = '#f44242';
 						return;
 					}
 					// Color yellow if below 20
 					if (time < 15) {
-						this.$refs.timer.$el.style.color = '#CCCC00';
+						this.timerColor = '#CCCC00';
 					}
 				},
 			},
@@ -138,8 +143,8 @@ storiesOf('Timer', module)
 						:auto-start="true"
 						:startingTime="15"
 						countdown
-						@passed-limit="passedLimit"
 						@tick="onticked"
+						:style="{ color: timerColor }"
 					></timer>
 					<p>This example shows a timer that turns yellow at 15 and red at 10</p>
 					<p>two limits were needed, and so we needed to use the 'tick' event to detect these changes</p>
