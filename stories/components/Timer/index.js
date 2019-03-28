@@ -46,7 +46,7 @@ storiesOf('Timer', module)
 	<button v-on:click="startTimer">Start</button>
 	<button v-on:click="pauseTimer">Stop</button>
 	<button v-on:click="resetTimer">Reset</button>
-	<timer ref="timer" :options="timerOptions"></timer>
+	<timer ref="timer"></timer>
 </div>`,
 		};
 	}))
