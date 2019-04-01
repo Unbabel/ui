@@ -158,7 +158,7 @@ describe('Timer', () => {
 		});
 		const tickCallback = jest.fn();
 		wrapper.vm.$on('tick', tickCallback);
-		await delay(14); // More than 10 and close to 15 to allow tick to work two times before call
+		await delay(24); // More than 20 and close to 25 to allow tick to work two times before call
 		expect(tickCallback.mock.calls.length).toBe(2);
 	});
 	it('emits when limit is passed', async () => {
