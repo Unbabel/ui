@@ -17,7 +17,6 @@ function waitForVueEvent(wrapper, eventName) {
 	});
 }
 
-
 describe('Timer', () => {
 	it('mounts with defaults', () => {
 		const wrapper = shallowMount(Timer, {});
@@ -101,7 +100,6 @@ describe('Timer', () => {
 			expect(wrapper.vm.formatedTime).toEqual(formattedStartTime);
 		});
 	});
-
 	it('displays negative values', () => {
 		const wrapper = shallowMount(Timer, {
 			propsData: {
@@ -150,7 +148,6 @@ describe('Timer', () => {
 			return expect(getTimeAfterTicking(0, 1)).resolves.toBe('-00:01');
 		});
 	});
-
 	it('ticks on time', async () => {
 		const wrapper = shallowMount(Timer, {
 			propsData: {
