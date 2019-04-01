@@ -31,19 +31,30 @@ describe('Timer', () => {
 			hideSeconds: false,
 		});
 	});
-	it('doesn\'t show hours when not needed', () => {
-		const wrapper = shallowMount(Timer, {});
-		expect(wrapper.text()).toBe('00:00');
-	});
-	it('hides seconds', () => {
-		const wrapper = shallowMount(Timer, {
-			propsData: {
-				hideSeconds: true,
-				alwaysShowHours: true,
-				startingTime: 62, // 00:01:02 with seconds
-			},
+	describe('display tests', () => {
+		it('doesn\'t show hours when not needed', () => {
+			const wrapper = shallowMount(Timer, {});
+			expect(wrapper.text()).toBe('00:00');
 		});
-		expect(wrapper.vm.formatedTime).toBe('00:01');
+		it('hides seconds', () => {
+			const wrapper = shallowMount(Timer, {
+				propsData: {
+					hideSeconds: true,
+					alwaysShowHours: true,
+					startingTime: 62, // 00:01:02 with seconds
+				},
+			});
+			expect(wrapper.vm.formatedTime).toBe('00:01');
+		});
+		it('displays negative values', () => {
+			const wrapper = shallowMount(Timer, {
+				propsData: {
+					startingTime: -1,
+					autoStart: true,
+				},
+			});
+			expect(wrapper.vm.formatedTime).toBe('-00:01');
+		});
 	});
 	it('throws error when starting time is equal to limit', () => {
 		// disable console.error because Vue uses it even when the throw error is catched.
@@ -65,7 +76,7 @@ describe('Timer', () => {
 		wrapper.vm.setElapsedTime(4);
 		expect(wrapper.vm.elapsedTime).toBe(4);
 	});
-	describe('controls', () => {
+	describe('controls tests', () => {
 		// Defaults wrapper used for controls
 		function newControlsWrapper() {
 			return shallowMount(Timer, {
@@ -100,16 +111,7 @@ describe('Timer', () => {
 			expect(wrapper.vm.formatedTime).toEqual(formattedStartTime);
 		});
 	});
-	it('displays negative values', () => {
-		const wrapper = shallowMount(Timer, {
-			propsData: {
-				startingTime: -1,
-				autoStart: true,
-			},
-		});
-		expect(wrapper.vm.formatedTime).toBe('-00:01');
-	});
-	describe('tick behaviours', () => {
+	describe('tick behaviours tests', () => {
 		const wrapper = shallowMount(Timer, {
 			propsData: {
 				tick: 5,
