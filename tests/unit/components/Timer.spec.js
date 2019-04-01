@@ -152,7 +152,7 @@ describe('Timer', () => {
 	it('ticks on time', async () => {
 		const wrapper = shallowMount(Timer, {
 			propsData: {
-				tick: 5, // Speed up for faster testing
+				tick: 20, // A little bit slower than usual to ensure it doesn't fail
 				autoStart: true,
 			},
 		});
