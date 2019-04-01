@@ -1,28 +1,22 @@
 import { shallowMount } from '@vue/test-utils';
 import Timer from '@/components/Timer.vue';
 
-// Ticks the timer once and returns the new value
-const getTimeAfterTickingWrapper = shallowMount(Timer, {
-	propsData: {
-		tick: 5,
-		autoStart: true,
-	},
-});
-
-function getTimeAfterTicking(startTime = 0, countdown = false) {
+// With this method we can use async instead of setTimeout() which requires done() in tests
+const delay = (t) => {
 	return new Promise((resolve) => {
-		const wrapper = getTimeAfterTickingWrapper;
-		wrapper.setData({
-			elapsedTime: startTime,
-		});
-		wrapper.setProps({
-			countdown,
-		});
-		wrapper.vm.$once('tick', () => {
-			resolve(wrapper.vm.formatedTime);
+		return setTimeout(resolve, t);
+	});
+};
+
+// With this method we can use async instead of done() in tests
+function waitForVueEvent(wrapper, eventName) {
+	return new Promise((resolve) => {
+		wrapper.vm.$once(eventName, () => {
+			resolve();
 		});
 	});
 }
+
 
 describe('Timer', () => {
 	it('mounts with defaults', () => {
@@ -42,6 +36,72 @@ describe('Timer', () => {
 		const wrapper = shallowMount(Timer, {});
 		expect(wrapper.text()).toBe('00:00');
 	});
+	it('hides seconds', () => {
+		const wrapper = shallowMount(Timer, {
+			propsData: {
+				hideSeconds: true,
+				alwaysShowHours: true,
+				startingTime: 62, // 00:01:02 with seconds
+			},
+		});
+		expect(wrapper.vm.formatedTime).toBe('00:01');
+	});
+	it('throws error when starting time is equal to limit', () => {
+		// disable console.error because Vue uses it even when the throw error is catched.
+		// more info at: https://github.com/vuejs/vue-test-utils/issues/641
+		console.error = jest.fn(); // eslint-disable-line no-console
+
+		function mountBadTimer() {
+			shallowMount(Timer, {
+				propsData: {
+					startingTime: 2,
+					limit: 2,
+				},
+			});
+		}
+		expect(mountBadTimer).toThrow();
+	});
+	it('sets elapsed time correctly', () => {
+		const wrapper = shallowMount(Timer, {});
+		wrapper.vm.setElapsedTime(4);
+		expect(wrapper.vm.elapsedTime).toBe(4);
+	});
+	describe('controls', () => {
+		// Defaults wrapper used for controls
+		function newControlsWrapper() {
+			return shallowMount(Timer, {
+				propsData: {
+					tick: 5,
+					startingTime: 2,
+				},
+			});
+		}
+		it('starts the timer', async () => {
+			const wrapper = newControlsWrapper();
+			wrapper.vm.start();
+			await waitForVueEvent(wrapper, 'tick');
+			expect(wrapper.vm.formatedTime).toBe('00:03');
+		});
+		it('pauses the timer', async () => {
+			const wrapper = newControlsWrapper();
+			wrapper.vm.start();
+			await waitForVueEvent(wrapper, 'tick');
+			const timeBeforePause = wrapper.vm.formatedTime;
+			wrapper.vm.pause();
+			await delay(10); // Would be 2 ticks if was playing
+			expect(wrapper.vm.formatedTime).toBe(timeBeforePause); // Time didn't change
+		});
+		it('stops the timer', async () => {
+			const wrapper = newControlsWrapper();
+			const formattedStartTime = wrapper.vm.formatedTime;
+			wrapper.vm.start();
+			await waitForVueEvent(wrapper, 'tick');
+			wrapper.vm.stop();
+			// Make sure timer goes back to start value
+			expect(wrapper.vm.formatedTime).toEqual(formattedStartTime);
+		});
+	});
+
 	it('displays negative values', () => {
 		const wrapper = shallowMount(Timer, {
 			propsData: {
@@ -49,29 +109,49 @@ describe('Timer', () => {
 				autoStart: true,
 			},
 		});
+		expect(wrapper.vm.formatedTime).toBe('-00:01');
+	});
+	describe('tick behaviours', () => {
+		const wrapper = shallowMount(Timer, {
+			propsData: {
+				tick: 5,
+				autoStart: true,
+			},
+		});
+		// Ticks the timer once and returns the new value
+		async function getTimeAfterTicking(startTime = 0, countdown = false) {
+			wrapper.vm.setElapsedTime(startTime);
+			wrapper.setProps({
+				countdown,
+			});
+			await waitForVueEvent(wrapper, 'tick');
+			return wrapper.vm.formatedTime;
+		}
 
-		return expect(wrapper.vm.formatedTime).toBe('-00:01');
+		it('overflows from 59:59 to 01:00:00', () => {
+			return expect(getTimeAfterTicking((60 * 60) - 1)).resolves.toBe('01:00:00');
+		});
+		it('overflows from -59:59 to -01:00:00', () => {
+			return expect(getTimeAfterTicking(((-60 * 60) + 1), true)).resolves.toBe('-01:00:00');
+		});
+		it('overflows from -59:59 to 01:00:00', () => {
+			return expect(getTimeAfterTicking(((-60 * 60) + 1), true)).resolves.toBe('-01:00:00');
+		});
+		it('overflows from 01:00:00 to 59:59', () => {
+			return expect(getTimeAfterTicking((60 * 60), true)).resolves.toBe('59:59');
+		});
+		it('overflows from -01:00:00 to -59:59', () => {
+			return expect(getTimeAfterTicking(-60 * 60)).resolves.toBe('-59:59');
+		});
+		it('auto starts', () => {
+			return expect(getTimeAfterTicking(0)).resolves.toBe('00:01');
+		});
+		it('counts down', () => {
+			return expect(getTimeAfterTicking(0, 1)).resolves.toBe('-00:01');
+		});
 	});
-	it('overflows properly', () => {
-		const multipleAssertions = async () => {
-			// Turns 59:59 into 01:00:00
-			expect(await getTimeAfterTicking((60 * 60) - 1)).toBe('01:00:00');
-			// Turns -59:59 into -01:00:00 on countdown
-			expect(await getTimeAfterTicking(((-60 * 60) + 1), true)).toBe('-01:00:00');
-			// Turns 01:00:00 into 59:59 on countdown
-			expect(await getTimeAfterTicking((60 * 60), true)).toBe('59:59');
-			// Turns -01:00:00 into -59:59
-			expect(await getTimeAfterTicking((-60 * 60))).toBe('-59:59');
-		};
-		return multipleAssertions();
-	});
-	it('auto starts', () => {
-		return expect(getTimeAfterTicking(0)).resolves.toBe('00:01');
-	});
-	it('counts down', () => {
-		return expect(getTimeAfterTicking(0, 1)).resolves.toBe('-00:01');
-	});
-	it('ticks on time', (done) => {
+
+	it('ticks on time', async () => {
 		const wrapper = shallowMount(Timer, {
 			propsData: {
 				tick: 5, // Speed up for faster testing
@@ -80,12 +160,10 @@ describe('Timer', () => {
 		});
 		const tickCallback = jest.fn();
 		wrapper.vm.$on('tick', tickCallback);
-		setTimeout(() => {
-			expect(tickCallback.mock.calls.length).toBe(2);
-			done();
-		}, 14); // More than 10 and close to 15 to allow tick to work two times before call
+		await delay(14); // More than 10 and close to 15 to allow tick to work two times before call
+		expect(tickCallback.mock.calls.length).toBe(2);
 	});
-	it('emits when limit is passed', (done) => {
+	it('emits when limit is passed', async () => {
 		const wrapper = shallowMount(Timer, {
 			propsData: {
 				limit: 2,
@@ -93,9 +171,7 @@ describe('Timer', () => {
 				autoStart: true,
 			},
 		});
-		wrapper.vm.$once('passed-limit', () => {
-			expect(wrapper.text()).toBe('00:02');
-			done();
-		});
+		await waitForVueEvent(wrapper, 'passed-limit');
+		expect(wrapper.text()).toBe('00:02');
 	});
 });
