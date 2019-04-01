@@ -56,26 +56,6 @@ describe('Timer', () => {
 			expect(wrapper.vm.formatedTime).toBe('-00:01');
 		});
 	});
-	it('throws error when starting time is equal to limit', () => {
-		// disable console.error because Vue uses it even when the throw error is catched.
-		// more info at: https://github.com/vuejs/vue-test-utils/issues/641
-		console.error = jest.fn(); // eslint-disable-line no-console
-
-		function mountBadTimer() {
-			shallowMount(Timer, {
-				propsData: {
-					startingTime: 2,
-					limit: 2,
-				},
-			});
-		}
-		expect(mountBadTimer).toThrow();
-	});
-	it('sets elapsed time correctly', () => {
-		const wrapper = shallowMount(Timer, {});
-		wrapper.vm.setElapsedTime(4);
-		expect(wrapper.vm.elapsedTime).toBe(4);
-	});
 	describe('controls tests', () => {
 		// Defaults wrapper used for controls
 		function newControlsWrapper() {
@@ -127,7 +107,12 @@ describe('Timer', () => {
 			await waitForVueEvent(wrapper, 'tick');
 			return wrapper.vm.formatedTime;
 		}
-
+		it('auto starts and counts up', () => {
+			return expect(getTimeAfterTicking(0)).resolves.toBe('00:01');
+		});
+		it('counts down', () => {
+			return expect(getTimeAfterTicking(0, 1)).resolves.toBe('-00:01');
+		});
 		it('overflows from 59:59 to 01:00:00', () => {
 			return expect(getTimeAfterTicking((60 * 60) - 1)).resolves.toBe('01:00:00');
 		});
@@ -143,12 +128,26 @@ describe('Timer', () => {
 		it('overflows from -01:00:00 to -59:59', () => {
 			return expect(getTimeAfterTicking(-60 * 60)).resolves.toBe('-59:59');
 		});
-		it('auto starts', () => {
-			return expect(getTimeAfterTicking(0)).resolves.toBe('00:01');
-		});
-		it('counts down', () => {
-			return expect(getTimeAfterTicking(0, 1)).resolves.toBe('-00:01');
-		});
+	});
+	it('throws error when starting time is equal to limit', () => {
+		// disable console.error because Vue uses it even when the throw error is catched.
+		// more info at: https://github.com/vuejs/vue-test-utils/issues/641
+		console.error = jest.fn(); // eslint-disable-line no-console
+
+		function mountBadTimer() {
+			shallowMount(Timer, {
+				propsData: {
+					startingTime: 2,
+					limit: 2,
+				},
+			});
+		}
+		expect(mountBadTimer).toThrow();
+	});
+	it('sets elapsed time correctly', () => {
+		const wrapper = shallowMount(Timer, {});
+		wrapper.vm.setElapsedTime(4);
+		expect(wrapper.vm.elapsedTime).toBe(4);
 	});
 	it('ticks on time', async () => {
 		const wrapper = shallowMount(Timer, {
