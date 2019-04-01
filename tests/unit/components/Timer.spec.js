@@ -18,7 +18,7 @@ function waitForVueEvent(wrapper, eventName) {
 }
 
 describe('Timer', () => {
-	it('mounts with defaults', () => {
+	it('mounts with default props', () => {
 		const wrapper = shallowMount(Timer, {});
 		expect(wrapper.props()).toEqual({
 			tick: 1000,
