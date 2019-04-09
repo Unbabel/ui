@@ -40,6 +40,11 @@
   },
   "homepage": "https://unbabel.gitlab.io/ui/",
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.12",
+    "@storybook/addon-knobs": "^3.4.12",
+    "@storybook/addon-notes": "^3.4.12",
+    "@storybook/addon-options": "^3.4.12",
+    "@storybook/vue": "^3.4.12",
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
@@ -54,17 +59,12 @@
     "jest": "^23.6.0",
     "node-sass": "^4.11.0",
     "sass-loader": "^6.0.7",
+    "storybook-addon-vue-info": "^0.6.2",
     "vue-jest": "^2.6.0",
     "vue-loader": "^14.2.4",
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "@storybook/addon-actions": "^3.4.12",
-    "@storybook/addon-knobs": "^3.4.12",
-    "@storybook/addon-notes": "^3.4.12",
-    "@storybook/addon-options": "^3.4.12",
-    "@storybook/vue": "^3.4.12",
-    "storybook-addon-vue-info": "^0.6.2",
     "vue": "^2.6.10"
   }
 }
