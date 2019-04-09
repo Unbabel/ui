@@ -1,3 +1,7 @@
+## [[v3.3.0](https://www.gitlab.com/Unbabel/ui/tags/v3.3.0)] - 2019/04/09
+### Added
+* Add option to countdown in the timer component - [!44](https://www.gitlab.com/Unbabel/ui/merge_requests/44)
+
 ## [[v3.2.2](https://www.gitlab.com/Unbabel/ui/tags/v3.2.2)] - 2019/01/18
 ### Changed
 * Improves form elements and modal close button accessibility - [!43](https://www.gitlab.com/Unbabel/ui/merge_requests/43)
