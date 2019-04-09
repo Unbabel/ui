@@ -36,6 +36,12 @@ export default {
 			required: false,
 			default: 0,
 		},
+		// If the timer is supposed to count in reverse
+		countdown: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
 		// Number of seconds the Timer will wait before emitting an event
 		limit: {
 			type: Number,
@@ -69,13 +75,14 @@ export default {
 			this.interval = undefined;
 
 			this.interval = window.setInterval(() => {
-				this.elapsedTime += 1;
+				const unit = this.countdown ? -1 : 1;
+				this.elapsedTime += unit;
 
-				if (this.limit) {
-					if (this.limit === this.elapsedTime) {
-						this.warnPassingOfLimit();
-					}
+
+				if (this.limit !== undefined && this.limit === this.elapsedTime) {
+					this.warnPassingOfLimit();
 				}
+				this.$emit('tick', this.elapsedTime);
 			}, this.tick);
 		},
 		// Pause the Timer
@@ -88,10 +95,10 @@ export default {
 			this.stop();
 			this.start();
 		},
-		// Pauses the Timer and puts it at 0
+		// Pauses the Timer and puts it at starting time
 		stop() {
 			this.pause();
-			this.elapsedTime = 0;
+			this.elapsedTime = this.startingTime;
 		},
 		// In case you need to change the elapsedTime value
 		setElapsedTime(time) {
@@ -105,41 +112,46 @@ export default {
 	computed: {
 		// This is the description for the formatedTime
 		formatedTime() {
-			let hours = Math.floor(this.elapsedTime / 3600);
-			let minutes = Math.floor((this.elapsedTime - (hours * 3600)) / 60);
-			let seconds = this.elapsedTime - (hours * 3600) - (minutes * 60);
+			// Always use positive time for calculus
+			const absTime = Math.abs(this.elapsedTime);
 
-			if (hours < 10) {
-				hours = `0${hours}`;
-			}
-			if (minutes < 10) {
-				minutes = `0${minutes}`;
-			}
-			if (seconds < 10) {
-				seconds = `0${seconds}`;
-			}
+			const negative = this.elapsedTime < 0;
+
+			const date = new Date(null);
+			date.setSeconds(absTime);
+
+			const hours = date.getUTCHours();
+			const minutes = date.getUTCMinutes();
+			const seconds = date.getUTCSeconds();
+
+			const paddedHours = hours.toString().padStart(2, 0);
+			const paddedMinutes = minutes.toString().padStart(2, 0);
+			const paddedSeconds = seconds.toString().padStart(2, 0);
+
+			// Build the string
+			let formattedString = negative ? '-' : ''; // Prepend a "-" to negative numbers
 
 			// Only show the hours when you have to
-			if (!this.alwaysShowHours && hours === '00') {
-				if (this.hideSeconds) {
-					return `${minutes}`;
-				}
-
-				return `${minutes}:${seconds}`;
+			if (this.alwaysShowHours || paddedHours !== '00') {
+				formattedString += `${paddedHours}:`;
 			}
 
-			if (this.hideSeconds) {
-				return `${hours}:${minutes}`;
+			formattedString += `${paddedMinutes}`;
+
+			if (!this.hideSeconds) {
+				formattedString += `:${paddedSeconds}`;
 			}
 
-			return `${hours}:${minutes}:${seconds}`;
+			return formattedString;
 		},
 	},
 	mounted() {
 		if (this.startingTime) {
 			this.elapsedTime = this.startingTime;
 		}
-
+		if (this.startingTime === this.limit) {
+			throw new Error('starting time is equal to limit, this will not trigger the limit');
+		}
 		if (this.autoStart) {
 			this.start();
 		}

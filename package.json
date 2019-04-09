@@ -40,31 +40,31 @@
   },
   "homepage": "https://unbabel.gitlab.io/ui/",
   "devDependencies": {
-    "@vue/test-utils": "^1.0.0-beta.16",
+    "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
-    "babel-jest": "^23.2.0",
-    "codacy-coverage": "^3.0.0",
+    "babel-jest": "^23.6.0",
+    "codacy-coverage": "^3.4.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-webpack": "^0.10.1",
-    "eslint-plugin-html": "^4.0.5",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-vue": "^4.5.0",
-    "jest": "^23.3.0",
-    "node-sass": "^4.9.2",
+    "eslint-plugin-html": "^4.0.6",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-vue": "^4.7.1",
+    "jest": "^23.6.0",
+    "node-sass": "^4.11.0",
     "sass-loader": "^6.0.7",
     "vue-jest": "^2.6.0",
-    "vue-loader": "^14.2.1",
-    "vue-template-compiler": "^2.5.16"
+    "vue-loader": "^14.2.4",
+    "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "@storybook/addon-actions": "^3.4.8",
-    "@storybook/addon-knobs": "^3.4.8",
-    "@storybook/addon-notes": "^3.4.8",
-    "@storybook/addon-options": "^3.4.8",
-    "@storybook/vue": "^3.4.8",
-    "storybook-addon-vue-info": "^0.6.1",
-    "vue": "^2.5.16"
+    "@storybook/addon-actions": "^3.4.12",
+    "@storybook/addon-knobs": "^3.4.12",
+    "@storybook/addon-notes": "^3.4.12",
+    "@storybook/addon-options": "^3.4.12",
+    "@storybook/vue": "^3.4.12",
+    "storybook-addon-vue-info": "^0.6.2",
+    "vue": "^2.6.10"
   }
 }
