@@ -30,12 +30,9 @@ module.exports = {
         }
       ],
       'import/no-extraneous-dependencies': [
-          error,
+          'error',
           {
-              devDependencies: [
-                  'storybook/**',
-                  'stories/**',
-              ],
+              devDependencies: true,
           },
       ],
   },
