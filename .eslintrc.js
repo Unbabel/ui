@@ -28,7 +28,16 @@ module.exports = {
         {
           'consistent': true
         }
-      ]
+      ],
+      'import/no-extraneous-dependencies': [
+          error,
+          {
+              devDependencies: [
+                  'storybook/**',
+                  'stories/**',
+              ],
+          },
+      ],
   },
   'settings': {
       'import/resolver': {
