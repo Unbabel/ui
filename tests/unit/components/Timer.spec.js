@@ -153,11 +153,11 @@ describe('Timer', () => {
 		const wrapper = shallowMount(Timer, {
 			propsData: {
 				tick: 20, // A little bit slower than usual to ensure it doesn't fail
-				autoStart: true,
 			},
 		});
 		const tickCallback = jest.fn();
 		wrapper.vm.$on('tick', tickCallback);
+		wrapper.vm.start();
 		await delay(55); // More than 40 and close to 60 to allow tick to work two times before call
 		expect(tickCallback.mock.calls.length).toBe(2);
 	});
