@@ -3,11 +3,12 @@ import { withInfo } from 'storybook-addon-vue-info';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs/vue';
 
 import InputRadio from '@/components/InputRadio';
+import InputRadioSummary from './InputRadio.md';
 
 storiesOf('InputRadio', module)
 	.addDecorator(withKnobs)
 	.add('Usage', withInfo({
-		summary: 'placeholder test for summary',
+		summary: InputRadioSummary,
 	})(() => {
 		const text1 = text('First choice', 'Option 1');
 		const text2 = text('Second choice', 'Option 2');
@@ -49,7 +50,6 @@ storiesOf('InputRadio', module)
           :value="radioInput.value"
           :disabled="radioInput.disabled"
           v-model="selectedOption" />
-        <br>
         <p>Selected option: {{selectedOption}}</p>
       </div>`,
 		};
