@@ -76,9 +76,7 @@ describe('InputRadio', () => {
 				[InputRadio.model.prop]: 'my fake value', // v-model has a custom prop
 			},
 		});
-		// TODO: Update to code below when this bug is fixed: https://github.com/vuejs/vue-test-utils/issues/1220
-		// expect(wrapper.find('input').attributes().checked).toBe(true);
-		expect(wrapper.vm.checked).toBe(true);
+		expect(wrapper.find('input').element.checked).toBe(true);
 	});
 	it('has input element before display element', () => {
 		// If the order changes the ~ selector in css will break
