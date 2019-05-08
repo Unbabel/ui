@@ -1,5 +1,5 @@
 <template>
-  <label class="c-InputRadio">
+  <label class="c-InputRadio" :class="classObject">
     <input class="c-InputRadio__input"
 			type="radio"
 			:value="value"
@@ -19,6 +19,9 @@ export default {
 		event: 'input',
 	},
 	props: {
+		darkMode: {
+			type: Boolean,
+		},
 		name: {
 			type: String,
 			required: true,
@@ -41,6 +44,11 @@ export default {
 		checked() {
 			return this.radioValue === this.value;
 		},
+		classObject() {
+			return {
+				'c-InputRadio--darkMode': this.darkMode,
+			};
+		},
 	},
 	methods: {
 		onInput() {
@@ -57,6 +65,12 @@ export default {
   display: flex;
   align-items: center;
 	margin: 18px 0;
+
+	$selectColor: $un-purple;
+	&--darkMode {
+		color: #fff;
+		$selectColor: #8fa0ff;
+	}
 
   &__input {
     position: absolute;
@@ -88,24 +102,17 @@ export default {
     }
   }
 
-
   &__input:checked ~ &__display::after {
+		color: $selectColor;
+		background-color: $selectColor;
 		opacity: 1;
-		color: $un-purple;
-		background-color: $un-purple;
 	}
 	&__input:checked ~ &__display {
-		border-color: $un-purple;
+		border-color: $selectColor;
 	}
-
   &__input:disabled ~ * {
     opacity: 0.3;
 	}
-
-  &__input:focus ~ &__display {
-		// opacity: 0.8;
-  }
-
   &__label {
     font-size: 16px;
   }

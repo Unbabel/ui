@@ -16,7 +16,6 @@ storiesOf('InputRadio', module)
 		const disableFirst = boolean('Disable first input', false);
 
 		return {
-			ha: 'he',
 			components: {
 				InputRadio,
 			},
@@ -53,4 +52,43 @@ storiesOf('InputRadio', module)
         <p>Selected option: {{selectedOption}}</p>
       </div>`,
 		};
-	}));
+	}))
+	.add('Dark mode', () => {
+		return {
+			components: {
+				InputRadio,
+			},
+			data: () => {
+				return {
+					selectedOption: 'Option 1',
+					radioInputs: [
+						{
+							text: 'Option 1',
+							value: 'Option 1',
+						},
+						{
+							text: 'Option 2',
+							value: 'Option 2',
+							disabled: true,
+						},
+						{
+							text: 'Option 3',
+							value: 'Option 3',
+						},
+					],
+				};
+			},
+			template: `<div style="background-color: #2e2f30; color: #fff; padding: 30px;" >
+			<h3> Which one will you pick?</h3>
+				<InputRadio v-for="radioInput in radioInputs"
+          :key="radioInput.value"
+					name="radioChoice"
+          :label="radioInput.text"
+          :value="radioInput.value"
+          :disabled="radioInput.disabled"
+					v-model="selectedOption"
+					darkMode/>
+			<p>Selected option: {{ selectedOption }}</p>
+      </div >`,
+		};
+	});
