@@ -17,24 +17,9 @@ const basePropsData = baseMountOptions.propsData;
 const cssSelectors = {
 	displayElement: '.c-InputRadio__display',
 	labelElement: '.c-InputRadio__label',
-	disabledState: '.c-InputRadio--disabled',
 };
 
 describe('InputRadio', () => {
-	describe('contains html elements', () => {
-		it('has radio input', () => {
-			const wrapper = shallowMount(InputRadio, baseMountOptions);
-			expect(wrapper.contains('input[type="radio"]')).toBe(true);
-		});
-		it('has display element', () => {
-			const wrapper = shallowMount(InputRadio, baseMountOptions);
-			expect(wrapper.contains(cssSelectors.displayElement)).toBe(true);
-		});
-		it('has label element', () => {
-			const wrapper = shallowMount(InputRadio, baseMountOptions);
-			expect(wrapper.contains('.c-InputRadio__label')).toBe(true);
-		});
-	});
 	it('displays label text', () => {
 		const wrapper = shallowMount(InputRadio, {
 			propsData: {
@@ -44,30 +29,22 @@ describe('InputRadio', () => {
 		});
 		expect(wrapper.find(cssSelectors.labelElement).text()).toBe('my label');
 	});
-	it('applies styling when disabled', () => {
+	it('passes attributes to input', () => {
 		const wrapper = shallowMount(InputRadio, {
 			propsData: {
 				...basePropsData,
 				disabled: true,
+				required: true,
 			},
 		});
-		expect(wrapper.contains(cssSelectors.disabledState)).toBe(true);
-	});
-	it('disables input when disabled', () => {
-		const wrapper = shallowMount(InputRadio, {
-			propsData: {
-				...basePropsData,
-				disabled: true,
-			},
-		});
-		expect(wrapper.contains('input[disabled=disabled]')).toBe(true);
+		expect(wrapper.contains('input[disabled=disabled][required=required]')).toBe(true);
 	});
 	it('is v-model compatible', () => {
 		const wrapper = shallowMount(InputRadio, baseMountOptions);
 		wrapper.find('input').trigger('input');
 		expect(wrapper.emitted('input')).toHaveLength(1);
 	});
-	it('can programmatically change selected input', () => {
+	it('selects inputRadio with v-model', () => {
 		// when changing v-model input, update selected radio input
 		const wrapper = shallowMount(InputRadio, {
 			propsData: {
@@ -90,5 +67,14 @@ describe('InputRadio', () => {
 		const inputElementIndex = childElementsArray.indexOf(inputElement);
 		const displayElementIndex = childElementsArray.indexOf(displayElement);
 		expect(inputElementIndex < displayElementIndex).toBe(true);
+	});
+	it('has dark mode', () => {
+		const wrapper = shallowMount(InputRadio, {
+			propsData: {
+				...basePropsData,
+				darkMode: true,
+			},
+		});
+		expect(wrapper.contains('.c-InputRadio--darkMode')).toBe(true);
 	});
 });
