@@ -56,7 +56,7 @@ export default {
 .c-InputRadio {
   display: flex;
   align-items: center;
-	margin: 13px 0;
+	margin: 18px 0;
 
   &__input {
     position: absolute;
@@ -65,21 +65,19 @@ export default {
   &__display {
     position: relative;
     display: inline-block;
-    border-radius: 50%;
-    border: 2px solid;
+		border-radius: 50%;
+    border: 1px solid;
     width: 15px;
     height: 15px;
     margin-right: 9px;
-    bottom: 1px;
+    bottom: 2px;
     transition: 0.2s ease-in-out;
 		transition-property: box-shadow;
-		opacity: 0.5;
 
     &::after {
-      $spacing: 3px;
+      $spacing: 4px;
       position: absolute;
 			content: '';
-			border-color: white;
       background-color: currentColor;
       border-radius: 50%;
       top: $spacing;
@@ -90,25 +88,26 @@ export default {
     }
   }
 
-  &__input:disabled ~ * {
-    opacity: 0.3;
-  }
 
   &__input:checked ~ &__display::after {
 		opacity: 1;
 		color: $un-purple;
 		background-color: $un-purple;
 	}
-	&__input:checked ~&__display {
-		opacity: 1;
+	&__input:checked ~ &__display {
 		border-color: $un-purple;
 	}
+
+  &__input:disabled ~ * {
+    opacity: 0.3;
+	}
+
   &__input:focus ~ &__display {
 		// opacity: 0.8;
   }
 
   &__label {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 </style>
