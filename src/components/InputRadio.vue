@@ -1,12 +1,12 @@
 <template>
-  <label class="c-InputRadio" :class="classObject">
+  <label class="c-InputRadio">
     <input class="c-InputRadio__input"
 			type="radio"
 			:value="value"
 			:name="name"
 			@input="onInput"
       :checked="checked"
-      :disabled="disabled"> <!-- For when value from v-model is set by default -->
+			v-bind="$attrs"> <!-- For when value from v-model is set by default -->
     <span class="c-InputRadio__display"></span>
 		<span class="c-InputRadio__label">{{ label }}</span>
   </label>
@@ -36,18 +36,8 @@ export default {
 			type: String,
 			required: false,
 		},
-		disabled: {
-			type: Boolean,
-			required: false,
-			default: false,
-		},
 	},
 	computed: {
-		classObject() {
-			return {
-				'c-InputRadio--disabled': this.disabled,
-			};
-		},
 		checked() {
 			return this.radioValue === this.value;
 		},
@@ -61,9 +51,12 @@ export default {
 };
 </script>
 <style lang="scss">
+@import '~@/_colors.scss';
+
 .c-InputRadio {
   display: flex;
-  align-items: baseline;
+  align-items: center;
+	margin: 13px 0;
 
   &__input {
     position: absolute;
@@ -73,19 +66,20 @@ export default {
     position: relative;
     display: inline-block;
     border-radius: 50%;
-    border: 1px solid;
-    width: 16px;
-    height: 16px;
-    margin: 7px 0;
+    border: 2px solid;
+    width: 15px;
+    height: 15px;
     margin-right: 9px;
-    bottom: -3px;
+    bottom: 1px;
     transition: 0.2s ease-in-out;
-    transition-property: box-shadow;
+		transition-property: box-shadow;
+		opacity: 0.5;
 
     &::after {
-      $spacing: 4px;
+      $spacing: 3px;
       position: absolute;
-      content: '';
+			content: '';
+			border-color: white;
       background-color: currentColor;
       border-radius: 50%;
       top: $spacing;
@@ -96,19 +90,25 @@ export default {
     }
   }
 
-  &--disabled {
+  &__input:disabled ~ * {
     opacity: 0.3;
   }
 
   &__input:checked ~ &__display::after {
-    opacity: 1;
-  }
+		opacity: 1;
+		color: $un-purple;
+		background-color: $un-purple;
+	}
+	&__input:checked ~&__display {
+		opacity: 1;
+		border-color: $un-purple;
+	}
   &__input:focus ~ &__display {
-    box-shadow: 0 0 0 2px transparentize(#3953BF, 0.2);
+		// opacity: 0.8;
   }
 
   &__label {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 </style>
