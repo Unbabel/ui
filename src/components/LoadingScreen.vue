@@ -11,7 +11,7 @@
 						<circle id="Oval-2" stroke="#E7E9EC" cx="15" cy="15" r="15"></circle>
 						<path d="M15,0 C6.71572875,0 0,6.71572875 0,15 C0,23.2842712 6.71572875,30
 						15,30 C23.2842712,30 30,23.2842712 30,15" id="Oval-5"
-						stroke="#3953BF" stroke-linecap="round"></path>
+						stroke="#3843D0" stroke-linecap="round"></path>
 					</g>
 				</g>
 			</svg>
