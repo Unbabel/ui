@@ -62,6 +62,15 @@
 	}
 }
 
+.c-LoadingScreenSpinner {
+	&__track {
+		stroke: $un-gray1;
+	}
+	&__progress {
+		stroke: $un-purple;
+	}
+}
+
 @keyframes spin {
 	100% {
 		transform:rotate(360deg);
