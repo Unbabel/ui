@@ -1,3 +1,7 @@
+## [[v3.4.0](https://www.gitlab.com/Unbabel/ui/tags/v3.4.0)] - 2019/05/23
+### Changed
+* Updated brand color - [!49](https://www.gitlab.com/Unbabel/ui/merge_requests/49)
+
 ## [[v3.3.0](https://www.gitlab.com/Unbabel/ui/tags/v3.3.0)] - 2019/04/09
 ### Added
 * Add option to countdown in the timer component - [!44](https://www.gitlab.com/Unbabel/ui/merge_requests/44)
