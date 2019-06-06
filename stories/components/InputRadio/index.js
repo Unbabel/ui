@@ -78,17 +78,18 @@ storiesOf('InputRadio', module)
 					],
 				};
 			},
-			template: `<div style="background-color: #2e2f30; color: #fff; padding: 30px;" >
-			<h3> Which one will you pick?</h3>
-				<InputRadio v-for="radioInput in radioInputs"
-          :key="radioInput.value"
-					name="radioChoice"
-          :label="radioInput.text"
-          :value="radioInput.value"
-          :disabled="radioInput.disabled"
-					v-model="selectedOption"
-					darkMode/>
-			<p>Selected option: {{ selectedOption }}</p>
+			template: `
+      <div style="background-color: #2e2f30; color: #fff; padding: 30px;" >
+        <h3> Which one will you pick?</h3>
+          <InputRadio v-for="radioInput in radioInputs"
+            :key="radioInput.value"
+            name="radioChoice"
+            :label="radioInput.text"
+            :value="radioInput.value"
+            :disabled="radioInput.disabled"
+            v-model="selectedOption"
+            darkMode/>
+          <p>Selected option: {{ selectedOption }}</p>
       </div >`,
 		};
 	});

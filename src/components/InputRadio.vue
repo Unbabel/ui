@@ -1,12 +1,12 @@
 <template>
   <label class="c-InputRadio" :class="classObject">
     <input class="c-InputRadio__input"
-			type="radio"
-			:value="value"
-			:name="name"
-			@input="onInput"
+      type="radio"
+      :value="value"
+      :name="name"
+      @input="onInput"
       :checked="checked"
-			v-bind="$attrs"> <!-- For when value from v-model is set by default -->
+      v-bind="$attrs"> <!-- For when value from v-model is set by default -->
     <span class="c-InputRadio__display"></span>
 		<span class="c-InputRadio__label">{{ label }}</span>
   </label>
@@ -64,13 +64,13 @@ export default {
 .c-InputRadio {
   display: flex;
   align-items: center;
-	margin: 18px 0;
+  margin: 18px 0;
 
-	$selectColor: $un-purple;
-	&--darkMode {
-		color: #fff;
-		$selectColor: #8fa0ff;
-	}
+  $selectColor: $un-purple;
+  &--darkMode {
+    color: #fff;
+    $selectColor: #8fa0ff;
+  }
 
   &__input {
     position: absolute;
@@ -79,19 +79,19 @@ export default {
   &__display {
     position: relative;
     display: inline-block;
-		border-radius: 50%;
+    border-radius: 50%;
     border: 1px solid;
     width: 15px;
     height: 15px;
     margin-right: 9px;
     bottom: 2px;
     transition: 0.2s ease-in-out;
-		transition-property: box-shadow;
+    transition-property: box-shadow;
 
     &::after {
       $spacing: 4px;
       position: absolute;
-			content: '';
+      content: '';
       background-color: currentColor;
       border-radius: 50%;
       top: $spacing;
@@ -103,16 +103,16 @@ export default {
   }
 
   &__input:checked ~ &__display::after {
-		color: $selectColor;
-		background-color: $selectColor;
-		opacity: 1;
-	}
-	&__input:checked ~ &__display {
-		border-color: $selectColor;
-	}
+    color: $selectColor;
+    background-color: $selectColor;
+    opacity: 1;
+  }
+  &__input:checked ~ &__display {
+    border-color: $selectColor;
+  }
   &__input:disabled ~ * {
     opacity: 0.3;
-	}
+  }
   &__label {
     font-size: 16px;
   }
