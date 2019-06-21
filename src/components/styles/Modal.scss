@@ -154,8 +154,9 @@
 }
 
 //	Animate modal using Vue transition
-.reveal-enter-active, .reveal-leave-active {
-  transition: all .25s;
+.reveal-enter-active,
+.reveal-leave-active {
+  transition: all 0.1s;
   
   .c-Modal__overlay {
   	opacity: 0;
