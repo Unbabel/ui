@@ -24,7 +24,7 @@
 		background-color: rgba(0, 0, 0, 0.5);
 		z-index: 5;
 
-		opacity: 0;
+		opacity: 1;
 		transition: opacity 0.25s ease-out;
 
 		&.is-transparent {
@@ -42,8 +42,9 @@
 		box-shadow: 0 3px 6px 0 rgba(0,0,0,0.35);
 		z-index: 6;
 
-		opacity: 0;
-		transform: translateY(2rem);
+		pointer-events: all;
+		opacity: 1;
+		transform: none;
 
 		transition: all 0.25s ease-out;
 	}
@@ -147,18 +148,23 @@
 		margin: 0;
 	}
 
-	&.is-active {
-		&,
-		#{$self}__overlay,
-		#{$self}__main {
-			pointer-events: all;
-			opacity: 1;
-			transform: none;
-		}
-	}
-
 	&.is-footerless &__middle {
 		border-bottom-left-radius: $un-modal-radius;
 		border-bottom-right-radius: $un-modal-radius;
+	}
+}
+
+//	Animate modal using Vue transition
+.reveal-enter-active, .reveal-leave-active {
+  transition: all .25s;
+  
+  .c-Modal__overlay {
+  	opacity: 0;
+  }
+
+	.c-Modal__main {
+	  opacity: 0;
+		transform: translateY(2rem);
+		pointer-events: none;
 	}
 }

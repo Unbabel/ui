@@ -45,7 +45,7 @@ storiesOf('Modal', module)
 				showOverlay: 'Boolean value that will conditionally show a transparent overlay or a darker one.',
 			},
 			template: `<div>
-	<a @click="openModal">Open Modal</a>
+	<btn kind="primary" @click="openModal">Open Modal</btn>
 	<modal :active="isModalActive" :title="title" :show-overlay="showOverlay" defaultStyles>
 		<p slot="content">This is the <strong>main</strong> text.</p>
 		<div slot="footer">

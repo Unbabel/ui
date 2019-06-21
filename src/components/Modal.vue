@@ -1,45 +1,59 @@
 <template>
-	<div class="c-Modal" :class="classObject">
-		<div class="c-Modal__overlay" :class="overlayClassObject" @click="clickedOnOutside"></div>
-		<div class="c-Modal__main" :role="modalRole" :aria-label="title">
-			<div class="c-Modal__top">
-				<Button
-					v-show="closeIcon"
-					ref="modalCloseIcon"
-					class="c-Modal__closeIcon"
-					role="secondary"
-					@click="clickedOnClose"
-					aria-label="Close"
-				>
-					<svg width="192px" height="192px" viewBox="0 0 192 192" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-							<g fill-rule="nonzero">
-								<polygon points="180.2 0 95.8 84.3 11.8 0.4 0 12.2 84 96 0
-								179.9 11.8 191.6 95.8 107.8 180.2 192 192 180.3 107.6 96 192 11.8"></polygon>
-							</g>
-						</g>
-					</svg>
-				</Button>
-				<!-- You can pass the title as a slot or as a prop -->
-				<slot name="title">
-					<h1 class="c-Modal__title">{{ title }}</h1>
-				</slot>
-			</div>
-			<div class="c-Modal__middle">
-				<!-- You can pass the content as a slot or as a prop -->
-				<slot name="content">
-					<p class="c-Modal__text">{{ content }}</p>
-				</slot>
-			</div>
+	<transition
+		name="reveal"
+		v-on:after-enter="afterEnter"
+		v-on:after-leave="afterLeave"
+	>
+		<div
+			v-if="active"
+			class="c-Modal"
+			:class="classObject"
+		>
 			<div
-				v-if="hasFooter"
-				class="c-Modal__bottom"
-				ref="modalFooter"
-			>
-				<slot name="footer"></slot>
+				class="c-Modal__overlay"
+				:class="overlayClassObject"
+				@click="clickedOnOutside"
+			/>
+			<div class="c-Modal__main" :role="modalRole" :aria-label="title">
+				<div class="c-Modal__top">
+					<Button
+						v-show="closeIcon"
+						ref="modalCloseIcon"
+						class="c-Modal__closeIcon"
+						role="secondary"
+						@click="clickedOnClose"
+						aria-label="Close"
+					>
+						<svg width="192px" height="192px" viewBox="0 0 192 192" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<g fill-rule="nonzero">
+									<polygon points="180.2 0 95.8 84.3 11.8 0.4 0 12.2 84 96 0
+									179.9 11.8 191.6 95.8 107.8 180.2 192 192 180.3 107.6 96 192 11.8"></polygon>
+								</g>
+							</g>
+						</svg>
+					</Button>
+					<!-- You can pass the title as a slot or as a prop -->
+					<slot name="title">
+						<h1 class="c-Modal__title">{{ title }}</h1>
+					</slot>
+				</div>
+				<div class="c-Modal__middle">
+					<!-- You can pass the content as a slot or as a prop -->
+					<slot name="content">
+						<p class="c-Modal__text">{{ content }}</p>
+					</slot>
+				</div>
+				<div
+					v-if="hasFooter"
+					class="c-Modal__bottom"
+					ref="modalFooter"
+				>
+					<slot name="footer"></slot>
+				</div>
 			</div>
 		</div>
-	</div>
+	</transition>
 </template>
 
 <script>
@@ -93,6 +107,11 @@ export default {
 			default: true,
 		},
 	},
+	data: () => {
+		return {
+			isActive: false
+		}
+	},
 	methods: {
 		clickedOnClose() {
 			this.$emit('closed', this);
@@ -123,6 +142,16 @@ export default {
 				this.$refs.modalCloseIcon.$el.focus();
 			}
 		},
+		/**
+		*	Bind keyboard events & methods after transition competed
+		*/
+		afterEnter() {
+			document.addEventListener('keydown', this.pressedKey);
+			this.focusFirstOrCloseButton();
+		},
+		afterLeave() {
+			document.removeEventListener('keydown', this.pressedKey);
+		}
 	},
 	computed: {
 		overlayClassObject() {
@@ -138,26 +167,13 @@ export default {
 			return this.hasFooter ? 'alertdialog' : 'dialog';
 		},
 		/**
-		 * The replace call is to remove new lines
-		 */
+		* The replace call is to remove new lines
+	 	*/
 		classObject() {
 			return {
-				'is-active': this.active,
 				'is-footerless': !this.hasFooter,
 				'c-Modal--include-default-style': this.defaultStyles,
 			};
-		},
-	},
-	watch: {
-		active() {
-			if (this.active) {
-				// Listen to keypresses
-				document.addEventListener('keydown', this.pressedKey);
-				this.focusFirstOrCloseButton();
-			} else {
-				// Stop listening to keypresses
-				document.removeEventListener('keydown', this.pressedKey);
-			}
 		},
 	},
 };
