@@ -8,13 +8,14 @@
 			v-if="active"
 			class="c-Modal"
 			:class="classObject"
+			:role="modalRole"
 		>
 			<div
 				class="c-Modal__overlay"
 				:class="overlayClassObject"
 				@click="clickedOnOutside"
 			/>
-			<div class="c-Modal__main" :role="modalRole" :aria-label="title">
+			<div class="c-Modal__main" :aria-label="title">
 				<div class="c-Modal__top">
 					<Button
 						v-show="closeIcon"
