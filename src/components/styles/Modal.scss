@@ -124,12 +124,11 @@
 
 	// Align the buttons to the right
 	&__bottom {
+		display: flex;
+    justify-content: flex-end;
 		background-color: $un-gray1-light;
 
 		> div {
-			display: flex;
-			justify-content: flex-end;
-
 			> * {
 				margin-left: 1rem;
 			}
