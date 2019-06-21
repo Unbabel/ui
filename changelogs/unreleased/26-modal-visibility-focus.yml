@@ -1,0 +1,5 @@
+---
+title: Fix modal keyboard focus when hidden
+merge_request: 50
+author:
+type: fixed
