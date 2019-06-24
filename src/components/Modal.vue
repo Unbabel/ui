@@ -1,8 +1,8 @@
 <template>
 	<transition
 		name="reveal"
-		v-on:after-enter="afterEnter"
-		v-on:after-leave="afterLeave"
+		@:after-enter="afterEnter"
+		@:after-leave="afterLeave"
 	>
 		<div
 			v-if="active"
@@ -169,7 +169,7 @@ export default {
 		},
 		/**
 		* The replace call is to remove new lines
-	 	*/
+		*/
 		classObject() {
 			return {
 				'is-footerless': !this.hasFooter,
