@@ -144,12 +144,15 @@ export default {
 		 */
 		focusFirstOrCloseButton() {
 			if (this.hasFooter) {
-				const autoFocusBtn = this.$refs.modalFooter.querySelector('.c-Button[autofocus]');
+				const firstAutoFocus = this.$el.querySelectorAll('[data-autofocus], .c-Button[autofocus]');
 				const firstBtn = this.$refs.modalFooter.querySelector('.c-Button');
 
-				!autoFocusBtn
+				console.log(firstAutoFocus)
+				console.log(firstBtn)
+
+				firstAutoFocus.length === 0
 					? firstBtn.focus()
-					: autoFocusBtn.focus();
+					: firstAutoFocus[0].focus();
 			} else {
 				this.$refs.modalCloseIcon.$el.focus();
 			}
