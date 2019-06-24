@@ -4,13 +4,10 @@
 
 		<modal :active="modalIsActive" :title="title" :aria-description="contentReference" defaultStyles>
 			<div slot="content" :id="contentReference">
-				<p tabindex="-1" data-autofocus>This is just a demonstration. If it were a real application, it would provide a message telling whether the entered address is valid. For demonstration purposes, this dialog has a lot of text.</p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam cupiditate natus nostrum? Esse error dolor suscipit. Animi, eveniet, inventore magnam ratione molestiae vitae quam omnis rem nulla dicta veniam similique.
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam cupiditate natus nostrum? Esse error dolor suscipit. Animi, eveniet, inventore magnam ratione molestiae vitae quam omnis rem nulla dicta veniam similique.
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam cupiditate natus nostrum? Esse error dolor suscipit. Animi, eveniet, inventore magnam ratione molestiae vitae quam omnis rem nulla dicta veniam similique.
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam cupiditate natus nostrum? Esse error dolor suscipit. Animi, eveniet, inventore magnam ratione molestiae vitae quam omnis rem nulla dicta veniam similique.
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam cupiditate natus nostrum? Esse error dolor suscipit. Animi, eveniet, inventore magnam ratione molestiae vitae quam omnis rem nulla dicta veniam similique.
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam cupiditate natus nostrum? Esse error dolor suscipit. Animi, eveniet, inventore magnam ratione molestiae vitae quam omnis rem nulla dicta veniam similique.
+				<p tabindex="-1">This is just a demonstration. If it were a real application, it would provide a message telling whether the entered address is valid. For demonstration purposes, this dialog has a lot of text.</p>
+				<p>Lorem ipsum dolor amet vegan locavore forage art party plaid glossier. Affogato raw denim XOXO succulents, synth thundercats listicle activated charcoal subway tile woke pinterest authentic williamsburg paleo retro. Banh mi cornhole butcher godard, dreamcatcher succulents coloring book mustache. Live-edge heirloom selvage skateboard dreamcatcher taxidermy irony kombucha vinyl jianbing. You probably haven't heard of them twee kombucha aesthetic semiotics DIY plaid squid. Venmo single-origin coffee swag master cleanse taxidermy man bun ramps. Four dollar toast man bun prism vaporware pour-over affogato craft beer vice tattooed edison bulb letterpress la croix.</p>
+				<p>Freegan unicorn taxidermy paleo literally knausgaard gentrify crucifix. Hammock vice single-origin coffee, pok pok chillwave direct trade glossier keytar cold-pressed actually. La croix coloring book iPhone semiotics, af mumblecore meggings craft beer pinterest austin banjo brunch. Fixie thundercats umami waistcoat. Mumblecore adaptogen pug ugh snackwave, cardigan PBR&B readymade kogi yr bespoke VHS cloud bread brooklyn.</p>
+						
 			</div>
 			<div slot="footer">
 				<btn @click="toggleModal">Close</btn>

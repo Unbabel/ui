@@ -22,6 +22,7 @@ storiesOf('Modal', module)
 				title: 'Modal',
 				isModalActive: false,
 				showOverlay: true,
+				contentReference: 'modalContent',
 			}),
 			components: {
 				Modal,
@@ -46,8 +47,10 @@ storiesOf('Modal', module)
 			},
 			template: `<div>
 	<btn kind="primary" @click="openModal">Open Modal</btn>
-	<modal :active="isModalActive" :title="title" :show-overlay="showOverlay" defaultStyles>
-		<p slot="content">This is the <strong>main</strong> text.</p>
+	<modal :active="isModalActive" :title="title" :show-overlay="showOverlay" :aria-description="contentReference" defaultStyles>
+		<div slot="content" :id="contentReference">
+			<p>This is the <strong>main</strong> text.</p>
+		</div>
 		<div slot="footer">
 			<btn @click="closeModal">Close</btn>
 			<btn kind="primary">Send</btn>
