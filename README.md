@@ -83,3 +83,13 @@ Releasing a version
 ```shell
 $ bin/changelog -t v1.0.42
 ```
+
+## How to release a new version
+
+1. Once all the desired changes are merged into master, decide if the next version is Major, Minor or Patch, and generate the changelog entry and commit the changes
+    - Example: `bin/changelog -t v1.0.42`
+2. Bump `package.json` and create a new tag by running `npm version (major|minor|patch)`
+    - Example: `npm version minor`
+3. Push all changes
+4. Push the new tag
+    - Example: `git push origin tag v1.0.42`
