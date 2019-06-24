@@ -133,3 +133,65 @@ export function eventPathPolyfill(event) {
 export function getEventPath(event) {
 	return (event.path) ? event.path : eventPathPolyfill(event);
 }
+
+/*
+*		Traps tabular navigation within a determined container element. 
+*		Used for modal but can be used within other
+*/
+export class trapFocus {
+	constructor (containerEl) {
+		this.containerEl = containerEl;
+		this.inputs = [];
+		this._readyInputsReference();
+	};
+	/*
+	*		Prepares an array with each input to be checked for focus, 
+	*		ignoring disabled, hidden and non-visible elements.
+	*/
+	_readyInputsReference() {
+		Array
+			.from(this.containerEl.querySelectorAll(`
+				a:not([disabled]),
+				button:not([disabled]),
+				input:not([disabled]),
+				textarea:not([disabled])
+			`), element => {
+				let style = window.getComputedStyle(element);				
+				if (!(style.display === 'none' || style.visibility === 'hidden')) {
+					this.inputs.push(element);
+				}
+			});
+	};
+	/*
+	*	Handles the direction where we want to focus next by looping through elements.
+	*/
+	handleTab(event) {
+		//	Allows for normal tab navigation is user has unfocused any of our tab.
+		//	If user focuses back one of our target elements, trap is re-activated.
+		if (document.activeElement.tagName === 'BODY') {
+			return;
+		}
+		event.preventDefault();
+		//	If there's only one element, keep it focused.
+		if (this.inputs.length === 1) {
+			return;
+		}
+		const i = this.inputs.indexOf(document.activeElement)
+		let target;
+		// If shift is held, focus previous input 
+		if (event.shiftKey)	{
+			if (i - 1 >= 0) {
+				target = this.inputs[i - 1];
+			} else {
+				target = this.inputs[this.inputs.length - 1];
+			}
+		} else {
+			if (i < (this.inputs.length - 1)) {
+				target = this.inputs[i + 1];
+			} else {
+				target = this.inputs[0];
+			}
+		}
+		target.focus();
+	};
+};

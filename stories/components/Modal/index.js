@@ -50,6 +50,7 @@ storiesOf('Modal', module)
 		<p slot="content">This is the <strong>main</strong> text.</p>
 		<div slot="footer">
 			<btn @click="closeModal">Close</btn>
+			<btn kind="primary">Another one</btn>
 			<btn kind="primary">Send</btn>
 		</div>
 	</modal>

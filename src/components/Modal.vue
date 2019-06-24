@@ -15,7 +15,11 @@
 				:class="overlayClassObject"
 				@click="clickedOnOutside"
 			/>
-			<div class="c-Modal__main" :aria-label="title">
+			<div
+				ref="modalContent"
+				class="c-Modal__main"
+				:aria-label="title"
+			>
 				<div class="c-Modal__top">
 					<Button
 						v-show="closeIcon"
@@ -58,6 +62,9 @@
 </template>
 
 <script>
+import {
+	trapFocus,
+} from '../utilities';
 import Button from './Button.vue';
 
 export default {
@@ -110,7 +117,8 @@ export default {
 	},
 	data: () => {
 		return {
-			isActive: false
+			isActive: false,
+			focusTrapper: null,
 		}
 	},
 	methods: {
@@ -126,6 +134,9 @@ export default {
 			const escKey = event.keyCode === 27;
 			if (escKey && this.closeOnEscapePress) {
 				this.$emit('closed', this);
+			}
+			if (event.keyCode === 9) {
+				this.focusTrapper.handleTab(event);
 			}
 		},
 		/**
@@ -149,6 +160,7 @@ export default {
 		afterEnter() {
 			document.addEventListener('keydown', this.pressedKey);
 			this.focusFirstOrCloseButton();
+			this.focusTrapper = new trapFocus(this.$el);
 		},
 		afterLeave() {
 			document.removeEventListener('keydown', this.pressedKey);
