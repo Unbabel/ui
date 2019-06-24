@@ -8,7 +8,8 @@
 			v-if="active"
 			class="c-Modal"
 			:class="classObject"
-			:role="modalRole"
+			v-bind="modalAttrs"
+			aria-modal="true"
 		>
 			<div
 				class="c-Modal__overlay"
@@ -45,7 +46,7 @@
 				</div>
 				<div class="c-Modal__middle">
 					<!-- You can pass the content as a slot or as a prop -->
-					<slot name="content">
+					<slot name="content" id="modalContent">
 						<p class="c-Modal__text">{{ content }}</p>
 					</slot>
 				</div>
@@ -114,6 +115,11 @@ export default {
 			required: false,
 			default: true,
 		},
+		ariaDescription: {
+			type: String,
+			required: false,
+			default: '',
+		}
 	},
 	data: () => {
 		return {
@@ -178,6 +184,15 @@ export default {
 		// Hide the footer if nothing is passed to the slot
 		hasFooter() {
 			return !!this.$slots.footer;
+		},
+		modalAttrs() {
+			let attrs = {
+				role: this.modalRole,
+			}
+			if (!!this.ariaDescription) {
+				attrs['aria-describedby'] = this.ariaDescription;
+			}
+			return attrs;
 		},
 		modalRole() {
 			return this.hasFooter ? 'alertdialog' : 'dialog';

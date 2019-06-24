@@ -2,9 +2,9 @@
 	<div>
 		<btn kind="primary" @click="toggleModal">Open Modal with long text</btn>
 
-		<modal :active="modalIsActive" :title="title" defaultStyles>
-			<div slot="content">
-				<p tabindex="-1" data-autofocus="true">This is just a demonstration. If it were a real application, it would provide a message telling whether the entered address is valid. For demonstration purposes, this dialog has a lot of text.</p>
+		<modal :active="modalIsActive" :title="title" :aria-description="contentReference" defaultStyles>
+			<div slot="content" :id="contentReference">
+				<p tabindex="-1" data-autofocus>This is just a demonstration. If it were a real application, it would provide a message telling whether the entered address is valid. For demonstration purposes, this dialog has a lot of text.</p>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam cupiditate natus nostrum? Esse error dolor suscipit. Animi, eveniet, inventore magnam ratione molestiae vitae quam omnis rem nulla dicta veniam similique.
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam cupiditate natus nostrum? Esse error dolor suscipit. Animi, eveniet, inventore magnam ratione molestiae vitae quam omnis rem nulla dicta veniam similique.
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam cupiditate natus nostrum? Esse error dolor suscipit. Animi, eveniet, inventore magnam ratione molestiae vitae quam omnis rem nulla dicta veniam similique.
@@ -28,6 +28,7 @@ export default {
 	data() {
 		return {
 			modalIsActive: false,
+			contentReference: 'modalContent',
 		}
 	},
 	components: {
