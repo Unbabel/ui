@@ -1,8 +1,8 @@
 <template>
 	<transition
 		name="reveal"
-		@after-enter="afterEnter"
-		@after-leave="afterLeave"
+		@:after-enter="afterEnter"
+		@:after-leave="afterLeave"
 	>
 		<div
 			v-if="active"
