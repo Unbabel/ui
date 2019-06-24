@@ -93,3 +93,4 @@ $ bin/changelog -t v1.0.42
 3. Push all changes
 4. Push the new tag
     - Example: `git push origin tag v1.0.42`
+5. The CI will pick up the new tag and submit it to NPM
