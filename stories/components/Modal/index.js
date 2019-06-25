@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { withKnobs, text } from '@storybook/addon-knobs/vue';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 
 import Button from '@/components/Button.vue';
@@ -40,14 +40,22 @@ storiesOf('Modal', module)
 				active: 'Boolean value that will conditionally show/hide the modal. Logic should be done in the parent.',
 				defaultStyles: 'Boolean value that will conditionally add default css styles for the content inside the modal.',
 				content: 'Simple way of adding content with predefined styles.',
+				title: 'String value for modal title. Necessary also for accessibility reasons.',
 				closeIcon: 'Boolean value that will conditionally show/hide the close icon with the ability to close the modal. Logic should be done in the parent.',
 				closeOnOutsideClick: 'Boolean value that will conditionally allow users to click outside the modal and close the modal.',
 				closeOnEscapePress: 'Boolean value that will conditionally allow users to click on ESC key and close the modal.',
 				showOverlay: 'Boolean value that will conditionally show a transparent overlay or a darker one.',
+				ariaDescription: 'String value used as an id to be used by aria-describedby for screen readers. If left empty no attribute is set to the modal.',
 			},
 			template: `<div>
 	<btn kind="primary" @click="openModal">Open Modal</btn>
-	<modal :active="isModalActive" :title="title" :show-overlay="showOverlay" :aria-description="contentReference" defaultStyles>
+	<modal
+		:active="isModalActive"
+		:title="title"
+		:show-overlay="showOverlay"
+		:aria-description="contentReference"
+		defaultStyles
+	>
 		<div slot="content" :id="contentReference">
 			<p>This is the <strong>main</strong> text.</p>
 		</div>
@@ -70,16 +78,24 @@ storiesOf('Modal', module)
 			template: `<modal-with-form title="${title}"></modal-with-form>`,
 		};
 	})
-	.add('Long text', () => {
-		const title = text('Modal title', 'This is a lot of text');
+	.add('Long Text', withInfo({
+		summary: '<p>The Modal shows a long format text message and footer actions.</p><b>Accessibility</b><p>Select the "Text autofocus" knob action to see the text autofocus in action.</p>',
+	})(() => {
+		const title = text('Modal title', 'Modal Title');
+		const shouldAutofocus = boolean('Text autofocus', false);
 
 		return {
 			components: {
 				ModalWithLongText,
 			},
-			template: `<modal-with-long-text title="${title}"></modal-with-long-text>`,
+			template: `<modal-with-long-text title="${title}" :should-autofocus="${shouldAutofocus}"></modal-with-long-text>`,
+			/*
+			methods: {
+				log: action('clicked the secondary button'),
+			},
+			*/
 		};
-	})
+	}))
 	.add('Info Modal', () => {
 		const title = text('Modal title', 'Some info below');
 
