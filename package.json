@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
+    "test-verbose": "jest --coverage --verbose --watch",
     "lint": "eslint src test",
     "fix-lint": "eslint --fix src test",
     "storybook": "start-storybook -p 9001 -c .storybook",
