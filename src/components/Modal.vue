@@ -123,7 +123,6 @@ export default {
 	},
 	data: () => {
 		return {
-			isActive: false,
 			focusTrapper: null,
 		}
 	},
