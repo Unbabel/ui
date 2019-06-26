@@ -108,11 +108,6 @@ export default {
 			default: true,
 		},
 	},
-	data: () => {
-		return {
-			isActive: false
-		}
-	},
 	methods: {
 		clickedOnClose() {
 			this.$emit('closed', this);
