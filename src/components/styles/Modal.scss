@@ -125,7 +125,7 @@
 	// Align the buttons to the right
 	&__bottom {
 		display: flex;
-    justify-content: flex-end;
+		justify-content: flex-end;
 		background-color: $un-gray1-light;
 
 		> div {
@@ -156,14 +156,14 @@
 //	Animate modal using Vue transition
 .reveal-enter-active,
 .reveal-leave-active {
-  transition: all 0.1s;
-  
-  .c-Modal__overlay {
-  	opacity: 0;
-  }
+	transition: all 0.1s;
+
+	.c-Modal__overlay {
+		opacity: 0;
+	}
 
 	.c-Modal__main {
-	  opacity: 0;
+		opacity: 0;
 		transform: translateY(2rem);
 		pointer-events: none;
 	}

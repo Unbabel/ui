@@ -195,7 +195,7 @@ export default {
 		},
 		/**
 		* The replace call is to remove new lines
-	 	*/
+		*/
 		classObject() {
 			return {
 				'is-footerless': !this.hasFooter,
