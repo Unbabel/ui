@@ -1,8 +1,8 @@
 <template>
 	<transition
 		name="reveal"
-		v-on:after-enter="afterEnter"
-		v-on:after-leave="afterLeave"
+		@after-enter="afterEnter"
+		@after-leave="afterLeave"
 	>
 		<div
 			v-if="active"
@@ -152,9 +152,6 @@ export default {
 			if (this.hasFooter) {
 				const firstAutoFocus = this.$el.querySelectorAll('[data-autofocus], .c-Button[autofocus]');
 				const firstBtn = this.$refs.modalFooter.querySelector('.c-Button');
-
-				console.log(firstAutoFocus)
-				console.log(firstBtn)
 
 				firstAutoFocus.length === 0
 					? firstBtn.focus()

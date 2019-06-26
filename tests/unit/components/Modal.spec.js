@@ -1,7 +1,9 @@
 import {
   mount,
-  shallowMount,
 } from '@vue/test-utils';
+import {
+  trapFocus,
+} from '@/utilities';
 import Modal from '@/components/Modal.vue';
 import Button from '@/components/Button.vue';
 
@@ -23,78 +25,120 @@ describe('Modal', () => {
     showOverlay: true,
   };
   
-  //  Create default wrapper instance for each test
-  beforeEach(() => {
-    wrapper = mount(Modal, {
+  /**
+  *  Component mounting utility function.
+  *
+  * @param {extraOptions} object An object with valid component keys.
+  * @param {ignoreStubMethods} boolean How many times to repeat the string.
+  * @returns {object} 
+  */
+  const mountComponent = (extraOptions, ignoreStubMethods) => {
+    let options = {
       components: { Button },
       propsData: props,
       attachToDocument: true,
-    });
+    }
+    options = typeof extraOptions === 'object' ? {...options, ...extraOptions} : options;
 
-    wrapper.setMethods(stubMethods);
-  });
-
-  //  Create wrapper instance with footer slot
-  const wrapperWithFooter = () => {
-    return shallowMount(Modal, {
-      propsData: props,
-      attachToDocument: true,
-      slots: {
-        footer: '<p>Send</p>'
-      }
-    });
+    wrapper = mount(Modal, options);
+    if (!ignoreStubMethods) {
+      wrapper.setMethods(stubMethods);
+    }
+    return wrapper;
   };
-
-  it('mounts properly', () => {
-    expect(wrapper.contains('.c-Modal')).toBe(true);
+  /*
+  *   Default component mount
+  */
+  beforeEach(() => {
+    wrapper = mountComponent();
   });
-  it('accepts title as prop', () => {
-    expect(wrapper.find('.c-Modal__title').text()).toEqual(modalTitle);
-  });
-  it('accepts title as slot', () => {
-    wrapper = mount(Modal, {
-      components: { Button },
-      propsData: props,
-      attachToDocument: true,
-      slots: {
-        title: '<h1 class="c-Modal__title_alt">Modal Title</h1>'
-      }
+  /*
+  *   Test suits
+  */
+  describe('Mounting', () => {
+    it('mounts properly', () => {
+      expect(wrapper.contains('.c-Modal')).toBe(true);
     });
-    expect(wrapper.contains('.c-Modal__title_alt')).toBe(true);
+    it('accepts title as prop', () => {
+      expect(wrapper.find('.c-Modal__title').text()).toEqual(modalTitle);
+    });
+    it('accepts title as slot', () => {
+      wrapper = mountComponent(
+        {
+          slots: {
+            title: '<h1 class="c-Modal__title_alt">Modal Title</h1>',
+          },
+        },
+      );
+      expect(wrapper.contains('.c-Modal__title_alt')).toBe(true);
+    });
   });
 
   describe('Events', () => {
     it('emits close when clicking close icon', () => {
       wrapper.setProps({ closeIcon: true })
-
       const input = wrapper.find('.c-Modal__closeIcon')
       input.trigger('click')
       expect(wrapper.emitted().closed).toBeTruthy()
     });
   });
+
   describe('Transition afterEnter hook', () => {
     it('calls focusFirstOrCloseButton', () => {
       wrapper.vm.afterEnter()
       expect(wrapper.vm.focusFirstOrCloseButton).toHaveBeenCalledTimes(1)
     });
-
-    it('calls pressedKey on keypress', () => {
+    it(`binds 'keydown' event to document`, () => {
       wrapper.vm.afterEnter()
       wrapper.trigger('keydown.esc')
       expect(wrapper.vm.pressedKey).toHaveBeenCalledTimes(1)
     })
-  })
-  describe('Computed values', () => {
-    it('hasFooter return true when footer slot is passed', () => {
-      wrapper = wrapperWithFooter()
+  });
+
+  describe('With footer', () => {
+    beforeEach(() => {
+      wrapper = mountComponent(
+        {
+          slots: {
+            footer: '<div><button class="c-Button first">Cancel</button><button class="c-Button second">Send</button></div>',
+          },
+        },
+        true
+      );
+      wrapper.vm.afterEnter();
+    });
+    it('hasFooter returns true', () => {
       expect(wrapper.vm.hasFooter).toBe(true);
     });
-    it(`modalRole returns 'alertdialog' when hasFooter is true`, () => {
-      wrapper = wrapperWithFooter()
+    it(`modalRole returns 'alertdialog'`, () => {
       expect(wrapper.vm.modalRole).toBe('alertdialog');
     });
-    it(`modalRole returns 'dialog' when hasFooter is false`, () => {
+    it('autofocus first footer button w/ footer slot', () => {
+      expect(document.activeElement.className.indexOf('first')).toBeGreaterThan(-1);
+    });
+    it('tab navigation circles through inputs', () => {
+      wrapper.trigger('keydown.tab');
+      wrapper.trigger('keydown.tab');
+      expect(document.activeElement.className.indexOf('first')).toBeGreaterThan(-1);
+    });
+  });
+
+  describe('Without footer', () => {
+    beforeEach(() => {
+      wrapper = mountComponent(
+        {},
+        true
+      );
+      wrapper.vm.afterEnter();
+    });
+    it('hasFooter returns false', () => {
+      expect(wrapper.vm.hasFooter).toBe(false);
+    });
+    it(`modalRole returns 'dialog'`, () => {
       expect(wrapper.vm.modalRole).toBe('dialog');
+    });
+    it('autofocus close icon button', () => {
+      expect(document.activeElement.className.indexOf('c-Modal__closeIcon')).toBeGreaterThan(-1);
     });
   });
 });

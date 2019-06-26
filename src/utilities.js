@@ -135,8 +135,8 @@ export function getEventPath(event) {
 }
 
 /*
-*		Traps tabular navigation within a determined container element. 
-*		Used for modal but can be used within other
+*		Traps tabular navigation within a determined container element.
+*		Used for modal but can be used within other elements.
 */
 export class trapFocus {
 	constructor (containerEl) {
@@ -168,18 +168,18 @@ export class trapFocus {
 	handleTab(event) {
 		//	Allows for normal tab navigation is user has unfocused any of our tab.
 		//	If user focuses back one of our target elements, trap is re-activated.
-		if (document.activeElement.tagName === 'BODY') {
+		if (document.activeElement.tagName === 'BODY') {
 			return;
 		}
 		event.preventDefault();
 		//	If there's only one element, keep it focused.
-		if (this.inputs.length === 1) {
+		if (this.inputs.length === 1) {
 			return;
 		}
 		const i = this.inputs.indexOf(document.activeElement)
 		let target;
 		// If shift is held, focus previous input 
-		if (event.shiftKey)	{
+		if (event.shiftKey) {
 			if (i - 1 >= 0) {
 				target = this.inputs[i - 1];
 			} else {
@@ -193,5 +193,8 @@ export class trapFocus {
 			}
 		}
 		target.focus();
+	};
+	containerEl() {
+		return this.containerEl;
 	};
 };
