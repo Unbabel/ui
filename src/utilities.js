@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return, no-lonely-if */
+
 /**
  * Quick object check - this is primarily used to tell
  * Objects from primitive values when we know the value
@@ -135,33 +137,33 @@ export function getEventPath(event) {
 }
 
 /*
-*		Traps tabular navigation within a determined container element.
-*		Used for modal but can be used within other elements.
+* Traps tabular navigation within a determined container element.
+* Used for modal but can be used within other elements.
 */
 export class trapFocus {
-	constructor (containerEl) {
+	constructor(containerEl) {
 		this.containerEl = containerEl;
 		this.inputs = [];
-		this._readyInputsReference();
-	};
+		this.prepareInputsReference();
+	}
 	/*
-	*		Prepares an array with each input to be checked for focus, 
-	*		ignoring disabled, hidden and non-visible elements.
+	* Prepares an array with each input to be checked for focus,
+	* ignoring disabled, hidden and non-visible elements.
 	*/
-	_readyInputsReference() {
+	prepareInputsReference() {
 		Array
 			.from(this.containerEl.querySelectorAll(`
 				a:not([disabled]),
 				button:not([disabled]),
 				input:not([disabled]),
 				textarea:not([disabled])
-			`), element => {
-				let style = window.getComputedStyle(element);				
+			`), (element) => {
+				const style = window.getComputedStyle(element);
 				if (!(style.display === 'none' || style.visibility === 'hidden')) {
 					this.inputs.push(element);
 				}
 			});
-	};
+	}
 	/*
 	*	Handles the direction where we want to focus next by looping through elements.
 	*/
@@ -176,25 +178,28 @@ export class trapFocus {
 		if (this.inputs.length === 1) {
 			return;
 		}
-		const i = this.inputs.indexOf(document.activeElement)
+		const elementIndex = this.inputs.indexOf(document.activeElement);
 		let target;
-		// If shift is held, focus previous input 
+		// If shift is held, focus previous input
 		if (event.shiftKey) {
-			if (i - 1 >= 0) {
-				target = this.inputs[i - 1];
-			} else {
+			if (elementIndex - 1 >= 0) {
+				target = this.inputs[elementIndex - 1];
+			}
+			else {
 				target = this.inputs[this.inputs.length - 1];
 			}
-		} else {
-			if (i < (this.inputs.length - 1)) {
-				target = this.inputs[i + 1];
-			} else {
-				target = this.inputs[0];
+		}
+		else {
+			if (elementIndex < (this.inputs.length - 1)) {
+				target = this.inputs[elementIndex + 1];
+			}
+			else {
+				[target] = this.inputs;
 			}
 		}
 		target.focus();
-	};
+	}
 	containerEl() {
 		return this.containerEl;
-	};
-};
+	}
+}
