@@ -64,7 +64,7 @@
 
 <script>
 import {
-	trapFocus,
+	TrapFocus,
 } from '../utilities';
 import Button from './Button.vue';
 
@@ -165,7 +165,7 @@ export default {
 		afterEnter() {
 			document.addEventListener('keydown', this.pressedKey);
 			this.focusFirstOrCloseButton();
-			this.focusTrapper = new trapFocus(this.$el);
+			this.focusTrapper = new TrapFocus(this.$el);
 		},
 		afterLeave() {
 			document.removeEventListener('keydown', this.pressedKey);

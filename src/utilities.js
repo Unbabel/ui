@@ -140,7 +140,7 @@ export function getEventPath(event) {
 * Traps tabular navigation within a determined container element.
 * Used for modal but can be used within other elements.
 */
-export class trapFocus {
+export class TrapFocus {
 	constructor(containerEl) {
 		this.containerEl = containerEl;
 		this.inputs = [];

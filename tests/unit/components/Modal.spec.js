@@ -1,9 +1,6 @@
 import {
   mount,
 } from '@vue/test-utils';
-import {
-  trapFocus,
-} from '@/utilities';
 import Modal from '@/components/Modal.vue';
 import Button from '@/components/Button.vue';
 

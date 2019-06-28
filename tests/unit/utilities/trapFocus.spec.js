@@ -1,5 +1,5 @@
 import {
-  trapFocus,
+  TrapFocus,
 } from '@/utilities';
 import {
   shallowMount,
@@ -22,13 +22,13 @@ const buildDummyComponent = () => {
   });
 };
 
-describe('trapFocus utility', () => {
+describe('TrapFocus utility', () => {
   let wrapper, trapMethod;
 
   beforeEach(() => {
     wrapper = shallowMount(buildDummyComponent());
     wrapper.find('.first').element.focus();
-    trapMethod = new trapFocus(wrapper.vm.$el);
+    trapMethod = new TrapFocus(wrapper.vm.$el);
   })
 
   it('acceps an HTML element', () => {
