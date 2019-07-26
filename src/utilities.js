@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return, no-lonely-if */
 
 /**
  * Quick object check - this is primarily used to tell
@@ -151,18 +150,17 @@ export class TrapFocus {
 	* ignoring disabled, hidden and non-visible elements.
 	*/
 	prepareInputsReference() {
-		Array
-			.from(this.containerEl.querySelectorAll(`
+		const elementArray = Array.from(this.containerEl.querySelectorAll(`
 				a:not([disabled]),
 				button:not([disabled]),
 				input:not([disabled]),
 				textarea:not([disabled])
-			`), (element) => {
-				const style = window.getComputedStyle(element);
-				if (!(style.display === 'none' || style.visibility === 'hidden')) {
-					this.inputs.push(element);
-				}
-			});
+		`));
+		const elementsShowing = elementArray.filter((element) => {
+			const style = window.getComputedStyle(element);
+			return (!(style.display === 'none' || style.visibility === 'hidden'));
+		});
+		return elementsShowing;
 	}
 	/*
 	*	Handles the direction where we want to focus next by looping through elements.
@@ -189,13 +187,11 @@ export class TrapFocus {
 				target = this.inputs[this.inputs.length - 1];
 			}
 		}
+		else if (elementIndex < (this.inputs.length - 1)) {
+			target = this.inputs[elementIndex + 1];
+		}
 		else {
-			if (elementIndex < (this.inputs.length - 1)) {
-				target = this.inputs[elementIndex + 1];
-			}
-			else {
-				[target] = this.inputs;
-			}
+			[target] = this.inputs;
 		}
 		target.focus();
 	}
