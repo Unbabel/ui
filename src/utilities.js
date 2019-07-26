@@ -187,11 +187,14 @@ export class TrapFocus {
 				target = this.inputs[this.inputs.length - 1];
 			}
 		}
-		else if (elementIndex < (this.inputs.length - 1)) {
-			target = this.inputs[elementIndex + 1];
-		}
 		else {
-			[target] = this.inputs;
+			// eslint-disable-next-line no-lonely-if
+			if (elementIndex < (this.inputs.length - 1)) {
+				target = this.inputs[elementIndex + 1];
+			}
+			else {
+				[target] = this.inputs;
+			}
 		}
 		target.focus();
 	}
