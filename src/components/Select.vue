@@ -8,8 +8,10 @@
 				:name="name"
 				@change="onChange"
 				:aria-label="label"
-				:disabled="disabled">
+				:disabled="disabled"
+			>
 				<option v-if="placeholder" selected disabled>{{ placeholder }}</option>
+				<option v-for="option in options" :key="option.id"></option>
 				<slot />
 			</select>
 			<span class="c-FormSelect__decorator"></span>
@@ -18,17 +20,11 @@
 </template>
 
 <script>
-import {
-	looseEqual,
-	setSelectOptionIndex,
-} from '../utilities';
 import SizeMixin from '../mixins/SizeMixin';
 
 export default {
 	name: 'Select',
-	mixins: [
-		SizeMixin,
-	],
+	mixins: [SizeMixin],
 	model: {
 		prop: 'selected',
 		event: 'change',
@@ -37,7 +33,7 @@ export default {
 		label: {
 			type: String,
 			required: true,
-			default: () => '',
+			default: undefined,
 		},
 		name: {
 			type: String,
@@ -46,7 +42,12 @@ export default {
 		placeholder: {
 			type: String,
 			required: false,
-			default: () => undefined,
+			default: undefined,
+		},
+		options: {
+			type: [Array],
+			required: true,
+			default: [],
 		},
 		selected: {
 			type: [Number, String, Object, Array],
@@ -55,12 +56,12 @@ export default {
 		disabled: {
 			type: Boolean,
 			required: false,
-			default: () => false,
+			default: false,
 		},
 		showLabel: {
 			type: Boolean,
 			required: false,
-			default: () => true,
+			default: true,
 		},
 	},
 	computed: {
@@ -77,21 +78,17 @@ export default {
 	},
 	methods: {
 		selectNativeOption(value) {
-			const {
-				select,
-			} = this.$refs;
-			setSelectOptionIndex(select, value);
+			const { select } = this.$refs;
+			this.setSelectOptionIndex(select, value);
 		},
 		onChange(event) {
-			const {
-				target: select,
-			} = event;
+			const { target: select } = event;
 			const selectedOption = select.options[select.options.selectedIndex];
 
 			// _value is accessing the original vue value, allows emiting actual objects
-			const selectedOptionValue = (selectedOption.hasOwnProperty('_value')) ? selectedOption._value : selectedOption.value;
+			const selectedOptionValue =
+				selectedOption['_value'] || selectedOption.value;
 
-			// eslint-disable-next-line
 			this.$emit('change', selectedOptionValue);
 		},
 	},
