@@ -11,7 +11,9 @@
 				:disabled="disabled"
 			>
 				<option v-if="placeholder" selected disabled>{{ placeholder }}</option>
-				<option v-for="option in options" :key="option.id"></option>
+				<option v-for="option in options" :key="option.id">{{
+					option.value
+				}}</option>
 				<slot />
 			</select>
 			<span class="c-FormSelect__decorator"></span>
