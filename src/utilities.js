@@ -197,6 +197,7 @@ export class TrapFocus {
 				[target] = this.inputs;
 			}
 		}
+		console.log(target);
 		target.focus();
 	}
 	containerEl() {
