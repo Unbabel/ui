@@ -58,7 +58,7 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-vue": "^4.7.1",
     "jest": "^23.6.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "sass-loader": "^6.0.7",
     "storybook-addon-vue-info": "^0.6.2",
     "vue-jest": "^2.6.0",
